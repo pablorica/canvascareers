@@ -1,0 +1,136 @@
+@import "tailwindcss/base";
+/*@tailwind base; */
+@import "scss/assets/fonts";
+@import "css/custom";
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/*
+@tailwind components;
+@tailwind utilities;
+*/
+
+/* Functions */
+@import "scss/functions";
+
+/* Assets */
+@import "scss/assets/svgs";
+@import "scss/assets/globals";
+@import "scss/assets/forms";
+
+/* Blocks
+@import "scss/blocks/grid";
+@import "scss/blocks/image";
+@import "scss/blocks/spacer";
+@import "scss/blocks/cover";
+@import "scss/blocks/column";
+
+/* Patterns
+@import "scss/patterns/cards";
+@import "scss/patterns/buttons";
+@import "scss/patterns/titles";
+@import "scss/patterns/sections";
+@import "scss/patterns/counters";
+@import "scss/patterns/heros";
+*/
+
+.is-root-container {
+  .hidden {
+    display: initial !important;
+    opacity: 0.5;
+  }
+  .lg\:block{
+    @media (min-width: theme("screens.lg")) {
+      opacity: 1;
+    }
+  }
+  .lg\:hidden {
+    @media (min-width: theme("screens.lg")) {
+      display: initial !important;
+      opacity: 0.5;
+    }
+  }
+}
+
+.\!w-1\/2 {
+  width: 50% !important;
+}
+.block-editor .edit-post-sidebar .acf-fields > .acf-field.\!w-1\/2 {
+  width: 49% !important;
+  display: inline-block;
+}
+
+.block-editor .tiny-carousel > div {
+  display: none;
+  figure {
+    width: 60%;
+    margin: auto;
+  }
+}
+.block-editor .smooth-carousel .tiny-carousel > div{
+  display: block;
+}
+.block-editor .tiny-carousel > div:first-child {
+  display: block
+}
+
+.editor-canvas__iframe,
+.editor-styles-wrapper {
+  padding: 2rem /* 32px */ !important;
+}
+
+/* Fixes Gutenberg's cover block color picker. */
+.components-circular-option-picker__option {
+  border-radius: 50%;
+}
+
+/* Matches the page title font weight. */
+.editor-post-title .editor-post-title__input {
+  @extend h1;
+}
+
+/* Block group outlined */
+.wp-block-group {
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+  margin-bottom: 10px !important;
+  .wp-block-group {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    margin-bottom: 0 !important;
+    box-shadow: none;
+  }
+}
+.wp-block {
+  border: 1px solid transparent;
+  &:hover {
+    border-color: red;
+  }
+}
+
+.logo-img {
+  width: 100%;
+  svg {
+    width: 100%;
+  }
+}
+
+.wp-block-separator {
+  background-color: #ececec;
+  border-color: black;
+}
+
+.wp-block-columns {
+  margin-bottom: 10px !important;
+  .wp-block-column {
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.section-calculator-module .wp-block-column-image img {
+  position: static;
+}
+
+
+body.post-type-project .editor-sidebar__panel #tabs-0-edit-post\/document-view .components-panel__body {
+  display: none;
+}

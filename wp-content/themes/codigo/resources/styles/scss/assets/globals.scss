@@ -1,0 +1,35 @@
+.btn-primary {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: theme("colors.black");
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  background: theme("colors.blue");
+  cursor: pointer;
+  @apply transition duration-300 ease-in-out;
+
+  &:hover {
+    background: theme("colors.pink");
+    transition: 0.3s;
+    position: relative;
+  }
+}
+
+a.underline,
+.underline a {
+  text-decoration: underline;
+}
+
+
+$colors: (
+  "black":          #000,
+  "blue":           #2A7DE1,
+  "orange":         #FF6B00,
+  "pink":           #F97FB5,
+  "silver":         #A9A4A0,
+  "white":          #FFF,
+  "yellow":         #FFB71B,
+);

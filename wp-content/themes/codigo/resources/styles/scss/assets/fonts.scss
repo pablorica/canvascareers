@@ -1,0 +1,27 @@
+/* '@fonts/*' is defined in codigo/jsconfig.json */
+
+@font-face {
+  font-family: "Aeonik";
+  src: url("~@fonts/Aeonik/Aeonik-Regular.eot");
+  src:
+    url("~@fonts/Aeonik/Aeonik-Regular.eot?#iefix") format("embedded-opentype"),
+    url("~@fonts/Aeonik/Aeonik-Regular.woff2") format("woff2"),
+    url("~@fonts/Aeonik/Aeonik-Regular.woff") format("woff"),
+    url("~@fonts/Aeonik/Aeonik-Regular.svg#Aeonik-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Aeonik";
+  src: url("~@fonts/Aeonik/Aeonik-Bold.eot");
+  src:
+    url("~@fonts/Aeonik/Aeonik-Bold.eot?#iefix") format("embedded-opentype"),
+    url("~@fonts/Aeonik/Aeonik-Bold.woff2") format("woff2"),
+    url("~@fonts/Aeonik/Aeonik-Bold.woff") format("woff"),
+    url("~@fonts/Aeonik/Aeonik-Bold.svg#Aeonik-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,26 @@
+.acf-color-picker .iris-picker.iris-border{
+  height: auto !important;
+  padding: 0 !important;
+}
+
+.acf-color-picker .wp-picker-input-wrap,
+.acf-color-picker .iris-picker .iris-slider,
+.acf-color-picker .iris-picker .iris-square{
+  display:none !important;
+}
+
+.acf-color-picker .iris-palette-container {
+  position: relative;
+  display: flex;
+  bottom: 0 !important;
+  left: 0 !important;
+  padding: 10px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.acf-color-picker .iris-palette-container > a {
+  width: 30px !important;
+  height: 30px !important;
+  margin: 0 !important;
+}

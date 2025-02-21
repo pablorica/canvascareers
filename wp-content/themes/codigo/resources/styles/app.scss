@@ -1,0 +1,47 @@
+@import "tailwindcss/base";
+/*@tailwind base; */
+@import "scss/assets/fonts";
+@import "css/custom";
+
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/*
+@tailwind components;
+@tailwind utilities;
+*/
+
+/* Functions */
+@import "scss/functions";
+
+/* Assets */
+@import "scss/assets/svgs";
+@import "scss/assets/globals";
+@import "scss/assets/forms";
+
+/* Layout *
+@import "scss/layout/header";
+@import "scss/layout/footer";
+
+/* Blocks *
+@import "scss/blocks/grid";
+@import "scss/blocks/heading";
+@import "scss/blocks/image";
+@import "scss/blocks/spacer";
+@import "scss/blocks/cover";
+@import "scss/blocks/column";
+
+/* Patterns *
+@import "scss/patterns/cards";
+@import "scss/patterns/buttons";
+@import "scss/patterns/titles";
+@import "scss/patterns/sections";
+@import "scss/patterns/counters";
+@import "scss/patterns/heros";
+
+/* Pages *
+@import "scss/pages/holding_page";
+@import "scss/pages/header";
+@import "scss/pages/single-post";
+@import "scss/pages/members";
+@import "scss/pages/projects";
+*/
