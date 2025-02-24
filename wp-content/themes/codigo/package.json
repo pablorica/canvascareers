@@ -20,14 +20,18 @@
     "watch": "bud dev"
   },
   "devDependencies": {
-        "@roots/bud": "6.16.1",
-        "@roots/bud-sass": "6.16.1",
-        "@roots/bud-tailwindcss": "6.16.1",
-        "@roots/bud-vue": "6.16.1",
-        "@roots/sage": "6.16.1"
-    },
+    "@roots/bud": "6.16.1",
+    "@roots/bud-sass": "6.16.1",
+    "@roots/bud-tailwindcss": "6.16.1",
+    "@roots/bud-vue": "6.16.1",
+    "@roots/sage": "6.16.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "dependencies": {
     "caniuse-lite": "^1.0.30001627",
-    "tiny-emitter": "^2.1.0"
-  }
+    "tiny-emitter": "^2.1.0",
+    "tiny-slider": "^2.9.4"
+  },
+  "packageManager": "yarn@4.5.3+sha512.3003a14012e2987072d244c720506549c1aab73ee728208f1b2580a9fd67b92d61ba6b08fe93f6dce68fd771e3af1e59a0afa28dd242dd0940d73b95fedd4e90"
 }

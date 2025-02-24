@@ -1,27 +1,106 @@
 /* '@fonts/*' is defined in codigo/jsconfig.json */
 
 @font-face {
-  font-family: "Aeonik";
-  src: url("~@fonts/Aeonik/Aeonik-Regular.eot");
-  src:
-    url("~@fonts/Aeonik/Aeonik-Regular.eot?#iefix") format("embedded-opentype"),
-    url("~@fonts/Aeonik/Aeonik-Regular.woff2") format("woff2"),
-    url("~@fonts/Aeonik/Aeonik-Regular.woff") format("woff"),
-    url("~@fonts/Aeonik/Aeonik-Regular.svg#Aeonik-Regular") format("svg");
+  font-family: 'Matter Medium';
+  src: url('~@fonts/MatterMedium/MatterMedium.woff');
+  src: url('~@fonts/MatterMedium/MatterMedium.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Aeonik";
-  src: url("~@fonts/Aeonik/Aeonik-Bold.eot");
-  src:
-    url("~@fonts/Aeonik/Aeonik-Bold.eot?#iefix") format("embedded-opentype"),
-    url("~@fonts/Aeonik/Aeonik-Bold.woff2") format("woff2"),
-    url("~@fonts/Aeonik/Aeonik-Bold.woff") format("woff"),
-    url("~@fonts/Aeonik/Aeonik-Bold.svg#Aeonik-Bold") format("svg");
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-SemiBold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-SemiBoldItalic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Swiss Time';
+  src: url('~@fonts/SwissTime/SwissTime-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
   font-display: swap;
 }
