@@ -41,6 +41,7 @@
   "require": {
     "php": "^8.0",
     "log1x/acf-composer": "^3.0",
+    "log1x/poet": "^2.1",
     "log1x/sage-directives": "^1.1",
     "roots/acorn": "^3.3"
   },

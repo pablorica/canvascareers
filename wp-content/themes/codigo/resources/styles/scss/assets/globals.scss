@@ -3,16 +3,17 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: theme("colors.black");
+  color: theme("colors.charcoal");
   padding: 10px;
   text-align: center;
   border-radius: 5px;
-  background: theme("colors.blue");
+  background: theme("colors.chalk");
   cursor: pointer;
   @apply transition duration-300 ease-in-out;
 
   &:hover {
-    background: theme("colors.pink");
+    background: theme("colors.charcoal");
+    color: theme("colors.chalk");
     transition: 0.3s;
     position: relative;
   }
