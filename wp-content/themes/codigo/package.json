@@ -19,9 +19,6 @@
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang",
     "watch": "bud dev"
   },
-  "dependencies": {
-    "tiny-emitter": "^2.1.0"
-  },
   "devDependencies": {
     "@roots/bud": "6.24.0",
     "@roots/bud-sass": "6.24.0",
@@ -30,5 +27,10 @@
     "@roots/sage": "6.24.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "tiny-emitter": "^2.1.0",
+    "caniuse-lite": "^1.0.30001627",
+    "tiny-slider": "^2.9.4"
   }
 }
