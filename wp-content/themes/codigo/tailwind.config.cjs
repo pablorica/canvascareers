@@ -19,21 +19,25 @@ module.exports = {
     // Here we define the default colors available. If you want to include
     // all default Tailwind colors you should extend the colors instead.
     colors: {
-        black:     '#000',
-        blue:      '#2A7DE1',
-        orange:    '#FF6B00',
-        pink:      '#F97FB5',
-        white:     '#fff',
-        yellow:    '#FFB71B',
-        // Neutrals: neutral colors, with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
-        neutral: {
-            DEFAULT: colors.black,
-            ...colors.slate
-        },
-        // Primary: primary brand color with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
-        primary: {
-            DEFAULT: colors.black
-        },
+      black:     '#000',
+      chalk:     '#E6E1DC',
+      charcoal:  '#202020',
+      char:      '#6B6B6B',
+      white:     '#fff',
+      walnut:    '#B4695F',
+      citrus:    '#D7BE7D',
+      sage:      '#91A58C',
+      teal:      '#739696',
+      lilac:     '#7D7D9B',
+      // Neutrals: neutral colors, with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
+      neutral: {
+          DEFAULT: colors.black,
+          ...colors.slate
+      },
+      // Primary: primary brand color with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
+      primary: {
+          DEFAULT: colors.black
+      },
     },
     extend: {
       zIndex: {
@@ -85,10 +89,13 @@ module.exports = {
     fontFamily: {
       mono: [],
       sans: [
-        'Aeonik',
+        'Matter Medium, Helvetica, sans-serif',
         ...defaultTheme.fontFamily.sans,
       ],
-      serif: [],
+      serif: [
+        'Swiss Time, Times, serif',
+        ...defaultTheme.fontFamily.serif,
+      ],
     },
     // The font weights available for this site.
     fontWeight: {
@@ -103,17 +110,19 @@ module.exports = {
       // black: 900,
     },
     fontSize: {
-        sm: '0.8rem',
-        base: '1rem', // 20px
-        'xl': '1.25rem', // 25px
-        '2xl': '1.5rem', // 30px
-        '3xl': '1.875rem', // 37.5px
-        '4xl': '2.25rem', // 45px
-        '5xl': '3rem', // 60px
-        '6xl': '3.75rem', // 75px
-        '7xl': '4.5rem', // 90px
-        '8xl': '6rem', // 120px
-        '9xl': '8rem', // 160 px
+      sm: '0.75rem', // 12px
+      md: '0.875rem', // 14px
+      base: '1rem', // 16px
+      lg: '1.125rem', // 18px
+      xl: '1.25rem', // 20px
+      '2xl': '1.5rem', // 24px
+      '3xl': '1.875rem', // 30px
+      '4xl': '2.25rem', // 36px
+      '5xl': '3rem', // 48px
+      '6xl': '3.75rem', // 60px
+      '7xl': '4.5rem', // 72px
+      '8xl': '6rem', // 96px
+      '9xl': '6.65rem', // 106px
     },
     letterSpacing: { //tracking
         //tightest: '-.075em',
@@ -136,10 +145,9 @@ module.exports = {
       addBase({
         ':root': {
             // Fluid typography from 1 rem to 1.2 rem with fallback to 20px.
-            fontSize: '20px',
-            letterSpacing: '-0.2px',
+            fontSize: '16px',
             lineHeight: '1.2',
-            fontWeight: '450',
+            fontWeight: '400',
 
             // Safari resize fix.
             minHeight: '0vw',
@@ -163,6 +171,9 @@ module.exports = {
           backgroundColor: theme('colors.primary.DEFAULT'),
           color: theme('colors.white')
         },
+        'body': {
+          backgroundColor: theme('colors.chalk'),
+        }
       })
     }),
 
@@ -187,8 +198,8 @@ module.exports = {
             // Larger horizontal padding on larger screens.
             '.fluid-container , .container': {
               // Use safe-area-inset together with default padding for Apple devices with a notch.
-              paddingLeft: `calc(env(safe-area-inset-left, 0rem) + ${theme('padding.10')})`,
-              paddingRight: `calc(env(safe-area-inset-right, 0rem) + ${theme('padding.10')})`,
+              paddingLeft: `calc(env(safe-area-inset-left, 0rem) + ${theme('padding.14')})`,
+              paddingRight: `calc(env(safe-area-inset-right, 0rem) + ${theme('padding.14')})`,
             },
             '.container': {
                 maxWidth: theme('screens.md'),
