@@ -12,7 +12,7 @@
       <div>
         <a
           href="{{ home_url('/') }}"
-          class="brand-header xl:text-9xl lg:text-7xl text-6xl text-charcoal leading-[0.75]"
+          class="brand-header xl:text-9xl text-7xl text-charcoal leading-[0.75]"
         >
           {{ __('Canvas', 'codigo') }}
         </a>
@@ -49,6 +49,7 @@
               transition-colors duration-300
               border border-charcoal block
               leading-none text-center
+              overflow-ellipsis overflow-hidden whitespace-nowrap
               {{ $item->object_id == get_the_ID() ? 'bg-charcoal text-chalk' : 'text-charcoal' }}
             "
           >

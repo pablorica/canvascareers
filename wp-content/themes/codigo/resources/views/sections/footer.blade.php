@@ -5,12 +5,12 @@
 
 <!-- /codigo/resources/views/sections/footer.blade.php -->
 <footer class="
-    md:fixed bottom-0 w-full md:block hidden
-    border-t border-charcoal
-    pt-8 pb-10
+    w-full
+    md:border-t border-charcoal
+    py-3 md:pt-8 md:pb-10 bg-chalk
     @option('footer_layout_container')
 ">
-  <div class="flex justify-between">
+  <div class="justify-between md:flex hidden">
     <ul class="flex list-none flex-1 flex-wrap">
       @php($menu_items = wp_get_nav_menu_items('Main Menu'))
 
@@ -60,11 +60,20 @@
       <div>
         <a
           href="{{ home_url('/') }}"
-          class="brand-footer xl:text-9xl lg:text-7xl text-6xl text-charcoal leading-[0.75]"
+          class="brand-footer xl:text-9xl text-7xl text-charcoal leading-[0.75]"
         >
           {{ __('Careers', 'codigo') }}
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="md:hidden text-right">
+    <a
+      href="{{ home_url('/') }}"
+      class="brand-footer xl:text-9xl text-7xl text-charcoal leading-[0.75]"
+    >
+      {{ __('Careers', 'codigo') }}
+    </a>
   </div>
 </footer>
