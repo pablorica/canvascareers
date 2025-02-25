@@ -6,16 +6,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.2.2] - 2025-02-25
+
+### Added
+
+- Add collaborators CPT, template & fields
+    - hice también ajustes en el footer  
+    - Agregué el footer para mobile, 
+    - Así creé con `poet` el cpt:
+        `wp acorn clear-compiled && wp acorn vendor:publish --provider="Log1x\Poet\PoetServiceProvider"`
+
 ## [0.2.1] - 2025-02-24
 
-### Updated
+### Added
 
 - Add initial config, header & footer
 
 
 ## [0.2.0] - 2025-02-23
 
-### Updated
+### Added
 
 - Staging version
 
