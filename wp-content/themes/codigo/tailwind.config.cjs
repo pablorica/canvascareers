@@ -29,6 +29,8 @@ module.exports = {
       sage:      '#91A58C',
       teal:      '#739696',
       lilac:     '#7D7D9B',
+      gray:      '#BAB7B3',
+      lightgray: '#D9D3CE',
       // Neutrals: neutral colors, with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
       neutral: {
           DEFAULT: colors.black,
@@ -103,7 +105,7 @@ module.exports = {
       // thin: 200,
       // light: 300,
       normal: 400,
-      // medium: 500,
+      medium: 500,
       // semibold: 600,
       bold: 700,
       // extrabold: 800,
@@ -164,8 +166,8 @@ module.exports = {
             // Set sans, serif or mono stack with optional custom font as default.
             //--------------------------------------------------------------------------
             // fontFamily: theme('fontFamily.mono'),
-            fontFamily: theme('fontFamily.sans'),
-            // fontFamily: theme('fontFamily.serif'),
+            // fontFamily: theme('fontFamily.sans'),
+            fontFamily: theme('fontFamily.serif'),
         },
         'mark': {
           backgroundColor: theme('colors.primary.DEFAULT'),
@@ -173,7 +175,10 @@ module.exports = {
         },
         'body': {
           backgroundColor: theme('colors.chalk'),
-        }
+        },
+        'h1, a, button': {
+          fontFamily: theme('fontFamily.sans'),
+        },
       })
     }),
 

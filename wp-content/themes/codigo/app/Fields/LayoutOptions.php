@@ -14,15 +14,14 @@ class LayoutOptions extends Field
     public function fields(): array
     {
         $layoutOptions = Builder::make(
-            'layout_options',  
-            ['position' => 'side'] 
+            'layout_options',
+            ['position' => 'side']
         );
 
         $layoutOptions
             ->setLocation('post_type', '==', 'page')
             ->or('post_type', '==', 'post');
-        
-        
+
         $layoutOptions
             ->addTrueFalse('layout_hide_title', [
                 'label' => 'Hide Title',
@@ -36,7 +35,7 @@ class LayoutOptions extends Field
                 ],
                 'message' => '',
                 'default_value' => 0,
-                'ui' => 0,
+                'ui' => 1,
                 'ui_on_text' => '',
                 'ui_off_text' => '',
             ]);

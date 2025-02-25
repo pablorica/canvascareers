@@ -13,7 +13,8 @@ export var emitter = new Emitter();
 /**
  * Custom modules
  */
-import consoleHello from './modules/consoleHello';
+import tinyslider from "./modules/tinyslider";
+import collaborators from "./modules/collaborators";
 
 /**
  * Application entrypoint
@@ -39,7 +40,8 @@ domReady(async () => {
  */
 const CDG = {
   onreadyFunctions: function() {
-    consoleHello('CDG is ready');
+    tinyslider();
+    collaborators();
 
     window.addEventListener("resize", function(){
       //consoleHello('window has resized');
