@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "tiny-emitter": "^2.1.0",
-    "caniuse-lite": "^1.0.30001627",
     "tiny-slider": "^2.9.4"
   }
 }
