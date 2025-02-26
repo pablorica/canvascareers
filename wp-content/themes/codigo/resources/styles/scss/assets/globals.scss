@@ -27,12 +27,12 @@ a.underline,
 #app {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 #main {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 #main::-webkit-scrollbar {
@@ -41,17 +41,27 @@ a.underline,
 
 @media (min-width: theme("screens.md")) {
   #app {
-    height: 100vh;
+    height: 100dvh;
   }
 
   .admin-bar #app {
-    height: calc(100vh - 32px);
+    height: calc(100dvh - 32px);
   }
 }
 
 @media (max-width: 782px) {
   .admin-bar #app {
-    height: calc(100vh - 46px);
+    height: calc(100dvh - 46px);
+  }
+}
+
+@media (max-width: calc(theme("screens.md") - 1px)) {
+  #app {
+    min-height: 100dvh;
+  }
+
+  .admin-bar #app {
+    min-height: calc(100dvh - 46px);
   }
 }
 

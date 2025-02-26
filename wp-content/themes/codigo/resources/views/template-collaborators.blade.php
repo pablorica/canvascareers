@@ -4,11 +4,11 @@
 
 @extends('layouts.app')
 
-<!-- /codigo/resources/views/template-members.blade.php -->
+<!-- /codigo/resources/views/template-collaborators.blade.php -->
 @section('content')
   <div
     id="collaborators"
-    class="@option('layout_container') flex items-center min-h-full"
+    class="@option('layout_container') flex items-center min-h-full m-auto"
   >
     <div class="grid grid-cols-12">
       <div class="
@@ -76,8 +76,9 @@
                 </span>
                 <a href="{{ get_permalink($collaborator) }}" class="flex-1 flex flex-col justify-end">
                   <div class="flex-1 mb-4">
-                    <h2 class="font-serif italic text-xl md:text-2xl font-medium">
-                      {{ get_the_title($collaborator) }}
+                    <h2 class="font-serif text-xl md:text-2xl font-normal">
+                      @php($name = explode(' ', get_the_title($collaborator)))
+                      <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
                     </h2>
                     <p class="text-sm mt-3 font-serif">
                       <strong>{{ get_field('position', $collaborator) }},</strong> {{ get_field('location', $collaborator) }}
@@ -98,4 +99,4 @@
     </div>
   </div>
 @endsection
-<!-- End /codigo/resources/views/template-members.blade.php -->
+<!-- End /codigo/resources/views/template-collaborators.blade.php -->

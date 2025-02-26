@@ -1,0 +1,20 @@
+.admin-bar {
+  header#mainMenu {
+    &.md\:fixed {
+      top: 32px;
+
+      @media screen and (max-width: 782px) {
+        top: 46px;
+      }
+    }
+  }
+}
+
+.header-spacer {
+  @media (min-width: theme("screens.md")) {
+    height: 152px;
+  }
+  @media (min-width: theme("screens.xl")) {
+    height: 178px;
+  }
+}

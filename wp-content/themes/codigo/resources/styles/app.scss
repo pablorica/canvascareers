@@ -19,9 +19,8 @@
 @import "scss/assets/forms";
 @import "scss/assets/carousel";
 
-/* Layout *
+/* Layout */
 @import "scss/layout/header";
-@import "scss/layout/footer";
 
 /* Blocks *
 @import "scss/blocks/grid";
@@ -39,10 +38,6 @@
 @import "scss/patterns/counters";
 @import "scss/patterns/heros";
 
-/* Pages *
-@import "scss/pages/holding_page";
-@import "scss/pages/header";
-@import "scss/pages/single-post";
-@import "scss/pages/members";
-@import "scss/pages/projects";
-*/
+/* Pages **/
+@import "scss/pages/collaborators";
+@import "scss/pages/home";
