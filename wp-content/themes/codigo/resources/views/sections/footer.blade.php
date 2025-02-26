@@ -7,7 +7,7 @@
 <footer class="
     w-full
     md:border-t border-charcoal
-    py-3 md:pt-8 md:pb-10 bg-chalk
+    py-1 md:pt-8 md:pb-10 bg-chalk
     @option('footer_layout_container')
 ">
   <div class="justify-between md:flex hidden">
@@ -71,7 +71,7 @@
   <div class="md:hidden text-right">
     <a
       href="{{ home_url('/') }}"
-      class="brand-footer xl:text-9xl text-7xl text-charcoal leading-[0.75]"
+      class="brand-footer xl:text-9xl text-7xl text-charcoal"
     >
       {{ __('Careers', 'codigo') }}
     </a>
