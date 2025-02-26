@@ -3,7 +3,7 @@
     @desc The sites header rendered on each page.
 --}}
 <!-- /resources/views/sections/header.blade.php -->
-<header id="mainMenu" class="banner w-full">
+<header id="mainMenu" class="banner w-full {{ get_field('fixed_header') ? 'md:fixed md:top-0 md:w-auto' : '' }}">
   <nav
     class="nav-primary @option('header_layout_container') py-5"
     aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}"
@@ -35,7 +35,10 @@
       </button>
     </div>
 
-    <ul class="grid list-none mt-6 w-full md:max-w-[400px] grid-cols-2 gap-2">
+    <ul
+      class="grid list-none mt-6 w-full md:max-w-[350px] xl:max-w-[400px] grid-cols-2 gap-2
+      {{ get_field('fixed_header') ? 'md:min-w-[350px] xl:min-w-[400px]' : '' }}"
+    >
       @php($menu_items = wp_get_nav_menu_items('Jobs Filters Menu'))
 
       @foreach($menu_items as $item)

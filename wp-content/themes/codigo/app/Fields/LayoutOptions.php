@@ -40,6 +40,24 @@ class LayoutOptions extends Field
                 'ui_off_text' => '',
             ]);
 
+        $layoutOptions
+            ->addTrueFalse('fixed_header', [
+                'label' => 'Fixed Header',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ]);
+
         return $layoutOptions->build();
     }
 }
