@@ -6,6 +6,16 @@
       @media screen and (max-width: 782px) {
         top: 46px;
       }
+
+      @media screen and (max-width: 600px) {
+        top: 0;
+      }
+    }
+
+    .mobile-menu {
+      @media screen and (max-width: 782px) {
+        top: 46px;
+      }
     }
   }
 }
