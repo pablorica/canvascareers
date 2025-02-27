@@ -71,7 +71,30 @@ class CollaboratorFields extends Field
                 'prepend' => '',
                 'append' => '',
                 'maxlength' => '',
-            ]);
+            ])
+            ->addRepeater('portfolio_images', [
+                'label' => 'Portfolio Images',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'layout' => 'block',
+                'button_label' => 'Add Image',
+            ])
+                ->addImage('image', [
+                    'label' => 'Image',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'return_format' => 'url',
+                    'preview_size' => 'thumbnail',
+                    'library' => 'all',
+                ])
+            ->endRepeater();
 
         return $fields->build();
     }

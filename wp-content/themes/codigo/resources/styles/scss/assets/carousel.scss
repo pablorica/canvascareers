@@ -1,3 +1,21 @@
+.tns-nav {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tns-outer [aria-controls] {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: theme("colors.gray");
+}
+
+.tns-nav .tns-nav-active {
+  background: theme("colors.charcoal");
+}
+
 @media screen and (max-width: calc(theme("screens.md") - 1px)) {
   .tns-ovh {
     overflow: visible;
