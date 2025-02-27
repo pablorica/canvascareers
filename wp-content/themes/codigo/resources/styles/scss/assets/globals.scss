@@ -31,7 +31,6 @@ a.underline,
 
 #main {
   flex: 1;
-  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -44,6 +43,10 @@ a.underline,
     height: 100dvh;
   }
 
+  #main {
+    overflow-y: auto;
+  }
+
   .admin-bar #app {
     height: calc(100dvh - 32px);
   }
@@ -51,7 +54,7 @@ a.underline,
 
 @media (max-width: 782px) {
   .admin-bar #app {
-    height: calc(100dvh - 46px);
+    min-height: calc(100dvh - 46px);
   }
 }
 

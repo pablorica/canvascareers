@@ -59,6 +59,7 @@ export default async (app) => {
    */
   app.wpjson
     .setSettings({
+      appearanceTools: true,
       color: {
         custom: false,
         customDuotone: false,

@@ -2,5 +2,11 @@
   #main {
     display: flex;
     align-items: center;
+
+    @media screen and (max-height: 835px) {
+      .collaborator img {
+        max-height: 300px;
+      }
+    }
   }
 }

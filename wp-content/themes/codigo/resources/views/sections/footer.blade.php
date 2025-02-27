@@ -20,12 +20,11 @@
             href="{{ $item->url }}"
             class="
               text-sm py-1.5 px-5 rounded-full
-              hover:text-chalk
-              bg-chalk hover:bg-charcoal
+              bg-chalk hover:bg-citrus
               transition-colors duration-300
               border border-charcoal block
               leading-none text-center
-              {{ $item->object_id == get_the_ID() ? 'bg-charcoal text-chalk' : 'text-charcoal' }}
+              {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
           >
             {{ $item->title }}
@@ -44,12 +43,11 @@
               href="{{ $item->url }}"
               class="
               text-sm py-1.5 px-5 rounded-full
-              hover:text-chalk
-              bg-chalk hover:bg-charcoal
+              bg-chalk hover:bg-citrus
               transition-colors duration-300
               border border-charcoal block
               leading-none text-center
-              {{ $item->object_id == get_the_ID() ? 'bg-charcoal text-chalk' : 'text-charcoal' }}
+              {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
             >
               {{ $item->title }}

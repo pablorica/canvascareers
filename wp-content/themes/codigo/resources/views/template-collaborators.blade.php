@@ -21,19 +21,19 @@
           {!! get_the_content() !!}
         </div>
 
-        @php($years = get_terms('year', ['hide_empty' => false]))
+        @php($years = get_terms('collaborator-year', ['hide_empty' => false]))
         <ul class="flex list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap">
           @foreach($years as $year)
             <li>
               <a
                 class="
                   text-lg md:text-2xl py-1 md:py-2 px-3
-                  hover:text-chalk cursor-pointer
-                  bg-chalk hover:bg-charcoal rounded-full
+                  cursor-pointer rounded-full
+                  bg-chalk hover:bg-citrus
                   transition-colors duration-300
                   border border-charcoal block
                   leading-none text-center collaborators-year
-                  @if($loop->first) bg-charcoal text-chalk @endif
+                  @if($loop->first) !bg-charcoal !text-chalk @endif
                 "
                 data-filter="{{ $year->slug }}"
               >
@@ -63,7 +63,7 @@
               'post_type' => 'collaborator',
               'posts_per_page' => -1,
               'tax_query' => [[
-                'taxonomy' => 'year',
+                'taxonomy' => 'collaborator-year',
                 'field' => 'slug',
                 'terms' => $year->slug,
               ]],
