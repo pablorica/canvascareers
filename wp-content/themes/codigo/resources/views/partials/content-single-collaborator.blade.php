@@ -1,0 +1,152 @@
+{{--
+    @name Content Single
+    @desc The content layout for posts
+--}}
+
+<!-- /codigo/resources/views/partials/content-single.blade.php -->
+<article @php(post_class('h-entry h-full md:pr-0 '.get_field("layout_container", "option") )) >
+  <div class="grid grid-cols-12 w-full h-full">
+    <div class="col-span-12 md:col-span-7 lg:col-span-5 px-2 md:pr-4 2xl:pr-8 flex flex-col">
+      <h1 class="md:hidden text-charcoal font-light text-xl flex gap-1 justify-between mt-2 pb-7 flex-wrap">
+        <span class="block">{{ __('In Conversation:', 'codigo') }}</span>
+        {{ get_the_title() }}
+      </h1>
+      <div class="header-spacer hidden md:block"></div>
+      @php($portfolio_images = get_field('portfolio_images'))
+      @if($portfolio_images)
+        <div class="flex items-center md:my-5 flex-1 wrapper-carousel">
+          <div class="cursor-pointer prev-button hidden md:block">
+            <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="30,10 15,25 30,40" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+
+          <div class="h-full flex md:max-w-[75%] 2xl:max-w-[60%] w-full mx-auto carousel-single-collaborator">
+            <div
+              class="tiny-carousel h-full"
+              data-responsive-items="false"
+              data-mouse-drag="true"
+              data-navigation="true"
+            >
+              @foreach($portfolio_images as $image)
+                <div
+                  class="bg-cover bg-center w-full"
+                  style="background-image: url('{{ $image['image'] }}')"
+                ></div>
+              @endforeach
+            </div>
+          </div>
+
+          <div class="cursor-pointer next-button hidden md:block">
+            <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+              <polyline points="20,10 35,25 20,40" stroke="black" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+        </div>
+      @endif
+    </div>
+    <div class="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col mt-8 md:mt-0">
+      <div class="pb-5 border-b md:border-l lg:border-x border-charcoal px-4 hidden md:block">
+        <div class="pt-7 pb-6 flex justify-between items-center text-sm font-bold">
+          <span>
+            @php($years = get_the_terms(get_the_ID(), 'collaborator-year'))
+            @if($years)
+              @foreach($years as $year)
+                {{ $year->name }}
+                @if(!$loop->last)
+                  <span class="mx-1">/</span>
+                @endif
+              @endforeach
+            @endif
+          </span>
+          <span>
+            {{ get_field('position') }}
+          </span>
+          <span>
+            {{ get_field('location') }}
+          </span>
+        </div>
+        <h1 class="md:text-4xl 2xl:text-5xl text-charcoal text-left lg:px-8 font-light">
+          <span class="block">{{ __('In Conversation:', 'codigo') }}</span>
+          {{ get_the_title() }}
+        </h1>
+      </div>
+      <div class="md:border-l lg:border-x border-charcoal relative flex-1">
+        <div class="text-md md:overflow-y-auto md:absolute md:inset-x-4 md:inset-y-3 px-2 md:pl-4 md:pr-0 py-2 scroll-rtl">
+          <div class="content transition-all duration-300 ease-in-out">
+            @php(the_content())
+          </div>
+          <div class="hidden read-more text-center md:!hidden pt-20 pb-16">
+            <a
+              class="
+                text-sm py-1.5 px-5 rounded-full
+                mb-2 bg-chalk hover:bg-citrus w-[300px]
+                transition-colors duration-300 max-w-full
+                border border-charcoal cursor-pointer
+                leading-none text-center inline-block
+                overflow-ellipsis overflow-hidden whitespace-nowrap
+              "
+            >
+              {{ __('Continue Reading', 'codigo') }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-3 py-1.5 px-4 hidden lg:block">
+      @php($years = get_terms('collaborator-year', ['hide_empty' => false]))
+      @foreach($years as $year)
+        <div class="py-7 2xl:py-8 border-b border-charcoal cursor-pointer">
+          <div class="flex justify-between items-center text-2xl 2xl:text-3xl font-sans button-collapse">
+            {{ $year->name }}
+            <svg class="transition-transform duration-300 icon-{{ $loop->index }}" width="25" height="25" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+              <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="1.5"></line>
+              <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="1.5"></line>
+            </svg>
+          </div>
+          <div
+            id="collapse-{{ $loop->index }}"
+            class="accordion-collapse overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
+            aria-labelledby="heading{{ $loop->index }}"
+            data-bs-parent="#accordionExample"
+          >
+            <div class="accordion-body pt-7 2xl:pt-8 inline-flex flex-col max-w-full">
+              @php($collaborators = get_posts([
+                'post_type' => 'collaborator',
+                'posts_per_page' => -1,
+                'tax_query' => [[
+                  'taxonomy' => 'collaborator-year',
+                  'field' => 'slug',
+                  'terms' => $year->slug,
+                ]],
+              ]))
+
+              @if(count($collaborators) > 0)
+                @foreach($collaborators as $collaborator)
+                  <a
+                    href="{{ get_permalink($collaborator) }}"
+                    class="
+                      text-sm py-1.5 px-5 rounded-full
+                      mb-2 bg-chalk hover:bg-citrus
+                      transition-colors duration-300
+                      border border-charcoal
+                      leading-none text-center
+                      overflow-ellipsis overflow-hidden whitespace-nowrap
+                      @if($collaborator->ID == get_the_ID()) !bg-charcoal !text-chalk @endif
+                    "
+                  >
+                    {{ get_field('position', $collaborator) }} | {{ get_the_title($collaborator) }}
+                  </a>
+                @endforeach
+              @else
+                <span class="text-sm text-center">
+                  {{ __('Open for Collaborations. Contact us', 'codigo') }} <a href="mailto:luke@canvas-careers.com" class="font-serif underline">{{ __('here', 'codigo') }}</a>
+                </span>
+              @endif
+            </div>
+          </div>
+        </div>
+      @endforeach
+    </div>
+  </div>
+</article>

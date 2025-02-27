@@ -19,6 +19,7 @@ return [
             'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
             'show_in_rest' => true,
             'has_archive' => false,
+            'with_front' => false,
             'labels' => [
                 'singular' => 'Collaborator',
                 'plural' => 'Collaborators',
@@ -37,7 +38,7 @@ return [
     */
 
     'taxonomy' => [
-        'year' => [
+        'collaborator-year' => [
             'links' => ['collaborator'],
             'labels' => [
                 'singular' => 'Year',

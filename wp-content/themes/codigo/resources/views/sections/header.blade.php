@@ -3,7 +3,10 @@
     @desc The sites header rendered on each page.
 --}}
 <!-- /resources/views/sections/header.blade.php -->
-<header id="mainMenu" class="banner w-full {{ get_field('fixed_header') ? 'md:fixed md:top-0 md:w-auto' : '' }}">
+<header
+  id="mainMenu"
+  class="banner w-full {{ get_field('fixed_header') || is_singular('collaborator') ? 'md:fixed md:top-0 md:w-auto' : '' }}"
+>
   <nav
     class="nav-primary @option('header_layout_container') py-5"
     aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}"
@@ -47,13 +50,12 @@
             href="{{ $item->url }}"
             class="
               text-md py-2 px-5 rounded-full
-              hover:text-chalk
-              bg-chalk hover:bg-charcoal
+              bg-chalk hover:bg-citrus
               transition-colors duration-300
               border border-charcoal block
               leading-none text-center
               overflow-ellipsis overflow-hidden whitespace-nowrap
-              {{ $item->object_id == get_the_ID() ? 'bg-charcoal text-chalk' : 'text-charcoal' }}
+              {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
           >
             {{ $item->title }}
