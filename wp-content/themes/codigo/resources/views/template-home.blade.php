@@ -32,8 +32,8 @@
             href="{{ $cta['link'] }}"
             class="
             text-md py-2 px-7 rounded-full
-            hover:text-chalk mb-10 mt-5
-            bg-chalk hover:bg-charcoal
+            mb-10 mt-5
+            bg-chalk hover:bg-citrus
             transition-colors duration-300
             border border-charcoal md:inline-block
             leading-none text-center hidden

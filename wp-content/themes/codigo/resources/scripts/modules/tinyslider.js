@@ -27,30 +27,40 @@ const tinyslider = () => {
         autoplayTimeout = carousel.dataset.autoplayTimeout;
       }
 
+      let responsiveItems = {
+        0: {
+          items: 1,
+        },
+        900: {
+          items: 2,
+        },
+        1280: {
+          items: 3,
+        },
+        1480: {
+          items: 4,
+        },
+      };
+      if (carousel.dataset.responsiveItems) {
+        responsiveItems = JSON.parse(carousel.dataset.responsiveItems);
+      }
+
+      let mouseDrag = false;
+      if (carousel.dataset.mouseDrag) {
+        mouseDrag = carousel.dataset.mouseDrag;
+      }
+
       let slider = tns({
         container: carousel,
         items: 1,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          900: {
-            items: 2,
-          },
-          1280: {
-            items: 3,
-          },
-          1480: {
-            items: 4,
-          },
-        },
+        responsive: responsiveItems,
         mode: carMode,
         autoplay: carAutoplay,
         controls: false,
         nav: carNavigation,
         navPosition: 'bottom',
         // autoplay: true in combination with mouseDrag: true results in weird behavior after dragging, see also: https://github.com/ganlanyuan/tiny-slider/issues/521
-        mouseDrag: false,
+        mouseDrag: mouseDrag,
         autoplayButtonOutput: false,
         swipeAngle: false,
         autoplayHoverPause: true,
