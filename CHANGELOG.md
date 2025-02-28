@@ -7,14 +7,35 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.2.6] - 2025-02-28
+
+### Added
+
+ - Gutenberg filters
+
+### Fixed
+
+ - Styles for mobile and desktop
+
+
+## [0.2.5] - 2025-02-27
+
+### Added
+
+ - Mobile menu
+
+### Fixed
+
+ - Collaborators template
+
+
 ## [0.2.4] - 2025-02-27
 
 ### Added
 
  - [Desktop | Collaborators Single Page ](https://app.asana.com/0/1209462826205010/1209462827905273) Collaborators single template added
 
-
-
+ 
 ## [0.2.3] - 2025-02-26
 
 ### Added
