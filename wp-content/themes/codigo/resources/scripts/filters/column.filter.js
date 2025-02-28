@@ -6,7 +6,7 @@ export const hook = 'blocks.registerBlockType';
 /**
  * Filter handle
  */
-export const name = 'sage/button';
+export const name = 'sage/column';
 
 /**
  * Filter callback
@@ -16,13 +16,13 @@ export const name = 'sage/button';
  * @returns modified settings
  */
 export function callback(settings, name) {
-  if (name !== 'core/button') return settings;
+  if (name !== 'core/column') return settings;
 
   return {
     ...settings,
     styles: [
-      { label: 'Outline', name: 'outline' },
-      { label: 'Primary', name: 'primary' },
+      { label: 'Align Bottom', name: 'align-bottom' },
+      { label: 'Align Center', name: 'align-center' },
     ],
   };
 }

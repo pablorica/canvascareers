@@ -28,3 +28,13 @@
     height: 178px;
   }
 }
+
+.page-template-default.page {
+  header#mainMenu {
+    &.md\:fixed {
+      @media (max-width: calc(theme("screens.lg") - 1px)) {
+        width: 100%;
+      }
+    }
+  }
+}
