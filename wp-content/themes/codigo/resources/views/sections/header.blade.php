@@ -74,8 +74,9 @@
     </ul>
 
     <div
-      :class="{ hidden: !this.menuCollapse }"
       class="fixed inset-0 mobile-menu bg-charcoal animate-appearsmenu"
+      style="display: none;"
+      v-show="this.menuCollapse"
     >
      @include('partials.mobile-menu')
     </div>
