@@ -62,31 +62,49 @@ module.exports = {
       animation: {
         appearsin: 'appearsIn 1.2s ease forwards',
         appearsout: 'appearsOut 0.6s ease forwards',
+        appearsmenu: 'appearsMenu 0.6s ease forwards',
+        disappearsmenu: 'disappearsMenu 0.6s ease forwards',
       },
     },
     // that is actual animation
     keyframes: theme => ({
-        appearsIn: {
-            '0%': {
-              opacity: 0,
-              transform: 'translateY(40px)',
-              },
-            '100%': {
-              opacity: 1,
-              transform: 'translateY(0)',
-            },
+      appearsIn: {
+        '0%': {
+          opacity: 0,
+          transform: 'translateY(40px)',
+          },
+        '100%': {
+          opacity: 1,
+          transform: 'translateY(0)',
         },
-        appearsOut: {
-            '0%': {
-                opacity: 1,
-                transform: 'translateY(0)',
-            },
-            '100%': {
-                opacity: 0,
-                transform: 'translateY(40px)',
-            },
+      },
+      appearsOut: {
+        '0%': {
+            opacity: 1,
+            transform: 'translateY(0)',
         },
-      }),
+        '100%': {
+            opacity: 0,
+            transform: 'translateY(40px)',
+        },
+      },
+      appearsMenu: {
+        '0%': {
+          opacity: 0,
+        },
+        '100%': {
+          opacity: 1,
+        },
+      },
+      disappearsMenu: {
+        '0%': {
+          opacity: 1,
+        },
+        '100%': {
+          opacity: 0,
+        },
+      },
+    }),
     // Remove the font families you don't want to use.
     fontFamily: {
       mono: [],

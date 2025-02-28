@@ -30,7 +30,7 @@
             >
               @foreach($portfolio_images as $image)
                 <div
-                  class="bg-cover bg-center w-full"
+                  class="bg-cover bg-center w-full bg-no-repeat"
                   style="background-image: url('{{ $image['image'] }}')"
                 ></div>
               @endforeach
@@ -140,7 +140,7 @@
                 @endforeach
               @else
                 <span class="text-sm text-center">
-                  {{ __('Open for Collaborations. Contact us', 'codigo') }} <a href="mailto:luke@canvas-careers.com" class="font-serif underline">{{ __('here', 'codigo') }}</a>
+                  {!! get_field('no_items_text', $year) !!}
                 </span>
               @endif
             </div>

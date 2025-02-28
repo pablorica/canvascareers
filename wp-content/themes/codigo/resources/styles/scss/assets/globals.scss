@@ -24,6 +24,25 @@ a.underline,
   text-decoration: underline;
 }
 
+.has-serif-font-family {
+  a {
+    font-family: theme("fontFamily.serif");
+    text-decoration: underline;
+  }
+}
+
+.hide-mobile {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @media screen and (min-width: theme("screens.lg")) {
+    display: none !important;
+  }
+}
+
 #app {
   display: flex;
   flex-direction: column;

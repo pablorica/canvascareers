@@ -1,0 +1,18 @@
+/*
+* CSS for button block
+*/
+
+.wp-block-button {
+  &.is-style-primary {
+    a {
+      border: 1px solid theme("colors.charcoal");
+      color: theme("colors.charcoal");
+      background-color: theme("colors.chalk");
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        background-color: theme("colors.citrus");
+      }
+    }
+  }
+}
