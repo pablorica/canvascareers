@@ -6,6 +6,16 @@
       @media screen and (max-width: 782px) {
         top: 46px;
       }
+
+      @media screen and (max-width: 600px) {
+        top: 0;
+      }
+    }
+
+    .mobile-menu {
+      @media screen and (max-width: 782px) {
+        top: 46px;
+      }
     }
   }
 }
@@ -16,5 +26,15 @@
   }
   @media (min-width: theme("screens.xl")) {
     height: 178px;
+  }
+}
+
+.page-template-default.page {
+  header#mainMenu {
+    &.md\:fixed {
+      @media (max-width: calc(theme("screens.lg") - 1px)) {
+        width: 100%;
+      }
+    }
   }
 }

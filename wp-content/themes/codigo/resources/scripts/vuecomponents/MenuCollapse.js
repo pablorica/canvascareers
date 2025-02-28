@@ -18,7 +18,16 @@ export default {
   methods: {
     toggleMenu() {
       document.querySelector('body').classList.toggle('overflow-hidden');
-      this.menuCollapse = !this.menuCollapse;
+
+      if (this.menuCollapse) {
+        document.querySelector('header .mobile-menu ').classList.add('animate-disappearsmenu');
+        setTimeout(() => {
+          document.querySelector('header .mobile-menu ').classList.remove('animate-disappearsmenu');
+          this.menuCollapse = !this.menuCollapse;
+        }, 600);
+      } else {
+        this.menuCollapse = !this.menuCollapse;
+      }
 
       if (this.menuCollapse) {
         this.searchCollapse = false;

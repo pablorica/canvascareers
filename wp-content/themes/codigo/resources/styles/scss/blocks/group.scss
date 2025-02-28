@@ -1,0 +1,10 @@
+/*
+* CSS for columns block
+*/
+
+.wp-block-group {
+  &.is-style-align-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+}

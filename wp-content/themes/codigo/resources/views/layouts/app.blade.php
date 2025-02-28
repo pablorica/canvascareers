@@ -10,7 +10,10 @@
 
 @include('sections.header')
 
-  <main id="main" class="main">
+  <main
+    id="main"
+    class="main @if(!is_front_page()) md:mb-0 mb-8 @endif"
+  >
     @yield('content')
   </main>
 

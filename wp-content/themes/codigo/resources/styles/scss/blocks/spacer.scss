@@ -1,0 +1,21 @@
+/*
+* CSS for spacer block
+*/
+
+.wp-block-spacer:not(.is-style-mobile-show) {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    display: none;
+  }
+}
+
+.wp-block-spacer.header-spacer:not(.is-style-mobile-show) {
+  @media screen and (min-width: theme("screens.md")) {
+    display: block;
+  }
+}
+
+.wp-block-spacer.is-style-mobile-show {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    height: 40px !important;
+  }
+}
