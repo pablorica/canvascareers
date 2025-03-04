@@ -16,6 +16,7 @@ export var emitter = new Emitter();
 import tinyslider from "./modules/tinyslider";
 import collaborators from "./modules/collaborators";
 import accordion from "./modules/accordion";
+import jobs from "./modules/jobs";
 
 /**
  * Application entrypoint
@@ -44,6 +45,7 @@ const CDG = {
     tinyslider();
     collaborators();
     accordion();
+    jobs();
 
     window.addEventListener("resize", function(){
       //consoleHello('window has resized');

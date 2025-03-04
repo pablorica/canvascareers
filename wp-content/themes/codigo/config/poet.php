@@ -25,6 +25,18 @@ return [
                 'plural' => 'Collaborators',
             ],
         ],
+        'job' => [
+            'enter_title_here' => 'Enter job title here',
+            'menu_icon' => 'dashicons-category',
+            'supports' => ['title', 'thumbnail'],
+            'show_in_rest' => true,
+            'has_archive' => false,
+            'with_front' => false,
+            'labels' => [
+                'singular' => 'Job',
+                'plural' => 'Jobs',
+            ],
+        ]
     ],
 
     /*
@@ -44,6 +56,27 @@ return [
                 'singular' => 'Year',
                 'plural' => 'Years',
             ],
+            'public' => false,
+            'show_in_rest' => true,
+            'show_admin_column' => true,
+        ],
+        'job-category' => [
+            'links' => ['job'],
+            'labels' => [
+                'singular' => 'Category',
+                'plural' => 'Categories',
+            ],
+            'public' => false,
+            'show_in_rest' => true,
+            'show_admin_column' => true,
+        ],
+        'job-tag' => [
+            'links' => ['job'],
+            'labels' => [
+                'singular' => 'Tag',
+                'plural' => 'Tags',
+            ],
+            'public' => false,
             'show_in_rest' => true,
             'show_admin_column' => true,
         ],

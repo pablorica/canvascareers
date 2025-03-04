@@ -9,7 +9,7 @@
     {{ get_field('fixed_header') || is_singular('collaborator') ? 'md:fixed md:top-0 md:w-auto' : '' }}"
 >
   <nav
-    class="nav-primary @option('header_layout_container') py-5"
+    class="nav-primary @option('header_layout_container') py-5 relative"
     aria-label="{{ wp_get_nav_menu_name('primary_navigation') }}"
   >
     <div class="flex flex-wrap items-center justify-between w-full lg:w-auto">
@@ -72,6 +72,10 @@
         </li>
       @endforeach
     </ul>
+
+    @if(is_page_template('template-jobs.blade.php'))
+      @include('partials.jobs-tags')
+    @endif
 
     <div
       class="fixed inset-0 mobile-menu bg-charcoal animate-appearsmenu"
