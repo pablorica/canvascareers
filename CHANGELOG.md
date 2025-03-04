@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
  - Jobs template
 
+### Fixed
+
+ - Header menu in the jobs template
+ 
 
 ## [0.2.7] - 2025-02-28
 

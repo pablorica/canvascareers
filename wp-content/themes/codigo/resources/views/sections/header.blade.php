@@ -48,7 +48,7 @@
     </div>
 
     <ul
-      class="grid list-none mt-6 w-full md:max-w-[350px] xl:max-w-[400px] grid-cols-2 gap-2
+      class="grid list-none mt-6 w-full md:max-w-[350px] xl:max-w-[400px] grid-cols-2 gap-2 md:z-10 relative
       {{ get_field('fixed_header') ? 'md:min-w-[350px] xl:min-w-[400px]' : '' }}"
     >
       @php($menu_items = wp_get_nav_menu_items('Jobs Filters Menu'))
