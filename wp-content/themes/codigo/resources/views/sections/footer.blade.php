@@ -20,7 +20,7 @@
           <a
             href="{{ $item->url }}"
             class="
-              text-sm py-1.5 px-5 rounded-full
+              text-sm 2xl:text-md py-1.5 px-5 rounded-full
               bg-chalk hover:bg-citrus
               transition-colors duration-300
               border border-charcoal block
@@ -43,7 +43,7 @@
             <a
               href="{{ $item->url }}"
               class="
-              text-sm py-1.5 px-5 rounded-full
+              text-sm 2xl:text-md py-1.5 px-5 rounded-full
               bg-chalk hover:bg-citrus
               transition-colors duration-300
               border border-charcoal block
@@ -59,7 +59,7 @@
       <div>
         <a
           href="{{ home_url('/') }}"
-          class="brand-footer xl:text-9xl text-7xl text-charcoal leading-[0.75]"
+          class="brand-footer 2xl:text-9xl text-7xl text-charcoal leading-[0.75]"
         >
           {{ __('Careers', 'codigo') }}
         </a>
@@ -70,7 +70,7 @@
   <div class="md:hidden text-right">
     <a
       href="{{ home_url('/') }}"
-      class="brand-footer xl:text-9xl text-7xl text-charcoal"
+      class="brand-footer 2xl:text-9xl text-7xl text-charcoal"
     >
       {{ __('Careers', 'codigo') }}
     </a>

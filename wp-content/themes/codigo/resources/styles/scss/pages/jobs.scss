@@ -1,0 +1,136 @@
+.page-template-template-jobs {
+  .job-body {
+    h1, h2, h3, h4, h5, h6 {
+      @apply font-sans;
+      @apply mb-4;
+    }
+
+    h4 {
+      @apply text-lg;
+    }
+
+    p, ul, li {
+      @apply text-md;
+
+      @media screen and (max-width: calc(theme("screens.md") - 1px)) {
+        @apply text-sm;
+      }
+    }
+
+    ul {
+      @apply list-disc;
+      @apply pl-4;
+    }
+
+    &.accordion-collapse {
+      @media screen and (max-width: calc(theme("screens.md") - 1px)) {
+        overflow: hidden !important;
+      }
+    }
+  }
+
+  .toggle-form {
+    &.active {
+      @media screen and (min-width: theme("screens.md")) {
+        display: none !important;
+      }
+
+      @media screen and (max-width: calc(theme("screens.md") - 1px)) {
+        @apply bg-charcoal text-chalk;
+      }
+    }
+  }
+
+  .wpcf7 {
+    @apply font-sans font-light;
+
+    p {
+      @apply mb-2;
+    }
+
+    .wpcf7-submit {
+      @apply text-sm md:text-md py-2 px-1 md:px-3 rounded-full;
+      @apply bg-chalk text-charcoal cursor-pointer hover:bg-citrus;
+      @apply transition-colors duration-300;
+      @apply border border-charcoal block mx-auto;
+      @apply leading-none text-center w-[120px] md:w-[150px];
+    }
+
+    .wpcf7-spinner {
+      display: none;
+    }
+
+    .attachments {
+      @apply mt-8 text-sm;
+
+      .add-attachment {
+        @apply text-sm md:text-md py-2 px-1 md:px-3 rounded-full;
+        @apply bg-charcoal text-chalk cursor-pointer;
+        @apply transition-colors duration-300;
+        @apply border border-charcoal block;
+        @apply leading-none text-center w-[120px] md:w-[150px];
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .files {
+        @apply mt-3;
+        min-height: 24px;
+      }
+
+      .attachment {
+        @apply flex justify-between items-center gap-4;
+        max-width: 200px;
+
+        .attachment-name {
+          max-width: 150px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .attachment-remove {
+        cursor: pointer;
+      }
+    }
+
+    .wpcf7-response-output {
+      font-size: 10px;
+      @apply text-center m-0 md:absolute;
+      top: 12px;
+      right: 60px;
+      left: 20px;
+      padding: 0.2em 2em;
+    }
+  }
+
+  .wpcf7-not-valid-tip {
+    @apply text-walnut;
+  }
+
+  .wpcf7-form-control.wpcf7-text {
+    @apply bg-chalk outline-0;
+    @apply border border-charcoal;
+    @apply text-md py-2 px-5 rounded-full;
+
+    &.wpcf7-not-valid {
+      @apply border-walnut text-walnut;
+
+      &::placeholder {
+        @apply text-walnut;
+      }
+    }
+
+    ~ .wpcf7-not-valid-tip {
+      display: none;
+    }
+
+    @media screen and (max-width: calc(theme("screens.md") - 1px)) {
+      max-width: 80%;
+      @apply text-sm;
+    }
+  }
+}

@@ -31,16 +31,21 @@ a.underline,
   }
 }
 
-.hide-mobile {
+body:not(.wp-admin) .hide-mobile {
   @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
     display: none !important;
   }
 }
 
-.hide-desktop {
+body:not(.wp-admin) .hide-desktop {
   @media screen and (min-width: theme("screens.lg")) {
     display: none !important;
   }
+}
+
+:root body:not(.wp-admin) :where(.is-layout-constrained) > * {
+  margin-block-start: 18px;
+  margin-block-end: 0;
 }
 
 #app {
@@ -54,7 +59,7 @@ a.underline,
 }
 
 #main::-webkit-scrollbar {
-  width: 5px;
+  width: 0;
 }
 
 @media (min-width: theme("screens.md")) {

@@ -1,0 +1,7 @@
+p {
+  @media screen and (min-width: theme("screens.2xl")) {
+    &.has-sm-font-size {
+      font-size: theme("fontSize.md") !important;
+    }
+  }
+}
