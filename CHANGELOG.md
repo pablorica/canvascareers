@@ -6,6 +6,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+
+## [0.2.8] - 2025-03-04
+
+### Added
+
+ - Jobs template
+
+### Fixed
+
+ - Header menu in the jobs template
+ 
+
 ## [0.2.7] - 2025-02-28
 
 ### Fixed
