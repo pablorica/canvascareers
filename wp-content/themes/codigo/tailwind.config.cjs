@@ -130,19 +130,19 @@ module.exports = {
       // black: 900,
     },
     fontSize: {
-      sm: '0.75rem', // 12px
-      md: '0.875rem', // 14px
-      base: '1rem', // 16px
-      lg: '1.125rem', // 18px
-      xl: '1.25rem', // 20px
-      '2xl': '1.5rem', // 24px
-      '3xl': '1.875rem', // 30px
-      '4xl': '2.25rem', // 36px
-      '5xl': '3rem', // 48px
-      '6xl': '3.75rem', // 60px
-      '7xl': '4.5rem', // 72px
-      '8xl': '6rem', // 96px
-      '9xl': '6.65rem', // 106px
+      sm: '0.714rem', // 10px
+      md: '0.858rem', // 12px
+      base: '1rem', // 14px
+      lg: '1.142rem', // 16px
+      xl: '1.286rem', // 18px
+      '2xl': '1.714rem', // 24px
+      '3xl': '2.143rem', // 30px
+      '4xl': '2.571rem', // 36px
+      '5xl': '3.428rem', // 48px
+      '6xl': '4.285rem', // 60px
+      '7xl': '5.142rem', // 72px
+      '8xl': '6.857rem', // 96px
+      '9xl': '7.571rem', // 106px
     },
     letterSpacing: { //tracking
         //tightest: '-.075em',
@@ -165,7 +165,7 @@ module.exports = {
       addBase({
         ':root': {
             // Fluid typography from 1 rem to 1.2 rem with fallback to 20px.
-            fontSize: '16px',
+            fontSize: '14px',
             lineHeight: '1.2',
             fontWeight: '400',
 
