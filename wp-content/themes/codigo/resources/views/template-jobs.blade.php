@@ -77,7 +77,7 @@ if ($category) {
               id="collapse-{{ $loop->index }}"
               class="job-body accordion-collapse overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
             >
-              <div class="grid grid-cols-12 pt-4 pb-8 relative min-h-[350px]">
+              <div class="grid grid-cols-12 pt-4 pb-8 relative md:min-h-[315px]">
                 <div class="col-span-12 md:pl-16">
                   <div class="job-info pb-6 md:pb-8 font-sans text-base md:text-lg font-light">
                     <div class="flex mb-2">

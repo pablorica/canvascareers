@@ -99,7 +99,11 @@
 
     .wpcf7-response-output {
       font-size: 10px;
-      @apply text-center m-0;
+      @apply text-center m-0 md:absolute;
+      top: 12px;
+      right: 60px;
+      left: 20px;
+      padding: 0.2em 2em;
     }
   }
 

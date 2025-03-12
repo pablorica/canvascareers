@@ -10,13 +10,13 @@
     @php($collaborator = get_field('collaborator'))
 
     @if($collaborator)
-      <div class="w-full md:w-[410px] xl:w-[455px] flex-shrink-0 flex flex-col">
+      <div class="w-full md:w-[410px] 2xl:w-[455px] flex-shrink-0 flex flex-col">
         <div class="header-spacer hidden md:block"></div>
         <div class="md:flex-1 flex flex-col justify-center items-start">
           <span class="block text-md md:text-lg">
             {{ get_field('top_title') }}
           </span>
-          <h1 class="text-md md:text-4xl font-serif font-light md:font-normal mt-4 md:mt-6">
+          <h1 class="text-md md:text-3xl 2xl:text-4xl font-serif font-light md:font-normal mt-4 md:mt-6">
             @php($name = explode(' ', $collaborator->post_title))
             <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
           </h1>
@@ -31,8 +31,8 @@
           <a
             href="{{ $cta['link'] }}"
             class="
-            text-md py-2 px-7 rounded-full
-            mb-10 mt-5
+            text-md 2xl:text-base py-2 px-7 rounded-full
+            mb-8 mt-3
             bg-chalk hover:bg-citrus
             transition-colors duration-300
             border border-charcoal md:inline-block
