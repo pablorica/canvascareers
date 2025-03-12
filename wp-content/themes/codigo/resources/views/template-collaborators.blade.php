@@ -17,7 +17,7 @@
       ">
         <h1 class="h4 text-2xl">{{ get_the_title() }}</h1>
 
-        <div class="text-sm mt-6 mb-9 font-medium hidden md:block">
+        <div class="text-sm 2xl:text-md mt-6 mb-9 font-medium hidden md:block">
           {!! get_the_content() !!}
         </div>
 
@@ -27,7 +27,7 @@
             <li>
               <a
                 class="
-                  text-lg md:text-2xl py-1 md:py-2 px-3
+                  text-lg 2xl:text-2xl py-1 md:py-2 px-3
                   cursor-pointer rounded-full
                   bg-chalk hover:bg-citrus
                   transition-colors duration-300
@@ -73,12 +73,12 @@
             >
               @foreach($collaborators as $collaborator)
                 <div class="collaborator !flex flex-col justify-end">
-                  <span class="font-sans text-lg md:text-3xl mb-5 md:mb-7 block">
+                  <span class="font-sans text-lg md:text-xl 2xl:text-3xl mb-5 2xl:mb-7 block">
                     {{ get_field('month', $collaborator) }}
                   </span>
                   <a href="{{ get_permalink($collaborator) }}" class="flex-1 flex flex-col md:justify-end">
                     <div class="md:flex-1 mb-4">
-                      <h2 class="font-serif text-xl md:text-2xl font-normal line-clamp-1 md:line-clamp-none">
+                      <h2 class="font-serif text-xl md:text-xl 2xl:text-2xl font-normal line-clamp-1 md:line-clamp-none">
                         @php($name = explode(' ', get_the_title($collaborator)))
                         <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
                       </h2>

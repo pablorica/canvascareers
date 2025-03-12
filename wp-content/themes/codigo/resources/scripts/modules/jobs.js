@@ -73,6 +73,21 @@ const jobs = () => {
     function toggleAccordion(element, index) {
       const parent = element.parentNode;
 
+      // Hide all other accordions
+      const accordions = document.getElementsByClassName('job-accordion');
+      Array.from(accordions).forEach((accordion, i) => {
+        if (i === index) {
+          return;
+        }
+
+        const content = accordion.parentNode.querySelector(`#collapse-${i}`);
+        const icon = accordion.parentNode.querySelector(`.icon-${i}`);
+
+        content.style.maxHeight = '0';
+        content.classList.add('overflow-hidden');
+        icon.style.transform = 'rotate(0deg)';
+      });
+
       const content = parent.querySelector(`#collapse-${index}`);
       const icon = parent.querySelector(`.icon-${index}`);
 

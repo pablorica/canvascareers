@@ -16,7 +16,7 @@
       <div>
         <a
           href="{{ home_url('/') }}"
-          class="brand-header xl:text-9xl text-7xl text-charcoal leading-[0.75]"
+          class="brand-header 2xl:text-9xl text-7xl text-charcoal leading-[0.75]"
         >
           <span class="hidden md:block @if(is_front_page()) !block @endif">{{ __('Canvas', 'codigo') }}</span>
           <span class="h-[56px] block md:hidden @if(is_front_page()) !hidden @endif">
@@ -48,8 +48,8 @@
     </div>
 
     <ul
-      class="grid list-none mt-6 w-full md:max-w-[350px] xl:max-w-[400px] grid-cols-2 gap-2 md:z-10 relative
-      {{ get_field('fixed_header') ? 'md:min-w-[350px] xl:min-w-[400px]' : '' }}"
+      class="grid list-none mt-6 w-full md:max-w-[350px] 2xl:max-w-[400px] grid-cols-2 gap-2 md:z-10 relative
+      {{ get_field('fixed_header') ? 'md:min-w-[350px] 2xl:min-w-[400px]' : '' }}"
     >
       @php($menu_items = wp_get_nav_menu_items('Jobs Filters Menu'))
 
@@ -58,7 +58,7 @@
           <a
             href="{{ $item->url }}"
             class="
-              text-md py-2 px-5 rounded-full
+              text-md 2xl:text-base py-2 px-5 rounded-full
               bg-chalk hover:bg-citrus
               transition-colors duration-300
               border border-charcoal block

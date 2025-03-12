@@ -58,6 +58,24 @@ class LayoutOptions extends Field
                 'ui_off_text' => '',
             ]);
 
+        $layoutOptions
+            ->addTrueFalse('stretch_content', [
+                'label' => 'Stretch Content',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 1,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ]);
+
         return $layoutOptions->build();
     }
 }
