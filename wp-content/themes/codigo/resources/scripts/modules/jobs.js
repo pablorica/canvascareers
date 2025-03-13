@@ -258,10 +258,7 @@ const jobs = () => {
     }
   }
 
-  // Document ready
-  document.addEventListener('DOMContentLoaded', () => {
-    loadJobs();
-  });
+  loadJobs();
 }
 
 export default jobs;

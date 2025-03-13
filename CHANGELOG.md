@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.3.1] - 2025-03-13
+
+### Updated
+
+ - [Jobs](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209545451282545)
+    - Change load jobs filters module
+    - Change apply form position
+
+
 
 ## [0.3.0] - 2025-03-11
 
