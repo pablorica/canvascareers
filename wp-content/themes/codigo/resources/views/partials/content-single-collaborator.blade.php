@@ -21,7 +21,7 @@
             </svg>
           </div>
 
-          <div class="h-full flex md:max-w-[75%] 2xl:max-w-[60%] w-full mx-auto carousel-single-collaborator">
+          <div class="h-full flex md:max-w-[85%] w-full mx-auto carousel-single-collaborator">
             <div
               class="tiny-carousel h-full"
               data-responsive-items="false"
@@ -29,10 +29,12 @@
               data-navigation="true"
             >
               @foreach($portfolio_images as $image)
-                <div
-                  class="bg-cover bg-center w-full bg-no-repeat"
-                  style="background-image: url('{{ $image['image'] }}')"
-                ></div>
+                <div class="px-1">
+                  <div
+                    class="bg-cover md:bg-contain bg-center w-full bg-no-repeat h-full"
+                    style="background-image: url('{{ $image['image'] }}')"
+                  ></div>
+                </div>
               @endforeach
             </div>
           </div>
