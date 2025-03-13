@@ -124,12 +124,13 @@ if ($category) {
 
                 @if($form_id = get_field('contact_form'))
                   <div
-                    class="job-form md:absolute right-0 bottom-8 col-span-12 mt-10 md:mt-0"
+                    class="job-form col-span-12 mt-10 md:mt-0"
                     data-job-id="{{ $job->ID }}"
                     data-job-title="{{ $job->post_title }}"
                   >
                     <a
                       class="
+                        md:absolute right-0 bottom-8
                         text-sm md:text-md py-2 px-1 md:px-3 rounded-full
                         bg-chalk md:hover:bg-citrus cursor-pointer
                         transition-colors duration-300
@@ -142,8 +143,9 @@ if ($category) {
                     </a>
 
                     <div class="
+                      relative md:absolute right-0 md:top-[calc(50%-27px)] md:-translate-y-1/2
                       md:max-w-[300px] px-3 md:px-6 pt-6 md:py-4 border-t md:border border-charcoal
-                      bg-chalk hidden form-container mt-6 md:mt-0 relative
+                      bg-chalk hidden form-container mt-6 md:mt-0
                     ">
                       <div class="w-auto text-right md:relative absolute top-6 right-3 md:top-0 md:right-0">
                         <svg class="toggle-form cursor-pointer ml-auto mb-4" width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">

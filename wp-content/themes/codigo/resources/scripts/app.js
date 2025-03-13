@@ -45,7 +45,6 @@ const CDG = {
     tinyslider();
     collaborators();
     accordion();
-    jobs();
 
     window.addEventListener("resize", function(){
       //consoleHello('window has resized');
@@ -60,6 +59,7 @@ const CDG = {
 
   onloadFunctions: function() {
     //consoleHello('CDG is loaded');
+    jobs();
   }
 };
 
