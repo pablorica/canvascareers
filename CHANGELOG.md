@@ -5,10 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.3] - 2025-03-14
+
+### Updated
+
+
+ - [Collaborator: Single page](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209462827905273) Change color of border-charcoal across the site
+
+ - [Collaborator: Sección Collapse](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209651105522509) Add year title & description 
+
 
 ## [0.3.2] - 2025-03-14
 
 ### Updated
+
 
  - [Jobs](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209545451282545) Change apply form position
 
