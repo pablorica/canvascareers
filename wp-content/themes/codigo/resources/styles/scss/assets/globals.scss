@@ -62,6 +62,13 @@ body:not(.wp-admin) .hide-desktop {
   width: 0;
 }
 
+/*
+ * Force .border-charcoal to be grey
+ */
+.border-charcoal {
+  border-color: theme("colors.border") !important;
+}
+
 @media (min-width: theme("screens.md")) {
   #app {
     height: 100dvh;

@@ -21,7 +21,7 @@
             </svg>
           </div>
 
-          <div class="h-full flex md:max-w-[85%] w-full mx-auto carousel-single-collaborator">
+          <div class="h-full flex md:max-w-[75%] 2xl:max-w-[60%] w-full mx-auto carousel-single-collaborator">
             <div
               class="tiny-carousel h-full"
               data-responsive-items="false"
@@ -29,12 +29,10 @@
               data-navigation="true"
             >
               @foreach($portfolio_images as $image)
-                <div class="px-1">
-                  <div
-                    class="bg-cover md:bg-contain bg-center w-full bg-no-repeat h-full"
-                    style="background-image: url('{{ $image['image'] }}')"
-                  ></div>
-                </div>
+                <div
+                  class="bg-cover bg-center w-full bg-no-repeat"
+                  style="background-image: url('{{ $image['image'] }}')"
+                ></div>
               @endforeach
             </div>
           </div>
@@ -98,8 +96,20 @@
     <div class="col-span-3 py-1.5 px-4 hidden lg:block">
       @php($years = get_terms('collaborator-year', ['hide_empty' => false]))
       @foreach($years as $year)
-        <div class="py-7 2xl:py-8 border-b border-charcoal cursor-pointer">
-          <div class="flex justify-between items-center text-2xl 2xl:text-3xl font-sans button-collapse">
+        <div class="py-7 2xl:py-8 border-b border-charcoal">
+          @php($description_title = get_field('description_title', $year))
+          @if(!empty($year->description) || !empty($description_title))
+            <div class="accordion-before-{{ $loop->index }} max-h-0 transition-all duration-300 ease-in-out overflow-hidden">
+              <h3 class="text-xl font-light font-sans">
+                {{ $description_title }}
+              </h3>
+              <p class="text-md mt-4 !mb-7">
+                {!! nl2br($year->description) !!}
+              </p>
+            </div>
+          @endif
+
+          <div class="flex justify-between items-center text-2xl 2xl:text-3xl font-sans button-collapse cursor-pointer">
             {{ $year->name }}
             <svg class="transition-transform duration-300 icon-{{ $loop->index }}" width="25" height="25" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
               <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="1.5"></line>
