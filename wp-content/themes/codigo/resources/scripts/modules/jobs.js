@@ -102,6 +102,23 @@ const jobs = () => {
 
         setTimeout(() => {
           content.classList.remove('overflow-hidden');
+
+          // Scroll to accordion
+          let jobItemScroll = parent.offsetTop;
+          let headerHeight = document.querySelector('#mainMenu').offsetHeight;
+
+          if (window.innerWidth < 768) {
+            window.scrollTo({
+              behavior: 'smooth',
+              top: jobItemScroll - headerHeight + 1,
+            });
+          } else {
+            const mainScroll = document.querySelector('#main');
+            mainScroll.scrollTo({
+              behavior: 'smooth',
+              top: jobItemScroll - headerHeight - 2,
+            });
+          }
         }, 300);
       }
     }
@@ -258,7 +275,10 @@ const jobs = () => {
     }
   }
 
-  loadJobs();
+  // Load jobs after 1 second to make sure all elements are loaded
+  setTimeout(() => {
+    loadJobs();
+  }, 1000);
 }
 
 export default jobs;

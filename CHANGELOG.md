@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.3.2] - 2025-03-14
+
+### Updated
+
+ - [Jobs](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209545451282545) Change apply form position
+
+ - [Filtros](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209651107114406) 
+    - Change load jobs filters module
+    - Fix filter load, slider in collaborators and scroll behavior in jobs
+
+- [Efecto del accordion](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209651107114411) Scroll behavior in jobs
+
+- [Collaborator: Carrusel Landscape & Portrait](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209666212586812) Slider in collaborators
+
+
 ## [0.3.1] - 2025-03-13
 
 ### Updated
