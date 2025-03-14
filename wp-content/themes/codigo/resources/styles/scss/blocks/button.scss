@@ -5,7 +5,7 @@
 .wp-block-button {
   &.is-style-primary {
     a {
-      border: 1px solid theme("colors.charcoal");
+      border: 1px solid theme("colors.border");
       color: theme("colors.charcoal");
       background-color: theme("colors.chalk");
       transition: background-color 0.3s ease, color 0.3s ease;
