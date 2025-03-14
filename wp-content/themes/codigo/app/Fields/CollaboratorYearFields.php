@@ -14,12 +14,29 @@ class CollaboratorYearFields extends Field
     {
         $fields = Builder::make('collaborator_year_fields', [
             'title' => 'Extra Fields',
+            'style' => 'seamless',
         ]);
 
         $fields
             ->setLocation('taxonomy', '==', 'collaborator-year');
 
         $fields
+            ->addText('description_title', [
+                'label' => 'Description Title',
+                'instructions' => 'The title to display above the description.',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ])
             ->addTextarea('no_items_text', [
                 'label' => 'No Items Text',
                 'instructions' => 'The text to display when no items are found.',

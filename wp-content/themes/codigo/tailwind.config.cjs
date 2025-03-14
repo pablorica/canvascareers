@@ -31,6 +31,7 @@ module.exports = {
       lilac:     '#7D7D9B',
       gray:      '#BAB7B3',
       lightgray: '#D9D3CE',
+      border:    '#BAB7B3',
       // Neutrals: neutral colors, with a default fallback if you don't need shades. Always set a DEFAULT when you use shades.
       neutral: {
           DEFAULT: colors.black,
