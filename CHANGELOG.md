@@ -10,7 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Updated
 
 
- - [Collaborator: Single page](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209462827905273) Change color of border-charcoal across the site
+ - [Collaborator: Single page](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209462827905273) 
+    - Change color of border-charcoal across the site
+    - Change border color for primary button
 
  - [Collaborator: Sección Collapse](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209651105522509) Add year title & description 
 
