@@ -30,14 +30,18 @@ if ($category) {
 @section('content')
   @php($jobs = get_posts($args))
 
-  <div class="jobs-list md:px-14 lg:mt-2">
+  <div class="jobs-list
+    md:px-8 2xl:px-14
+    lg:mt-2">
     <div class="mb-8">
       <div class="hidden md:grid grid-cols-12 items-center py-4 font-sans text-xl border-b border-charcoal">
         <div class="md:col-span-7 lg:col-span-5 xl:col-span-4 flex items-center px-4">
           <div class="w-12 pr-4"></div>
           {{ __('Position', 'codigo') }}
         </div>
-        <div class="md:col-span-5 xl:col-span-3 px-4">
+        <div class="md:col-span-5 xl:col-span-3
+          px-4
+        ">
           {{ __('Contract', 'codigo') }}
         </div>
       </div>
@@ -63,7 +67,10 @@ if ($category) {
                 </svg>
                 <h3 class="text-2xl font-sans font-light">{{ $job->post_title }}</h3>
               </div>
-              <div class="col-span-12 md:col-span-5 xl:col-span-3 md:px-4 flex justify-between md:block gap-2 flex-wrap">
+              <div class="col-span-12 md:col-span-5 xl:col-span-3
+                md:px-4
+                flex justify-between gap-2 flex-wrap md:block
+              ">
                 <span class="text-base md:text-2xl font-sans font-light">{{ get_field('contract', $job) }}</span>
                 <span class="md:hidden text-base font-sans">
                   @foreach($terms as $term)
