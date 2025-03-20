@@ -6,7 +6,15 @@
     <?php wp_head(); ?>
   </head>
 
-  <body <?php body_class(); ?>>
+  <?php
+  //Check if body_class() contains wp-admin
+  $body_class_frontend = '';
+  $body_class = esc_attr( implode( ' ', get_body_class() ) );
+  if (strpos($body_class, 'wp-admin') === false) {
+    $body_class_frontend = 'wp-frontend';
+  }
+   ?>
+  <body <?php body_class($body_class_frontend); ?>>
     <?php wp_body_open(); ?>
     <?php do_action('get_header'); ?>
 

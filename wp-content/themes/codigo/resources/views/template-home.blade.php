@@ -47,11 +47,37 @@
       <div
         class="md:-mr-14 flex-1 mt-6 md:mt-0 relative"
       >
+
+      @php($first_image = get_field('home_first_image', $collaborator->ID))
+      @php($second_image = get_field('home_second_image', $collaborator->ID))
+
+      @if($first_image && $second_image)
+        <div class="flex flex-wrap h-full gap-0">
+          <div class="w-full lg:w-1/2 p-0 relative">
+            <img
+              class="w-full h-full object-cover"
+              src="{{ get_field('home_first_image', $collaborator->ID) }}"
+              alt="{{ $collaborator->post_title }}"
+            >
+          </div>
+
+          <div class="w-full lg:w-1/2 p-0 relative hidden lg:block">
+            <img
+              class="w-full h-full object-cover"
+              src="{{ get_field('home_second_image', $collaborator->ID) }}"
+              alt="{{ $collaborator->post_title }}"
+            >
+          </div>
+        </div>
+      @else
         <img
-          class="w-full h-full object-cover absolute top-0 right-0 left-0 md:max-w-full max-w-[85%] mx-auto"
+          class="w-full h-full object-cover"
           src="{{ get_the_post_thumbnail_url($collaborator->ID, 'full') }}"
           alt="{{ $collaborator->post_title }}"
         >
+      @endif
+
+
 
         <a
           href="{{ $cta['link'] }}"

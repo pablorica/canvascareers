@@ -12,6 +12,8 @@ const tinyslider = () => {
         carAutoplay = carousel.dataset.autoplay;
       }
 
+      //console.log('carAutoplay', carAutoplay);
+
       let carNavigation = false;
       if (carousel.dataset.navigation) {
         carNavigation = carousel.dataset.navigation;
@@ -31,7 +33,7 @@ const tinyslider = () => {
         0: {
           items: 1,
         },
-        900: {
+        768: {
           items: 2,
         },
         1280: {

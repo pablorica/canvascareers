@@ -5,10 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.3.3] - 2025-03-14
+
+
+
+
+## [0.4.0] - 2025-03-20
 
 ### Updated
 
+- [Desktop: Salary Survey](https://app.asana.com/0/1209462826205010/1209626164737748) 
+
+ - [Imágenes de la home](https://app.asana.com/0/1209462826205010/1209651107114384) 
+
+- [About Us](https://app.asana.com/0/1209462826205010/1209462827905296)
+
+- [Mobile: Collaborators Index](https://app.asana.com/0/1209462826205010/1209462827905286)
+
+- [Mobile: About Us](https://app.asana.com/0/1209462826205010/1209462827905302)
+
+- [Desktop: Collaborators Single page](https://app.asana.com/0/1209462826205010/1209462827905273)
+
+- [Desktop: Collaborators Index](https://app.asana.com/0/1209462826205010/1209462827905269)
+
+
+## [0.3.3] - 2025-03-14
+
+### Updated
 
  - [Collaborator: Single page](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209462827905273) 
     - Change color of border-charcoal across the site

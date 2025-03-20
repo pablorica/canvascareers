@@ -222,8 +222,8 @@ module.exports = {
             // Larger horizontal padding on larger screens.
             '.fluid-container , .container': {
               // Use safe-area-inset together with default padding for Apple devices with a notch.
-              paddingLeft: `calc(env(safe-area-inset-left, 0rem) + ${theme('padding.14')})`,
-              paddingRight: `calc(env(safe-area-inset-right, 0rem) + ${theme('padding.14')})`,
+              paddingLeft: `calc(env(safe-area-inset-left, 0rem) + ${theme('padding.8')})`,
+              paddingRight: `calc(env(safe-area-inset-right, 0rem) + ${theme('padding.8')})`,
             },
             '.container': {
                 maxWidth: theme('screens.md'),
@@ -240,6 +240,10 @@ module.exports = {
             },
           },
           '@media screen(2xl)': {
+            '.fluid-container , .container': {
+              paddingLeft: `calc(env(safe-area-inset-left, 0rem) + ${theme('padding.14')})`,
+              paddingRight: `calc(env(safe-area-inset-right, 0rem) + ${theme('padding.14')})`,
+            },
             '.container': {
                 maxWidth: theme('screens.2xl'),
             },
