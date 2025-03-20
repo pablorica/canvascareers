@@ -1,8 +1,14 @@
 @php($tags = get_terms('job-tag', ['hide_empty' => false]))
 
-<div class="
-  job-tags button-group lg:grid lg:grid-cols-12 lg:absolute lg:left-0 lg:bottom-5 lg:px-14 md:w-full
-  py-6 md:pb-0 lg:py-0 md:border-0 border-charcoal -mx-5 px-5 md:mx-0 md:px-0 -mb-5 md:mb-0 overflow-y-hidden
+<div class="job-tags
+  button-group
+  lg:grid lg:grid-cols-12
+  lg:absolute lg:left-0 lg:bottom-5
+  md:border-0 border-charcoal
+  md:w-full
+  px-5 py-6 md:pb-0 md:px-0 lg:px-0 lg:py-0
+  -mx-5 -mb-5 md:mx-0 md:mb-0
+  overflow-y-hidden
 ">
   <a
     class="
@@ -18,10 +24,13 @@
     {{ __('Filters', 'codigo') }}
   </a>
 
-  <div class="
-    max-h-0 md:max-h-full job-filter-content transition-all duration-300 ease-in-out
-    lg:col-start-6 xl:col-start-5 lg:px-4 lg:col-span-7 xl:col-span-8
-    items-center flex flex-wrap gap-2
+  <div class="job-filter-content
+    max-h-0 md:max-h-full
+    transition-all duration-300 ease-in-out
+    lg:col-start-6 xl:col-start-5
+    lg:col-span-7 xl:col-span-8
+    lg:px-6 2xl:px-8
+    flex items-center flex-wrap gap-2
   ">
     <div class="pt-5 w-full relative md:hidden">
       <div class="border-b border-charcoal absolute h-1 -left-5 -right-5"></div>

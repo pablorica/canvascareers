@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Updated
 
+
+- [Desktop: Jobs](https://app.asana.com/0/1209462826205010/1209545451282545) 
+
 - [Desktop: Salary Survey](https://app.asana.com/0/1209462826205010/1209626164737748) 
 
  - [Imágenes de la home](https://app.asana.com/0/1209462826205010/1209651107114384) 
