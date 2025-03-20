@@ -9,6 +9,7 @@ class CollaboratorFields extends Field
 {
     /**
      * The field group.
+     * https://github.com/Log1x/acf-builder-cheatsheet
      */
     public function fields(): array
     {
@@ -71,6 +72,48 @@ class CollaboratorFields extends Field
                 'prepend' => '',
                 'append' => '',
                 'maxlength' => '',
+            ])
+            ->addImage('home_first_image', [
+                'label' => 'Home First Image',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'return_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
+            ])
+            ->addImage('home_second_image', [
+                'label' => 'Home Second Image',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'return_format' => 'url',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+                'min_width' => '',
+                'min_height' => '',
+                'min_size' => '',
+                'max_width' => '',
+                'max_height' => '',
+                'max_size' => '',
+                'mime_types' => '',
             ])
             ->addRepeater('portfolio_images', [
                 'label' => 'Portfolio Images',

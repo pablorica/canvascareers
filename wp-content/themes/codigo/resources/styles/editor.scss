@@ -52,6 +52,56 @@
   }
 }
 
+
+.is-style-hide-mobile,
+.is-style-hide-desktop {
+  background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.05) 10px,
+      rgba(0, 0, 0, 0.1) 10px,
+      rgba(0, 0, 0, 0.1) 20px
+  );
+  & > * {
+    opacity: 0.8;
+  }
+}
+
+
+.is-style-hide-mobile {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(206, 8, 127, 0.15) 10px,
+      rgba(206, 8, 127, 0.25) 10px,
+      rgba(206, 8, 127, 0.25) 20px
+    );
+    & > * {
+      opacity: 0.5;
+    }
+  }
+}
+
+.is-style-hide-desktop {
+  @media screen and (min-width: theme("screens.lg")) {
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(206, 8, 127, 0.15) 10px,
+      rgba(206, 8, 127, 0.25) 10px,
+      rgba(206, 8, 127, 0.25) 20px
+    );
+    & > * {
+      opacity: 0.5;
+    }
+  }
+}
+
+
+
+
+
 .\!w-1\/2 {
   width: 50% !important;
 }
@@ -73,6 +123,7 @@
 .block-editor .tiny-carousel > div:first-child {
   display: block
 }
+
 
 .editor-canvas__iframe,
 .editor-styles-wrapper {
@@ -134,3 +185,5 @@
 body.post-type-project .editor-sidebar__panel #tabs-0-edit-post\/document-view .components-panel__body {
   display: none;
 }
+
+

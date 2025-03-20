@@ -5,8 +5,11 @@
 <!-- /resources/views/sections/header.blade.php -->
 <header
   id="mainMenu"
-  class="banner w-full sticky md:static top-0 z-50 bg-chalk
-    {{ get_field('fixed_header') || is_singular('collaborator') ? 'md:fixed md:top-0 md:w-auto' : '' }}"
+  class="banner w-full
+    sticky top-0 z-50
+    lg:static
+    bg-chalk lg:bg-opacity-0
+    {{ get_field('fixed_header') || is_singular('collaborator') ? 'lg:fixed lg:top-0 lg:w-auto' : '' }}"
 >
   <nav
     class="nav-primary @option('header_layout_container') py-5 relative"
@@ -18,8 +21,8 @@
           href="{{ home_url('/') }}"
           class="brand-header 2xl:text-9xl text-7xl text-charcoal leading-[0.75]"
         >
-          <span class="hidden md:block @if(is_front_page()) !block @endif">{{ __('Canvas', 'codigo') }}</span>
-          <span class="h-[56px] block md:hidden @if(is_front_page()) !hidden @endif">
+          <span class="hidden md:block @if( get_field('mobile_bigheaderfooter',get_the_ID()) ) !block @endif">{{ __('Canvas', 'codigo') }}</span>
+          <span class="h-[56px] block md:hidden @if( get_field('mobile_bigheaderfooter',get_the_ID()) ) !hidden @endif">
             <svg class="h-full" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 1000 430.4" xml:space="preserve">
               <g>
                 <path class="fill-charcoal" d="M37,119.1C37,64.3,74.9,37,115.9,37c37.1,0,64,20.4,69.7,52.3L159,95c-4.6-21.5-20.9-34.6-43.1-34.6   c-29.3,0-51.6,20.6-51.6,58.7c0,38.1,22,58.5,51.6,58.5c22.5,0,37.6-12.1,42.6-32.3l26.8,5.7c-7.8,30.9-33.5,50.2-69.5,50.2   C74.4,201.2,37,173.9,37,119.1z M247.8,101.7c-14,0-23.8,8.3-25.4,22l-22.5-4.1c3.7-22.7,23.4-37.6,47.9-37.6   c29.3,0,49.5,16.5,49.5,45.4v72h-24.5v-17.6c-6.6,11.7-20.9,19.5-36.2,19.5c-22.9,0-38.7-14.4-38.7-34.2   c0-22.7,17.6-34.8,53.2-38.5l21.8-2.3v-1.6C272.8,110.4,262.9,101.7,247.8,101.7z M241.6,181.9c19.5,0,30.9-13.5,31.2-32.3v-4.8   l-22,2.5c-18.8,2.1-28.4,8.9-28.4,19C222.4,175.5,229.9,181.9,241.6,181.9z M322.9,83.8h25v19.3c7.8-12.4,21.1-21.1,38-21.1   c24.5,0,41.7,16.3,41.7,41.3v76.1h-25V129c0-14.4-8.9-24.5-23.6-24.5c-19.5,0-31.2,16.5-31.2,44.2v50.7h-25V83.8z M436.6,83.8H462   l28.7,86.4l28.7-86.4H545l-42.2,115.5h-24.1L436.6,83.8z M598.4,101.7c-14,0-23.8,8.3-25.4,22l-22.5-4.1   c3.7-22.7,23.4-37.6,47.9-37.6c29.3,0,49.5,16.5,49.5,45.4v72h-24.5v-17.6c-6.6,11.7-20.9,19.5-36.2,19.5   c-22.9,0-38.7-14.4-38.7-34.2c0-22.7,17.6-34.8,53.2-38.5l21.8-2.3v-1.6C623.4,110.4,613.5,101.7,598.4,101.7z M592.2,181.9   c19.5,0,30.9-13.5,31.2-32.3v-4.8l-22,2.5c-18.8,2.1-28.4,8.9-28.4,19C572.9,175.5,580.5,181.9,592.2,181.9z M663.9,167.2l20.6-8.7   c3.9,12.4,12.8,22.7,28.9,22.7c11.9,0,19.9-6.9,19.9-15.1c0-25-64.4-8.7-64.4-52.5c0-18.1,15.8-31.6,40.8-31.6   c21.8,0,40.1,11.5,45.2,28.4l-20.6,8.7c-3-11.5-13.8-17.9-24.3-17.9c-11,0-17.9,4.4-17.9,11.9c0,22.2,64.9,5.3,64.9,52.7   c0,19.9-17.4,35.3-43.6,35.3C685.2,201.2,669.1,183.7,663.9,167.2z"/>

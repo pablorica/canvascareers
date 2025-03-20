@@ -24,6 +24,18 @@ a.underline,
   text-decoration: underline;
 }
 
+body.wp-frontend .is-style-hide-mobile {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    display: none !important;
+  }
+}
+
+body.wp-frontend .is-style-hide-desktop {
+  @media screen and (min-width: theme("screens.lg")) {
+    display: none !important;
+  }
+}
+
 .has-serif-font-family {
   a {
     font-family: theme("fontFamily.serif");

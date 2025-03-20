@@ -9,7 +9,7 @@
       }
     }
 
-    @media screen and (max-width: calc(theme("screens.md") - 1px)) {
+    @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
       align-items: stretch;
 
       .tns-outer,

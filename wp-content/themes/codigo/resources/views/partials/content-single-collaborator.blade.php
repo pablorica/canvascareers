@@ -1,27 +1,41 @@
 {{--
-    @name Content Single
+    @name Content Single Collaborator
     @desc The content layout for posts
 --}}
 
-<!-- /codigo/resources/views/partials/content-single.blade.php -->
-<article @php(post_class('h-entry h-full md:pr-0 '.get_field("layout_container", "option") )) >
+<!-- /codigo/resources/views/partials/content-single-collaborator.blade.php -->
+<article @php(post_class('h-entry h-full lg:pr-0 '.get_field("layout_container", "option") )) >
   <div class="grid grid-cols-12 w-full h-full">
-    <div class="col-span-12 md:col-span-7 lg:col-span-5 px-2 md:pr-4 2xl:pr-8 flex flex-col">
-      <h1 class="md:hidden text-charcoal font-light text-xl flex gap-1 justify-between mt-2 pb-7 flex-wrap">
+    <div class="col-span-12 lg:col-span-5
+      px-2 md:pr-4 2xl:pr-8
+      flex flex-col
+    ">
+      <h1 class="text-charcoal font-light text-xl
+        flex gap-1 justify-between flex-wrap
+        mt-2 pb-7
+        lg:hidden">
         <span class="block">{{ __('In Conversation:', 'codigo') }}</span>
         {{ get_the_title() }}
       </h1>
-      <div class="header-spacer hidden md:block"></div>
+      <div class="header-spacer hidden lg:block"></div>
+
       @php($portfolio_images = get_field('portfolio_images'))
       @if($portfolio_images)
-        <div class="flex items-center md:my-5 flex-1 wrapper-carousel">
+        <div class="wrapper-carousel
+          flex items-center flex-1
+          md:my-5 md:mx-[-30px] lg:mx-0
+        ">
           <div class="cursor-pointer prev-button hidden md:block">
             <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
               <polyline points="30,10 15,25 30,40" stroke="black" stroke-width="2" fill="none"/>
             </svg>
           </div>
 
-          <div class="h-full flex md:max-w-[75%] 2xl:max-w-[60%] w-full mx-auto carousel-single-collaborator">
+          <div class="carousel-single-collaborator
+            h-full flex
+            w-full lg:max-w-[75%] 2xl:max-w-[60%]
+            mx-auto
+          ">
             <div
               class="tiny-carousel h-full"
               data-responsive-items="false"
@@ -45,8 +59,15 @@
         </div>
       @endif
     </div>
-    <div class="col-span-12 md:col-span-5 lg:col-span-4 flex flex-col mt-8 md:mt-0">
-      <div class="pb-5 border-b md:border-l lg:border-x border-charcoal px-4 hidden md:block">
+    <div class="col-span-12 lg:col-span-4
+      flex flex-col
+      mt-8 md:mt-0
+    ">
+      <div class="pb-5
+        border-b lg:border-l lg:border-x border-charcoal
+        px-4
+        hidden md:block
+      ">
         <div class="pt-7 pb-6 flex justify-between items-center text-sm font-bold">
           <span>
             @php($years = get_the_terms(get_the_ID(), 'collaborator-year'))
@@ -71,8 +92,15 @@
           {{ get_the_title() }}
         </h1>
       </div>
-      <div class="md:border-l lg:border-x border-charcoal relative flex-1">
-        <div class="text-md md:overflow-y-auto md:absolute md:inset-x-4 md:inset-y-3 px-2 md:pl-4 md:pr-0 py-2 scroll-rtl">
+
+      <div class="relative flex-1
+        lg:border-l lg:border-x border-charcoal
+      ">
+        <div class="text-md
+          lg:overflow-y-auto lg:absolute lg:inset-x-4 lg:inset-y-3
+          px-2 lg:pl-4 lg:pr-0
+          py-2 scroll-rtl
+        ">
           <div class="content transition-all duration-300 ease-in-out">
             @php(the_content())
           </div>
@@ -162,3 +190,4 @@
     </div>
   </div>
 </article>
+<!-- End /codigo/resources/views/partials/content-single-collaborator.blade.php -->

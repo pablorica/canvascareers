@@ -16,7 +16,7 @@
   background: theme("colors.charcoal");
 }
 
-@media screen and (max-width: calc(theme("screens.md") - 1px)) {
+@media screen and (max-width: calc(theme("screens.lg") - 1px)) {
   .tns-ovh {
     overflow: visible !important;
   }

@@ -9,7 +9,7 @@
     md:border-t border-charcoal
     py-1 md:pt-8 md:pb-10 bg-chalk
     @option('footer_layout_container')
-    @if(!is_front_page()) hidden md:block @endif
+    @if(!get_field('mobile_bigheaderfooter',get_the_ID())) hidden md:block @endif
 ">
   <div class="justify-between md:flex hidden">
     <ul class="flex list-none flex-1 flex-wrap">

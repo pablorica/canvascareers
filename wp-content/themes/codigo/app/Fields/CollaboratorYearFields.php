@@ -9,6 +9,7 @@ class CollaboratorYearFields extends Field
 {
     /**
      * The field group.
+     * https://github.com/Log1x/acf-builder-cheatsheet
      */
     public function fields(): array
     {
@@ -52,6 +53,22 @@ class CollaboratorYearFields extends Field
                 'prepend' => '',
                 'append' => '',
                 'maxlength' => '',
+            ])
+            ->addTrueFalse('display_collaborators_index', [
+                'label' => 'Display in Collaborators Index Page',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 0,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
             ]);
 
         return $fields->build();

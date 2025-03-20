@@ -16,6 +16,10 @@
 
     @media screen and (max-width: calc(theme("screens.md") - 1px)) {
       height: calc(100vh - 250px);
+    }
+
+    @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+      height: calc(100vh - 350px);
 
       .tns-nav {
         display: none;
@@ -47,7 +51,7 @@
     }
   }
 
-  @media screen and (max-width: calc(theme("screens.md") - 1px)) {
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
     .content.mobile {
       position: relative;
       max-height: 800px;
