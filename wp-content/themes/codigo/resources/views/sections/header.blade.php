@@ -60,17 +60,17 @@
         <li>
           <a
             href="{{ $item->url }}"
-            class="
-              text-md 2xl:text-base py-2 px-5 rounded-full
-              bg-chalk hover:bg-citrus
+            class="bg-chalk hover:bg-citrus
               transition-colors duration-300
-              border border-charcoal block
+              block
               leading-none text-center
               overflow-ellipsis overflow-hidden whitespace-nowrap
               {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
-          >
-            {{ $item->title }}
+          ><span data-title="{{ $item->title }}"
+            class="button-menu
+            text-md 2xl:text-base py-2 px-5 rounded-full
+            border border-charcoal inline-block">{{ $item->title }}</span>
           </a>
         </li>
       @endforeach
