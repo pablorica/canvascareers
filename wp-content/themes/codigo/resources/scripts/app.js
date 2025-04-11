@@ -62,7 +62,7 @@ const CDG = {
   onloadFunctions: function() {
     //consoleHello('CDG is loaded');
     jobs();
-    loadEffect();
+    //loadEffect();
   }
 };
 

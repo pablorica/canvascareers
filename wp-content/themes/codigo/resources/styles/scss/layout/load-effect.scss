@@ -1,0 +1,30 @@
+body.page-template-template-home {
+
+  .growing-button {
+    transition: all 0.4s ease;
+    white-space: nowrap;
+  }
+  .growing-button.loading {
+    min-width: 2rem; /* Start small */
+  }
+  .growing-button.loaded {
+    min-width: 100%;
+  }
+
+
+  .collaborator-fade-in-up {
+    opacity: 0;
+    transform: translateY(50%);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  figure.collaborator-fade-in-up {
+    transform: translateY(100%);
+  }
+
+  .collaborator-fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+}

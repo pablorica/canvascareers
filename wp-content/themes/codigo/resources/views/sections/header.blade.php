@@ -68,9 +68,10 @@
               {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
           ><span data-title="{{ $item->title }}"
-            class="button-menu
+            class="growing-button
             text-md 2xl:text-base py-2 px-5 rounded-full
-            border border-charcoal inline-block">{{ $item->title }}</span>
+            border border-charcoal inline-block
+            ">{{ $item->title }}</span>
           </a>
         </li>
       @endforeach

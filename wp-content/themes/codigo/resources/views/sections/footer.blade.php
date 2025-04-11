@@ -26,7 +26,7 @@
               {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
           ><span data-title="{{ $item->title }}"
-            class="button-menu
+            class="growing-button
             text-sm 2xl:text-md py-1.5 px-5 rounded-full
             border border-charcoal inline-block">{{ $item->title }}</span>
           </a>
@@ -49,7 +49,7 @@
               {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
             "
             ><span data-title="{{ $item->title }}"
-              class="button-menu
+              class="growing-button
               text-sm 2xl:text-md py-1.5 px-5 rounded-full
               border border-charcoal inline-block">{{ $item->title }}</span>
             </a>
