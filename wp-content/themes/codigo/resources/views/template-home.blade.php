@@ -33,8 +33,8 @@
           ">
             {{ get_field('position', $collaborator) }} {{ __('based in', 'codigo') }} {{ get_field('location', $collaborator) }}
           </span>
-          <div class="text-md
-            max-w-80 mt-4
+          <div class="text-md mt-4
+            max-w-[215px] 2xl:max-w-[260px]
             hidden md:block
             collaborator-fade-in-up
           ">

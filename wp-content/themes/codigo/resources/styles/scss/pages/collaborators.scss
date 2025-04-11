@@ -2,12 +2,17 @@
   #main {
     display: flex;
     align-items: center;
+    @media (min-width: theme("screens.md")) and (max-height: 799px) {
+      overflow: visible;
+    }
 
+    /*
     @media screen and (max-height: 835px) {
       .collaborator img {
         max-height: 300px;
       }
     }
+    */
 
     @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
       align-items: stretch;
