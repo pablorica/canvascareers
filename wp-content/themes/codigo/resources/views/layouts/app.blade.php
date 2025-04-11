@@ -5,6 +5,7 @@
     mb-auto
     xl:!border-b-0 !border-r-0 xl:!border-r-[1px]
     max-w-[260px] max-w-[280px] 2xl:max-w-full
+    bg-contain bg-cover
 --}}
 
 <!-- /codigo/resources/views/layouts/app.blade.php -->
