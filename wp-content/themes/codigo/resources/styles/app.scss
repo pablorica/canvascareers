@@ -43,3 +43,9 @@
 @import "scss/pages/home";
 @import "scss/pages/single-collaborator";
 @import "scss/pages/jobs";
+
+/* Load effect **/
+//@import "scss/layout/load-effect";
+.growing-button {
+  min-width: 100%;
+}

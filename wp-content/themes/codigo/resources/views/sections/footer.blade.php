@@ -19,16 +19,15 @@
         <li class="mr-2 xl:mt-2 mt-1">
           <a
             href="{{ $item->url }}"
-            class="
-              text-sm 2xl:text-md py-1.5 px-5 rounded-full
-              bg-chalk hover:bg-citrus
-              transition-colors duration-300
-              border border-charcoal block
-              leading-none text-center
-              {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
-            "
-          >
-            {{ $item->title }}
+            class="block leading-none text-center
+          "><span data-title="{{ $item->title }}"
+            class="button-menu growing-button
+            bg-chalk hover:bg-citrus
+            transition-colors duration-300
+            text-sm 2xl:text-md py-1.5 px-5 rounded-full
+            border border-charcoal inline-block
+            {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
+            ">{{ $item->title }}</span>
           </a>
         </li>
       @endforeach
@@ -42,16 +41,16 @@
           <li class="mr-2 xl:mt-2 mt-1">
             <a
               href="{{ $item->url }}"
-              class="
-              text-sm 2xl:text-md py-1.5 px-5 rounded-full
-              bg-chalk hover:bg-citrus
-              transition-colors duration-300
-              border border-charcoal block
+              class="block
               leading-none text-center
+            "><span data-title="{{ $item->title }}"
+              class="button-menu growing-button
+              text-sm 2xl:text-md py-1.5 px-5 rounded-full
+              border border-charcoal inline-block
+              transition-colors duration-300
+              bg-chalk hover:bg-citrus
               {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
-            "
-            >
-              {{ $item->title }}
+               ">{{ $item->title }}</span>
             </a>
           </li>
         @endforeach
@@ -59,7 +58,9 @@
       <div>
         <a
           href="{{ home_url('/') }}"
-          class="brand-footer 2xl:text-9xl text-7xl text-charcoal leading-[0.75]"
+          class="brand-footer
+          text-7xl md:text-8xl 2xl:text-9xl
+          text-charcoal leading-[0.75]"
         >
           {{ __('Careers', 'codigo') }}
         </a>

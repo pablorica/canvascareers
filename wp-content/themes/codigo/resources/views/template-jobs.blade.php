@@ -107,7 +107,9 @@ if ($category) {
 
                 @if(get_field('start_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-4 md:pl-16 md:pr-8 md:max-w-[500px]
+                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-4
+                    md:pl-16 md:pr-8
+                    md:max-w-[400px]
                   ">
                     {!! get_field('start_column', $job) !!}
                   </div>
@@ -115,7 +117,10 @@ if ($category) {
 
                 @if(get_field('middle_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-4 xl:col-span-3 lg:pl-4 md:pr-8 md:pl-16 md:max-w-[500px] pt-6 lg:pt-0
+                    col-span-12 md:col-span-7 lg:col-span-4 xl:col-span-3
+                    lg:pl-4 md:pr-8 md:pl-16
+                    md:max-w-[400px]
+                    pt-6 lg:pt-0
                   ">
                     {!! get_field('middle_column', $job) !!}
                   </div>
@@ -123,7 +128,10 @@ if ($category) {
 
                 @if(get_field('end_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 xl:pl-4 md:pr-8 md:pl-16 md:max-w-[500px] xl:max-w-[350px] pt-6 xl:pt-0
+                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3
+                    xl:pl-4 md:pr-8 md:pl-16
+                    md:max-w-[400px] 2xl:max-w-[350px]
+                    pt-6 xl:pt-0
                   ">
                     {!! get_field('end_column', $job) !!}
                   </div>
@@ -149,10 +157,14 @@ if ($category) {
                       {{ __('Apply', 'codigo') }}
                     </a>
 
-                    <div class="
-                      relative md:absolute right-0 md:top-[calc(50%-27px)] md:-translate-y-1/2
-                      md:max-w-[300px] px-3 md:px-6 pt-6 md:py-4 border-t md:border border-charcoal
-                      bg-chalk hidden form-container mt-6 md:mt-0
+                    <div class="form-container hidden
+                      relative md:absolute
+                      right-0 md:top-[calc(50%-47px)] md:-translate-y-1/2
+                      md:max-w-[300px]
+                      px-3 md:px-6 pt-6 md:py-4
+                      border-t md:border border-charcoal
+                      bg-chalk
+                      mt-6 md:mt-0
                     ">
                       <div class="w-auto text-right md:relative absolute top-6 right-3 md:top-0 md:right-0">
                         <svg class="toggle-form cursor-pointer ml-auto mb-4" width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">

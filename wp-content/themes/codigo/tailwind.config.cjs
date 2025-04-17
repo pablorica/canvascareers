@@ -43,6 +43,9 @@ module.exports = {
       },
     },
     extend: {
+      screens: {
+        '2xl': '1792px', // 1536px
+      },
       zIndex: {
         '60': '60',
         '70': '70',

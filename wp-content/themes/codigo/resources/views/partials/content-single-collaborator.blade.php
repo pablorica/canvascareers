@@ -44,7 +44,7 @@
             >
               @foreach($portfolio_images as $image)
                 <div
-                  class="bg-cover bg-center w-full bg-no-repeat"
+                  class="bg-{{ $image['fit_mode'] ?? 'cover' }} bg-center w-full bg-no-repeat"
                   style="background-image: url('{{ $image['image'] }}')"
                 ></div>
               @endforeach

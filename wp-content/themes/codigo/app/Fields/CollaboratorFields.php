@@ -137,6 +137,24 @@ class CollaboratorFields extends Field
                     'preview_size' => 'thumbnail',
                     'library' => 'all',
                 ])
+                ->addSelect('fit_mode', [
+                    'label' => 'Fit Mode',
+                    'instructions' => '',
+                    'required' => 0,
+                    'conditional_logic' => [],
+                    'wrapper' => [
+                        'width' => '',
+                        'class' => '',
+                        'id' => '',
+                    ],
+                    'choices' => ['cover', 'contain'],
+                    'allow_custom' => 0,
+                    'save_custom' => 0,
+                    'default_value' => ['cover'],
+                    'layout' => 'vertical',
+                    'toggle' => 0,
+                    'return_format' => 'value',
+                ])
             ->endRepeater();
 
         return $fields->build();

@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.4.1] - 2025-04-11
+
+### Updated
+
+- Responsive adjustments
+
+- Allow cover/contain images in collaborator galleries
 
 
 ## [0.4.0] - 2025-03-20

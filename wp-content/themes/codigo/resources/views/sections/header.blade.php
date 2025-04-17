@@ -19,7 +19,9 @@
       <div>
         <a
           href="{{ home_url('/') }}"
-          class="brand-header 2xl:text-9xl text-7xl text-charcoal leading-[0.75]"
+          class="brand-header
+          text-7xl md:text-8xl 2xl:text-9xl
+          text-charcoal leading-[0.75]"
         >
           <span class="hidden md:block @if( get_field('mobile_bigheaderfooter',get_the_ID()) ) !block @endif">{{ __('Canvas', 'codigo') }}</span>
           <span class="h-[56px] block md:hidden @if( get_field('mobile_bigheaderfooter',get_the_ID()) ) !hidden @endif">
@@ -60,17 +62,17 @@
         <li>
           <a
             href="{{ $item->url }}"
-            class="
-              text-md 2xl:text-base py-2 px-5 rounded-full
-              bg-chalk hover:bg-citrus
-              transition-colors duration-300
-              border border-charcoal block
+            class="block
               leading-none text-center
-              overflow-ellipsis overflow-hidden whitespace-nowrap
-              {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
-            "
-          >
-            {{ $item->title }}
+            "><span data-title="{{ $item->title }}"
+            class="button-menu growing-button
+            text-md 2xl:text-base py-2 px-5 rounded-full
+            bg-chalk hover:bg-citrus
+            transition-colors duration-300
+            overflow-ellipsis overflow-hidden whitespace-nowrap
+            border border-charcoal inline-block
+            {{ $item->object_id == get_the_ID() ? '!bg-charcoal !text-chalk' : 'text-charcoal' }}
+            ">{{ $item->title }}</span>
           </a>
         </li>
       @endforeach

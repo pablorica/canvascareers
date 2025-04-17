@@ -28,7 +28,11 @@
       ">
         <h1 class="h4 text-2xl">{{ get_the_title() }}</h1>
 
-        <div class="text-sm 2xl:text-md mt-6 mb-9 font-medium hidden lg:block">
+        <div class="text-sm 2xl:text-md
+          mt-6 mb-9
+          font-medium
+          max-w-[215px] 2xl:max-w-[260px]
+          hidden lg:block">
           {!! get_the_content() !!}
         </div>
 
