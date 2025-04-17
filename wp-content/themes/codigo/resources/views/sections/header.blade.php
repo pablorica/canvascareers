@@ -53,8 +53,10 @@
     </div>
 
     <ul
-      class="grid list-none mt-6 w-full md:max-w-[350px] 2xl:max-w-[400px] grid-cols-2 gap-2 md:z-10 relative
-      {{ get_field('fixed_header') ? 'md:min-w-[350px] 2xl:min-w-[400px]' : '' }}"
+      class="grid list-none mt-6
+        w-full md:max-w-[300px] 2xl:max-w-[400px]
+        grid-cols-2 gap-2 md:z-10 relative
+      {{ get_field('fixed_header') ? 'md:min-w-[300px] 2xl:min-w-[400px]' : '' }}"
     >
       @php($menu_items = wp_get_nav_menu_items('Jobs Filters Menu'))
 
@@ -66,7 +68,9 @@
               leading-none text-center
             "><span data-title="{{ $item->title }}"
             class="button-menu growing-button
-            text-md 2xl:text-base py-2 px-5 rounded-full
+            text-md md:text-sm 2xl:text-base
+            py-2 px-5 md:py-[5px] md:px-[8px] 2xl:py-2 2xl:px-5
+            rounded-full
             bg-chalk hover:bg-citrus
             transition-colors duration-300
             overflow-ellipsis overflow-hidden whitespace-nowrap

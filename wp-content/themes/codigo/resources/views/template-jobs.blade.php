@@ -35,7 +35,7 @@ if ($category) {
     lg:mt-2">
     <div class="mb-8">
       <div class="hidden md:grid grid-cols-12 items-center py-4 font-sans text-xl border-b border-charcoal">
-        <div class="md:col-span-7 lg:col-span-5 xl:col-span-4 flex items-center px-4">
+        <div class="md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4 flex items-center px-4">
           <div class="w-12 pr-4"></div>
           {{ __('Position', 'codigo') }}
         </div>
@@ -57,21 +57,27 @@ if ($category) {
           <div
             class="job-item relative border-b border-charcoal px-5 md:px-0 {{ implode(' ', $terms_slugs) }}"
           >
-            <div class="grid grid-cols-12 items-center job-accordion cursor-pointer py-3">
+            <div class="job-accordion
+              grid grid-cols-12
+              items-center  cursor-pointer
+              py-3 md:py-1 2xl:py-3">
               <div class="
-                col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-4 md:px-4 mb-8 md:mb-0
-                flex items-center flex-row-reverse md:flex-row justify-between md:justify-start
+                col-span-12 md:col-span-7
+                lg:col-span-5 xl:col-span-3 2xl:col-span-4
+                md:px-4 mb-8 md:mb-0
+                flex items-center flex-row-reverse md:flex-row
+                justify-between md:justify-start
               ">
                 <svg class="shrink-0 rotate-x transition-transform duration-300 w-auto md:w-12 md:pr-4 icon-{{ $loop->index }}" width="40" height="32" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                   <polyline points="10,20 25,35 40,20" stroke="black" stroke-width="2" fill="none"/>
                 </svg>
-                <h3 class="text-2xl font-sans font-light">{{ $job->post_title }}</h3>
+                <h3 class="text-xl 2xl:text-2xl font-sans font-light">{{ $job->post_title }}</h3>
               </div>
               <div class="col-span-12 md:col-span-5 xl:col-span-3
                 md:px-4
                 flex justify-between gap-2 flex-wrap md:block
               ">
-                <span class="text-base md:text-2xl font-sans font-light">{{ get_field('contract', $job) }}</span>
+                <span class="text-base md:text-xl 2xl:text-2xl font-sans font-light">{{ get_field('contract', $job) }}</span>
                 <span class="md:hidden text-base font-sans">
                   @foreach($terms as $term)
                     <span>{{ $term->name }} @if(!$loop->last), @endif</span>
@@ -84,7 +90,10 @@ if ($category) {
               id="collapse-{{ $loop->index }}"
               class="job-body accordion-collapse overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
             >
-              <div class="grid grid-cols-12 pt-4 pb-8 md:min-h-[340px]">
+              <div class="grid grid-cols-12 pt-4 pb-8
+                md:min-h-[calc(100vh-144.5px-108.9px-40px)]
+                2xl:min-h-[calc(100vh-167px-123.65px-54px)]
+              ">
                 <div class="col-span-12 md:pl-16">
                   <div class="job-info pb-6 md:pb-8 font-sans text-base md:text-lg font-light">
                     <div class="flex mb-2">
@@ -107,7 +116,7 @@ if ($category) {
 
                 @if(get_field('start_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-4
+                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4
                     md:pl-16 md:pr-8
                     md:max-w-[400px]
                   ">
@@ -130,7 +139,7 @@ if ($category) {
                   <div class="
                     col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3
                     xl:pl-4 md:pr-8 md:pl-16
-                    md:max-w-[400px] 2xl:max-w-[350px]
+                    md:max-w-[400px] xl:max-w-[350px]
                     pt-6 xl:pt-0
                   ">
                     {!! get_field('end_column', $job) !!}
