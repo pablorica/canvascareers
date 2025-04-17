@@ -145,7 +145,7 @@ module.exports = {
       '5xl': '3.428rem', // 48px
       '6xl': '4.285rem', // 60px
       '7xl': '5.142rem', // 72px
-      '8xl': '6.857rem', // 96px
+      '8xl': '86px', // 96px
       '9xl': '7.571rem', // 106px
     },
     letterSpacing: { //tracking

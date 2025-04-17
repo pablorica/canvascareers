@@ -37,7 +37,7 @@
         </div>
 
         @php($years = get_terms('collaborator-year', ['hide_empty' => false]))
-        <ul class="flex list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap">
+        <ul class="hidden list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap">
           @foreach($years as $year)
             @if(get_field('display_collaborators_index', $year))
               <li>

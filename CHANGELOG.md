@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.4.2] - 2025-04-17
+
+### Updated
+
+- [Desktop: Single Collaborator](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209998425311329) 
+
+- [Desktop: Jobs](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209998425311337) 
+- [Dektop: Collaborators](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209998425917886) 
+- [Desktop: About](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1209998425917894) 
+
+
+
 ## [0.4.1] - 2025-04-11
 
 ### Updated

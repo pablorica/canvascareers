@@ -27,8 +27,8 @@
   <div class="job-filter-content
     max-h-0 md:max-h-full
     transition-all duration-300 ease-in-out
-    lg:col-start-6 xl:col-start-5
-    lg:col-span-7 xl:col-span-8
+    lg:col-start-6 xl:col-start-4 2xl:col-start-5
+    lg:col-span-7 xl:col-span-8 2xl:col-span-8
     lg:px-6 2xl:px-8
     flex items-center flex-wrap gap-2
   ">
@@ -43,12 +43,13 @@
     @foreach($tags as $tag)
       <a
         class="
-          job-filter whitespace-nowrap
-          text-sm md:text-md py-2 px-1 md:px-3 rounded-full
+          job-filter whitespace-nowrap rounded-full
+          text-sm 2xl:text-md
+          py-2 px-1 md:py-[5px] md:px-[8px] 2xl:py-2 2xl:px-2
           bg-chalk hover:bg-citrus cursor-pointer
           transition-colors duration-300
           border border-charcoal block
-          leading-none text-center w-[120px] md:w-[150px]
+          leading-none text-center w-[120px] md:w-[118px]
           overflow-ellipsis overflow-hidden
         "
         data-filter=".{{ $tag->slug }}"

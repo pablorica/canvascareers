@@ -9,3 +9,9 @@ body.page-template-template-home {
   }
 
 }
+
+.about-us-image {
+  @media (max-width: calc(theme("screens.xl") - 1px)) {
+    background-size: cover !important;
+  }
+}

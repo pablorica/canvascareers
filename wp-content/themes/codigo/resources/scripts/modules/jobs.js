@@ -82,20 +82,42 @@ const jobs = () => {
 
         const content = accordion.parentNode.querySelector(`#collapse-${i}`);
         const icon = accordion.parentNode.querySelector(`.icon-${i}`);
+        const applyButton = accordion.parentNode.querySelector('.toggle-form');
+        const formContainer = accordion.parentNode.querySelector('.form-container');
 
         content.style.maxHeight = '0';
         content.classList.add('overflow-hidden');
         icon.style.transform = 'rotate(0deg)';
+
+        // Apply button
+        if (applyButton) {
+          // If form container is visible, hide it
+          if (!formContainer.classList.contains('hidden')) {
+            formContainer.classList.add('hidden');
+            applyButton.classList.remove('active');
+          }
+        }
       });
 
       const content = parent.querySelector(`#collapse-${index}`);
       const icon = parent.querySelector(`.icon-${index}`);
+      const applyButton = parent.querySelector('.toggle-form');
+      const formContainer = parent.querySelector('.form-container');
 
       // Toggle the content's max-height for smooth opening and closing
       if (content.style.maxHeight && content.style.maxHeight !== '0px') {
         content.style.maxHeight = '0';
         content.classList.add('overflow-hidden');
         icon.style.transform = 'rotate(0deg)';
+
+        // Apply button
+        if (applyButton) {
+          // If form container is visible, hide it
+          if (!formContainer.classList.contains('hidden')) {
+            formContainer.classList.add('hidden');
+            applyButton.classList.remove('active');
+          }
+        }
       } else {
         content.style.maxHeight = content.scrollHeight + 'px';
         icon.style.transform = 'rotateX(180deg)';
@@ -208,7 +230,7 @@ const jobs = () => {
               // Append elements
               attachmentName.innerHTML = fileName;
               attachmentRemove.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
+                <svg width="16" height="16" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
                  <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="3"></line>
                  <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="3"></line>
                 </svg>
