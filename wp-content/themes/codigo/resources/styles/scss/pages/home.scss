@@ -1,4 +1,4 @@
-.page-template-template-home {
+body.page-template-template-home {
   #main {
     display: flex;
     align-items: stretch;
@@ -6,5 +6,11 @@
     #home {
       flex: 1;
     }
+  }
+}
+
+.about-us-image {
+  @media (max-width: calc(theme("screens.xl") - 1px)) {
+    background-size: cover !important;
   }
 }

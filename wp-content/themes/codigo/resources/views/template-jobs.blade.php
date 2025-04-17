@@ -35,7 +35,7 @@ if ($category) {
     lg:mt-2">
     <div class="mb-8">
       <div class="hidden md:grid grid-cols-12 items-center py-4 font-sans text-xl border-b border-charcoal">
-        <div class="md:col-span-7 lg:col-span-5 xl:col-span-4 flex items-center px-4">
+        <div class="md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4 flex items-center px-4">
           <div class="w-12 pr-4"></div>
           {{ __('Position', 'codigo') }}
         </div>
@@ -55,11 +55,11 @@ if ($category) {
           @endforeach
 
           <div
-            class="job-item border-b border-charcoal px-5 md:px-0 {{ implode(' ', $terms_slugs) }}"
+            class="job-item relative border-b border-charcoal px-5 md:px-0 {{ implode(' ', $terms_slugs) }}"
           >
             <div class="grid grid-cols-12 items-center job-accordion cursor-pointer py-3">
               <div class="
-                col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-4 md:px-4 mb-8 md:mb-0
+                col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4 md:px-4 mb-8 md:mb-0
                 flex items-center flex-row-reverse md:flex-row justify-between md:justify-start
               ">
                 <svg class="shrink-0 rotate-x transition-transform duration-300 w-auto md:w-12 md:pr-4 icon-{{ $loop->index }}" width="40" height="32" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
@@ -84,7 +84,7 @@ if ($category) {
               id="collapse-{{ $loop->index }}"
               class="job-body accordion-collapse overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
             >
-              <div class="grid grid-cols-12 pt-4 pb-8 relative md:min-h-[315px]">
+              <div class="grid grid-cols-12 pt-4 pb-8 md:min-h-[340px]">
                 <div class="col-span-12 md:pl-16">
                   <div class="job-info pb-6 md:pb-8 font-sans text-base md:text-lg font-light">
                     <div class="flex mb-2">
@@ -107,7 +107,9 @@ if ($category) {
 
                 @if(get_field('start_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-4 md:pl-16 md:pr-8 md:max-w-[500px]
+                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4
+                    md:pl-16 md:pr-8
+                    md:max-w-[400px]
                   ">
                     {!! get_field('start_column', $job) !!}
                   </div>
@@ -115,7 +117,10 @@ if ($category) {
 
                 @if(get_field('middle_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-4 xl:col-span-3 lg:pl-4 md:pr-8 md:pl-16 md:max-w-[500px] pt-6 lg:pt-0
+                    col-span-12 md:col-span-7 lg:col-span-4 xl:col-span-3
+                    lg:pl-4 md:pr-8 md:pl-16
+                    md:max-w-[400px]
+                    pt-6 lg:pt-0
                   ">
                     {!! get_field('middle_column', $job) !!}
                   </div>
@@ -123,7 +128,10 @@ if ($category) {
 
                 @if(get_field('end_column', $job))
                   <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 xl:pl-4 md:pr-8 md:pl-16 md:max-w-[500px] xl:max-w-[350px] pt-6 xl:pt-0
+                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3
+                    xl:pl-4 md:pr-8 md:pl-16
+                    md:max-w-[400px] xl:max-w-[350px]
+                    pt-6 xl:pt-0
                   ">
                     {!! get_field('end_column', $job) !!}
                   </div>
@@ -131,13 +139,12 @@ if ($category) {
 
                 @if($form_id = get_field('contact_form'))
                   <div
-                    class="job-form col-span-12 mt-10 md:mt-0"
+                    class="job-form col-span-12 md:col-span-2 md:col-start-11 mt-10 md:mt-0 flex md:items-end flex-col md:flex-row"
                     data-job-id="{{ $job->ID }}"
                     data-job-title="{{ $job->post_title }}"
                   >
                     <a
                       class="
-                        md:absolute right-0 bottom-8
                         text-sm md:text-md py-2 px-1 md:px-3 rounded-full
                         bg-chalk md:hover:bg-citrus cursor-pointer
                         transition-colors duration-300
@@ -149,10 +156,14 @@ if ($category) {
                       {{ __('Apply', 'codigo') }}
                     </a>
 
-                    <div class="
-                      relative md:absolute right-0 md:top-[calc(50%-27px)] md:-translate-y-1/2
-                      md:max-w-[300px] px-3 md:px-6 pt-6 md:py-4 border-t md:border border-charcoal
-                      bg-chalk hidden form-container mt-6 md:mt-0
+                    <div class="form-container hidden
+                      relative md:absolute
+                      right-0 md:top-1/2 md:-translate-y-1/2
+                      md:max-w-[300px]
+                      px-3 md:px-4 pt-6 md:py-4
+                      border-t md:border border-charcoal
+                      bg-chalk
+                      mt-6 md:mt-0
                     ">
                       <div class="w-auto text-right md:relative absolute top-6 right-3 md:top-0 md:right-0">
                         <svg class="toggle-form cursor-pointer ml-auto mb-4" width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
