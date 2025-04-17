@@ -7,7 +7,7 @@
 <article @php(post_class('h-entry h-full lg:pr-0 '.get_field("layout_container", "option") )) >
   <div class="grid grid-cols-12 w-full h-full">
     <div class="col-span-12 lg:col-span-5
-      px-2 md:pr-4 2xl:pr-8
+      px-2 lg:pl-0 md:px-4 lg:pr-8
       flex flex-col
     ">
       <h1 class="text-charcoal font-light text-xl

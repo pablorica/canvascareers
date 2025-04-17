@@ -11,6 +11,10 @@
     flex-wrap: wrap !important;
     & > .wp-block-column {
       flex-basis: 100% !important;
+
+      .wp-block-spacer.header-spacer:not(.is-style-mobile-show) {
+        display: none;
+      }
     }
   }
 

@@ -98,17 +98,29 @@
     }
 
     .wpcf7-response-output {
+      margin: 3px 20px 0;
+      text-align: center;
       font-size: 10px;
-      @apply text-center m-0 md:absolute;
-      top: 12px;
-      right: 60px;
-      left: 20px;
-      padding: 0.2em 2em;
+      display: block;
+      @apply font-normal p-0 border-0;
+    }
+
+    .invalid {
+      .wpcf7-response-output {
+        @apply text-walnut;
+      }
+    }
+
+    .sent {
+      .wpcf7-response-output {
+        @apply text-sage;
+      }
     }
   }
 
   .wpcf7-not-valid-tip {
     @apply text-walnut;
+    font-size: 10px;
   }
 
   .wpcf7-form-control.wpcf7-text {

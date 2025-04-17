@@ -44,11 +44,11 @@
       <a
         class="
           job-filter whitespace-nowrap
-          text-sm md:text-md py-2 px-1 md:px-3 rounded-full
+          text-sm md:text-md py-2 px-1 md:px-2 rounded-full
           bg-chalk hover:bg-citrus cursor-pointer
           transition-colors duration-300
           border border-charcoal block
-          leading-none text-center w-[120px] md:w-[150px]
+          leading-none text-center w-[120px] md:w-[118px]
           overflow-ellipsis overflow-hidden
         "
         data-filter=".{{ $tag->slug }}"

@@ -55,7 +55,7 @@ if ($category) {
           @endforeach
 
           <div
-            class="job-item border-b border-charcoal px-5 md:px-0 {{ implode(' ', $terms_slugs) }}"
+            class="job-item relative border-b border-charcoal px-5 md:px-0 {{ implode(' ', $terms_slugs) }}"
           >
             <div class="grid grid-cols-12 items-center job-accordion cursor-pointer py-3">
               <div class="
@@ -84,7 +84,7 @@ if ($category) {
               id="collapse-{{ $loop->index }}"
               class="job-body accordion-collapse overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
             >
-              <div class="grid grid-cols-12 pt-4 pb-8 relative md:min-h-[315px]">
+              <div class="grid grid-cols-12 pt-4 pb-8 md:min-h-[340px]">
                 <div class="col-span-12 md:pl-16">
                   <div class="job-info pb-6 md:pb-8 font-sans text-base md:text-lg font-light">
                     <div class="flex mb-2">
@@ -139,13 +139,12 @@ if ($category) {
 
                 @if($form_id = get_field('contact_form'))
                   <div
-                    class="job-form col-span-12 mt-10 md:mt-0"
+                    class="job-form col-span-12 md:col-span-2 md:col-start-11 mt-10 md:mt-0 flex md:items-end flex-col md:flex-row"
                     data-job-id="{{ $job->ID }}"
                     data-job-title="{{ $job->post_title }}"
                   >
                     <a
                       class="
-                        md:absolute right-0 bottom-8
                         text-sm md:text-md py-2 px-1 md:px-3 rounded-full
                         bg-chalk md:hover:bg-citrus cursor-pointer
                         transition-colors duration-300
@@ -159,9 +158,9 @@ if ($category) {
 
                     <div class="form-container hidden
                       relative md:absolute
-                      right-0 md:top-[calc(50%-47px)] md:-translate-y-1/2
+                      right-0 md:top-1/2 md:-translate-y-1/2
                       md:max-w-[300px]
-                      px-3 md:px-6 pt-6 md:py-4
+                      px-3 md:px-4 pt-6 md:py-4
                       border-t md:border border-charcoal
                       bg-chalk
                       mt-6 md:mt-0
