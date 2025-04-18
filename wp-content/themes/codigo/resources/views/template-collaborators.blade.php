@@ -156,9 +156,7 @@
                             flex items-end justify-start
                             opacity-0 group-hover:opacity-100
                             transition-opacity duration-300">
-                            <span class="font-serif italic
-                              text-xl lg:text-xl 2xl:text-2xl
-                              font-normal line-clamp-none">Published in {{ $month }}</span>
+                            <span class="font-serif italic font-normal line-clamp-none">Published in {{ $month }}</span>
                           </div>
                         @endif
                       </div>
@@ -168,16 +166,14 @@
                         class="w-full
                           bg-cover bg-center bg-no-repeat
                           lg:hidden flex-1
-                          relative {{ !$is_active ? 'opacity-50' : '' }}"
+                          relative"
                         style="background-image: url('{{ get_the_post_thumbnail_url($collaborator) }}')"
                       >
                         @if (!$is_active)
                           <div class="absolute inset-0
-                            bg-white bg-opacity-40
+                            bg-white bg-opacity-60
                            flex items-end justify-start">
-                            <span class="font-serif italic
-                              text-xl lg:text-xl 2xl:text-2xl
-                              font-normal line-clamp-none">Published in {{ $month }}</span>
+                            <span class="font-serif italic  font-normal line-clamp-none">Published in {{ $month }}</span>
                           </div>
                         @endif
                       </div>
