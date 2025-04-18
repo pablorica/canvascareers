@@ -4,8 +4,9 @@
 
 @extends('layouts.app')
 
-<!-- /codigo/resources/views/template-collaborators.blade.php -->
+
 @section('content')
+<!-- /codigo/resources/views/template-collaborators.blade.php -->
   <div
     id="collaborators"
     class="@option('layout_container')
@@ -96,9 +97,26 @@
                 ob_start();
                 $output = '';
                 foreach($collaborators as $collaborator):
+                  $month = get_field('month', $collaborator);
+                  // Check if the current month is previous to the month of the collaborator
+
+                  $current_month = date('n'); // Numeric representation of the current month (1-12)
+                  $current_year = date('Y'); // Current year
+
+                  $collaborator_month = date('n', strtotime($month)); // Numeric representation of the collaborator's month (1-12)
+                  $collaborator_year = date('Y', strtotime($year->slug)); // Year of the collaborator
+
+                  $is_current = ($current_month == $collaborator_month && $current_year == $collaborator_year);
+
+                  $is_previous = ($current_year > $collaborator_year) ||
+                                ($current_year == $collaborator_year && $current_month > $collaborator_month);
+
+                  //error_log("Current month: $current_month, Collaborator month: $collaborator_month, Current year: $current_year, Collaborator year: $collaborator_year, Is current: $is_current, Is previous: $is_previous");
+                  $is_active = $is_current || $is_previous;
+
                 ?>
                   <div class="collaborator !flex flex-col justify-end">
-                    <a href="{{ get_permalink($collaborator) }}"
+                    <a href="{{ $is_active ? get_permalink($collaborator) : 'javascript:void(-1)' }}"
                       class="group
                         mbtb-only:flex mbtb-only:flex-1 mbtb-only:flex-col"
                       >
@@ -120,24 +138,50 @@
                           <strong>{{ get_field('position', $collaborator) }},</strong> {{ get_field('location', $collaborator) }}
                         </p>
                       </div>
-                      <img
-                        class="hidden lg:block
-                          aspect-[20/24] max-h-[18vw]
-                          w-full
-                          group-hover:max-h-[24vw]
-                          transition-all duration-300
-                          object-cover"
-                        src="{{ get_the_post_thumbnail_url($collaborator) }}"
-                        alt="{{ get_the_title($collaborator) }}"
-                      />
+                      {{-- Desktop Image --}}
+                      <div class="hidden lg:block
+                        aspect-[20/24] max-h-[18vw]
+                        w-full
+                        group-hover:max-h-[24vw]
+                        transition-all duration-300
+                        relative">
+                        <img
+                          class="w-full h-full object-cover"
+                          src="{{ get_the_post_thumbnail_url($collaborator) }}"
+                          alt="{{ get_the_title($collaborator) }}"
+                        />
+                        @if (!$is_active)
+                          <div class="absolute inset-0
+                            bg-white bg-opacity-60
+                            flex items-end justify-start
+                            opacity-0 group-hover:opacity-100
+                            transition-opacity duration-300">
+                            <span class="font-serif italic
+                              text-xl lg:text-xl 2xl:text-2xl
+                              font-normal line-clamp-none">Published in {{ $month }}</span>
+                          </div>
+                        @endif
+                      </div>
+
+                      {{-- Mobile Image --}}
                       <div
                         class="w-full
                           bg-cover bg-center bg-no-repeat
                           lg:hidden flex-1
-                        "
+                          relative {{ !$is_active ? 'opacity-50' : '' }}"
                         style="background-image: url('{{ get_the_post_thumbnail_url($collaborator) }}')"
                       >
+                        @if (!$is_active)
+                          <div class="absolute inset-0
+                            bg-white bg-opacity-40
+                           flex items-end justify-start">
+                            <span class="font-serif italic
+                              text-xl lg:text-xl 2xl:text-2xl
+                              font-normal line-clamp-none">Published in {{ $month }}</span>
+                          </div>
+                        @endif
                       </div>
+
                     </a>
                   </div>
                 <?php
