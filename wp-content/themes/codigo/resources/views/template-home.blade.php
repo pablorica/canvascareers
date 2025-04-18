@@ -73,7 +73,7 @@
             collaborator-fade-in-up
           ">
             <img
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover absolute inset-0"
               src="{{ get_field('home_first_image', $collaborator->ID) }}"
               alt="{{ $collaborator->post_title }}"
             >
@@ -85,7 +85,7 @@
             collaborator-fade-in-up
           ">
             <img
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover absolute inset-0"
               src="{{ get_field('home_second_image', $collaborator->ID) }}"
               alt="{{ $collaborator->post_title }}"
             >
