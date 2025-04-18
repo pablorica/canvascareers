@@ -21,7 +21,7 @@
       overflow-ellipsis overflow-hidden
     "
   >
-    {{ __('Filters', 'codigo') }}
+    {{ __('Sectors', 'codigo') }}
   </a>
 
   <div class="job-filter-content
@@ -72,7 +72,7 @@
       "
       data-filter=""
     >
-      {{ __('Clear Filters', 'codigo') }}
+      {{ __('Clear Sectors', 'codigo') }}
     </a>
   </div>
 </div>

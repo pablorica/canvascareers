@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+## [0.4.3] - 2025-04-18
+
+### Updated
+
+- [Mobile: Home](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210004012538696) 
+- [Mobile: Jobs](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210004012538692) 
+- [Mobile: Single Collaborator](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210004016350637) 
+
+
 ## [0.4.2] - 2025-04-17
 
 ### Updated

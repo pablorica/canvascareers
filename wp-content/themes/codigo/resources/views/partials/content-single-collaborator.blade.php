@@ -6,26 +6,36 @@
 <!-- /codigo/resources/views/partials/content-single-collaborator.blade.php -->
 <article @php(post_class('h-entry h-full lg:pr-0 '.get_field("layout_container", "option") )) >
   <div class="grid grid-cols-12 w-full h-full">
-    <div class="col-span-12 lg:col-span-5
-      px-2 lg:pl-0 md:px-4 lg:pr-8
-      flex flex-col
-    ">
+    <div class="col-span-12 px-2 lg:hidden order-1">
       <h1 class="text-charcoal font-light text-xl
-        flex gap-1 justify-between flex-wrap
-        mt-2 pb-7
-        lg:hidden">
+          flex gap-1 justify-between flex-wrap
+          mt-2 pb-7 lg:hidden">
         <span class="block">{{ __('In Conversation:', 'codigo') }}</span>
         {{ get_the_title() }}
       </h1>
+
+      <figure class="w-full">
+        <img
+          class="w-full h-full object-cover"
+          src="{{ get_the_post_thumbnail_url(get_the_ID(), 'full') }}"
+          alt="{{ get_the_title() }}"
+        >
+      </figure>
+    </div>
+
+    <div class="col-span-12 lg:col-span-5
+      px-2 lg:pl-0 md:px-4 lg:pr-8 pb-10 lg:pb-0
+      flex flex-col order-5 lg:order-2
+    ">
       <div class="header-spacer hidden lg:block"></div>
 
       @php($portfolio_images = get_field('portfolio_images'))
       @if($portfolio_images)
         <div class="wrapper-carousel
           flex items-center flex-1
-          md:my-5 md:mx-[-30px] lg:mx-0
+          md:my-5 lg:mx-0
         ">
-          <div class="cursor-pointer prev-button hidden md:block">
+          <div class="cursor-pointer prev-button hidden lg:block">
             <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
               <polyline points="30,10 15,25 30,40" stroke="black" stroke-width="2" fill="none"/>
             </svg>
@@ -51,7 +61,7 @@
             </div>
           </div>
 
-          <div class="cursor-pointer next-button hidden md:block">
+          <div class="cursor-pointer next-button hidden lg:block">
             <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
               <polyline points="20,10 35,25 20,40" stroke="black" stroke-width="2" fill="none"/>
             </svg>
@@ -59,14 +69,15 @@
         </div>
       @endif
     </div>
+
     <div class="col-span-12 lg:col-span-4
       flex flex-col
-      mt-8 md:mt-0
+      mt-8 lg:mt-0 order-3
     ">
       <div class="pb-5
         border-b lg:border-l lg:border-x border-charcoal
         px-4
-        hidden md:block
+        hidden lg:block
       ">
         <div class="pt-7 pb-6 flex justify-between items-center text-sm font-bold">
           <span>
@@ -121,7 +132,8 @@
         </div>
       </div>
     </div>
-    <div class="col-span-3 py-1.5 px-4 hidden lg:block">
+
+    <div class="col-span-3 py-1.5 px-4 hidden lg:block order-4">
       @php($years = get_terms('collaborator-year', ['hide_empty' => false]))
       @foreach($years as $year)
         <div class="py-7 2xl:py-8 border-b border-charcoal">
