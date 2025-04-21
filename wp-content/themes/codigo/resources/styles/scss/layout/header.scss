@@ -25,7 +25,10 @@
     height: 152px;
   }
   @media (min-width: theme("screens.xl")) {
-    height: 178px;
+    height: 166px;
+  }
+  @media (min-width: theme("screens.2xl")) {
+    height: 196px;
   }
 }
 

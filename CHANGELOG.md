@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.4.4] - 2025-04-18
+
+### Updated
+
+ - Polish collaborators carousel 
+
+
+
 ## [0.4.3] - 2025-04-18
 
 ### Updated

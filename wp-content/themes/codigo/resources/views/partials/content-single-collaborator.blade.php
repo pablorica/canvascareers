@@ -33,7 +33,7 @@
       @if($portfolio_images)
         <div class="wrapper-carousel
           flex items-center flex-1
-          md:my-5 lg:mx-0
+          md:my-5 lg:mx-0 lg:mt-0
         ">
           <div class="cursor-pointer prev-button hidden lg:block">
             <svg width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
@@ -54,9 +54,14 @@
             >
               @foreach($portfolio_images as $image)
                 <div
-                  class="bg-{{ $image['fit_mode'] ?? 'cover' }} bg-center w-full bg-no-repeat"
-                  style="background-image: url('{{ $image['image'] }}')"
-                ></div>
+                  class="w-full relative">
+                  <img class=" absolute
+                    {{ $image['fit_mode'] == 'cover' ?
+                      'object-cover top-0 left-1/2 -translate-x-1/2 aspect-[20/25] h-full  w-auto'
+                      : 'object-contain top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-auto  w-auto max-w-full max-h-full'
+                    }}"
+                  src="{{ $image['image'] }}"
+                /></div>
               @endforeach
             </div>
           </div>
