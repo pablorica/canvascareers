@@ -115,11 +115,15 @@
                   $is_active = $is_current || $is_previous;
 
                 ?>
-                  <div class="collaborator !flex flex-col justify-end">
+                  <div class="collaborator
+                    group
+                    !flex flex-col
+                    justify-end
+                    pr-2
+                  ">
                     <a href="{{ $is_active ? get_permalink($collaborator) : 'javascript:void(-1)' }}"
-                      class="group
-                        mbtb-only:flex mbtb-only:flex-1 mbtb-only:flex-col"
-                      >
+                      class="mbtb-only:flex mbtb-only:flex-1 mbtb-only:flex-col"
+                    >
                       <div class="font-sans
                         text-lg lg:text-xl 2xl:text-3xl
                         mb-5 2xl:mb-7">
@@ -156,7 +160,10 @@
                             flex items-end justify-start
                             opacity-0 group-hover:opacity-100
                             transition-opacity duration-300">
-                            <span class="font-serif italic font-normal line-clamp-none">Published in {{ $month }}</span>
+                            <span class="font-serif italic
+                              font-normal text-white text-sm
+                              line-clamp-none
+                              mb-2 ml-2">Published in {{ $month }}</span>
                           </div>
                         @endif
                       </div>
@@ -173,7 +180,11 @@
                           <div class="absolute inset-0
                             bg-white bg-opacity-60
                            flex items-end justify-start">
-                            <span class="font-serif italic  font-normal line-clamp-none">Published in {{ $month }}</span>
+                            <span class="font-serif italic
+                              font-normal text-white text-sm
+                              line-clamp-none
+                              mb-2 ml-2
+                            ">Published in {{ $month }}</span>
                           </div>
                         @endif
                       </div>
@@ -187,13 +198,13 @@
                 ?>
 
               <div
-                class="flex gap-2 lg:my-8 lg:hidden tiny-carousel"
+                class="flex gap-0 lg:my-8 lg:hidden tiny-carousel"
                 data-autoplay-timeout="{{ get_field('slider_speed') }}"
               >
               {!! $output !!}
               </div>
               <div class="absolute
-                hidden lg:flex  gap-2
+                hidden lg:flex  gap-0
                 right-[40px] 2xl:right-[70px]
                 bottom-[40px]"  >
               {!! $output !!}

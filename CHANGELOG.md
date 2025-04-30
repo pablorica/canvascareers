@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.4.6] - 2025-04-30
+
+### Updated
+
+- [Desktop: Collaborators weird movement](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210023502043728) 
+
 
 ## [0.4.5] - 2025-04-30
 
