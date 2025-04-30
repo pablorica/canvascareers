@@ -1,4 +1,12 @@
 .page-template-template-jobs {
+  @media (min-width: 768px) {
+    #main {
+      overflow: hidden;
+      #jobs:not(.overflow-hidden) {
+        overflow-y: scroll;
+      }
+    }
+  }
   .job-body {
     h1, h2, h3, h4, h5, h6 {
       @apply font-sans;

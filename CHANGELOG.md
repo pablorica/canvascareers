@@ -8,12 +8,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.4.5] - 2025-04-30
+
+### Updated
+
+- [Desktop: Jobs Accordion](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210023502043725) 
+
 ## [0.4.4] - 2025-04-18
 
 ### Updated
 
  - Polish collaborators carousel 
-
 
 
 ## [0.4.3] - 2025-04-18

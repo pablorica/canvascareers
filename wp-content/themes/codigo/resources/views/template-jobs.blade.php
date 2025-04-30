@@ -26,15 +26,21 @@ if ($category) {
 
 @extends('layouts.app')
 
-<!-- /codigo/resources/views/template-jobs.blade.php -->
 @section('content')
   @php($jobs = get_posts($args))
 
+<!-- /codigo/resources/views/template-jobs.blade.php -->
   <div class="jobs-list
     md:px-8 2xl:px-14
     lg:mt-2">
     <div class="mb-8">
-      <div class="hidden md:grid grid-cols-12 items-center py-4 font-sans text-xl border-b border-charcoal">
+      <div id="jobsListheader"
+        class="hidden
+          md:grid grid-cols-12
+          items-center py-4
+          font-sans text-xl
+          border-b border-charcoal
+      ">
         <div class="md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4 flex items-center px-4">
           <div class="w-12 pr-4"></div>
           {{ __('Position', 'codigo') }}
@@ -90,9 +96,22 @@ if ($category) {
               id="collapse-{{ $loop->index }}"
               class="job-body accordion-collapse overflow-hidden max-h-0 transition-all duration-300 ease-in-out"
             >
-              <div class="grid grid-cols-12 pt-4 pb-8
-                md:min-h-[calc(100vh-144.5px-108.9px-40px)]
-                2xl:min-h-[calc(100vh-167px-123.65px-54px)]
+            {{--
+              md:
+              nav : 144.5px
+              footer: 108.9px
+              jobs-header: 95px;
+
+              2xl:
+              nav : 167.5px
+              footer: 123.65px
+              jobs-header: 110px;
+
+              This is overwritten by the JS in resources/scripts/modules/jobs.js
+            --}}
+              <div class="job-grid grid grid-cols-12 pt-4 pb-8
+                  md:min-h-[calc(100vh-144.5px-108.9px-95px)]
+                  2xl:min-h-[calc(100vh-167.5px-123.65px-110px)]
               ">
                 <div class="col-span-12 md:pl-16">
                   <div class="job-info pb-6 md:pb-8 font-sans text-base md:text-lg font-light">

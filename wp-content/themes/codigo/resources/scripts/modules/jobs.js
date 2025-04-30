@@ -3,25 +3,162 @@ const jobs = () => {
   function loadJobs() {
     // Get grid element
     const jobs = document.getElementById('jobs');
-    let currentFilter = '';
 
     if (!jobs) {
       return;
     }
 
+    let currentFilter = '';
+    var jobItems      = document.querySelectorAll('.job-item');
+    var numberOfJobs  = jobItems.length;
+    var displacement  = 0;
+
+    var previousWidth  = window.innerWidth;
+    var previousHeight = window.innerHeight;
+
+    //Default collapsed job height (md viewport)
+    var collapsedJobheight = 40;
+    //Default min job height (md viewport)
+    var jobMinHeight = previousHeight - 144.5 - 108.9 - 95;
+    //jobMinHeight = previousHeight - headerHeight - footerHeight - jobsHeaderHeight;
+
+    var mainWrapperHeight = 0;
+    var jobsHeaderHeight = 95;
+    var marginHeader = 0;
+    if(previousWidth > 1024) {
+      marginHeader = 5;
+    }
+    // Select the main element
+    const mainWrapper = document.querySelector('main#main');
+    if (mainWrapper) {
+      mainWrapperHeight = mainWrapper.offsetHeight;
+      const jobsHeader = document.querySelector('#jobsListheader');
+
+      if (jobsHeader) {
+        jobsHeaderHeight = jobsHeader.offsetHeight + marginHeader;
+      }
+      jobMinHeight = mainWrapperHeight - jobsHeaderHeight;
+
+      const jobsWrapper = document.querySelector('#jobs');
+      if (jobsWrapper) {
+        jobsWrapper.style.maxHeight = jobMinHeight + 'px';
+      }
+
+    }
+
+    function getCollapsedJobheight() {
+      const currentWidth = window.innerWidth;
+      if( currentWidth > 768) {
+        // md: job height = 40px
+        collapsedJobheight = 40;
+      }
+      if( currentWidth > 1792) {
+        // 2xl: job height = 54px
+        collapsedJobheight = 54;
+      }
+    }
+    getCollapsedJobheight();
+
+    // Save the min-height data for each job item
+    function setMinHeightsAttributes() {
+      //console.log('setMinHeightsAttribute');
+      if (mainWrapper) {
+        mainWrapperHeight = mainWrapper.offsetHeight;
+        //console.log('mainWrapperHeight', mainWrapperHeight);
+
+        const jobsHeader = document.querySelector('#jobsListheader');
+        if (jobsHeader) {
+          jobsHeaderHeight = jobsHeader.offsetHeight + marginHeader;
+          //console.log('jobsHeaderHeight', jobsHeaderHeight);
+        }
+        jobMinHeight = mainWrapperHeight - jobsHeaderHeight;
+      }
+
+    }
+    setMinHeightsAttributes();
+
+    // Set min height for each job item
+    function prepareJobs() {
+      const currentWidth = window.innerWidth;
+      //This is needed only for desktop
+      if( currentWidth <= 768) {
+        return;
+      }
+
+      displacement = 0;
+      if( numberOfJobs > 0 ) {
+        displacement = numberOfJobs  * collapsedJobheight;
+        if( numberOfJobs >= 4 ) {
+          displacement = 4 * collapsedJobheight;
+        }
+      }
+      jobItems.forEach((job) => {
+        const jobGrid = job.querySelector('.job-grid');
+        jobGrid.style.minHeight = ( jobMinHeight - displacement ) + 'px';
+      });
+    }
+    prepareJobs();
+
+    //Change height values on resize
+    window.addEventListener('resize', () => {
+      const currentWidth = window.innerWidth;
+      const currentHeight = window.innerHeight;
+
+      //This is needed only for desktop
+      if( currentWidth <= 768) {
+        return;
+      }
+
+      // Check if the width has changed
+      if (currentWidth !== previousWidth) {
+        const crossedThreshold =
+          (previousWidth < 1792 && currentWidth >= 1792) ||
+          (previousWidth >= 1792 && currentWidth < 1792);
+
+        if (crossedThreshold) {
+          getCollapsedJobheight();
+          setMinHeightsAttributes();
+          prepareJobs();
+        }
+
+        previousWidth = currentWidth;
+      }
+
+      // Check if the height has changed
+      if (currentHeight !== previousHeight) {
+        getCollapsedJobheight();
+        setMinHeightsAttributes();
+        prepareJobs();
+
+        previousHeight = currentHeight;
+      }
+    });
+
+
     // Filter jobs
     function filterJobs(filterValue) {
+      numberOfJobs = 0;
       // Filter manually by class
-      const jobItems = document.querySelectorAll('.job-item');
       jobItems.forEach((job) => {
         if (!filterValue) {
           job.style.display = 'block';
+          numberOfJobs = jobItems.length;
           return;
         }
 
         let filter = filterValue.replace('.', '');
-        job.style.display = job.classList.contains(filter) ? 'block' : 'none';
+        //job.style.display = job.classList.contains(filter) ? 'block' : 'none';
+        job.style.display = 'none';
+        if (job.classList.contains(filter)) {
+          job.style.display = 'block';
+          numberOfJobs++;
+        }
       });
+
+      setTimeout(() => {
+        prepareJobs()
+      }, 100);
+
     }
 
     // Get filters
@@ -71,6 +208,8 @@ const jobs = () => {
 
     // Accordions
     function toggleAccordion(element, index) {
+      const currentWidth = window.innerWidth;
+      const jobsWrapper = document.querySelector('#jobs');
       const parent = element.parentNode;
 
       // Hide all other accordions
@@ -87,6 +226,7 @@ const jobs = () => {
 
         content.style.maxHeight = '0';
         content.classList.add('overflow-hidden');
+        content.classList.remove('overflow-y-scroll');
         icon.style.transform = 'rotate(0deg)';
 
         // Apply button
@@ -106,8 +246,16 @@ const jobs = () => {
 
       // Toggle the content's max-height for smooth opening and closing
       if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+
+        // Enable scroll on jobsWrapper when all jobs are closed
+        jobsWrapper.classList.remove('overflow-hidden');
+
+        // Hide the content
         content.style.maxHeight = '0';
         content.classList.add('overflow-hidden');
+        content.classList.remove('overflow-y-scroll');
+
+        // Reset the icon rotation
         icon.style.transform = 'rotate(0deg)';
 
         // Apply button
@@ -119,12 +267,56 @@ const jobs = () => {
           }
         }
       } else {
-        content.style.maxHeight = content.scrollHeight + 'px';
+
+        content.style.maxHeight = content.scrollHeight   + 'px';
+        if(currentWidth > 768) {
+          content.style.maxHeight = (jobMinHeight - displacement)   + 'px';
+        }
+
         icon.style.transform = 'rotateX(180deg)';
+        //console.log('jobMaxHeight', jobMinHeight - displacement);
+        //console.log('jobscrollHeight', content.scrollHeight);
 
         setTimeout(() => {
           content.classList.remove('overflow-hidden');
+          content.classList.add('overflow-y-scroll');
+        }, 300);
 
+        //console.log('numberOfJobs', numberOfJobs);
+        //console.log('index',index);
+
+
+        //This is needed only for desktop
+        if( currentWidth > 768 ) {
+
+
+          if( numberOfJobs > 4 && index > 3) {
+            setTimeout(() => {
+              // Scroll up jobsWrapper to show only 4 jobs
+              jobsWrapper.scrollTo({
+                behavior: 'smooth',
+                top: collapsedJobheight  * (index - 3)
+              });
+
+            }, 300);
+          }
+          setTimeout(() => {
+            // Disable scroll on jobsWrapper when a job is open
+            jobsWrapper.classList.add('overflow-hidden');
+          }, 800);
+        }
+
+
+        /*
+
+        const mainScroll = document.querySelector('#main');
+            mainScroll.scrollTo({
+              behavior: 'smooth',
+              top: 100,
+            });
+
+
+        setTimeout(() => {
           // Scroll to accordion
           let jobItemScroll = parent.offsetTop;
           let headerHeight = document.querySelector('#mainMenu').offsetHeight;
@@ -141,7 +333,9 @@ const jobs = () => {
               top: jobItemScroll - headerHeight - 2,
             });
           }
+
         }, 300);
+        */
       }
     }
 
@@ -175,9 +369,13 @@ const jobs = () => {
                 toggle.classList.toggle('active');
               }
 
-              // Search parent job-body
-              const jobBody = toggle.closest('.job-body');
-              jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+              //Mobile only
+              if(previousWidth <= 768) {
+                // Search parent job-body
+                const jobBody = toggle.closest('.job-body');
+                jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+              }
+
             });
           });
         }
@@ -286,11 +484,15 @@ const jobs = () => {
               filesAdded = [];
             }
 
-            // Search parent job-body
-            const jobBody = form.closest('.job-body');
-            if (!jobBody.querySelector('.form-container').classList.contains('hidden')) {
-              jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+            //Mobile only
+            if(previousWidth <= 768) {
+              // Search parent job-body
+              const jobBody = form.closest('.job-body');
+              if (!jobBody.querySelector('.form-container').classList.contains('hidden')) {
+               jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+              }
             }
+
           }, false);
         }
       });
