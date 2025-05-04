@@ -45,7 +45,10 @@
 @import "scss/pages/jobs";
 
 /* Load effect **/
-//@import "scss/layout/load-effect";
+// To enable load effect on all pages, uncomment the line below and enable the JS in app.js
+@import "scss/layout/load-effect";
+/* If don't want to show the load effect, uncomment the following line
 .growing-button {
   min-width: 100%;
 }
+*/

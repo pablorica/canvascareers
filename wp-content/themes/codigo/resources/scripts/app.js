@@ -62,15 +62,20 @@ const CDG = {
   onloadFunctions: function() {
     //consoleHello('CDG is loaded');
     jobs();
-    //loadEffect();
+
+    if(document.body.classList.contains('page-template-template-home')){
+      //consoleHello('home page');
+      loadEffect();
+    }
   }
 };
 
 CDG.onreadyFunctions();
 
-window.onload = function(event) {
+
+document.addEventListener('DOMContentLoaded', () => {
   CDG.onloadFunctions();
-};
+});
 
 /**
  * @see {@link https://webpack.js.org/api/hot-module-replacement/}

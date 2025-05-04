@@ -4,7 +4,7 @@
 --}}
 
 <!-- /codigo/resources/views/sections/footer.blade.php -->
-<footer class="
+<footer class="footer
     w-full
     md:border-t border-charcoal
     py-1 md:pt-5 md:pb-7 bg-chalk
@@ -55,16 +55,24 @@
           </li>
         @endforeach
       </ul>
-      <div>
-        <a
+      @if (is_front_page())
+      {{-- Animated Brand --}}
+        <div class="splash-logo splash-logo--footer">
+          <a
+            href="{{ home_url('/') }}"
+            class="brand-footer
+            text-7xl md:text-8xl 2xl:text-9xl
+            text-charcoal leading-[0.75]"
+          ><span class="block">{{ __('Careers', 'codigo') }}</span></a>
+        </div>
+      {{-- End Animated Brand --}}
+      @endif
+      <a
           href="{{ home_url('/') }}"
           class="brand-footer
           text-7xl md:text-8xl 2xl:text-9xl
           text-charcoal leading-[0.75]"
-        >
-          {{ __('Careers', 'codigo') }}
-        </a>
-      </div>
+        ><span class="block">{{ __('Careers', 'codigo') }}</span></a>
     </div>
   </div>
 
