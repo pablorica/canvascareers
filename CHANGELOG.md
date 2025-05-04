@@ -7,11 +7,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.5.1] - 2025-05-04
+
+### Updated
+
+- [Home animation](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210023502043735) Polishing effect
+
+
+
 ## [0.5.0] - 2025-05-04
 
 ### Added
 
 - [Home animation](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210023502043735) 
+
+
 
 ## [0.4.6] - 2025-04-30
 

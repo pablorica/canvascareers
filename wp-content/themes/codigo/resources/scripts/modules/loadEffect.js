@@ -173,7 +173,7 @@ const loadEffect = () => {
       // Create a session cookie, it does not have an expiration date, the cookie is deleted when the browser is closed
       document.cookie = "preloadershowed=true;path=/;SameSite=Strict";
 
-      consoleHello(document.cookie);  // 'Wed, 21 Apr 2021 17:42:22 GMT'
+      //consoleHello(document.cookie);  // 'Wed, 21 Apr 2021 17:42:22 GMT'
       body.classList.add('load-effect');
       launchPreloader();
 
@@ -182,6 +182,10 @@ const loadEffect = () => {
     body.classList.add('no-before');
     body.style.opacity = 1;
   }
+
+  //Debug
+  //body.classList.add('load-effect');
+  //launchPreloader();
 };
 
 export default loadEffect;

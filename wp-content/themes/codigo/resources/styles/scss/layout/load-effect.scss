@@ -67,12 +67,12 @@ body.page-template-template-home.load-effect {
       transform: translate(calc(50px + 50%), calc(55px + 50%)) scale(1.5);
     }
 
-    /* Step 1: fade in */
+    /* Splash logo animation| Step 1: fade in */
     .splash-logo.visible {
       opacity: 1;
     }
 
-    /* Step 2: move to final positions */
+    /* Splash logo animation | Step 2: move to final positions */
     .splash-logo--header.animate-out {
       top: 1.25rem;
       left: 2rem;
@@ -146,6 +146,24 @@ body.page-template-template-home.load-effect {
     .collaborator-fade-in-up.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+  @media (min-width: theme("screens.2xl")) {
+    .splash-logo--header {
+      transform: translate(calc(-60px - 50%), calc(-70px - 50%)) scale(1.5);
+    }
+    .splash-logo--footer {
+      transform: translate(calc(60px + 50%), calc(70px + 50%)) scale(1.5);
+    }
+    /* Splash logo animation | Step 2: move to final positions */
+    .splash-logo--header.animate-out {
+      top: 1.25rem;
+      left: 3.5rem;
+    }
+
+    .splash-logo--footer.animate-out {
+      bottom: 1.75rem;
+      right: 3.5rem;
     }
   }
 
