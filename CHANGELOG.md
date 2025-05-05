@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - [Home animation](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210023502043735) Polishing effect
 
+### Fixed
+
+- [Home animation](https://app.asana.com/1/355454733208534/project/1209462826205010/task/1210023502043735) Buttons order
 
 
 ## [0.5.0] - 2025-05-04

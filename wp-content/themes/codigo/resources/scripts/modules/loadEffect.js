@@ -78,11 +78,15 @@ const loadEffect = () => {
 
     const startButtonsAnimation = startAnimation + 400;
     setTimeout(() => {
+      /*
       const footerButtons = document.querySelectorAll('footer.footer .growing-button');
       // add header  .growing-button to buttons
       const headerButtons = document.querySelectorAll('header#mainMenu .growing-button');
 
       const buttons = [...footerButtons, ...headerButtons];
+      */
+
+      const buttons = document.querySelectorAll('.growing-button');
 
       const typingDelayBetweenButtons = 300; // Delay between starting each button (ms)
       if(!buttons.length) return; // Exit if no buttons found
