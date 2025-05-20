@@ -21,13 +21,16 @@
     ">
       <div class="
         col-span-12 lg:col-span-2
-        mb-10 mt-2 lg:my-8
+        mb-10 mt-2 lg:my-0
         flex flex-wrap
         gap-y-2 gap-x-4
-        items-center justify-between
+        items-base justify-between
         lg:block
       ">
-        <h1 class="h4 text-2xl">{{ get_the_title() }}</h1>
+        <h1 class="font-sans
+            text-lg lg:text-xl 2xl:text-3xl
+            mb-5 2xl:mb-7"
+        >{{ get_the_title() }}</h1>
 
         <div class="text-sm 2xl:text-md
           mt-6 mb-9
@@ -60,10 +63,6 @@
             @endif
           @endforeach
         </ul>
-
-        <div class="hidden lg:block
-          h-[8vw] 2xl:h-[15vw]"
-        ></div>
       </div>
 
       <div class="hidden lg:block col-span-2 lg:col-span-1"></div>
@@ -85,12 +84,52 @@
               col-span-12 lg:col-span-9
               w-full
               max-w-[70%] lg:max-w-full
-              mx-auto flex-1
+              mx-auto
+              flex-1
               lg:relative
-              @if(!$loop->first) hidden @endif
+              @if(!$loop->first) hidden @else flex @endif
               @if (count($collaborators) > 0) wrapper-carousel @endif
             "
           >
+          <div class="collaborator-placeholder
+              group
+              !flex flex-col
+              justify-end
+              pr-2
+              mb-[40px]
+              mbtb-only:hidden"
+          >
+            <div class="">
+              <div class="font-sans
+                text-lg lg:text-xl 2xl:text-3xl
+                mb-5 2xl:mb-7">&nbsp</div>
+              <div class="mb-4">
+                <h2 class="font-serif
+                  text-xl lg:text-xl 2xl:text-2xl
+                  font-normal
+                  line-clamp-1 lg:line-clamp-none
+                "><span class="italic">&nbsp</span> &nbsp</h2>
+                <p class="text-sm mt-3 font-serif line-clamp-1 lg:line-clamp-none">
+                  <strong>&nbsp</strong> &nbsp</p>
+              </div>
+              <div class="hidden lg:block
+                aspect-[20/24] max-h-[18vw]
+                w-full
+                relative">
+                <img class="w-full h-full object-cover"
+                  src="https://canvascareers.localhost/wp-content/uploads/2025/02/DSC07081-min-scaled.jpg"
+                  alt="Marcus Quigley"
+                >
+              </div>
+
+
+              <div class="w-full
+                  bg-cover bg-center bg-no-repeat
+                  lg:hidden flex-1
+                  relative"
+              ></div>
+            </div>
+          </div>
             @if (count($collaborators) > 0)
 
               <?php
