@@ -114,7 +114,10 @@ if ($category) {
                   2xl:min-h-[calc(100vh-167.5px-123.65px-110px)]
               ">
                 <div class="col-span-12 md:pl-16">
-                  <div class="job-info pb-6 md:pb-8 font-sans text-base md:text-lg font-light">
+                  <div class="job-info
+                    pb-6 md:pb-8
+                    font-sans text-base font-light"
+                  >
                     <div class="flex mb-2">
                       <div class="w-20 mr-2">{{ __('Salary', 'codigo') }}</div>
                       <div>{{ get_field('salary', $job) }}</div>

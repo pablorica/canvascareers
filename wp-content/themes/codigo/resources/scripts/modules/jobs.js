@@ -101,10 +101,10 @@ const jobs = () => {
 
     //Function to close all jobs
     function closeAllJobs(index = null) {
-      //console.log('closeAllJobs');
+      //console.log('closeAllJobs index', index);
       const accordions = document.getElementsByClassName('job-accordion');
       Array.from(accordions).forEach((accordion, i) => {
-        if(index) {
+        if(index !== null) {
           if (i === index) {
             return;
           }

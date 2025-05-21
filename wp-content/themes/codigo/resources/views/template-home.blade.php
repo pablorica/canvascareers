@@ -28,12 +28,14 @@
             <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
           </h1>
           <span class="block
-            text-md mt-1 md:mt-6
+            text-md md:text-sm 2xl:text-base
+            mt-1 md:mt-6
             collaborator-fade-in-up
           ">
             {{ get_field('position', $collaborator) }} {{ __('based in', 'codigo') }} {{ get_field('location', $collaborator) }}
           </span>
-          <div class="text-md mt-4
+          <div class="text-md md:text-sm 2xl:text-base
+            mt-4
             max-w-[215px] 2xl:max-w-[260px]
             hidden md:block
             collaborator-fade-in-up
@@ -45,7 +47,8 @@
           <a
             href="{{ $cta['link'] }}"
             class="
-            text-md 2xl:text-base py-2 px-7 rounded-full
+            text-md md:text-sm 2xl:text-base
+            py-2 px-7 rounded-full
             mb-8 mt-3
             bg-chalk hover:bg-citrus
             transition-colors duration-300

@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Updated
 
+- [Home: Collaborator](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208438)
+-[Jobs Columns](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208432)
+
 - [Home](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341690761802)
 - [Collaborators](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208372)
 - [New Collaborator dates](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208382)
