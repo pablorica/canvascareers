@@ -52,10 +52,19 @@ body.page-template-template-home.load-effect {
       z-index: 9999;
       pointer-events: none;
     }
+    .splash-logo-1 {
+      display: block;
+      position: fixed;
+      opacity: 0;
+      z-index: 9999;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
     // .splash-logo  next element opecity:0
     .splash-logo + * {
       opacity: 0;
     }
+
     .splash-logo--header {
       top: 50%;
       left: 50%;
@@ -73,17 +82,26 @@ body.page-template-template-home.load-effect {
     }
 
     /* Splash logo animation | Step 2: move to final positions */
-    .splash-logo--header.animate-out {
+    .splash-logo--header.animate-out-old {
       top: 1.25rem;
       left: 2rem;
       transform: translate(0, 0) scale(1);
     }
-
-    .splash-logo--footer.animate-out {
+    .splash-logo--footer.animate-out-old {
       bottom: 1.75rem;
       right: 2rem;
       transform: translate(0, 0) scale(1);
     }
+
+    /* Animation setup for Canvas */
+    .splash-logo--header-1.animate-out {
+      animation: canvasMove 1.5s steps(25) forwards;
+    }
+    /* Animation setup for Careers */
+    .splash-logo--footer-1.animate-out {
+      animation: careersMove 1.5s steps(25) forwards;
+    }
+
 
 
 
@@ -167,4 +185,57 @@ body.page-template-template-home.load-effect {
     }
   }
 
+}
+
+/* Apply flicker effect */
+@keyframes flicker {
+  0%, 10%, 30%, 50%, 70%, 90% {
+    opacity: 1;
+  }
+  5%, 20%, 40%, 60%, 80%, 100% {
+    opacity: 0.3;
+  }
+}
+
+/* Flicker class */
+.choppy-anim {
+  animation: flicker 1.5s steps(10) both;
+}
+
+@keyframes canvasMove {
+  from {
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50px - 50%), calc(-55px - 50%)) scale(1.5);
+    transition:
+        top 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+        left 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+        bottom 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+        right 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+        transform 1.5s cubic-bezier(0.85, 0, 0.15, 1);
+  }
+  to {
+    top: 1.25rem;
+    left: 2rem;
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes careersMove {
+  from {
+    bottom: 50%;
+    right: 50%;
+    transform: translate(calc(50px + 50%), calc(55px + 50%)) scale(1.5);
+    transition:
+    top 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+    left 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+    bottom 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+    right 1.5s cubic-bezier(0.85, 0, 0.15, 1),
+    transform 1.5s cubic-bezier(0.85, 0, 0.15, 1);
+  }
+  to {
+    bottom: 1.75rem;
+    right: 2rem;
+    transform: translate(0, 0) scale(1);
+  }
 }

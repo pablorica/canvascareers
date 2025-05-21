@@ -21,6 +21,7 @@ const loadEffect = () => {
 
     headerLogos.forEach((headerLogo, headerLogoIndex) => {
       headerLogo.classList.add('splash-logo');
+      const brand = headerLogo.querySelector('a.brand-header');
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         headerLogo.classList.add('visible');
@@ -29,6 +30,8 @@ const loadEffect = () => {
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         headerLogo.classList.add('animate-out');
+        brand.classList.add('choppy-anim');
+
 
       }, startAnimation);
       setTimeout(() => {
@@ -41,6 +44,8 @@ const loadEffect = () => {
 
     footerLogos.forEach((footerLogo, footerLogoIndex) => {
       footerLogo.classList.add('splash-logo');
+      const brand = footerLogo.querySelector('a.brand-footer');
+
       setTimeout(() => {
         const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         footerLogo.classList.add('visible');
@@ -49,6 +54,7 @@ const loadEffect = () => {
       setTimeout(() => {
         const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         footerLogo.classList.add('animate-out');
+        brand.classList.add('choppy-anim');
 
       }, startAnimation);
       setTimeout(() => {
@@ -188,8 +194,8 @@ const loadEffect = () => {
   }
 
   //Debug
-  //body.classList.add('load-effect');
-  //launchPreloader();
+  body.classList.add('load-effect');
+  launchPreloader();
 };
 
 export default loadEffect;
