@@ -29,6 +29,7 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "gsap": "^3.13.0",
     "tiny-emitter": "^2.1.0",
     "tiny-slider": "^2.9.4"
   }

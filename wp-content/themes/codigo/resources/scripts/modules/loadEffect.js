@@ -1,5 +1,66 @@
 import consoleHello from './consoleHello';
 import getCookie from './getCookie';
+import gsap from "gsap";
+
+
+function remToPx(rem) {
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
+function getOffsetFromCenterToTarget(topRem, leftRem) {
+  const targetTop = remToPx(topRem);
+  const targetLeft = remToPx(leftRem);
+
+  const centerY = window.innerHeight / 2;
+  const centerX = window.innerWidth / 2;
+
+  const offsetY = targetTop - centerY;
+  const offsetX = targetLeft - centerX;
+
+  return { x: offsetX, y: offsetY };
+}
+
+function getOffsetFromCenterToBottomRight(bottomRem, rightRem) {
+  const bottom = remToPx(bottomRem);
+  const right = remToPx(rightRem);
+
+  const targetTop = window.innerHeight - bottom;
+  const targetLeft = window.innerWidth - right;
+
+  const centerY = window.innerHeight / 2;
+  const centerX = window.innerWidth / 2;
+
+  const offsetY = targetTop - centerY;
+  const offsetX = targetLeft - centerX;
+
+  return { x: offsetX, y: offsetY };
+}
+
+
+
+function posterizeTween(target, vars) {
+  const steps = 20; // frames per second (choppiness)
+  let tween = gsap.to(target, {
+    ...vars,
+    duration: vars.duration || 1.5,
+    ease: vars.ease || "power3.inOut",
+    paused: true
+  });
+
+  // Step the progress
+  gsap.to(tween, {
+    progress: 1,
+    duration: tween.duration(),
+    ease: "linear",
+    modifiers: {
+      progress: value => {
+        let step = 1 / steps;
+        return Math.floor(value / step) * step;
+      }
+    }
+  });
+}
+
 
 const loadEffect = () => {
 
@@ -21,7 +82,6 @@ const loadEffect = () => {
 
     headerLogos.forEach((headerLogo, headerLogoIndex) => {
       headerLogo.classList.add('splash-logo');
-      const brand = headerLogo.querySelector('a.brand-header');
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         headerLogo.classList.add('visible');
@@ -29,10 +89,14 @@ const loadEffect = () => {
       }, 300); // start after slight pause
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
-        headerLogo.classList.add('animate-out');
-        brand.classList.add('choppy-anim');
-
-
+        //headerLogo.classList.add('animate-out');
+        const { x, y } = getOffsetFromCenterToTarget(1.25, 2); // 1.25rem top, 2rem left
+        posterizeTween(".splash-logo--header", {
+          x: x,
+          y: y,
+          scale: 1,
+          duration: 1.5,
+        });
       }, startAnimation);
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
@@ -44,8 +108,6 @@ const loadEffect = () => {
 
     footerLogos.forEach((footerLogo, footerLogoIndex) => {
       footerLogo.classList.add('splash-logo');
-      const brand = footerLogo.querySelector('a.brand-footer');
-
       setTimeout(() => {
         const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         footerLogo.classList.add('visible');
@@ -53,8 +115,14 @@ const loadEffect = () => {
       }, 300); // start after slight pause
       setTimeout(() => {
         const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
-        footerLogo.classList.add('animate-out');
-        brand.classList.add('choppy-anim');
+        //footerLogo.classList.add('animate-out');
+        const { x, y } = getOffsetFromCenterToBottomRight(1.75, 2); // bottom: 1.75rem;  right: 2rem;
+        posterizeTween(".splash-logo--footer", {
+          x: x,
+          y: y,
+          scale: 1,
+          duration: 1.5,
+        });
 
       }, startAnimation);
       setTimeout(() => {
