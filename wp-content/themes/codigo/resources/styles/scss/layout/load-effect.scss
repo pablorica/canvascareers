@@ -42,13 +42,7 @@ body.page-template-template-home.load-effect {
       display: block;
       position: fixed;
       opacity: 0;
-      transition:
-        opacity 1s ease,
-        top 1.5s cubic-bezier(0.85, 0, 0.15, 1),
-        left 1.5s cubic-bezier(0.85, 0, 0.15, 1),
-        bottom 1.5s cubic-bezier(0.85, 0, 0.15, 1),
-        right 1.5s cubic-bezier(0.85, 0, 0.15, 1),
-        transform 1.5s cubic-bezier(0.85, 0, 0.15, 1);
+      transition: opacity 1s ease;
       z-index: 9999;
       pointer-events: none;
     }
@@ -60,11 +54,14 @@ body.page-template-template-home.load-effect {
       top: 50%;
       left: 50%;
       transform: translate(calc(-50px - 50%), calc(-55px - 50%)) scale(1.5);
+      will-change: transform;
     }
+
     .splash-logo--footer {
       bottom: 50%;
       right: 50%;
       transform: translate(calc(50px + 50%), calc(55px + 50%)) scale(1.5);
+      will-change: transform;
     }
 
     /* Splash logo animation| Step 1: fade in */

@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.5.3] - 2025-05-21
+
+### Added
+
+- [Animation Choppy Effect](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208447)
+
+ - GSAP JS Library added
+
+
 ## [0.5.2] - 2025-05-21
 
 ### Updated
