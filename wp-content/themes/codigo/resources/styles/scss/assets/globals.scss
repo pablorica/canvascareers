@@ -121,3 +121,31 @@ $colors: (
   "white":          #FFF,
   "yellow":         #FFB71B,
 );
+
+
+/* Scrollbar transparent */
+/* Works in Chrome, Edge, and Safari */
+/* WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+/* Optional: hide scrollbar on hover if you want full invisibility */
+::-webkit-scrollbar-thumb:hover {
+  background-color: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: none;       /* completely hides the scrollbar */
+  scrollbar-color: transparent transparent; /* thumb and track */
+}

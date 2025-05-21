@@ -99,6 +99,38 @@ const jobs = () => {
     }
     prepareJobs();
 
+    //Function to close all jobs
+    function closeAllJobs(index = null) {
+      //console.log('closeAllJobs');
+      const accordions = document.getElementsByClassName('job-accordion');
+      Array.from(accordions).forEach((accordion, i) => {
+        if(index) {
+          if (i === index) {
+            return;
+          }
+        }
+
+        const content = accordion.parentNode.querySelector(`#collapse-${i}`);
+        const icon = accordion.parentNode.querySelector(`.icon-${i}`);
+        const applyButton = accordion.parentNode.querySelector('.toggle-form');
+        const formContainer = accordion.parentNode.querySelector('.form-container');
+
+        content.style.maxHeight = '0';
+        content.classList.add('overflow-hidden');
+        content.classList.remove('overflow-y-scroll');
+        icon.style.transform = 'rotate(0deg)';
+
+        // Apply button
+        if (applyButton) {
+          // If form container is visible, hide it
+          if (!formContainer.classList.contains('hidden')) {
+            formContainer.classList.add('hidden');
+            applyButton.classList.remove('active');
+          }
+        }
+      });
+    }
+
     //Change height values on resize
     window.addEventListener('resize', () => {
       const currentWidth = window.innerWidth;
@@ -108,6 +140,8 @@ const jobs = () => {
       if( currentWidth <= 768) {
         return;
       }
+
+      closeAllJobs();
 
       // Check if the width has changed
       if (currentWidth !== previousWidth) {
@@ -187,6 +221,8 @@ const jobs = () => {
         }
 
         filterJobs(currentFilter);
+
+        closeAllJobs();
       });
     });
 
@@ -213,31 +249,7 @@ const jobs = () => {
       const parent = element.parentNode;
 
       // Hide all other accordions
-      const accordions = document.getElementsByClassName('job-accordion');
-      Array.from(accordions).forEach((accordion, i) => {
-        if (i === index) {
-          return;
-        }
-
-        const content = accordion.parentNode.querySelector(`#collapse-${i}`);
-        const icon = accordion.parentNode.querySelector(`.icon-${i}`);
-        const applyButton = accordion.parentNode.querySelector('.toggle-form');
-        const formContainer = accordion.parentNode.querySelector('.form-container');
-
-        content.style.maxHeight = '0';
-        content.classList.add('overflow-hidden');
-        content.classList.remove('overflow-y-scroll');
-        icon.style.transform = 'rotate(0deg)';
-
-        // Apply button
-        if (applyButton) {
-          // If form container is visible, hide it
-          if (!formContainer.classList.contains('hidden')) {
-            formContainer.classList.add('hidden');
-            applyButton.classList.remove('active');
-          }
-        }
-      });
+      closeAllJobs(index);
 
       const content = parent.querySelector(`#collapse-${index}`);
       const icon = parent.querySelector(`.icon-${index}`);

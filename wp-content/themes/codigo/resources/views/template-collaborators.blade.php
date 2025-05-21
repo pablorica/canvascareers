@@ -24,13 +24,13 @@
         mb-10 mt-2 lg:my-0
         flex flex-wrap
         gap-y-2 gap-x-4
-        items-base justify-between
+        items-center justify-between
         lg:block
       ">
-        <h1 class="font-sans
-            text-lg lg:text-xl 2xl:text-3xl
-            mb-5 2xl:mb-7"
-        >{{ get_the_title() }}</h1>
+        <h1 class="h4
+          text-2xl lg:text-xl 2xl:text-3xl
+          2xl:mb-7
+        ">{{ get_the_title() }}</h1>
 
         <div class="text-sm 2xl:text-md
           mt-6 mb-9
@@ -84,20 +84,18 @@
               col-span-12 lg:col-span-9
               w-full
               max-w-[70%] lg:max-w-full
-              mx-auto
-              flex-1
+              mx-auto flex-1
               lg:relative
-              @if(!$loop->first) hidden @else flex @endif
+              @if(!$loop->first) hidden @endif
               @if (count($collaborators) > 0) wrapper-carousel @endif
             "
           >
           <div class="collaborator-placeholder
               group
-              !flex flex-col
+              hidden md:flex flex-col
               justify-end
               pr-2
-              mb-[40px]
-              mbtb-only:hidden"
+              mb-[40px]"
           >
             <div class="">
               <div class="font-sans
@@ -117,9 +115,9 @@
                 w-full
                 relative">
                 <img class="w-full h-full object-cover"
-                  src="https://canvascareers.localhost/wp-content/uploads/2025/02/DSC07081-min-scaled.jpg"
-                  alt="Marcus Quigley"
-                >
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  alt=""
+                />
               </div>
 
 

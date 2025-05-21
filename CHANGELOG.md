@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+## [0.5.2] - 2025-05-21
+
+### Updated
+
+- [Home](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341690761802)
+- [Collaborators](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208372)
+- [New Collaborator dates](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208382)
+- [Jobs: Font size](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208386)
+- [Jobs: Glitching effect](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208392)
+- [Expanded Jobs](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208396)
+
 ## [0.5.1] - 2025-05-04
 
 ### Updated
