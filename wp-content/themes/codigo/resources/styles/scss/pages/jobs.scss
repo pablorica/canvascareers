@@ -18,7 +18,7 @@
     }
 
     p, ul, li {
-      @apply text-md;
+      @apply text-xs;
 
       @media screen and (max-width: calc(theme("screens.md") - 1px)) {
         @apply text-sm;
@@ -57,7 +57,7 @@
     }
 
     .wpcf7-submit {
-      @apply text-sm md:text-md py-2 px-1 md:px-3 rounded-full;
+      @apply text-sm 2xl:text-md py-2 px-1 md:py-[5px] md:px-[8px] 2xl:py-2 2xl:px-2 rounded-full;
       @apply bg-chalk text-charcoal cursor-pointer hover:bg-citrus;
       @apply transition-colors duration-300;
       @apply border border-charcoal block mx-auto;
@@ -72,7 +72,7 @@
       @apply mt-8 text-sm;
 
       .add-attachment {
-        @apply text-sm md:text-md py-2 px-1 md:px-3 rounded-full;
+        @apply text-sm 2xl:text-md py-2 px-1 md:py-[5px] md:px-[8px] 2xl:py-2 2xl:px-2 rounded-full;
         @apply bg-charcoal text-chalk cursor-pointer;
         @apply transition-colors duration-300;
         @apply border border-charcoal block;
@@ -134,7 +134,7 @@
   .wpcf7-form-control.wpcf7-text {
     @apply bg-chalk outline-0;
     @apply border border-charcoal;
-    @apply text-md py-2 px-5 rounded-full;
+    @apply text-sm 2xl:text-md py-2 px-5 md:py-[5px] md:px-[8px] 2xl:py-2 2xl:px-2 rounded-full;
 
     &.wpcf7-not-valid {
       @apply border-walnut text-walnut;

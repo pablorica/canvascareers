@@ -12,9 +12,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Overflow: hidden in home desktop
+- [HOMEPAGE](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210354209730170) Overflow: hidden in home desktop
 
+### Updated
 
+- [Expanded Jobs](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208396) Moved job content up
+
+- [Jobs: Font size](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208386)
 
 ## [0.5.3] - 2025-05-21
 

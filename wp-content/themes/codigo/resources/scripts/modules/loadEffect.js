@@ -263,8 +263,8 @@ const loadEffect = () => {
   }
 
   //Debug
-  body.classList.add('load-effect');
-  launchPreloader();
+  //body.classList.add('load-effect');
+  //launchPreloader();
 };
 
 export default loadEffect;

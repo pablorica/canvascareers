@@ -109,13 +109,15 @@ if ($category) {
 
               This is overwritten by the JS in resources/scripts/modules/jobs.js
             --}}
-              <div class="job-grid grid grid-cols-12 pt-4 pb-8
+              <div class="job-grid
+                  flex flex-col justify-start items-start
+                  pt-4 pb-8
                   md:min-h-[calc(100vh-144.5px-108.9px-95px)]
                   2xl:min-h-[calc(100vh-167.5px-123.65px-110px)]
               ">
-                <div class="col-span-12 md:pl-16">
+                <div class="md:pl-16">
                   <div class="job-info
-                    pb-6 md:pb-8
+                    pb-6 md:pb-4
                     font-sans text-base font-light"
                   >
                     <div class="flex mb-2">
@@ -134,79 +136,81 @@ if ($category) {
                   </div>
                 </div>
 
-                <div class="col-span-12"></div>
-
-                @if(get_field('start_column', $job))
-                  <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4
-                    md:pl-16 md:pr-8
-                    md:max-w-[400px]
-                  ">
-                    {!! get_field('start_column', $job) !!}
-                  </div>
-                @endif
-
-                @if(get_field('middle_column', $job))
-                  <div class="
-                    col-span-12 md:col-span-7 lg:col-span-4 xl:col-span-3
-                    lg:pl-4 md:pr-8 md:pl-16
-                    md:max-w-[400px]
-                    pt-6 lg:pt-0
-                  ">
-                    {!! get_field('middle_column', $job) !!}
-                  </div>
-                @endif
-
-                @if(get_field('end_column', $job))
-                  <div class="
-                    col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3
-                    xl:pl-4 md:pr-8 md:pl-16
-                    md:max-w-[400px] xl:max-w-[350px]
-                    pt-6 xl:pt-0
-                  ">
-                    {!! get_field('end_column', $job) !!}
-                  </div>
-                @endif
-
-                @if($form_id = get_field('contact_form'))
-                  <div
-                    class="job-form col-span-12 md:col-span-2 md:col-start-11 mt-10 md:mt-0 flex md:items-end flex-col md:flex-row"
-                    data-job-id="{{ $job->ID }}"
-                    data-job-title="{{ $job->post_title }}"
-                  >
-                    <a
-                      class="
-                        text-sm md:text-md py-2 px-1 md:px-3 rounded-full
-                        bg-chalk md:hover:bg-citrus cursor-pointer
-                        transition-colors duration-300
-                        border border-charcoal block whitespace-nowrap
-                        leading-none text-center w-[120px] md:w-[150px]
-                        overflow-ellipsis overflow-hidden md:ml-auto toggle-form
-                      "
-                    >
-                      {{ __('Apply', 'codigo') }}
-                    </a>
-
-                    <div class="form-container hidden
-                      relative md:absolute
-                      right-0 md:top-1/2 md:-translate-y-1/2
-                      md:max-w-[300px]
-                      px-3 md:px-4 pt-6 md:py-4
-                      border-t md:border border-charcoal
-                      bg-chalk
-                      mt-6 md:mt-0
+                <div class="grid grid-cols-12">
+                  @if(get_field('start_column', $job))
+                    <div class="
+                      col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3 2xl:col-span-4
+                      md:pl-16 md:pr-8
+                      md:max-w-[400px]
                     ">
-                      <div class="w-auto text-right md:relative absolute top-6 right-3 md:top-0 md:right-0">
-                        <svg class="toggle-form cursor-pointer ml-auto mb-4" width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
-                          <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="1.5"></line>
-                          <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="1.5"></line>
-                        </svg>
-                      </div>
-
-                      {!! do_shortcode('[contact-form-7 id="' . $form_id . '"]') !!}
+                      {!! get_field('start_column', $job) !!}
                     </div>
-                  </div>
-                @endif
+                  @endif
+
+                  @if(get_field('middle_column', $job))
+                    <div class="
+                      col-span-12 md:col-span-7 lg:col-span-4 xl:col-span-3
+                      lg:pl-4 md:pr-8 md:pl-16
+                      md:max-w-[400px]
+                      pt-6 lg:pt-0
+                    ">
+                      {!! get_field('middle_column', $job) !!}
+                    </div>
+                  @endif
+
+                  @if(get_field('end_column', $job))
+                    <div class="
+                      col-span-12 md:col-span-7 lg:col-span-5 xl:col-span-3
+                      xl:pl-4 md:pr-8 md:pl-16
+                      md:max-w-[400px] xl:max-w-[350px]
+                      pt-6 xl:pt-0
+                    ">
+                      {!! get_field('end_column', $job) !!}
+                    </div>
+                  @endif
+
+                  @if($form_id = get_field('contact_form'))
+                    <div
+                      class="job-form col-span-12 md:col-span-2 md:col-start-11 mt-10 md:mt-0 flex md:items-end flex-col md:flex-row"
+                      data-job-id="{{ $job->ID }}"
+                      data-job-title="{{ $job->post_title }}"
+                    >
+                      <a
+                        class="
+                          text-sm 2xl:text-md
+                          py-2 px-1 md:py-[5px] md:px-[8px] 2xl:py-2 2xl:px-2
+                          rounded-full cursor-pointer
+                          bg-chalk md:hover:bg-citrus
+                          transition-colors duration-300
+                          border border-charcoal block whitespace-nowrap
+                          leading-none text-center w-[120px] md:w-[150px]
+                          overflow-ellipsis overflow-hidden md:ml-auto toggle-form
+                        "
+                      >
+                        {{ __('Apply', 'codigo') }}
+                      </a>
+
+                      <div class="form-container hidden
+                        relative md:absolute
+                        right-0 md:top-1/2 md:-translate-y-1/2
+                        md:max-w-[300px]
+                        px-3 md:px-4 pt-6 md:py-4
+                        border-t md:border border-charcoal
+                        bg-chalk
+                        mt-6 md:mt-0
+                      ">
+                        <div class="w-auto text-right md:relative absolute top-6 right-3 md:top-0 md:right-0">
+                          <svg class="toggle-form cursor-pointer ml-auto mb-4" width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
+                            <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="1.5"></line>
+                            <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="1.5"></line>
+                          </svg>
+                        </div>
+
+                        {!! do_shortcode('[contact-form-7 id="' . $form_id . '"]') !!}
+                      </div>
+                    </div>
+                  @endif
+                </div>
               </div>
             </div>
           </div>
