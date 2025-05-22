@@ -8,10 +8,10 @@
 
   <?php
   //Check if body_class() contains wp-admin
-  $body_class_frontend = '';
+  $body_class_frontend = 'overflow-x-hidden';
   $body_class = esc_attr( implode( ' ', get_body_class() ) );
   if (strpos($body_class, 'wp-admin') === false) {
-    $body_class_frontend = 'wp-frontend';
+    $body_class_frontend .= ' wp-frontend';
   }
    ?>
   <body <?php body_class($body_class_frontend); ?>>

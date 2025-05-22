@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.5.4] - 2025-05-21
+
+### Added
+
+- Overflow: hidden in home desktop
+
+
+
 ## [0.5.3] - 2025-05-21
 
 ### Added

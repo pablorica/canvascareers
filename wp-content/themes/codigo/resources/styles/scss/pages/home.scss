@@ -1,4 +1,7 @@
 body.page-template-template-home {
+  @media (min-width: theme("screens.md")) {
+    overflow: hidden;
+  }
   #main {
     display: flex;
     align-items: stretch;

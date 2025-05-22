@@ -91,7 +91,7 @@ const loadEffect = () => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         //headerLogo.classList.add('animate-out');
         const { x, y } = getOffsetFromCenterToTarget(1.25, 2); // 1.25rem top, 2rem left
-        posterizeTween(".splash-logo--header", {
+        posterizeTween(headerLogo, {
           x: x,
           y: y,
           scale: 1,
@@ -117,7 +117,7 @@ const loadEffect = () => {
         const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         //footerLogo.classList.add('animate-out');
         const { x, y } = getOffsetFromCenterToBottomRight(1.75, 2); // bottom: 1.75rem;  right: 2rem;
-        posterizeTween(".splash-logo--footer", {
+        posterizeTween(footerLogo, {
           x: x,
           y: y,
           scale: 1,
@@ -228,6 +228,7 @@ const loadEffect = () => {
     }, startCollaboratorsAnimation);
   }
 
+
   var body = document.querySelector('body');
   var preloaderCookie = getCookie('preloadershowed');
   //var preloaderCookie = null;
@@ -262,8 +263,8 @@ const loadEffect = () => {
   }
 
   //Debug
-  //body.classList.add('load-effect');
-  //launchPreloader();
+  body.classList.add('load-effect');
+  launchPreloader();
 };
 
 export default loadEffect;
