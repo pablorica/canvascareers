@@ -18,11 +18,7 @@
     }
 
     p, ul, li {
-      @apply text-xs;
-
-      @media screen and (max-width: calc(theme("screens.md") - 1px)) {
-        @apply text-sm;
-      }
+      @apply text-sm md:text-xs 2xl:text-md;
     }
 
     ul {
