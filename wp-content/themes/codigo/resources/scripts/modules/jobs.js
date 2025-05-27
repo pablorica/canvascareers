@@ -16,88 +16,6 @@ const jobs = () => {
     var previousWidth  = window.innerWidth;
     var previousHeight = window.innerHeight;
 
-    //Default collapsed job height (md viewport)
-    var collapsedJobheight = 40;
-    //Default min job height (md viewport)
-    var jobMinHeight = previousHeight - 144.5 - 108.9 - 95;
-    //jobMinHeight = previousHeight - headerHeight - footerHeight - jobsHeaderHeight;
-
-    var mainWrapperHeight = 0;
-    var jobsHeaderHeight = 95;
-    var marginHeader = 0;
-    if(previousWidth > 1024) {
-      marginHeader = 5;
-    }
-    // Select the main element
-    const mainWrapper = document.querySelector('main#main');
-    if (mainWrapper) {
-      mainWrapperHeight = mainWrapper.offsetHeight;
-      const jobsHeader = document.querySelector('#jobsListheader');
-
-      if (jobsHeader) {
-        jobsHeaderHeight = jobsHeader.offsetHeight + marginHeader;
-      }
-      jobMinHeight = mainWrapperHeight - jobsHeaderHeight;
-
-      const jobsWrapper = document.querySelector('#jobs');
-      if (jobsWrapper) {
-        jobsWrapper.style.maxHeight = jobMinHeight + 'px';
-      }
-
-    }
-
-    function getCollapsedJobheight() {
-      const currentWidth = window.innerWidth;
-      if( currentWidth > 768) {
-        // md: job height = 40px
-        collapsedJobheight = 40;
-      }
-      if( currentWidth > 1792) {
-        // 2xl: job height = 54px
-        collapsedJobheight = 54;
-      }
-    }
-    //getCollapsedJobheight();
-
-    // Save the min-height data for each job item
-    function setMinHeightsAttributes() {
-      //console.log('setMinHeightsAttribute');
-      if (mainWrapper) {
-        mainWrapperHeight = mainWrapper.offsetHeight;
-        //console.log('mainWrapperHeight', mainWrapperHeight);
-
-        const jobsHeader = document.querySelector('#jobsListheader');
-        if (jobsHeader) {
-          jobsHeaderHeight = jobsHeader.offsetHeight + marginHeader;
-          //console.log('jobsHeaderHeight', jobsHeaderHeight);
-        }
-        jobMinHeight = mainWrapperHeight - jobsHeaderHeight;
-      }
-
-    }
-    //setMinHeightsAttributes();
-
-    // Set min height for each job item
-    function prepareJobs() {
-      const currentWidth = window.innerWidth;
-      //This is needed only for desktop
-      if( currentWidth <= 768) {
-        return;
-      }
-
-      displacement = 0;
-      if( numberOfJobs > 0 ) {
-        displacement = numberOfJobs  * collapsedJobheight;
-        if( numberOfJobs >= 4 ) {
-          displacement = 4 * collapsedJobheight;
-        }
-      }
-      jobItems.forEach((job) => {
-        const jobGrid = job.querySelector('.job-grid');
-        jobGrid.style.minHeight = ( jobMinHeight - displacement ) + 'px';
-      });
-    }
-    //prepareJobs();
 
     //Function to close all jobs
     function closeAllJobs(index = null) {
@@ -131,7 +49,7 @@ const jobs = () => {
       });
     }
 
-    //Change height values on resize
+    //Close jobs on resize
     window.addEventListener('resize', () => {
       const currentWidth = window.innerWidth;
       const currentHeight = window.innerHeight;
@@ -143,29 +61,6 @@ const jobs = () => {
 
       closeAllJobs();
 
-      // Check if the width has changed
-      if (currentWidth !== previousWidth) {
-        const crossedThreshold =
-          (previousWidth < 1792 && currentWidth >= 1792) ||
-          (previousWidth >= 1792 && currentWidth < 1792);
-
-        if (crossedThreshold) {
-          //getCollapsedJobheight();
-          //setMinHeightsAttributes();
-          //prepareJobs();
-        }
-
-        previousWidth = currentWidth;
-      }
-
-      // Check if the height has changed
-      if (currentHeight !== previousHeight) {
-        //getCollapsedJobheight();
-        //setMinHeightsAttributes();
-        //prepareJobs();
-
-        previousHeight = currentHeight;
-      }
     });
 
 
@@ -281,13 +176,9 @@ const jobs = () => {
       } else {
 
         content.style.maxHeight = content.scrollHeight   + 'px';
-        if(currentWidth > 768) {
-          content.style.maxHeight = (jobMinHeight - displacement)   + 'px';
-        }
 
         icon.style.transform = 'rotateX(180deg)';
-        //console.log('jobMaxHeight', jobMinHeight - displacement);
-        //console.log('jobscrollHeight', content.scrollHeight);
+
 
         setTimeout(() => {
           content.classList.remove('overflow-hidden');
@@ -301,53 +192,11 @@ const jobs = () => {
         //This is needed only for desktop
         if( currentWidth > 768 ) {
 
-
-          if( numberOfJobs > 4 && index > 3) {
-            setTimeout(() => {
-              // Scroll up jobsWrapper to show only 4 jobs
-              jobsWrapper.scrollTo({
-                behavior: 'smooth',
-                top: collapsedJobheight  * (index - 3)
-              });
-
-            }, 300);
-          }
           setTimeout(() => {
             // Disable scroll on jobsWrapper when a job is open
             jobsWrapper.classList.add('overflow-hidden');
           }, 800);
         }
-
-
-        /*
-
-        const mainScroll = document.querySelector('#main');
-            mainScroll.scrollTo({
-              behavior: 'smooth',
-              top: 100,
-            });
-
-
-        setTimeout(() => {
-          // Scroll to accordion
-          let jobItemScroll = parent.offsetTop;
-          let headerHeight = document.querySelector('#mainMenu').offsetHeight;
-
-          if (window.innerWidth < 768) {
-            window.scrollTo({
-              behavior: 'smooth',
-              top: jobItemScroll - headerHeight + 1,
-            });
-          } else {
-            const mainScroll = document.querySelector('#main');
-            mainScroll.scrollTo({
-              behavior: 'smooth',
-              top: jobItemScroll - headerHeight - 2,
-            });
-          }
-
-        }, 300);
-        */
       }
     }
 
