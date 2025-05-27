@@ -57,7 +57,7 @@ const jobs = () => {
         collapsedJobheight = 54;
       }
     }
-    getCollapsedJobheight();
+    //getCollapsedJobheight();
 
     // Save the min-height data for each job item
     function setMinHeightsAttributes() {
@@ -75,7 +75,7 @@ const jobs = () => {
       }
 
     }
-    setMinHeightsAttributes();
+    //setMinHeightsAttributes();
 
     // Set min height for each job item
     function prepareJobs() {
@@ -97,7 +97,7 @@ const jobs = () => {
         jobGrid.style.minHeight = ( jobMinHeight - displacement ) + 'px';
       });
     }
-    prepareJobs();
+    //prepareJobs();
 
     //Function to close all jobs
     function closeAllJobs(index = null) {
@@ -150,9 +150,9 @@ const jobs = () => {
           (previousWidth >= 1792 && currentWidth < 1792);
 
         if (crossedThreshold) {
-          getCollapsedJobheight();
-          setMinHeightsAttributes();
-          prepareJobs();
+          //getCollapsedJobheight();
+          //setMinHeightsAttributes();
+          //prepareJobs();
         }
 
         previousWidth = currentWidth;
@@ -160,9 +160,9 @@ const jobs = () => {
 
       // Check if the height has changed
       if (currentHeight !== previousHeight) {
-        getCollapsedJobheight();
-        setMinHeightsAttributes();
-        prepareJobs();
+        //getCollapsedJobheight();
+        //setMinHeightsAttributes();
+        //prepareJobs();
 
         previousHeight = currentHeight;
       }
@@ -190,7 +190,7 @@ const jobs = () => {
       });
 
       setTimeout(() => {
-        prepareJobs()
+        //prepareJobs()
       }, 100);
 
     }

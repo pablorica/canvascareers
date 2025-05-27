@@ -107,13 +107,14 @@ if ($category) {
               footer: 123.65px
               jobs-header: 110px;
 
+              md:min-h-[calc(100vh-144.5px-108.9px-95px)]
+              2xl:min-h-[calc(100vh-167.5px-123.65px-110px)]
+
               This is overwritten by the JS in resources/scripts/modules/jobs.js
             --}}
               <div class="job-grid
                   flex flex-col justify-start items-start
                   pt-4 pb-8
-                  md:min-h-[calc(100vh-144.5px-108.9px-95px)]
-                  2xl:min-h-[calc(100vh-167.5px-123.65px-110px)]
               ">
                 <div class="md:pl-16">
                   <div class="job-info
