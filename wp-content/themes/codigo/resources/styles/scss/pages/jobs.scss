@@ -1,12 +1,4 @@
 .page-template-template-jobs {
-  @media (min-width: 768px) {
-    #main {
-      overflow: hidden;
-      #jobs:not(.overflow-hidden) {
-        overflow-y: scroll;
-      }
-    }
-  }
   .job-body {
     h1, h2, h3, h4, h5, h6 {
       @apply font-sans;
@@ -36,7 +28,7 @@
   .toggle-form {
     &.active {
       @media screen and (min-width: theme("screens.md")) {
-        display: none !important;
+        opacity: 0 !important;
       }
 
       @media screen and (max-width: calc(theme("screens.md") - 1px)) {

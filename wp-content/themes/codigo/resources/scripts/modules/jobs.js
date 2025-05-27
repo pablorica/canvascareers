@@ -181,8 +181,8 @@ const jobs = () => {
 
 
         setTimeout(() => {
-          content.classList.remove('overflow-hidden');
-          content.classList.add('overflow-y-scroll');
+          //content.classList.remove('overflow-hidden');
+          //content.classList.add('overflow-y-scroll');
         }, 300);
 
         //console.log('numberOfJobs', numberOfJobs);
@@ -194,7 +194,7 @@ const jobs = () => {
 
           setTimeout(() => {
             // Disable scroll on jobsWrapper when a job is open
-            jobsWrapper.classList.add('overflow-hidden');
+            //jobsWrapper.classList.add('overflow-hidden');
           }, 800);
         }
       }

@@ -172,7 +172,10 @@ if ($category) {
 
                   @if($form_id = get_field('contact_form'))
                     <div
-                      class="job-form col-span-12 md:col-span-2 md:col-start-11 mt-10 md:mt-0 flex md:items-end flex-col md:flex-row"
+                      class="job-form
+                      col-span-12
+                      mt-10 md:mt-0
+                      flex md:items-end flex-col md:flex-row"
                       data-job-id="{{ $job->ID }}"
                       data-job-title="{{ $job->post_title }}"
                     >

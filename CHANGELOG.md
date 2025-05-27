@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Updated
 
+- [Move "Apply" button down](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210365514048112)
+
 - [Expanded Jobs](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210365514048105)
 
 - [Home: Collaborator Link](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210365514048110)
