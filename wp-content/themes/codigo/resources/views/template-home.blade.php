@@ -19,14 +19,25 @@
           ">
             {{ get_field('top_title') }}
           </span>
-          <h1 class="text-md md:text-3xl 2xl:text-4xl
-            font-serif font-light md:font-normal
-            mt-4 md:mt-6
-            collaborator-fade-in-up
-          ">
-            @php($name = explode(' ', $collaborator->post_title))
-            <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
-          </h1>
+          @php($cta = get_field('cta'))
+          <a
+              href="{{ $cta['link'] }}"
+              class="group relative inline-block"
+            >
+            <h2 class="text-md md:text-3xl 2xl:text-4xl
+              font-serif font-light md:font-normal
+              mt-4 md:mt-6
+              collaborator-fade-in-up
+              relative inline-block
+              before:absolute before:bottom-[4px] before:left-0
+              before:h-[1px] before:w-0 before:bg-black
+              before:transition-all before:duration-300
+              group-hover:before:w-full
+            ">
+              @php($name = explode(' ', $collaborator->post_title))
+              <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
+            </h2>
+          </a>
           <span class="block
             text-md md:text-sm 2xl:text-base
             mt-1 md:mt-6
@@ -43,7 +54,7 @@
             {!! get_the_content() !!}
           </div>
 
-          @php($cta = get_field('cta'))
+
           <a
             href="{{ $cta['link'] }}"
             class="
