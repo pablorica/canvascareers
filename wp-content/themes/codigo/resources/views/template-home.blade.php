@@ -5,8 +5,15 @@
 @extends('layouts.app')
 
 <!-- /codigo/resources/views/template-home.blade.php -->
+<?php
+$collaborators_page = get_page_by_title( 'Collaborators' );
+$collaborators_url = get_permalink( $collaborators_page->ID );
+?>
 @section('content')
-  <div id="home" class="@option('layout_container') flex w-full flex-col md:flex-row">
+  <div id="home"
+    class="@option('layout_container')
+      flex w-full flex-col md:flex-row"
+  >
     @php($collaborator = get_field('collaborator'))
 
     @if($collaborator)
@@ -20,10 +27,9 @@
             {{ get_field('top_title') }}
           </span>
           @php($cta = get_field('cta'))
-          <a
-              href="{{ $cta['link'] }}"
-              class="group relative inline-block"
-            >
+          <a href="{{ $collaborators_url }}"
+            class="group relative inline-block"
+          >
             <h2 class="text-md md:text-3xl 2xl:text-4xl
               font-serif font-light md:font-normal
               mt-4 md:mt-6
@@ -31,7 +37,7 @@
               relative inline-block
               before:absolute before:bottom-[4px] before:left-0
               before:h-[1px] before:w-0 before:bg-black
-              before:transition-all before:duration-300
+              before:transition-all before:duration-[0.6s]
               group-hover:before:w-full
             ">
               @php($name = explode(' ', $collaborator->post_title))
