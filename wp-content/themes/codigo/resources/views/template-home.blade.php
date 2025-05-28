@@ -5,10 +5,6 @@
 @extends('layouts.app')
 
 <!-- /codigo/resources/views/template-home.blade.php -->
-<?php
-$collaborators_page = get_page_by_title( 'Collaborators' );
-$collaborators_url = get_permalink( $collaborators_page->ID );
-?>
 @section('content')
   <div id="home"
     class="@option('layout_container')
@@ -27,7 +23,7 @@ $collaborators_url = get_permalink( $collaborators_page->ID );
             {{ get_field('top_title') }}
           </span>
           @php($cta = get_field('cta'))
-          <a href="{{ $collaborators_url }}"
+          <a href="{{ get_permalink( $collaborator ) }}"
             class="group relative inline-block"
           >
             <h2 class="text-md md:text-3xl 2xl:text-4xl
