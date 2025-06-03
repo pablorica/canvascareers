@@ -205,8 +205,8 @@ if ($category) {
                       ">
                         <div class="w-auto text-right md:relative absolute top-6 right-3 md:top-0 md:right-0">
                           <svg class="toggle-form cursor-pointer ml-auto mb-4" width="30" height="30" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
-                            <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="1.5"></line>
-                            <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="1.5"></line>
+                            <line x1="25" y1="10" x2="25" y2="40" stroke="gray" stroke-width="1"></line>
+                            <line x1="10" y1="25" x2="40" y2="25" stroke="gray" stroke-width="1"></line>
                           </svg>
                         </div>
 
