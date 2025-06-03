@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Updated
 
+- [Expanded Jobs](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210365514048105)
 
 - [Job: Form pop-up](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210413586272375)
 

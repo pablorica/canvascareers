@@ -1,4 +1,18 @@
 .page-template-template-jobs {
+
+  .job-item.hidden {
+    display: none;
+  }
+  #jobs.hide-jobs {
+    .job-item {
+      display: none;
+      &.opened,
+      &.visible {
+        display: block;
+      }
+    }
+  }
+
   .job-body {
     h1, h2, h3, h4, h5, h6 {
       @apply font-sans;

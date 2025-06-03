@@ -9,42 +9,133 @@ const jobs = () => {
     }
 
     let currentFilter = '';
-    var jobItems      = document.querySelectorAll('.job-item');
+    var jobsWrapper   = document.querySelector('#jobs');
+    var jobItems      = jobsWrapper.querySelectorAll('.job-item');
     var numberOfJobs  = jobItems.length;
     var displacement  = 0;
 
     var previousWidth  = window.innerWidth;
     var previousHeight = window.innerHeight;
 
+    //Default collapsed job height (md viewport)
+    var collapsedJobheight = 40;
+    //Default min job height (md viewport)
+    var jobDashboardMinHeight = previousHeight - 144.5 - 108.9 - 95;
+    //jobDashboardMinHeight = previousHeight - headerHeight - footerHeight - jobsHeaderHeight;
+
 
     //Function to close all jobs
-    function closeAllJobs(index = null) {
-      //console.log('closeAllJobs index', index);
-      const accordions = document.getElementsByClassName('job-accordion');
-      Array.from(accordions).forEach((accordion, i) => {
-        if(index !== null) {
-          if (i === index) {
-            return;
+    function closeAllJobs(
+      index = null,
+      numberofvisibleJobs = 0
+    ) {
+      const accordions = Array.from(document.getElementsByClassName('job-accordion'));
+      const totalItems = accordions.length;
+
+      // Reset all items
+      accordions.forEach((accordion) => {
+        const parent = accordion.parentNode;
+        parent.classList.remove('visible', 'opened');
+      });
+
+      if (index !== null && numberofvisibleJobs > 0) {
+        // Calculate how many before and after
+        const half = Math.floor(numberofvisibleJobs / 2);
+
+        //const extraBefore = numberofvisibleJobs % 2 === 1 ? 1 : 0;
+        //let beforeTarget = half + extraBefore;
+        //let afterTarget = numberofvisibleJobs - beforeTarget;
+
+        const extraAfter = numberofvisibleJobs % 2 === 1 ? 1 : 0;
+        let afterTarget = half + extraAfter;
+        let beforeTarget = numberofvisibleJobs - afterTarget;
+
+        const visibleIndices = [];
+
+        // Look backwards
+        let i = index - 1;
+        let collectedBefore = 0;
+        while (i >= 0 && collectedBefore < beforeTarget) {
+          if (!accordions[i].parentNode.classList.contains('hidden') ) {
+            //console.log('Adding before index, element number', i);
+            visibleIndices.unshift(i);
+            collectedBefore++;
           }
+          i--;
         }
 
-        const content = accordion.parentNode.querySelector(`#collapse-${i}`);
-        const icon = accordion.parentNode.querySelector(`.icon-${i}`);
-        const applyButton = accordion.parentNode.querySelector('.toggle-form');
-        const formContainer = accordion.parentNode.querySelector('.form-container');
+        // Look forwards
+        let l = index + 1;
+        let collectedAfter = 0;
+        while (l < totalItems && collectedAfter < afterTarget) {
+          if (!accordions[l].parentNode.classList.contains('hidden')) {
+            //console.log('Adding after index, element number', l);
+            visibleIndices.push(l);
+            collectedAfter++;
+          }
+          l++;
+        }
+
+        // Try to compensate if before or after were short
+        let stillNeeded = numberofvisibleJobs - (collectedBefore + collectedAfter);
+        let m = index - collectedBefore - 1;
+        //console.log('collectedBefore', collectedBefore);
+        //console.log('collectedAfter', collectedAfter);
+        //console.log('stillNeeded', stillNeeded);
+        while (m >= 0 && stillNeeded > 0) {
+          if (!accordions[m].parentNode.classList.contains('hidden')
+            && visibleIndices.indexOf(m) === -1
+          ) {
+            visibleIndices.unshift(m);
+            //console.log('Adding  much before index, element number', m);
+            stillNeeded--;
+          }
+          m--;
+        }
+
+        let j = index + collectedAfter + 1;
+        //console.log('totalItems', totalItems);
+        while (j < totalItems && stillNeeded > 0) {
+          if (!accordions[j].parentNode.classList.contains('hidden')
+            && visibleIndices.indexOf(j) === -1
+          ) {
+            visibleIndices.push(j);
+            //console.log('Adding much after index, element number', j);
+            //console.log('Element', accordions[j].parentNode.classList);
+            stillNeeded--;
+          }
+          j++;
+        }
+
+        //remove duplicates
+        const uniqueVisibleIndices = [...new Set(visibleIndices)];
+
+        // Add 'visible' class
+        uniqueVisibleIndices.forEach((k) => {
+          accordions[k].parentNode.classList.add('visible');
+          //console.log('Adding visible class to item ', k);
+          //console.log('Added to ', accordions[k].parentNode.classList);
+        });
+      }
+
+      // Collapse all except the selected one
+      accordions.forEach((accordion, i) => {
+        if (index !== null && i === index) return;
+
+        const parent = accordion.parentNode;
+        const content = parent.querySelector(`#collapse-${i}`);
+        const icon = parent.querySelector(`.icon-${i}`);
+        const applyButton = parent.querySelector('.toggle-form');
+        const formContainer = parent.querySelector('.form-container');
 
         content.style.maxHeight = '0';
         content.classList.add('overflow-hidden');
         content.classList.remove('overflow-y-scroll');
         icon.style.transform = 'rotate(0deg)';
 
-        // Apply button
-        if (applyButton) {
-          // If form container is visible, hide it
-          if (!formContainer.classList.contains('hidden')) {
-            formContainer.classList.add('hidden');
-            applyButton.classList.remove('active');
-          }
+        if (applyButton && !formContainer.classList.contains('hidden')) {
+          formContainer.classList.add('hidden');
+          applyButton.classList.remove('active');
         }
       });
     }
@@ -54,11 +145,13 @@ const jobs = () => {
       const currentWidth = window.innerWidth;
       const currentHeight = window.innerHeight;
 
+      jobDashboardMinHeight = currentHeight - 144.5 - 108.9 - 95;
+
       //This is needed only for desktop
       if( currentWidth <= 768) {
         return;
       }
-
+      jobsWrapper.classList.remove('hide-jobs');
       closeAllJobs();
 
     });
@@ -70,16 +163,15 @@ const jobs = () => {
       // Filter manually by class
       jobItems.forEach((job) => {
         if (!filterValue) {
-          job.style.display = 'block';
+          job.classList.remove('hidden');
           numberOfJobs = jobItems.length;
           return;
         }
 
         let filter = filterValue.replace('.', '');
-        //job.style.display = job.classList.contains(filter) ? 'block' : 'none';
-        job.style.display = 'none';
+        job.classList.add('hidden');
         if (job.classList.contains(filter)) {
-          job.style.display = 'block';
+          job.classList.remove('hidden');
           numberOfJobs++;
         }
       });
@@ -96,6 +188,7 @@ const jobs = () => {
     filters.forEach((filter) => {
       filter.addEventListener('click', (e) => {
         e.preventDefault();
+
 
         // Remove active class from all filters
         filters.forEach((filter) => {
@@ -116,7 +209,7 @@ const jobs = () => {
         }
 
         filterJobs(currentFilter);
-
+        jobsWrapper.classList.remove('hide-jobs');
         closeAllJobs();
       });
     });
@@ -140,22 +233,31 @@ const jobs = () => {
     // Accordions
     function toggleAccordion(element, index) {
       const currentWidth = window.innerWidth;
-      const jobsWrapper = document.querySelector('#jobs');
-      const parent = element.parentNode;
+      const parent       = element.parentNode;
+
+      const content       = parent.querySelector(`#collapse-${index}`);
+      const icon          = parent.querySelector(`.icon-${index}`);
+      const applyButton   = parent.querySelector('.toggle-form');
+      const formContainer = parent.querySelector('.form-container');
+
+      let dashboardLeftSpace = jobDashboardMinHeight - content.scrollHeight;
+      let numberofvisibleJobs = Math.floor(dashboardLeftSpace/ collapsedJobheight);
+      //console.log('jobDashboardMinHeight', jobDashboardMinHeight);
+      //console.log('numberofvisibleJobs', numberofvisibleJobs);
+      //console.log('opened Job', index);
 
       // Hide all other accordions
-      closeAllJobs(index);
+      closeAllJobs(index, numberofvisibleJobs);
 
-      const content = parent.querySelector(`#collapse-${index}`);
-      const icon = parent.querySelector(`.icon-${index}`);
-      const applyButton = parent.querySelector('.toggle-form');
-      const formContainer = parent.querySelector('.form-container');
+      parent.classList.remove('opened');
 
       // Toggle the content's max-height for smooth opening and closing
       if (content.style.maxHeight && content.style.maxHeight !== '0px') {
 
         // Enable scroll on jobsWrapper when all jobs are closed
         jobsWrapper.classList.remove('overflow-hidden');
+        //Remove all classes starting by show-jobs
+        jobsWrapper.classList.remove('hide-jobs');
 
         // Hide the content
         content.style.maxHeight = '0';
@@ -175,9 +277,14 @@ const jobs = () => {
         }
       } else {
 
+        parent.classList.add('opened');
+
         content.style.maxHeight = content.scrollHeight   + 'px';
 
         icon.style.transform = 'rotateX(180deg)';
+
+
+        jobsWrapper.classList.add('hide-jobs');
 
 
         setTimeout(() => {
