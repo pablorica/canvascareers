@@ -8,7 +8,7 @@
 @section('content')
   <div id="home"
     class="@option('layout_container')
-      flex w-full flex-col md:flex-row"
+      flex w-full flex-col md:flex-row md:pr-0"
   >
     @php($collaborator = get_field('collaborator'))
 
@@ -76,7 +76,9 @@
         </div>
       </div>
       <div
-        class="md:-mr-14 flex-1 mt-6 md:mt-0 relative"
+        class=" flex-1
+          mt-6 md:mt-0 md:mr-0
+          relative"
       >
 
       @php($first_image = get_field('home_first_image', $collaborator->ID))
