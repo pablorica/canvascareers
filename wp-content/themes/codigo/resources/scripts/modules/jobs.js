@@ -356,7 +356,100 @@ const jobs = () => {
         let addAttachment = form.querySelector('.add-attachment');
 
         if (addAttachment) {
+
           let filesAdded = [];
+
+          let checkMaxFiles = () => {
+            //if filesAdded is full, disable addAttachment button
+            if (filesAdded.length >= 3) {
+              addAttachment.classList.add('disabled');
+              addAttachment.setAttribute('disabled', 'disabled');
+              console.log('Max files added');
+            } else {
+              addAttachment.classList.remove('disabled');
+              addAttachment.removeAttribute('disabled');
+            }
+          }
+
+          let checkInputFile = (fileName, inputName) => {
+
+            // console.log('Added InputName', inputName);
+            // console.log('Added InputFile', fileName);
+
+            //Check if file is already added
+            if (filesAdded.includes(fileName)) {
+              return;
+            }
+
+            // Add file to array
+            filesAdded.push(fileName);
+
+            // Create new element
+            let attachment = document.createElement('div');
+            attachment.dataset.inputName = inputName;
+            attachment.classList.add('attachment');
+
+            // Create new element
+            let attachmentName = document.createElement('span');
+            attachmentName.classList.add('attachment-name');
+
+            // Create new element
+            let attachmentRemove = document.createElement('span');
+            attachmentRemove.classList.add('attachment-remove');
+
+            // Append elements
+            attachmentName.innerHTML = fileName;
+            attachmentRemove.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
+               <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="3"></line>
+               <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="3"></line>
+              </svg>
+            `;
+            attachment.appendChild(attachmentName);
+            attachment.appendChild(attachmentRemove);
+            form.querySelector('.attachments .files').appendChild(attachment);
+
+            // Search parent job-body
+            //const jobBody = form.closest('.job-body');
+            //jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+
+
+            //console.log('checkFilesAdded', filesAdded);
+            //for (const input of form.querySelectorAll('input[type="file"]')) {
+              //console.log('input.value', input.value);
+            //}
+
+            checkMaxFiles();
+
+            // Add event to remove attachment
+            attachmentRemove.addEventListener('click', (e) => {
+              let attachment = e.target.closest('.attachment');
+              let attachmentName = attachment.querySelector('.attachment-name').innerHTML;
+              let index = filesAdded.indexOf(attachmentName);
+
+              if (index > -1) {
+                filesAdded.splice(index, 1);
+              }
+
+              let input = form.querySelector(`input[name="${attachment.dataset.inputName}"]`);
+              input.value = '';
+
+              attachment.remove();
+
+              // Search parent job-body
+              //const jobBody = form.closest('.job-body');
+              //jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+
+              // console.log('removed element', attachmentName);
+              // console.log('checkFilesAdded', filesAdded);
+              // for (const input of form.querySelectorAll('input[type="file"]')) {
+              //   console.log('input.value', input.value);
+              // }
+
+              checkMaxFiles();
+            });
+          }
+
 
           addAttachment.addEventListener('click', (e) => {
             e.preventDefault();
@@ -364,6 +457,7 @@ const jobs = () => {
             let inputs = form.querySelectorAll('input[type="file"]');
 
             for (const input of inputs) {
+              console.log('input.value', input.value);
               if (!input.value) {
                 input.click();
                 break;
@@ -374,60 +468,20 @@ const jobs = () => {
           // Add event listeners to input file
           let inputFiles = form.querySelectorAll('input[type="file"]');
           inputFiles.forEach((inputFile) => {
+
+            if (inputFile.value) {
+              // get the value of the input file
+              let fileName = inputFile.value.split('\\').pop();
+              //get the name of the input file
+              let inputName = inputFile.name;
+
+              checkInputFile(fileName, inputName);
+            }
+
             inputFile.addEventListener('change', (e) => {
-              let fileName = e.target.files[0].name;
-
-              // Add file to array
-              filesAdded.push(fileName);
-
-              // Create new element
-              let attachment = document.createElement('div');
-              attachment.dataset.inputName = e.target.name;
-              attachment.classList.add('attachment');
-
-              // Create new element
-              let attachmentName = document.createElement('span');
-              attachmentName.classList.add('attachment-name');
-
-              // Create new element
-              let attachmentRemove = document.createElement('span');
-              attachmentRemove.classList.add('attachment-remove');
-
-              // Append elements
-              attachmentName.innerHTML = fileName;
-              attachmentRemove.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(45deg);">
-                 <line x1="25" y1="10" x2="25" y2="40" stroke="black" stroke-width="3"></line>
-                 <line x1="10" y1="25" x2="40" y2="25" stroke="black" stroke-width="3"></line>
-                </svg>
-              `;
-              attachment.appendChild(attachmentName);
-              attachment.appendChild(attachmentRemove);
-              form.querySelector('.attachments .files').appendChild(attachment);
-
-              // Search parent job-body
-              const jobBody = form.closest('.job-body');
-              jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
-
-              // Add event to remove attachment
-              attachmentRemove.addEventListener('click', (e) => {
-                let attachment = e.target.closest('.attachment');
-                let attachmentName = attachment.querySelector('.attachment-name').innerHTML;
-                let index = filesAdded.indexOf(attachmentName);
-
-                if (index > -1) {
-                  filesAdded.splice(index, 1);
-                }
-
-                let input = form.querySelector(`input[name="${attachment.dataset.inputName}"]`);
-                input.value = '';
-
-                attachment.remove();
-
-                // Search parent job-body
-                const jobBody = form.closest('.job-body');
-                jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
-              });
+              let fileName  = e.target.files[0].name;
+              let inputName = e.target.name;
+              checkInputFile(fileName, inputName);
             });
           });
 
@@ -435,7 +489,9 @@ const jobs = () => {
             let formId = form.querySelector('input[name="_wpcf7"]').value;
             let submission = event.detail.apiResponse;
 
-            if (submission['contact_form_id'] == formId && submission['status'] != "validation_failed") {
+            if (submission['contact_form_id'] == formId
+                && submission['status'] != "validation_failed"
+            ) {
               // Reset files
               let inputFiles = form.querySelectorAll('input[type="file"]');
               inputFiles.forEach((inputFile) => {
@@ -450,6 +506,7 @@ const jobs = () => {
 
               // Reset filesAdded
               filesAdded = [];
+              checkMaxFiles();
             }
 
             //Mobile only

@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.5.7] - 2025-06-10
+
+### Updated
+
+- [Job: Form pop-up](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210413586272375) The box shouldn't change size when attachments are brought in, the box stays the same size
+
+- [Jobs: Text gap](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210510063852164)
+
 ## [0.5.6] - 2025-06-03
 
 ### Updated

@@ -118,7 +118,7 @@ if ($category) {
               ">
                 <div class="md:pl-16">
                   <div class="job-info
-                    pb-6 md:pb-4
+                    pb-6 md:pb-8
                     font-sans text-base font-light"
                   >
                     <div class="flex mb-2">
