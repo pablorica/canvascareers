@@ -52,7 +52,9 @@
       </a>
       <button
         aria-label="Toggle Menu"
-        class="px-2 py-1 ml-auto md:hidden"
+        class="toggle-button
+          collaborator-fade-in-up
+          px-2 py-1 ml-auto md:hidden"
         aria-expanded="false"
         @click="this.toggleMenu"
       >

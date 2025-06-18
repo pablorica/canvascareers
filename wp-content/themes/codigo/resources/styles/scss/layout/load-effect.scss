@@ -7,7 +7,7 @@
   display: none;
 }
 body.page-template-template-home {
-  @media (min-width: theme("screens.md")) {
+  //@media (min-width: theme("screens.md")) {
     opacity: 0;
     transition: opacity 300ms ease;
     &::before {
@@ -20,18 +20,116 @@ body.page-template-template-home {
       background-color: theme("colors.chalk");
       z-index: 10;
     }
-  }
+  //}
 }
 body.page-template-template-home.no-before {
-  @media (min-width: theme("screens.md")) {
+  //@media (min-width: theme("screens.md")) {
     &::before {
       display: none;
     }
-  }
+  //}
 }
 
 
 body.page-template-template-home.load-effect {
+  @media (max-width: calc(theme("screens.md") - 1px)) {
+
+    opacity: 1;
+
+    /* Splash logo animation */
+    // Initial state: center, hidden
+    .splash-logo {
+      display: block;
+      position: fixed;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    // .splash-logo  next element opecity:0
+    .splash-logo + * {
+      opacity: 0;
+    }
+    .splash-logo--header {
+      top: 50%;
+      left: 50%;
+      transform: translate(calc(-25px - 50%), calc(-35px - 50%));
+      will-change: transform;
+    }
+
+    .splash-logo--footer {
+      bottom: 50%;
+      right: 50%;
+      transform: translate(calc(25px + 50%), calc(35px + 50%));
+      will-change: transform;
+    }
+
+    /* Splash logo animation| Step 1: fade in */
+    .splash-logo.visible {
+      opacity: 1;
+    }
+
+    /* Splash logo animation | Step 2: move to final positions */
+    .splash-logo--header.animate-out {
+      top: 1.25rem;
+      left: 2rem;
+      transform: translate(0, 0);
+    }
+
+    .splash-logo--footer.animate-out {
+      bottom: 1.75rem;
+      right: 2rem;
+      transform: translate(0, 0);
+    }
+
+
+    /* Buttons loading effect */
+    .growing-button {
+      transition: all 0.4s ease;
+      white-space: nowrap;
+      opacity: 0;
+    }
+    .growing-button.loading {
+      min-width: 2rem; /* Start small */
+    }
+    .growing-button.loaded {
+      min-width: 100%;
+    }
+
+
+
+
+    /* Collaborator Elements Loading effect */
+    .collaborator-fade-in-up {
+      opacity: 0;
+      transform: translateY(50%);
+      transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+    }
+    figure.collaborator-fade-in-up {
+      transform: translateY(100%);
+      transition:
+        transform 0.6s ease,
+        opacity 0.2s ease 0.45s; /* delay opacity fade until 75% of the way */
+    }
+
+    .collaborator-fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Toggle Button Loading effect */
+    .toggle-button.collaborator-fade-in-up {
+      transition: all 0.4s ease;
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    .toggle-button.collaborator-fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   @media (min-width: theme("screens.md")) {
 
     opacity: 1;

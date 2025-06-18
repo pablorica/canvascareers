@@ -77,6 +77,18 @@
   </div>
 
   <div class="md:hidden text-right">
+    @if (is_front_page())
+      {{-- Animated Brand --}}
+        <div class="splash-logo splash-logo--footer">
+          <a
+            href="{{ home_url('/') }}"
+            class="brand-footer
+            text-7xl md:text-8xl 2xl:text-9xl
+            text-charcoal leading-[0.75]"
+          ><span class="block">{{ __('Careers', 'codigo') }}</span></a>
+        </div>
+      {{-- End Animated Brand --}}
+      @endif
     <a
       href="{{ home_url('/') }}"
       class="brand-footer 2xl:text-9xl text-7xl text-charcoal"

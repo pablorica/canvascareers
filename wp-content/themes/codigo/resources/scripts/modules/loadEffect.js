@@ -64,9 +64,15 @@ function posterizeTween(target, vars) {
 
 const loadEffect = () => {
 
-  //Check window width
-  if(window.innerWidth < 768){
-    return; // Exit if mobile
+  var headerFinalPosition = [1.25, 1.25];  // 1.25rem top, 1.25rem left
+  var footerFinalPosition = [1.35, 1.25]; // bottom: 1.35rem;  right: 1.25rem;
+  if(window.innerWidth > 768){
+    headerFinalPosition = [1.25, 2];  // 1.25rem top, 2rem left
+    footerFinalPosition= [1.75, 2];  // bottom: 1.75rem;  right: 2rem;
+  }
+  if(window.innerWidth > 1792){
+    headerFinalPosition = [1.25, 3.5]; // 1.25rem top, 3.5rem left
+    footerFinalPosition= [1.75, 3.5]; // bottom: 1.75rem;  right: 3rem;
   }
 
   const launchPreloader = () => {
@@ -82,15 +88,18 @@ const loadEffect = () => {
 
     headerLogos.forEach((headerLogo, headerLogoIndex) => {
       headerLogo.classList.add('splash-logo');
+
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         headerLogo.classList.add('visible');
-
       }, 300); // start after slight pause
       setTimeout(() => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         //headerLogo.classList.add('animate-out');
-        const { x, y } = getOffsetFromCenterToTarget(1.25, 2); // 1.25rem top, 2rem left
+        const { x, y } = getOffsetFromCenterToTarget(
+          headerFinalPosition[0],
+          headerFinalPosition[1]
+        );
         posterizeTween(headerLogo, {
           x: x,
           y: y,
@@ -102,21 +111,21 @@ const loadEffect = () => {
         const headerLogo = document.querySelectorAll('.splash-logo--header')[headerLogoIndex];
         //headerLogo.classList.remove('splash-logo');
         headerLogo.remove();
-
       }, startAnimation + 2000);
     });
 
     footerLogos.forEach((footerLogo, footerLogoIndex) => {
       footerLogo.classList.add('splash-logo');
+      var footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
       setTimeout(() => {
-        const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         footerLogo.classList.add('visible');
-
       }, 300); // start after slight pause
       setTimeout(() => {
-        const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         //footerLogo.classList.add('animate-out');
-        const { x, y } = getOffsetFromCenterToBottomRight(1.75, 2); // bottom: 1.75rem;  right: 2rem;
+        const { x, y } = getOffsetFromCenterToBottomRight(
+          footerFinalPosition[0],
+          footerFinalPosition[1]
+        );
         posterizeTween(footerLogo, {
           x: x,
           y: y,
@@ -126,10 +135,8 @@ const loadEffect = () => {
 
       }, startAnimation);
       setTimeout(() => {
-        const footerLogo = document.querySelectorAll('.splash-logo--footer')[footerLogoIndex];
         //footerLogo.classList.remove('splash-logo');
         footerLogo.remove();
-
       }, startAnimation + 2000);
     });
 
