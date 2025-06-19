@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.6.1] - 2025-06-19
+
+### Updated
+
+- [Mobile: Loading Effect](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210582971625806)
+
+
 ## [0.6.0] - 2025-06-18
 
 ### Updated

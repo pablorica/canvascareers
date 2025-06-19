@@ -66,14 +66,21 @@ const loadEffect = () => {
 
   var headerFinalPosition = [1.25, 1.25];  // 1.25rem top, 1.25rem left
   var footerFinalPosition = [1.35, 1.25]; // bottom: 1.35rem;  right: 1.25rem;
-  if(window.innerWidth > 768){
+  var startAnimation = 1500;
+
+  if(window.innerWidth >= 768){
     headerFinalPosition = [1.25, 2];  // 1.25rem top, 2rem left
     footerFinalPosition= [1.75, 2];  // bottom: 1.75rem;  right: 2rem;
+    startAnimation = 3000;
   }
-  if(window.innerWidth > 1792){
+  if(window.innerWidth >= 1792){
     headerFinalPosition = [1.25, 3.5]; // 1.25rem top, 3.5rem left
     footerFinalPosition= [1.75, 3.5]; // bottom: 1.75rem;  right: 3rem;
   }
+
+  var startButtonsAnimation = startAnimation + 400;
+  var startCollaboratorsAnimation = startButtonsAnimation + 300;
+  var startImagesAnimation = startCollaboratorsAnimation + 1500;
 
   const launchPreloader = () => {
 
@@ -83,8 +90,6 @@ const loadEffect = () => {
     if(!headerLogos) return;
     const footerLogos = document.querySelectorAll('body.load-effect .splash-logo--footer');
     if(!footerLogos) return;
-
-    const startAnimation = 3000;
 
     headerLogos.forEach((headerLogo, headerLogoIndex) => {
       headerLogo.classList.add('splash-logo');
@@ -156,8 +161,6 @@ const loadEffect = () => {
       footer.classList.remove('animated-footer');
     }, startAnimation+ 1800);
 
-
-    const startButtonsAnimation = startAnimation + 400;
     setTimeout(() => {
       /*
       const footerButtons = document.querySelectorAll('footer.footer .growing-button');
@@ -224,7 +227,6 @@ const loadEffect = () => {
       });
     }, startButtonsAnimation);
 
-    const startCollaboratorsAnimation = startButtonsAnimation + 300;
     setTimeout(() => {
       const elements = document.querySelectorAll(".collaborator-fade-in-up");
       elements.forEach((el, i) => {
@@ -233,6 +235,20 @@ const loadEffect = () => {
         }, i * 400); // 400ms delay between each
       });
     }, startCollaboratorsAnimation);
+
+    if(window.innerWidth < 768){ //Advance the image effect on mobile
+      setTimeout(() => {
+        const elements1 = document.querySelectorAll("figure.collaborator-fade-in-up");
+        const elements2 = document.querySelectorAll("a.collaborator-link.collaborator-fade-in-up");
+        //merge elements and elements2
+        const allElements = [...elements1, ...elements2];
+        allElements.forEach((el, i) => {
+          setTimeout(() => {
+            el.classList.add("visible");
+          }, i * 400); // 400ms delay between each
+        });
+      }, startImagesAnimation);
+    }
   }
 
 

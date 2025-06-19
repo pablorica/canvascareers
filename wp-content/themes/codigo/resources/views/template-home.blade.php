@@ -121,7 +121,7 @@
 
         <a
           href="{{ $cta['link'] }}"
-          class="
+          class="collaborator-link
             text-md text-white underline
             leading-none text-center md:hidden
             absolute bottom-6 left-0 right-0
