@@ -193,12 +193,12 @@
                         />
                         @if (!$is_active)
                           <div class="absolute inset-0
-                            bg-white bg-opacity-60
+                            bg-black bg-opacity-60
                             flex items-end justify-start
                             opacity-0 group-hover:opacity-100
                             transition-opacity duration-300">
                             <span class="font-serif italic
-                              font-normal text-white text-sm
+                              font-normal text-citrus text-sm
                               line-clamp-none
                               mb-2 ml-2">Published in {{ $month }}</span>
                           </div>
@@ -215,10 +215,10 @@
                       >
                         @if (!$is_active)
                           <div class="absolute inset-0
-                            bg-white bg-opacity-60
+                            bg-black bg-opacity-60
                            flex items-end justify-start">
                             <span class="font-serif italic
-                              font-normal text-white text-sm
+                              font-normal text-citrus text-sm
                               line-clamp-none
                               mb-2 ml-2
                             ">Published in {{ $month }}</span>
