@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Updated
 
+- [Mobile: Jobs Page](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210599040973157)
+
 - [Mobile: Loading Effect](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210582971625806)
 
 - [Collaborators](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210341899208372)

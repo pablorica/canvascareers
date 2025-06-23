@@ -326,9 +326,16 @@ const jobs = () => {
         if (toggleForm) {
           toggleForm.forEach((toggle) => {
             toggle.addEventListener('click', () => {
-              form.querySelector('.form-container').classList.toggle('hidden');
+              const formContainer = form.querySelector('.form-container');
+              // Check if formContainer exists
+              if (!formContainer) {
+                console.error('Element .form-container not found.');
+                return;
+              }
 
-              if (form.querySelector('.form-container').classList.contains('hidden')) {
+              formContainer.classList.toggle('hidden');
+
+              if (formContainer.classList.contains('hidden')) {
                 // Remove active class from all filters
                 toggleForm.forEach((toggle) => {
                   toggle.classList.remove('active');
@@ -342,6 +349,15 @@ const jobs = () => {
                 // Search parent job-body
                 const jobBody = toggle.closest('.job-body');
                 jobBody.style.maxHeight = jobBody.scrollHeight + 'px';
+
+                // Scroll the window to the same height as formContainer
+                setTimeout(() => {
+                  const formTopOffset = formContainer.getBoundingClientRect().top + window.scrollY;
+                  window.scrollTo({
+                    top: formTopOffset,
+                    behavior: 'smooth'
+                  });
+                }, 500);
               }
 
             });
