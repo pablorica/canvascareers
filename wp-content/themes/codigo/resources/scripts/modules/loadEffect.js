@@ -80,7 +80,7 @@ const loadEffect = () => {
 
   var startButtonsAnimation = startAnimation + 400;
   var startCollaboratorsAnimation = startButtonsAnimation + 300;
-  var startImagesAnimation = startCollaboratorsAnimation + 1500;
+  var startImagesAnimation = startCollaboratorsAnimation + 1200;
 
   const launchPreloader = () => {
 
@@ -286,8 +286,8 @@ const loadEffect = () => {
   }
 
   //Debug
-  //body.classList.add('load-effect');
-  //launchPreloader();
+  body.classList.add('load-effect');
+  launchPreloader();
 };
 
 export default loadEffect;
