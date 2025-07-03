@@ -36,6 +36,18 @@ return [
                 'singular' => 'Job',
                 'plural' => 'Jobs',
             ],
+        ],
+        'salary' => [
+            'enter_title_here' => 'Enter role title here',
+            'menu_icon' => 'dashicons-money-alt',
+            'supports' => ['title'],
+            'show_in_rest' => true,
+            'has_archive' => false,
+            'with_front' => false,
+            'labels' => [
+                'singular' => 'Salary',
+                'plural' => 'Salaries',
+            ],
         ]
     ],
 
@@ -75,6 +87,16 @@ return [
             'labels' => [
                 'singular' => 'Tag',
                 'plural' => 'Tags',
+            ],
+            'public' => false,
+            'show_in_rest' => true,
+            'show_admin_column' => true,
+        ],
+        'salary-category' => [
+            'links' => ['salary'],
+            'labels' => [
+                'singular' => 'Category',
+                'plural' => 'Categories',
             ],
             'public' => false,
             'show_in_rest' => true,

@@ -17,6 +17,7 @@ import tinyslider from "./modules/tinyslider";
 import collaborators from "./modules/collaborators";
 import accordion from "./modules/accordion";
 import jobs from "./modules/jobs";
+import salaries from "./modules/salaries";
 import loadEffect from "./modules/loadEffect";
 
 /**
@@ -48,6 +49,7 @@ const CDG = {
     accordion();
 
 
+
     window.addEventListener("resize", function(){
       //consoleHello('window has resized');
       if(window.innerWidth < 768){
@@ -62,6 +64,7 @@ const CDG = {
   onloadFunctions: function() {
     //consoleHello('CDG is loaded');
     jobs();
+    salaries();
 
     if(document.body.classList.contains('page-template-template-home')){
       //consoleHello('home page');

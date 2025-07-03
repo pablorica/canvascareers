@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.7.0] - 2025-07-03
+
+### Added
+
+- [New Salary Page](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210638654956317)
+
+
 ## [0.6.2] - 2025-06-23
 
 ### Updated
