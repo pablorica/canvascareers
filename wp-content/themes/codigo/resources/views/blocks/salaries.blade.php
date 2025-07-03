@@ -118,21 +118,19 @@ $terms = get_terms([
               <div class="w-full grid grid-cols-12">
               @if ($roles)
                 @foreach ($roles as $role)
-                  <div class="col-span-6
+                  <div class="col-span-6 md:col-span-4
                     md:pl-16 md:pr-8
+                    has-sm-font-size
                   ">
                     {!! $role->post_title !!}
                   </div>
-                  <div class="col-span-2
-                  ">
+                  <div class="col-span-2 has-sm-font-size">
                     {!! get_field('low', $role->ID) !!}
                   </div>
-                  <div class="col-span-2
-                  ">
+                  <div class="col-span-2 has-sm-font-size">
                     {!! get_field('typical', $role->ID) !!}
                   </div>
-                  <div class="col-span-2
-                  ">
+                  <div class="col-span-2 has-sm-font-size">
                     {!! get_field('high', $role->ID) !!}
                   </div>
                 @endforeach
