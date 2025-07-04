@@ -2,9 +2,10 @@ const salaries = () => {
 
 
   function closeAllSalaries(
-    index = null
+    index = null,
+    list
   ) {
-    const accordions = Array.from(document.getElementsByClassName('salary-accordion'));
+    const accordions = Array.from(list.getElementsByClassName('salary-accordion'));
     const totalItems = accordions.length;
 
     // Reset all items
@@ -43,7 +44,7 @@ const salaries = () => {
   }
 
   // Accordions
-  function toggleAccordion(element, index) {
+  function toggleAccordion(element, index, list) {
     const currentWidth = window.innerWidth;
     const parent       = element.parentNode;
 
@@ -52,7 +53,7 @@ const salaries = () => {
 
 
     // Hide all other accordions
-    closeAllSalaries(index);
+    closeAllSalaries(index, list);
 
     parent.classList.remove('opened');
 
@@ -93,7 +94,7 @@ const salaries = () => {
 
       if (accordions.length > 0) {
         Array.from(accordions).forEach((accordion, index) => {
-          accordion.addEventListener('click', () => toggleAccordion(accordion, index));
+          accordion.addEventListener('click', () => toggleAccordion(accordion, index, list));
         });
       }
 

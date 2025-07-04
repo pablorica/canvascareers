@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.7.1] - 2025-07-04
+
+### Added
+
+- [New Salary Page](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1210638654956317) Updates on mobile accordion
+
 ## [0.7.0] - 2025-07-03
 
 ### Added
