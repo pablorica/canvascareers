@@ -20,10 +20,31 @@
             text-md md:text-lg
             collaborator-fade-in-up
           ">
-            {{ get_field('top_title') }}
+            {{ get_field('home_intro_label', $collaborator) }}
           </span>
-          @php($cta = get_field('cta'))
-          <a href="{{ get_permalink( $collaborator ) }}"
+          <?php
+          $home_description = get_field('home_description', $collaborator);
+           // Ensure $home_description is not null or empty before applying filters
+          if (!empty($home_description)) {
+              $collaborator_description = apply_filters('the_content', $home_description);
+          } else {
+              $collaborator_description = 'No description available.';
+          }
+
+
+          $collaborator_permalink = get_permalink( $collaborator );
+          $cta_permalink = $collaborator_permalink;
+          if( !get_field('cta_collaborator_linked', $collaborator)
+            && get_field('cta_url', $collaborator)
+          ) {
+            $cta_permalink = get_field('cta_url', $collaborator);
+          }
+          //error_log('cta_collaborator_linked: '.get_field('cta_collaborator_linked', $collaborator));
+          //error_log('cta_url: '.get_field('cta_url', $collaborator));
+
+          $cta_target = get_field('cta_collaborator_target', $collaborator) ? '_blank' : '_self'
+          ?>
+          <a href="{{ $collaborator_permalink }}"
             class="group relative inline-block"
           >
             <h2 class="text-md md:text-3xl 2xl:text-4xl
@@ -45,34 +66,32 @@
             mt-1 md:mt-6
             collaborator-fade-in-up
           ">
-            {{ get_field('position', $collaborator) }} {{ __('based in', 'codigo') }} {{ get_field('location', $collaborator) }}
+            {{ get_field('home_headline', $collaborator) }}
           </span>
           <div class="text-md md:text-sm 2xl:text-base
-            mt-4
+            mt-4 mb-4
             max-w-[215px] 2xl:max-w-[260px]
             hidden md:block
             collaborator-fade-in-up
           ">
-            {!! get_the_content() !!}
+            {!! $collaborator_description !!}
           </div>
 
-
           <a
-            href="{{ $cta['link'] }}"
+            href="{{ $cta_permalink }}"
             class="
-            text-md md:text-sm 2xl:text-base
-            py-2 px-7 rounded-full
-            mb-8 mt-3
-            bg-chalk hover:bg-citrus
-            transition-colors duration-300
-            border border-charcoal md:inline-block
-            leading-none text-center hidden
-            overflow-ellipsis overflow-hidden whitespace-nowrap
-            collaborator-fade-in-up
-          "
-          >
-            {{ $cta['text'] }}
-          </a>
+              text-md md:text-sm 2xl:text-base
+              py-2 px-7 rounded-full
+              mb-8 mt-3
+              bg-chalk hover:bg-citrus
+              transition-colors duration-300
+              border border-charcoal md:inline-block
+              leading-none text-center hidden
+              overflow-ellipsis overflow-hidden whitespace-nowrap
+              collaborator-fade-in-up
+            "
+            target = "{{ $cta_target }}"
+          >{{ get_field('cta_label', $collaborator) }}</a>
         </div>
       </div>
       <div
@@ -120,16 +139,15 @@
 
 
         <a
-          href="{{ $cta['link'] }}"
+          href="{{ $cta_permalink }}"
           class="collaborator-link
             text-md text-white underline
             leading-none text-center md:hidden
             absolute bottom-6 left-0 right-0
             collaborator-fade-in-up
           "
-        >
-          {{ $cta['text'] }}
-        </a>
+          target = "{{ $cta_target }}"
+        >{{ get_field('cta_label', $collaborator) }}</a>
       </div>
     @endif
   </div>
