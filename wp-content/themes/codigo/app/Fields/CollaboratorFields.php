@@ -114,21 +114,7 @@ class CollaboratorFields extends Field
                     'toggle' => 0,
                     'return_format' => 'value',
                 ])
-            ->endRepeater()
-            ->addMessage('home_details', 'message', [
-                'label' => 'Home Details',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => [],
-                'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ],
-                'message' => '',
-                'new_lines' => 'wpautop', // 'wpautop', 'br', '' no formatting
-                'esc_html' => 0,
-            ]);
+            ->endRepeater();
 
         return $fields->build();
     }
