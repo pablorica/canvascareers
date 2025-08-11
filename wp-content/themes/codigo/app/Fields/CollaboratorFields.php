@@ -128,48 +128,6 @@ class CollaboratorFields extends Field
                 'message' => '',
                 'new_lines' => 'wpautop', // 'wpautop', 'br', '' no formatting
                 'esc_html' => 0,
-            ])
-            ->addImage('home_first_image', [
-                'label' => 'Home First Image',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => [],
-                'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ],
-                'return_format' => 'url',
-                'preview_size' => 'thumbnail',
-                'library' => 'all',
-                'min_width' => '',
-                'min_height' => '',
-                'min_size' => '',
-                'max_width' => '',
-                'max_height' => '',
-                'max_size' => '',
-                'mime_types' => '',
-            ])
-            ->addImage('home_second_image', [
-                'label' => 'Home Second Image',
-                'instructions' => '',
-                'required' => 0,
-                'conditional_logic' => [],
-                'wrapper' => [
-                    'width' => '',
-                    'class' => '',
-                    'id' => '',
-                ],
-                'return_format' => 'url',
-                'preview_size' => 'thumbnail',
-                'library' => 'all',
-                'min_width' => '',
-                'min_height' => '',
-                'min_size' => '',
-                'max_width' => '',
-                'max_height' => '',
-                'max_size' => '',
-                'mime_types' => '',
             ]);
 
         return $fields->build();
