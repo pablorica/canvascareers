@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.7.2] - 2025-08-11
+
+### Updated
+
+- Homepage
+
+- Collaborators Years
+
+
+
 ## [0.7.1] - 2025-07-04
 
 ### Added
