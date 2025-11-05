@@ -33,16 +33,16 @@
 
 
           $collaborator_permalink = get_permalink( $collaborator );
-          $cta_permalink = $collaborator_permalink;
-          if( !get_field('cta_collaborator_linked', $collaborator)
-            && get_field('cta_url', $collaborator)
-          ) {
-            $cta_permalink = get_field('cta_url', $collaborator);
-          }
+          // $cta_permalink = $collaborator_permalink;
+          // if( !get_field('cta_collaborator_linked', $collaborator)
+          //   && get_field('cta_url', $collaborator)
+          // ) {
+          //   $cta_permalink = get_field('cta_url', $collaborator);
+          // }
           //error_log('cta_collaborator_linked: '.get_field('cta_collaborator_linked', $collaborator));
           //error_log('cta_url: '.get_field('cta_url', $collaborator));
 
-          $cta_target = get_field('cta_collaborator_target', $collaborator) ? '_blank' : '_self'
+          //$cta_target = get_field('cta_collaborator_target', $collaborator) ? '_blank' : '_self'
           ?>
           <a href="{{ $collaborator_permalink }}"
             class="group relative inline-block"
@@ -76,6 +76,19 @@
           ">
             {!! $collaborator_description !!}
           </div>
+          <?php
+            $cta = get_field('cta', $collaborator);
+            //error_log('CTA: '.print_r($cta, true));
+            $cta_target = '_self';
+            $cta_permalink = '/collaborators';
+            $cta_label = 'Discover our Collaborators';
+            if(is_array($cta)) {
+              $cta_target = $cta['target'] ? $cta['target'] : '_self';
+              $cta_permalink = $cta['url'];
+              $cta_label = $cta['title'];
+              //$cta_label = get_field('cta_label', $collaborator)
+            }
+          ?>
 
           <a
             href="{{ $cta_permalink }}"
@@ -91,7 +104,7 @@
               collaborator-fade-in-up
             "
             target = "{{ $cta_target }}"
-          >{{ get_field('cta_label', $collaborator) }}</a>
+          >{{ $cta_label }}</a>
         </div>
       </div>
       <div
@@ -147,7 +160,7 @@
             collaborator-fade-in-up
           "
           target = "{{ $cta_target }}"
-        >{{ get_field('cta_label', $collaborator) }}</a>
+        >{{ $cta_label }}</a>
       </div>
     @endif
   </div>

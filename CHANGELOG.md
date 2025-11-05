@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+## [0.7.3] - 2025-08-11
+
+### Updated
+
+- [Homepage](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941735)
+
+
 ## [0.7.2] - 2025-08-11
 
 ### Updated
@@ -14,7 +21,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Homepage
 
 - Collaborators Years
-
 
 
 ## [0.7.1] - 2025-07-04

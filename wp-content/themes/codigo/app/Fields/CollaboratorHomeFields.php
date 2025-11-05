@@ -170,75 +170,18 @@ class CollaboratorHomeFields extends Field
 				'rows' => '',
 				'new_lines' => '', // Possible values are 'wpautop', 'br', or ''.
 			])
-			->addText('cta_label', [
-				'label' => 'CTA Label',
-				'instructions' => '',
-				'required' => 0,
-				'conditional_logic' => [],
-				'wrapper' => [
-					'width' => '',
-					'class' => '',
-					'id' => '',
-				],
-				'default_value' => 'Discover our Collaborators',
-				'placeholder' => '',
-				'prepend' => '',
-				'append' => '',
-				'maxlength' => '',
-			])
-            ->addTrueFalse('cta_collaborator_target', [
-              'label' => 'Open in a new window',
-              'instructions' => '',
-              'required' => 0,
-              'conditional_logic' => [],
-              'wrapper' => [
-                  'width' => '50%',
-                  'class' => '',
-                  'id' => '',
-              ],
-              'message' => '',
-              'default_value' => 0,
-              'ui' => 0,
-              'ui_on_text' => '',
-              'ui_off_text' => '',
-          ])
-            ->addTrueFalse('cta_collaborator_linked', [
-              'label' => 'Link CTA to Collaborator Page',
-              'instructions' => '',
-              'required' => 0,
-              'conditional_logic' => [],
-              'wrapper' => [
-                  'width' => '50%',
-                  'class' => '',
-                  'id' => '',
-              ],
-              'message' => '',
-              'default_value' => 1,
-              'ui' => 0,
-              'ui_on_text' => '',
-              'ui_off_text' => '',
-          ])
-          ->addUrl('cta_url', [
-            'label' => 'CTA URL',
-            'instructions' => 'Enter the URL this CTA should link to',
-            'required' => 0,
-            'conditional_logic' => array(
-				array(
-					array(
-						'field' => 'cta_collaborator_linked',
-						'operator' => '!=',
-						'value' => '1',
-					),
-				),
-			),
-            'wrapper' => [
-                'width' => '',
-                'class' => '',
-                'id' => '',
-            ],
-            'default_value' => '',
-            'placeholder' => '',
-        ]);
+			->addLink('cta', [
+                'label' => 'Call to Action',
+                'instructions' => "By default the label is 'Discover our Collaborators', and it's linked to the collaborators page.",
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'return_format' => 'array',
+            ]);
 
 		return $fields->build();
 	}
