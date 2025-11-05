@@ -19,6 +19,7 @@
         <li class="mr-2 xl:mt-2 mt-1">
           <a
             href="{{ $item->url }}"
+            target="{{ $item->target }}"
             class="block leading-none text-center
           "><span data-title="{{ $item->title }}"
             class="button-menu growing-button

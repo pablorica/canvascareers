@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Updated
 
 - [Homepage](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941735)
+  - “Discover our Collaborator” Currently takes you to Marcus Quigley article but needs to go to the collaborators page
+  - “LinkedIn” button at the bottom of the page. When it’s clicked it should open a new tab rather than take you away from the webpage
 
 
 ## [0.7.2] - 2025-08-11
