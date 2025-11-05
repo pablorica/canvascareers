@@ -2,7 +2,7 @@
 
 return [
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Post Types
     |--------------------------------------------------------------------------
@@ -12,46 +12,46 @@ return [
     |
     */
 
-    'post' => [
-        'collaborator' => [
-            'enter_title_here' => 'Enter collaborator name here',
-            'menu_icon' => 'dashicons-groups',
-            'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
-            'show_in_rest' => true,
-            'has_archive' => false,
-            'with_front' => false,
-            'labels' => [
-                'singular' => 'Collaborator',
-                'plural' => 'Collaborators',
-            ],
-        ],
-        'job' => [
-            'enter_title_here' => 'Enter job title here',
-            'menu_icon' => 'dashicons-category',
-            'supports' => ['title', 'thumbnail'],
-            'show_in_rest' => true,
-            'has_archive' => false,
-            'with_front' => false,
-            'labels' => [
-                'singular' => 'Job',
-                'plural' => 'Jobs',
-            ],
-        ],
-        'salary' => [
-            'enter_title_here' => 'Enter role title here',
-            'menu_icon' => 'dashicons-money-alt',
-            'supports' => ['title'],
-            'show_in_rest' => true,
-            'has_archive' => false,
-            'with_front' => false,
-            'labels' => [
-                'singular' => 'Salary',
-                'plural' => 'Salaries',
-            ],
-        ]
+  'post' => [
+    'collaborator' => [
+      'enter_title_here' => 'Enter collaborator name here',
+      'menu_icon' => 'dashicons-groups',
+      'supports' => ['title', 'editor', 'excerpt', 'thumbnail'],
+      'show_in_rest' => true,
+      'has_archive' => false,
+      'with_front' => false,
+      'labels' => [
+        'singular' => 'Collaborator',
+        'plural' => 'Collaborators',
+      ],
     ],
+    'job' => [
+      'enter_title_here' => 'Enter job title here',
+      'menu_icon' => 'dashicons-category',
+      'supports' => ['title', 'thumbnail'],
+      'show_in_rest' => true,
+      'has_archive' => false,
+      'with_front' => false,
+      'labels' => [
+        'singular' => 'Job',
+        'plural' => 'Jobs',
+      ],
+    ],
+    'salary' => [
+      'enter_title_here' => 'Enter role title here',
+      'menu_icon' => 'dashicons-money-alt',
+      'supports' => ['title'],
+      'show_in_rest' => true,
+      'has_archive' => false,
+      'with_front' => false,
+      'labels' => [
+        'singular' => 'Salary',
+        'plural' => 'Salaries',
+      ],
+    ]
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Taxonomies
     |--------------------------------------------------------------------------
@@ -61,50 +61,60 @@ return [
     |
     */
 
-    'taxonomy' => [
-        'collaborator-year' => [
-            'links' => ['collaborator'],
-            'labels' => [
-                'singular' => 'Year',
-                'plural' => 'Years',
-            ],
-            'public' => false,
-            'show_in_rest' => true,
-            'show_admin_column' => true,
-        ],
-        'job-category' => [
-            'links' => ['job'],
-            'labels' => [
-                'singular' => 'Category',
-                'plural' => 'Categories',
-            ],
-            'public' => false,
-            'show_in_rest' => true,
-            'show_admin_column' => true,
-        ],
-        'job-tag' => [
-            'links' => ['job'],
-            'labels' => [
-                'singular' => 'Tag',
-                'plural' => 'Tags',
-            ],
-            'public' => false,
-            'show_in_rest' => true,
-            'show_admin_column' => true,
-        ],
-        'salary-category' => [
-            'links' => ['salary'],
-            'labels' => [
-                'singular' => 'Category',
-                'plural' => 'Categories',
-            ],
-            'public' => false,
-            'show_in_rest' => true,
-            'show_admin_column' => true,
-        ],
+  'taxonomy' => [
+    'collaborator-year' => [
+      'links' => ['collaborator'],
+      'labels' => [
+        'singular' => 'Year',
+        'plural' => 'Years',
+      ],
+      'public' => false,
+      'show_in_rest' => true,
+      'show_admin_column' => true,
     ],
+    'collaborator-season' => [
+      'links' => ['collaborator'],
+      'labels' => [
+        'singular' => 'Season',
+        'plural' => 'Seasons',
+      ],
+      'public' => false,
+      'show_in_rest' => true,
+      'show_admin_column' => true,
+    ],
+    'job-category' => [
+      'links' => ['job'],
+      'labels' => [
+        'singular' => 'Category',
+        'plural' => 'Categories',
+      ],
+      'public' => false,
+      'show_in_rest' => true,
+      'show_admin_column' => true,
+    ],
+    'job-tag' => [
+      'links' => ['job'],
+      'labels' => [
+        'singular' => 'Tag',
+        'plural' => 'Tags',
+      ],
+      'public' => false,
+      'show_in_rest' => true,
+      'show_admin_column' => true,
+    ],
+    'salary-category' => [
+      'links' => ['salary'],
+      'labels' => [
+        'singular' => 'Category',
+        'plural' => 'Categories',
+      ],
+      'public' => false,
+      'show_in_rest' => true,
+      'show_admin_column' => true,
+    ],
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Blocks
     |--------------------------------------------------------------------------
@@ -126,11 +136,11 @@ return [
     |
     */
 
-    'block' => [
-        // 'sage/accordion',
-    ],
+  'block' => [
+    // 'sage/accordion',
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Block Categories
     |--------------------------------------------------------------------------
@@ -140,14 +150,14 @@ return [
     |
     */
 
-    'block_category' => [
-        // 'cta' => [
-        //     'title' => 'Call to Action',
-        //     'icon' => 'star-filled',
-        // ],
-    ],
+  'block_category' => [
+    // 'cta' => [
+    //     'title' => 'Call to Action',
+    //     'icon' => 'star-filled',
+    // ],
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Block Patterns
     |--------------------------------------------------------------------------
@@ -165,15 +175,15 @@ return [
     | See: https://developer.wordpress.org/reference/functions/register_block_pattern/
     */
 
-    'block_pattern' => [
-        // 'sage/hero' => [
-        //     'title' => 'Page Hero',
-        //     'description' => 'Draw attention to the main focus of the page, and highlight key CTAs',
-        //     'categories' => ['all'],
-        // ],
-    ],
+  'block_pattern' => [
+    // 'sage/hero' => [
+    //     'title' => 'Page Hero',
+    //     'description' => 'Draw attention to the main focus of the page, and highlight key CTAs',
+    //     'categories' => ['all'],
+    // ],
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Block Pattern Categories
     |--------------------------------------------------------------------------
@@ -183,13 +193,13 @@ return [
     |
     */
 
-    'block_pattern_category' => [
-        'all' => [
-            'label' => 'All Patterns',
-        ],
+  'block_pattern_category' => [
+    'all' => [
+      'label' => 'All Patterns',
     ],
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Editor Palette
     |--------------------------------------------------------------------------
@@ -209,12 +219,12 @@ return [
     |
     */
 
-    'palette' => [
-        // 'red' => '#ff0000',
-        // 'blue' => '#0000ff',
-    ],
+  'palette' => [
+    // 'red' => '#ff0000',
+    // 'blue' => '#0000ff',
+  ],
 
-    /*
+  /*
     |--------------------------------------------------------------------------
     | Admin Menu
     |--------------------------------------------------------------------------
@@ -227,8 +237,8 @@ return [
     |
     */
 
-    'admin_menu' => [
-        // 'gutenberg',
-    ],
+  'admin_menu' => [
+    // 'gutenberg',
+  ],
 
 ];
