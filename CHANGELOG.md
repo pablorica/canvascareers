@@ -6,14 +6,22 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [0.7.4] - 2025-08-11
+## [0.7.5] - 2025-10-06
+
+### Updated
+
+ -[Jobs pagination](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941738)
+
+
+
+## [0.7.4] - 2025-10-05
 
 ### Updated
 
  -[Collaborators](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941748)
 
 
-## [0.7.3] - 2025-08-11
+## [0.7.3] - 2025-10-04
 
 ### Updated
 

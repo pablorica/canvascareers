@@ -19,6 +19,7 @@
     id="main"
     class="main
       @if( get_field('mobile_bigheaderfooter',get_the_ID()) ) mb-0 @endif
+      @if( get_field('pagination',get_the_ID()) ) relative @endif
     "
   >
     @yield('content')

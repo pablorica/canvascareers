@@ -8,6 +8,9 @@ const jobs = () => {
       return;
     }
 
+    const pagination = document.getElementById('jobsPagination');
+    const perpage = pagination?.getAttribute('data-perpage');
+
     let currentFilter = '';
     var jobsWrapper   = document.querySelector('#jobs');
     var jobItems      = jobsWrapper.querySelectorAll('.job-item');
@@ -165,22 +168,62 @@ const jobs = () => {
         if (!filterValue) {
           job.classList.remove('hidden');
           numberOfJobs = jobItems.length;
+          setOrigPagJob(job, true);
           return;
         }
 
         let filter = filterValue.replace('.', '');
         job.classList.add('hidden');
+        setOrigPagJob(job, false);
         if (job.classList.contains(filter)) {
           job.classList.remove('hidden');
           numberOfJobs++;
+          setPagJob(job, numberOfJobs);
         }
       });
+
+      resetpagination();
 
       setTimeout(() => {
         //prepareJobs()
       }, 100);
 
     }
+
+    function setPagJob(job, number) {
+      //console.log('setting page for job number', number, perpage);
+      for (let i = 1; i <= 100; i++) {
+        if (job.classList.contains(`page-${i}`)) {
+          job.classList.remove(`page-${i}`);
+          break;
+        }
+      }
+      let currentpage = Math.ceil(number / perpage);
+      job.classList.add(`page-${currentpage}`);
+    }
+    function setOrigPagJob(job, reset) {
+      for (let i = 1; i <= 100; i++) {
+        if (job.classList.contains(`page-${i}`)) {
+          job.classList.remove(`page-${i}`);
+          if ([...job.classList].some(className => className.startsWith('page-original'))) {
+            //console.log('The job element already has a class starting with "page-original".');
+          } else {
+            job.classList.add(`page-original-${i}`);
+          }
+          break;
+        }
+      }
+      if (reset) {
+        for (let i = 1; i <= 100; i++) {
+          if (job.classList.contains(`page-original-${i}`)) {
+            job.classList.remove(`page-original-${i}`);
+            job.classList.add(`page-${i}`);
+            break;
+          }
+        }
+      }
+    }
+
 
     // Get filters
     const filters = document.querySelectorAll('.job-filter');
@@ -536,6 +579,78 @@ const jobs = () => {
 
           }, false);
         }
+      });
+    }
+
+
+    //Get all .pagination-item elements
+    const paginationItems = pagination ? pagination.querySelectorAll('.pagination-item') : [];
+
+    function resetpagination() {
+      if (paginationItems.length > 0) {
+        // Remove active class from all pagination items
+        paginationItems.forEach((paginationItem) => {
+          paginationItem.classList.remove('bg-charcoal');
+          paginationItem.classList.add('bg-gray');
+        });
+
+        // Add active class to first pagination item
+        const firstItem = pagination.querySelector('.pagination-item[data-page="1"]');
+        if (firstItem) {
+          firstItem.classList.add('bg-charcoal');
+          firstItem.classList.remove('bg-gray');
+        }
+
+        // Hide job items - Show first page
+        jobItems.forEach((job) => {
+          job.classList.add('hidden');
+          if (job.classList.contains(`page-1`)) {
+            job.classList.remove('hidden');
+          }
+        });
+
+        let numberOfDots = Math.ceil(numberOfJobs / perpage);
+        //Hide last numberOfDots pagination items
+        paginationItems.forEach((item) => {
+          let page = item.getAttribute('data-page');
+          if (page > numberOfDots) {
+            item.classList.add('hidden');
+          } else {
+            item.classList.remove('hidden');
+          }
+        });
+      }
+    }
+
+    if (paginationItems.length > 0) {
+
+      paginationItems.forEach((item) => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const page = item.getAttribute('data-page');
+
+          // Remove active class from all pagination items
+          paginationItems.forEach((paginationItem) => {
+            paginationItem.classList.remove('bg-charcoal');
+            paginationItem.classList.add('bg-gray');
+          });
+
+          // Add active class to clicked pagination item
+          item.classList.add('bg-charcoal');
+          item.classList.remove('bg-gray');
+
+          // Show/Hide job items
+          jobItems.forEach((job) => {
+            job.classList.add('hidden');
+            if (job.classList.contains(`page-${page}`)) {
+              job.classList.remove('hidden');
+            }
+          });
+
+          // Close all jobs
+          jobsWrapper.classList.remove('hide-jobs');
+          closeAllJobs();
+        });
       });
     }
   }

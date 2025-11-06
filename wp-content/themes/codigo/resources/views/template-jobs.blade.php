@@ -3,6 +3,7 @@
 --}}
 
 <?php
+$pagination = get_field('pagination') ? get_field('jobs_per_page') : null;
 $category = get_field('job_category');
 
 $args = [
@@ -27,12 +28,20 @@ if ($category) {
 @extends('layouts.app')
 
 @section('content')
-  @php($jobs = get_posts($args))
+  <?php
+  $jobs = get_posts($args);
+  $pages = 1;
+  if($pagination && count($jobs) > $pagination ) {
+    $pages = ceil(count($jobs) / $pagination);
+  }
+  $current_page = 1;
+  ?>
 
 <!-- /codigo/resources/views/template-jobs.blade.php -->
   <div class="jobs-list
     md:px-8 2xl:px-14
-    lg:mt-2">
+    lg:mt-2
+  ">
     <div class="mb-8">
       <div id="jobsListheader"
         class="hidden
@@ -53,15 +62,33 @@ if ($category) {
       </div>
 
       <div id="jobs">
+        @php($job_int = 0)
         @foreach($jobs as $job)
           @php($terms = get_the_terms($job, 'job-tag'))
           @php($terms_slugs = [])
           @foreach($terms as $term)
             @php($terms_slugs[] = $term->slug)
           @endforeach
+          <?php
+          $job_int++;
+          if($pagination && $job_int>$pagination ){
+            $current_page++;
+            $job_int = 1;
+          }
+
+          $job_hidden = '';
+          if($current_page > 1){
+            $job_hidden = 'hidden';
+          }
+          ?>
 
           <div
-            class="job-item relative border-b border-charcoal px-5 md:px-0 {{ implode(' ', $terms_slugs) }}"
+            class="job-item page-{{ $current_page }}
+              {{ $job_hidden }}
+              relative
+              border-b border-charcoal
+              px-5 md:px-0
+              {{ implode(' ', $terms_slugs) }}"
           >
             <div class="job-accordion
               grid grid-cols-12
@@ -222,5 +249,27 @@ if ($category) {
       </div>
     </div>
   </div>
+  @if($pages > 1)
+  <div id="jobsPagination"
+    class="absolute w-full bottom-0
+      bg-chalk
+      flex justify-center items-center
+      gap-2 md:gap-2
+      py-4 md:py-6"
+    data-perpage="{{ $pagination }}"
+  >
+    @for($i=1; $i<=$pages; $i++)
+      <span
+        class="pagination-item
+          cursor-pointer
+          block
+          w-[10px] h-[10px] md:w-[10px] md:h-[10px]
+          @if($i==1) bg-charcoal  @else bg-gray @endif
+          rounded-full"
+        data-page="{{ $i }}"
+      ></span>
+    @endfor
+  @endif
+
 @endsection
 <!-- End /codigo/resources/views/template-jobs.blade.php -->
