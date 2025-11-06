@@ -269,7 +269,8 @@
                     <a href="{{ $is_active ? get_permalink($collaborator) : 'javascript:void(-1)' }}"
                       class="mbtb-only:flex mbtb-only:flex-1 mbtb-only:flex-col"
                     >
-                      <div class="font-sans
+                      <div class="collaborator-month
+                        font-sans
                         text-lg lg:text-xl 2xl:text-3xl
                         mb-5 2xl:mb-7">
                         {{ get_field('month', $collaborator) }}
@@ -283,9 +284,23 @@
                           @php($name = explode(' ', get_the_title($collaborator)))
                           <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
                         </h2>
-                        <p class="text-sm mt-3 font-serif line-clamp-1 lg:line-clamp-none">
-                          <strong>{{ get_field('position', $collaborator) }},</strong> {{ get_field('location', $collaborator) }}
-                        </p>
+                        <?php
+                          $cv = '';
+                          // Check if position and location exists, and add a comma if both are present
+                          $position = '<strong>'.get_field('position', $collaborator) .'</strong>';
+                          $location = get_field('location', $collaborator);
+                          if ($position  && $location) {
+                            $cv = $position. '<strong>,</strong> '.$location ;
+                          } else {
+                            $cv = get_field('position', $collaborator) . get_field('location', $collaborator);
+                          }
+                          ?>
+                          @if($cv)
+                          <p class="collborator-cv
+                            text-sm mt-3 font-serif line-clamp-1 lg:line-clamp-none">
+                            {{ $cv }}
+                          </p>
+                          @endif
                       </div>
                       {{-- Desktop Image --}}
                       <div class="hidden lg:block

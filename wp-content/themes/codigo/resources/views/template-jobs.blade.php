@@ -263,7 +263,7 @@ if ($category) {
         class="pagination-item
           cursor-pointer
           block
-          w-[10px] h-[10px] md:w-[10px] md:h-[10px]
+          w-[6px] h-[6px] md:w-[6px] md:h-[6px]
           @if($i==1) bg-charcoal  @else bg-gray @endif
           rounded-full"
         data-page="{{ $i }}"
