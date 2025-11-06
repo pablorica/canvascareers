@@ -298,7 +298,7 @@
                           @if($cv)
                           <p class="collborator-cv
                             text-sm mt-3 font-serif line-clamp-1 lg:line-clamp-none">
-                            {{ $cv }}
+                            {!! $cv !!}
                           </p>
                           @endif
                       </div>
