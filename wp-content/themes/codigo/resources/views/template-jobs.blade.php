@@ -57,7 +57,8 @@ if ($category) {
         <div class="md:col-span-5 xl:col-span-3
           px-4
         ">
-          {{ __('Contract', 'codigo') }}
+          <span class="inline-block w-[120px]">{{ __('Contract', 'codigo') }}</span>
+          <span class="inline-block">{{ __('Sector', 'codigo') }}</span>
         </div>
       </div>
 
@@ -106,14 +107,23 @@ if ($category) {
                 </svg>
                 <h3 class="text-xl 2xl:text-2xl font-sans font-light">{{ $job->post_title }}</h3>
               </div>
-              <div class="col-span-12 md:col-span-5 xl:col-span-3
+              <div class="col-span-12 md:col-span-5 xl:col-span-6
                 md:px-4
-                flex justify-between gap-2 flex-wrap md:block
+                flex xl:block
+                justify-between md:justify-start
+                gap-2 flex-nowrap
               ">
-                <span class="text-base md:text-xl 2xl:text-2xl font-sans font-light">{{ get_field('contract', $job) }}</span>
-                <span class="md:hidden text-base font-sans">
+                <span class="inline-block
+                  w-[120px] min-w-[120px]
+                  text-base md:text-xl 2xl:text-2xl
+                  font-sans font-light"
+                >{{ get_field('contract', $job) }}</span>
+                <span class="inline-block
+                  text-base md:text-xl 2xl:text-2xl
+                  font-sans font-light"
+                >
                   @foreach($terms as $term)
-                    <span>{{ $term->name }} @if(!$loop->last), @endif</span>
+                    <span>{{ $term->name }}@if(!$loop->last), @endif</span>
                   @endforeach
                 </span>
               </div>
@@ -153,14 +163,14 @@ if ($category) {
                       <div>{{ get_field('salary', $job) }}</div>
                     </div>
 
-                    <div class="md:flex hidden font-light">
+                    {{-- <div class="hidden md:flex font-light">
                       <div class="w-20 mr-2">{{ __('Sector', 'codigo') }}</div>
                       <div>
                         @foreach($terms as $term)
-                          <span>{{ $term->name }} @if(!$loop->last), @endif</span>
+                          <span>{{ $term->name }}@if(!$loop->last), @endif</span>
                         @endforeach
                       </div>
-                    </div>
+                    </div> --}}
                   </div>
                 </div>
 

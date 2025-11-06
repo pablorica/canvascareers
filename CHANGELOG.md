@@ -5,16 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.7.7] - 2025-10-06
 
+### Added
 
-## [0.7.6] - 2025-10-05
+ - [Single Job: new Heading](https://app.asana.com/1/355454733208534/inbox/355454733208538/item/1211792018941743/story/1211860854423837)
+
+## [0.7.6] - 2025-10-06
 
 ### Updated
 
- -[Collaborators](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941748)
+ - [Collaborators](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941748)
      - Remove comma when no CV is provided
 
- -[Jobs pagination](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941738)
+ - [Jobs pagination](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941738)
    - Change navigation dots size
 
 ## [0.7.5] - 2025-10-06
