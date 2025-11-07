@@ -98,7 +98,7 @@
         ?>
 
         @if(count($allowed_years))
-        <ul class="flex list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap {{ $hidden_years }}">
+        <ul class="mobile-only:hidden flex list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap {{ $hidden_years }}">
           @foreach($allowed_years as $year)
             <li>
               <a
@@ -146,7 +146,7 @@
 
         @if(count($seasonButtons))
           @foreach($seasonButtons as $seasonButton)
-          <ul class=" list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap
+          <ul class="mobile-only:hidden list-none gap-x-1 sm:gap-x-2 gap-y-1 flex-wrap
             @if(!$loop->first) hidden @else flex @endif"
           >
             {!! $seasonButton !!}
@@ -259,6 +259,12 @@
 
                   //error_log("Collaborator: ". get_the_title($collaborator).": Current month: $current_month, Collaborator month: $collaborator_month, Current year: $current_year, Collaborator year: $collaborator_year, Is current: $is_current, Is previous: $is_previous");
                   $is_active = $is_current || $is_previous;
+
+                  $blocked_message = 'Published in '. $month;
+                  if(get_field('block_collaborator', $collaborator)) {
+                    $blocked_message = get_field('block_collaborator_message', $collaborator);
+                    $is_active = false;
+                  }
                 ?>
                   <div class="collaborator
                     group
@@ -323,7 +329,7 @@
                             <span class="font-serif italic
                               font-normal text-citrus text-sm
                               line-clamp-none
-                              mb-2 ml-2">Published in {{ $month }}</span>
+                              mb-2 ml-2">{{ $blocked_message }}</span>
                           </div>
                         @endif
                       </div>

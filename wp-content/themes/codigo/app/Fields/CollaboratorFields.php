@@ -16,7 +16,7 @@ class CollaboratorFields extends Field
         $fields = Builder::make(
             'collaborator_fields',
             [
-                'title' => 'Extra Fields',
+                'title' => 'Collaborator Fields',
                 'position' => 'side'
             ]
         );
@@ -62,6 +62,42 @@ class CollaboratorFields extends Field
                 'instructions' => '',
                 'required' => 0,
                 'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'maxlength' => '',
+            ])
+            ->addTrueFalse('block_collaborator', [
+                'label' => 'Block Collaborator',
+                'instructions' => 'Block this collaborator. If unchecked, the collaborator will be unblocked automatically when their scheduled month arrives.',
+                'required' => 0,
+                'conditional_logic' => [],
+                'wrapper' => [
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ],
+                'message' => '',
+                'default_value' => 0,
+                'ui' => 0,
+                'ui_on_text' => '',
+                'ui_off_text' => '',
+            ])
+            ->addText('block_collaborator_message', [
+                'label' => 'Message',
+                'instructions' => "Message displayed when the user hovers over the collaborator (e.g., 'Soon to be published').",
+                'required' => 0,
+                'conditional_logic' => [
+                    'field' => 'block_collaborator',
+                    'operator' => '==',
+                    'value' => '1',
+                ],
                 'wrapper' => [
                     'width' => '',
                     'class' => '',

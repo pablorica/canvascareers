@@ -155,6 +155,7 @@ const jobs = () => {
         return;
       }
       jobsWrapper.classList.remove('hide-jobs');
+      pagination.classList.remove('hidden');
       closeAllJobs();
 
     });
@@ -253,6 +254,7 @@ const jobs = () => {
 
         filterJobs(currentFilter);
         jobsWrapper.classList.remove('hide-jobs');
+        pagination.classList.remove('hidden');
         closeAllJobs();
       });
     });
@@ -301,6 +303,7 @@ const jobs = () => {
         jobsWrapper.classList.remove('overflow-hidden');
         //Remove all classes starting by show-jobs
         jobsWrapper.classList.remove('hide-jobs');
+        pagination.classList.remove('hidden');
 
         // Hide the content
         content.style.maxHeight = '0';
@@ -328,6 +331,7 @@ const jobs = () => {
 
 
         jobsWrapper.classList.add('hide-jobs');
+        pagination.classList.add('hidden');
 
 
         setTimeout(() => {
@@ -649,6 +653,7 @@ const jobs = () => {
 
           // Close all jobs
           jobsWrapper.classList.remove('hide-jobs');
+          pagination.classList.remove('hidden');
           closeAllJobs();
         });
       });
