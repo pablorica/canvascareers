@@ -1,31 +1,26 @@
-# Docker Started Kit:  Docker distribution of a Wordpress/Statamic Project
-A clean starter application you can copy/paste and reuse for Docker projects. its ready for Wordpress and Laravel
+# Codigo Wordpress Project for Canvas Careers 
+A clean slate Wordpress application for Canvas Careers.
+Based in [sage](https://github.com/roots/sage?tab=readme-ov-file) and in [Nextly](https://github.com/web3templates/nextly-template)
 
 
 [![version](https://img.shields.io/badge/version-1.1.0-green.svg)](https://semver.org)
 
 
-## Staging Server
+## Live version
 
-https://default.codigo.co.uk/
+[https://canvas-careers.com/](https://canvas-careers.com/)
 
+## Staging version
 
-## Download Database
+[https://canvascareers.codigo.co.uk/](https://canvascareers.codigo.co.uk/)
 
-https://default.codigo.co.uk/latest.sql.gz
-
-
-## Download Plugins
-
-https://default.codigo.co.uk/plugins.tar.gz
+ - User: codigo
+ - Password: canvascareers
 
 
+## Local version
 
-## Download Assets
-
-
-https://default.codigo.co.uk/uploads.tar.gz
-
+[https://canvas-careers.localhost:8462/](https://canvas-careers.localhost:8462/)
 
 
 ---
