@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.1.0] - 2026-09-09
+
+ - Add Docker
+
+
+## [1.0.0] - 2025-10-07
+
+ - Go Live
+
 ## [0.7.8] - 2025-10-07
 
  - [Jobs pagination](https://app.asana.com/1/355454733208534/project/1210341690761798/task/1211792018941738)

@@ -1,21 +1,6 @@
-# ignore everything in the root except the "wp-content" directory and the outher no-wordpress folders.
+
+# ignore everything in the root except the  files and folders specified below
 /*
-!wp-content/
-
-
-# ignore everything in the "wp-content" directory, except:
-# mu-plugins, plugins, and themes directories
-wp-content/*
-!wp-content/mu-plugins/
-!wp-content/plugins/
-!wp-content/themes/
-
-# ignore all mu-plugins, plugins, and themes
-# unless explicitly whitelisted at the end of this file
-wp-content/mu-plugins/*
-wp-content/plugins/*
-wp-content/themes/*
-
 
 # ignore all files starting with . or ~
 .*
@@ -75,9 +60,67 @@ Thumbs.db
 *.orig
 
 # Ignore potentially dangerous files (dependabot alerts)
-yarn.lock 
-package-lock.json
+yarn.lock
+#package-lock.json
 
+
+# Ignore builder files and folders
+/node_modules
+/vendor
+/public/*
+/.env
+/.budfiles
+/npm-debug.log
+/yarn-error.log
+/yarn.lock
+#/package-lock.json
+/composer.lock
+#/theme.json
+
+
+# -------------------------
+# SSL
+# -------------------------
+
+# Ignore SSL certificates
+/certs
+/certs/*
+*.pem
+
+
+# -------------------------
+# Logs
+# -------------------------
+
+# Ignore logs
+/logs
+/logs/*
+*.log
+
+# -------------------------
+# Wordpress
+# -------------------------
+
+# Track the "wordpress" directory and the outher no-wordpress folders.
+!wordpress
+
+# ignore everything in the "wordpress" directory, except "wp-content"
+wordpress/*
+!wordpress/wp-content/
+
+
+# ignore everything in the "wp-content" directory, except:
+# mu-plugins, plugins, and themes directories
+wordpress/wp-content/*
+!wordpress/wp-content/mu-plugins/
+!wordpress/wp-content/plugins/
+!wordpress/wp-content/themes/
+
+# ignore all mu-plugins, plugins, and themes
+# unless explicitly whitelisted at the end of this file
+wordpress/wp-content/mu-plugins/*
+wordpress/wp-content/plugins/*
+wordpress/wp-content/themes/*
 
 
 
@@ -89,11 +132,24 @@ package-lock.json
 !.gitignore
 !.editorconfig
 !.phpcs.xml.dist
+!composer.json
+!theme.json
+# Migration file
+!*.sql.gz
+
+# Markdown files
 !README.md
 !CHANGELOG.md
-!composer.json
-# Migration file
-# !*.sql.gz
+!DOCKER.md
+!SERVER.md
+!SASS.md
+!VUE.md
+
+# track example files, if they exist
+!*.example
+
+# track staging files, if they exist
+!*.staging
 
 # track favicon files, if they exist
 !android-chrome-*.png
@@ -106,32 +162,42 @@ package-lock.json
 !safari-pinned-tab.svg
 !site.webmanifest
 
-# track the Contact Form 7 models folder
-!cf7models/
+# Docker
+#!docker-compose.yml
+#!Caddyfile
 
 
-# track these mu-plugins, plugins, and themes
-#!wp-content/mu-plugins/wp-migrate-db-pro-compatibility.php
-
-#!wp-content/plugins/advanced-custom-fields-pro
-#!wp-content/plugins/wp-migrate-db-pro
-#!wp-content/plugins/wp-migrate-db-pro-media-files
+# Wordpress: track these mu-plugins, plugins, and themes
 
 
-!wp-content/themes/codigo/
+# WPML Plugin: These files were updated to prevent fatal errors caused by incompatibilities between the WPML plugin and SAGE
+#!wp-content/plugins/wpml-string-translation/
+
+
+# Theme
+!wordpress/wp-content/themes/codigo/
 
 # Ignore dist folder of theme
-wp-content/themes/codigo/dist
-# Ignore Sage Files
-wp-content/themes/codigo/node_modules
-wp-content/themes/codigo/vendor
-wp-content/themes/codigo/public
-wp-content/themes/codigo/.env
-wp-content/themes/codigo/.budfiles
-wp-content/themes/codigo/npm-debug.log
-wp-content/themes/codigo/yarn-error.log
-wp-content/themes/codigo/yarn.lock 
-wp-content/themes/codigo/package-lock.json
-wp-content/themes/codigo/composer.lock
-wp-content/themes/codigo/theme.json
+wordpress/wp-content/themes/codigo/dist
+# Ignore development Files
+wordpress/wp-content/themes/codigo/node_modules
+wordpress/wp-content/themes/codigo/vendor
+wordpress/wp-content/themes/codigo/.env
+wordpress/wp-content/themes/codigo/.budfiles
+wordpress/wp-content/themes/codigo/npm-debug.log
+wordpress/wp-content/themes/codigo/yarn-error.log
+wordpress/wp-content/themes/codigo/yarn.lock
+#wordpress/wp-content/themes/codigo/package-lock.json
+wordpress/wp-content/themes/codigo/composer.lock
+wordpress/wp-content/themes/codigo/assets/css/style.css
+wordpress/wp-content/themes/codigo/assets/css/*.map
+#wordpress/wp-content/themes/codigo/theme.json
 
+
+# Track public
+!wordpress/wp-content/themes/codigo/public/
+# Ignore everything inside public
+wordpress/wp-content/themes/codigo/public/*
+# But track the Vite build output
+!wordpress/wp-content/themes/codigo/public/build/
+!wordpress/wp-content/themes/codigo/public/build/**

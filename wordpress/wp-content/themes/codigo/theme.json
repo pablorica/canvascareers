@@ -1,0 +1,259 @@
+{
+  "__generated__": "⚠️ This file is generated. Do not edit.",
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "custom": false,
+      "customDuotone": false,
+      "customGradient": false,
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "duotone": [],
+      "palette": [
+        {
+          "color": "#000",
+          "name": "Black",
+          "slug": "black"
+        },
+        {
+          "color": "#e6e1dc",
+          "name": "Chalk",
+          "slug": "chalk"
+        },
+        {
+          "color": "#202020",
+          "name": "Charcoal",
+          "slug": "charcoal"
+        },
+        {
+          "color": "#6b6b6b",
+          "name": "Char",
+          "slug": "char"
+        },
+        {
+          "color": "#fff",
+          "name": "White",
+          "slug": "white"
+        },
+        {
+          "color": "#b4695f",
+          "name": "Walnut",
+          "slug": "walnut"
+        },
+        {
+          "color": "#d7be7d",
+          "name": "Citrus",
+          "slug": "citrus"
+        },
+        {
+          "color": "#91a58c",
+          "name": "Sage",
+          "slug": "sage"
+        },
+        {
+          "color": "#739696",
+          "name": "Teal",
+          "slug": "teal"
+        },
+        {
+          "color": "#7d7d9b",
+          "name": "Lilac",
+          "slug": "lilac"
+        },
+        {
+          "color": "#bab7b3",
+          "name": "Gray",
+          "slug": "gray"
+        },
+        {
+          "color": "#d9d3ce",
+          "name": "Lightgray",
+          "slug": "lightgray"
+        },
+        {
+          "color": "#bab7b3",
+          "name": "Border",
+          "slug": "border"
+        },
+        {
+          "color": "#f8fafc",
+          "name": "Neutral 50",
+          "slug": "neutral-50"
+        },
+        {
+          "color": "#f1f5f9",
+          "name": "Neutral 100",
+          "slug": "neutral-100"
+        },
+        {
+          "color": "#e2e8f0",
+          "name": "Neutral 200",
+          "slug": "neutral-200"
+        },
+        {
+          "color": "#cbd5e1",
+          "name": "Neutral 300",
+          "slug": "neutral-300"
+        },
+        {
+          "color": "#94a3b8",
+          "name": "Neutral 400",
+          "slug": "neutral-400"
+        },
+        {
+          "color": "#64748b",
+          "name": "Neutral 500",
+          "slug": "neutral-500"
+        },
+        {
+          "color": "#475569",
+          "name": "Neutral 600",
+          "slug": "neutral-600"
+        },
+        {
+          "color": "#334155",
+          "name": "Neutral 700",
+          "slug": "neutral-700"
+        },
+        {
+          "color": "#1e293b",
+          "name": "Neutral 800",
+          "slug": "neutral-800"
+        },
+        {
+          "color": "#0f172a",
+          "name": "Neutral 900",
+          "slug": "neutral-900"
+        },
+        {
+          "color": "#020617",
+          "name": "Neutral 950",
+          "slug": "neutral-950"
+        },
+        {
+          "color": "#000",
+          "name": "Neutral DEFAULT",
+          "slug": "neutral-default"
+        },
+        {
+          "color": "#000",
+          "name": "Primary DEFAULT",
+          "slug": "primary-default"
+        }
+      ]
+    },
+    "custom": {
+      "spacing": {},
+      "typography": {
+        "font-size": {},
+        "line-height": {}
+      }
+    },
+    "spacing": {
+      "padding": true,
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
+      ]
+    },
+    "typography": {
+      "customFontSize": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "",
+          "name": "",
+          "slug": "mono"
+        },
+        {
+          "fontFamily": "Matter Medium, Helvetica, sans-serif,ui-sans-serif,system-ui,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"",
+          "name": "Matter Medium",
+          "slug": "sans"
+        },
+        {
+          "fontFamily": "Swiss Time, Times, serif,ui-serif,Georgia,Cambria,\"Times New Roman\",Times,serif",
+          "name": "Swiss Time",
+          "slug": "serif"
+        }
+      ],
+      "fontSizes": [
+        {
+          "name": "sm",
+          "size": "0.714rem",
+          "slug": "sm"
+        },
+        {
+          "name": "xs",
+          "size": "11px",
+          "slug": "xs"
+        },
+        {
+          "name": "md",
+          "size": "0.858rem",
+          "slug": "md"
+        },
+        {
+          "name": "base",
+          "size": "1rem",
+          "slug": "base"
+        },
+        {
+          "name": "lg",
+          "size": "1.142rem",
+          "slug": "lg"
+        },
+        {
+          "name": "xl",
+          "size": "1.286rem",
+          "slug": "xl"
+        },
+        {
+          "name": "2xl",
+          "size": "1.714rem",
+          "slug": "2xl"
+        },
+        {
+          "name": "3xl",
+          "size": "2.143rem",
+          "slug": "3xl"
+        },
+        {
+          "name": "4xl",
+          "size": "2.571rem",
+          "slug": "4xl"
+        },
+        {
+          "name": "5xl",
+          "size": "3.428rem",
+          "slug": "5xl"
+        },
+        {
+          "name": "6xl",
+          "size": "4.285rem",
+          "slug": "6xl"
+        },
+        {
+          "name": "7xl",
+          "size": "5.142rem",
+          "slug": "7xl"
+        },
+        {
+          "name": "8xl",
+          "size": "86px",
+          "slug": "8xl"
+        },
+        {
+          "name": "9xl",
+          "size": "7.571rem",
+          "slug": "9xl"
+        }
+      ]
+    }
+  }
+}

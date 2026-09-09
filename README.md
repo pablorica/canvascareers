@@ -1,837 +1,284 @@
-# Codigo Wordpress Project for Canvas Careers 
-A clean slate Wordpress application for Canvas Careers.
-Based in [sage](https://github.com/roots/sage?tab=readme-ov-file) and in [Nextly](https://github.com/web3templates/nextly-template)
-
-[![version](https://img.shields.io/badge/version-0.7.8-blue.svg)](https://semver.org)
+# Docker Started Kit:  Docker distribution of a Wordpress/Statamic Project
+A clean starter application you can copy/paste and reuse for Docker projects. its ready for Wordpress and Laravel
 
 
-## Staging version
+[![version](https://img.shields.io/badge/version-1.1.0-green.svg)](https://semver.org)
 
-[https://canvascareers.codigo.co.uk/](https://canvascareers.codigo.co.uk/)
 
- - User: codigo
- - Password: canvascareers
+## Staging Server
+
+https://default.codigo.co.uk/
+
+
+## Download Database
+
+https://default.codigo.co.uk/latest.sql.gz
+
+
+## Download Plugins
+
+https://default.codigo.co.uk/plugins.tar.gz
+
+
+
+## Download Assets
+
+
+https://default.codigo.co.uk/uploads.tar.gz
+
+
+
+---
+
+## Layout
+
+### Breakpoints
+  
+* `--breakpoint-sm: 600px;  /* Matches Gutenberg small */`
+* `--breakpoint-md: 782px;  /*  Matches Gutenberg medium */`
+* `--breakpoint-lg: 960px;  /*  Matches Gutenberg large */`
+* `--breakpoint-xl: 1280px;`
+* `--breakpoint-2xl: 1536px;`
+* `--breakpoint-3xl: 1792px;`
+
+
+### Sizes
+
+- Normalised to 1920px viewport
+- Formula: font-size: (target_px / 1920) * 100vw;
+  - sm: 16px → 0.8333vw
+  - base: 24px → 1.25vw
+  - 30px → 1.5625vw
+  - h1: 72px → 3.75vw
+  - h2: 36px → 1.875vw
+  - 50px → 2.6042vw
+  - 7xl (large): 100px → 5.2083vw
+  - 130px → 6.7708vw;
+  - 200px → 10.4167vw;
+  - 300px -> 15.625vw;
+  - 1144px → 59.7917vw;
+
+
+---
 
 ## Installation
 
+### Docker Installation
 
-### Go to [root_folder] and clone the repository
+[DOCKER.md](docs/DOCKER.md)
 
-    git clone https://github.com/pablorica/canvascareers
-    Cloning into 'canvascareers'...
-    remote: Enumerating objects: 182, done.
-    remote: Counting objects: 100% (182/182), done.
-    remote: Compressing objects: 100% (118/118), done.
-    remote: Total 182 (delta 53), reused 165 (delta 40), pack-reused 0
-    Receiving objects: 100% (182/182), 578.41 KiB | 16.53 MiB/s, done.
-    Resolving deltas: 100% (53/53), done.
 
-### Compile files
+### Install Sage
 
-    $ cd [root_folder]/wp-content/themes/codigo
-    $ composer install --prefer-dist --optimize-autoloader
-    $ yarn install
-    
-    	➤ YN0000: · Yarn 4.2.2
-    	➤ YN0000: ┌ Resolution step
-    	➤ YN0085: │ + @roots/bud-tailwindcss@npm:6.16.1, @roots/bud@npm:6.16.1, and 976 more.
-    	➤ ...
-    	➤ YN0000: · Done with warnings in 34s 39ms
-    
-    $ yarn build
-    	
-    	╭ sage [1a24dfc8407595fc] ./public
-    	│
-    	│ app
-    	│ ◉ js/runtime.e97f88.js ✔ 1.22 kB
-    	│ ◉ css/app.182da0.css ✔ 9.57 kB
-    	│ ◉ js/app.c6fc6f.js ✔ 359 bytes
-    	│
-    	│ editor
-    	│ ◉ js/runtime.e97f88.js ✔ 1.22 kB
-    	│ ◉ css/editor.a5ebf3.css ✔ 2.94 kB
-    	│ ◉ js/editor.7f4d85.js ✔ 1.67 kB
-    	│
-    	│ assets
-    	│ ◉ fonts/Aeonik/Aeonik-Regular.c2876d.eot 98.41 kB
-    	│ ◉ fonts/Aeonik/Aeonik-Bold.7fa62f.woff 48.8 kB
-    	│ ◉ fonts/Aeonik/Aeonik-Regular.413ab3.woff 47.71 kB
-    	│ ◉ fonts/Aeonik/Aeonik-Bold.f42057.woff2 36.44 kB
-    	│ ◉ fonts/Aeonik/Aeonik-Regular.7ddd98.woff2 35.4 kB
-    	│ … 11 additional assets not shown
-    	│
-    	╰ 3s 759ms 8 modules [0/8 modules cached]
 
-#### *Error: React is not installed*
+The theme is based in Sage 10, which is a powerful WordPress starter theme that uses Laravel Blade templating and Vite for asset management.
 
-If you have this error when running `yarn`, it means that React is not installed as a devDependency.
+[SAGE.md](docs/SAGE.md)
 
-	node:internal/process/esm_loader:42
-	internalBinding('errors').triggerUncaughtException...
-	Required package: react (via "react/package.json")
-	...
 
-To fix this we need both react and react-dom as devDependencies.
+### PostCSS
 
-```$ npm install --save-dev react react-dom```
+[PostCSS.md](docs/PostCSS.md)
 
-Once installed, try again:
+SASS is deprecated in favour of PostCSS.. We strongly recommend to use PostCSS, but if you prefer to use SASS instead, follow these steps:
 
-```$ yarn install```
+[SASS.md](docs/SASS.md)
 
-#### *Error: NPM process is killed*
+#### Migrating from SCSS to PostCSS in a WordPress + Vite + Tailwind App
 
-```⠸Killed```
+If it was installed SCSS, the recommended approach is to migrate to PostCSS.
 
-The error and abrupt termination (indicated by Killed) when running the npm install command is often due to insufficient memory on your machine.
-Verify if your system has enough memory (RAM) available
+The SCSS formatter often throws errors on @apply and other Tailwind CSS directives because they aren’t part of standard SCSS syntax. As a result, many SCSS linters and formatters don’t recognize these directives as valid, even though they work when processed by Tailwind via PostCSS.
 
+To avoid these compatibility issues, it's recommended to migrate from SCSS to PostCSS. PostCSS is Tailwind’s native environment and allows full use of its features—like @apply, @tailwind, and @layer—without conflicting with formatting or compilation tools.
 
-    free -h
-                total        used        free      shared  buff/cache   available
-    Mem:           1.9Gi       1.6Gi       324Mi       135Mi       351Mi       361Mi
-    Swap:             0B          0B          0B
+This guide walks you through the process of migrating from SCSS to PostCSS in a WordPress project using Tailwind CSS and Vite.
 
+**The main reasons to migrate are:**
 
-Your system has 1.9 GiB of total memory, but only 324 MiB free and 361 MiB available, which is insufficient for some npm install processes that can require more memory to complete. Additionally, you currently have no swap memory configured, so the system has no backup memory to fall back on when RAM is exhausted.
-To resolve this issue, configure swap memory as follows:
+- Native support for Tailwind directives like `@apply` and `@tailwind`
+- Simpler tooling (no need for Sass)
+- Better compatibility with PostCSS plugins (e.g., nesting, imports)
 
-```sudo fallocate -l 2G /swapfile```
 
-Secure the swap file:
+### Alpine
 
-```sudo chmod 600 /swapfile```
+[ALPINE.md](docs/ALPINE.md)
 
-Set up the swap area:
+**Why Alpine instead of Vue**
 
+Alpine is ideal for small interactive UI elements in server-rendered themes, giving you Vue-like reactivity with much less complexity and weight.
 
-    sudo mkswap /swapfile
-    Setting up swapspace version 1, size = 2 GiB (2147479552 bytes)
-    no label, UUID=8d5bfea1-fb9d-4c04-ada8-79e48789a775
+* **No SPA needed:** WordPress themes are typically **server-rendered**, so a full SPA framework like Vue is usually unnecessary.
+* **Much simpler:** Alpine avoids component compilation, build complexity, and state management overhead.
+* **Better fit for small UI behaviors:** For things like dropdowns, collapses, and modals, Alpine is far quicker to implement.
+* **Smaller bundle:** Vue adds significantly more JS and complexity for features that most WordPress themes don’t need.
 
+However, if you have a specific use case that requires Vue’s advanced reactivity, component system, or ecosystem, it can be integrated into Sage with Vite as well:
 
-Enable the swap file:
 
-```sudo swapon /swapfile```
+[VUE.md](docs/VUE.md)
 
-Verify swap is active:
 
+---
 
-    swapon --show
-    NAME      TYPE SIZE USED PRIO
-    /swapfile file   2G   0B   -2
 
+## Local Setup: Importing Project Files and Database
 
-    free -h
-                total        used        free      shared  buff/cache   available
-    Mem:           1.9Gi       1.6Gi       223Mi       135Mi       406Mi       302Mi
-    Swap:          2.0Gi          0B       2.0Gi
+### Get Plugins
 
+Navigate to your `wp-content` directory and download the plugins archive:
 
-Make Swap Persistent. To ensure the swap file is enabled on reboot add it to /etc/fstab:
-
-    echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-    /swapfile none swap sw 0 0
-
-
-After setting up swap memory, retry the command:
-
-```npm install --save-dev react react-dom```
-
-#### NPM Errors
-- *Error: Cannot find module '/@roots/bud-framework/scripts/postinstall.mjs* 
-- *Error: npm error path /data/webs/canvascareers.codigo.co.uk/wp-content/themes/codigo/node_modules/@roots/bud-framework*
-
-
-This is related with an Unsupported Node version. Delete 
-
-    ```
-    "devDependencies": {
-        "@roots/bud": "6.16.1",
-        "@roots/bud-sass": "6.16.1",
-        "@roots/bud-tailwindcss": "6.16.1",
-        "@roots/bud-vue": "6.16.1",
-        "@roots/sage": "6.16.1"
-    },
-    ```
-
-from `package.json` and run
-
-```npm install --save-dev react react-dom```
-
-You will see something like:
-
-    npm WARN EBADENGINE Unsupported engine {
-    npm WARN EBADENGINE   package: 'npm@10.8.3',
-    npm WARN EBADENGINE   required: { node: '^18.17.0 || >=20.5.0' },
-    npm WARN EBADENGINE   current: { node: 'v20.2.0', npm: '9.6.6' }
-    npm WARN EBADENGINE }
-
-Install a proper version of node and repeat the process
-
-    nvm install 20.5.0 
-    nvm use 20.5.0 
-
-
-Once fixed, add the `devDependencies` again
-
-    npm install @roots/bud --save-dev
-    npm install @roots/bud-sass --save-dev
-    npm install @roots/bud-tailwindcss --save-dev
-    npm install @roots/bud-vue --save-dev
-    npm install @roots/sage --save-dev
-
-And try again
-
-```yarn install```
-
-### Install required plugins
-
-Download the plugins folder from the staging server and copy it to the local installation.
-
-[Plugins](https://canvascareers.codigo.co.uk/plugins.tar.gz)
-
-Activate ACF and then the Codigo theme in the CMS
-
-### Download the uploads folder from the staging server and copy it to the local installation.
-
-[Uploads](https://canvascareers.codigo.co.uk/uploads.tar.gz)
-
-### Update the database
-
-- Download the database from the test server and replace it in the local installation
-
-	[Database](https://canvascareers.codigo.co.uk/latest.sql.gz)
-
-	`mysql -u root -p canvascareers_wp < latest.sql`
-	
-- Change db prefix using WP-CLI
-
-	[WP-CLI Rename Database Prefix](https://github.com/iandunn/wp-cli-rename-db-prefix) is an add-on to WP_CLI that allows you to change the database prefix.
-
-    `wp package install iandunn/wp-cli-rename-db-prefix --allow-root`
-    
-    `wp rename-db-prefix 'canvascareers_' --dry-run --allow-root`
-
-	If the results are ok, remove the flag '--dry-run'
-
-    `wp rename-db-prefix 'canvascareers_' --allow-root`
-
-    *Warning: Use this at your own risk. If something goes wrong, it could break your site.
-    Before running this, make sure to back up your `wp-config.php` file and run `wp db export`.
-    Are you sure you want to rename hmo.localhost's database prefix from `wp_` to `canvascareers_`? [y/n]
-    Success: Successfully renamed database prefix.*
-
-
-- Find and replace using WP-CLI (hmo.localhost is the local domain)
-
-	```
-    wp search-replace 'canvascareers.localhost' 'canvascareers.codigo.co.uk' --dry-run --allow-root --all-tables
-    ## If the results are ok, remove the flag '--dry-run'
-    wp search-replace 'canvascareers.localhost' 'canvascareers.codigo.co.uk' --allow-root --all-tables
-    ---> Success: Made 36 replacements.
-	```
-
-
-### VUE 3
-
-The extension is pre-configured to support Vue 3 single file components (runtime only).
-
-You can disable the `runtimeOnly` default by adding the following to your `bud.config.js` file:
-
-    app.vue.setRuntimeOnly(false);
-
-The `esm-bundler` builds of Vue expose global feature flags `__VUE_OPTIONS_API__` and `__VUE_PROD_DEVTOOLS__` , they must to be defined.
-You may want to enable the options API and disable the devtools:
-
-    app.define({
-        __VUE_OPTIONS_API__: true,
-        __VUE_PROD_DEVTOOLS__: false,
-    });
-
-[Read more](https://bud.js.org/extensions/bud-vue) about setting up Vue in Sage.
-
-
-## Gutenberg Blocks
-
-The `@roots/bud-preset-wordpress` package comes with an editor integration. This library adds support for registering *blocks*, *filters*, *formats*, *styles*, *variations* and *plugins*.
-
-All modules registered with this API are registered in production and development. In development additional hot module reloading support is added.
-
-### Adding support to your application
-
-There are two steps:
-
-- Making the root registration call for a given type or types.
-- Adding modules to your application
-
-In general, the above steps are the same for working with any of the supported APIs.
-
-#### Making the root registration call
-
-Open `resources/scripts/editor.js` and write the call `roots.register.[type]` , supplying the root directory where registrables are found.
-
-For example, to register blocks in the application, we must add this call:
-
-    roots.register.blocks('@scripts/blocks')
-
-    /** Don't forget to accept any module updates! */
-    if (import.meta.webpackHot) {
-    import.meta.webpackHot.accept(console.error)
-    }
-
-
-#### Adding modules to the application
-
-`bud.js` will look for modules in the directory indicated in the root registration call. Modules are named like `*.[type].[ext]`.
-
-The module should export the required settings and the name of the entity.
-
-Modules can be created using either *default exports* or *named exports*. As a general rule, we will use default exports whenever possible.
-
-For example, to add a block variation in the Group block and add a Grid css feature, we would create a file `grid.variation.js` in the `resources/scripts/variations` directory:
-
-    export default {
-        block: `core/group`,
-        name: 'group-grid',
-        title: `Grid`,
-        icon: 'grid-view',
-        description: `Arrange blocks in a grid.`,
-        attributes: {
-            layout: {
-                type: 'grid' 
-            }
-        },
-        scope: [ 'block', 'inserter', 'transform' ],
-        isActive: (blockAttributes) => blockAttributes.layout?.type === 'grid',
-    }
-
-#### Advantages of using this library
-
-Without this library, if you have modified the content of a block you are developing in the editor and then make changes to a block's code that cause it to render differently, WordPress may mark the block as invalid.
-
-This library intercepts the module update and caches the state of the block outside of WordPress' state tree. It then completely unregisters the block and then re-registers it. If the block was selected before the module update, it also deselects and reselects it.
-
-WordPress is now looking at a different situation: a newly registered block with newly registered state. There is no discrepency and so the block is not flagged as invalid.
-
-This library also provides a more declarative way of registering modules with WordPress than the default API, and is less prone to understandable errors importing the wrong registration functions, etc.
-
-## Documents
-
-### Installing Sage with Compose
-See the [Sage installation documentation](https://roots.io/sage/docs/installation/).
-
-
-Install Sage using Composer from your WordPress themes directory
-
-    cd [root_folder]/wp-content/themes
-    composer create-project roots/sage codigo
-
-#### Build assets
-You must build theme assets in order to access your site. 
-
-**Run yarn from the theme directory to install dependencies**
-
-    cd [root_folder]/wp-content/themes/codigo
-    yarn
-
-
-### Installing Acorn
-See the [Acorn installation documentation](https://roots.io/acorn/docs/installation/).
- 
-Sage requires Acorn but doesn't ship with it included. This is to give you the flexibility to include it in a way that works best for your environment. There's a few different ways to install Acorn.
-
-    cd [root_folder]/wp-content/themes/codigo
-    composer require roots/acorn  
-
-#### Add the autoload dump script
-
-Acorn has a function that should be added to the scripts section of your composer.json file for the post-autoload-dump event. To automatically configure this script, run the following command:
-
-    $ wp acorn acorn:init
-
-
-#### Acorn Typical Errors
-
-If you run
-
-    wp acorn vendor:publish --provider="SomeVendor\SomePackage\Providers\SomePackageServiceProvider"
-
-and you get
-
-    No publishable resources for tag [].
-    Publishing complete.
-
-then run this `wp` command
-
-    wp acorn clear-compiled
-
-and then run the `wp acorn vendor:publish` command again.  
-It should publish successfully now
-
-
-### Go to CMS and select the Sage theme
-
-Sage is ready to be used in your Wordpress installation. Go to the CMS and select the Sage theme.
-
-
-## Quick Start
-
-### Watch
+```bash
+cd /default.localhost/wp-content
+wget --user codigo --password default https://default.codigo.co.uk/plugins.tar.gz
+mv plugins/ .plugins/
+tar -xzvf plugins.tar.gz
+rm -R .plugins/
 
 ```
-clear
-cd [root_folder]/wp-content/themes/codigo
-yarn watch
+
+
+### Get Media Files
+
+Media files are stored here:
+
+```bash
+wget --user codigo --password default https://default.codigo.co.uk/uploads.tar.gz
 ```
 
-Development URL:
+### Load Database
 
-http://localhost:3000/
+1. Navigate to the database folder:
 
-Defined in `/bud.config.js`
-
-```
-...
-  app
-    .setUrl('http://localhost:3000')
-    .setProxyUrl('https://canvascareers.localhost')
-    .watch([
-        `resources/views`,
-        `resources/scripts`,
-        `resources/css`,
-    ]);
-...
+```bash
+wget --user codigo --password default https://default.codigo.co.uk/latest.sql.gz
 ```
 
-### Build
+2. Import the database using MySQL:
 
-```
-clear
-cd [root_folder]/wp-content/themes/codigo
-yarn build
-```
+Database: latest.sql.gz
 
-Localhost URL:
 
-https://canvascareers.localhost/
-
-Defined in `/bud.config.js`
-
-## Styling
-
-### Tailwind Configuration File
-
-    [root_folder]/wp-content/themes/codigo/tailwind.config.cjs
-
-#### Compilation Errors
-
-```
-[sage] [@roots/bud-tailwindcss] › ✖  ReferenceError: require is not defined in ES module scope, you can use import instead 
-This file is being treated as an ES module because it has a '.js' file extension and 'canvascareers/wp-content/themes/codigo/package.json' contains "type": "module". To treat it as a CommonJS script, rename it to use the '.cjs' file extension.
+```bash
+gunzip latest.sql.gz
+mysql -u root -p sparemytime_penny < latest.sql
 ```
 
-  Solution: *Change file extension*
+**Important!** Set the siteurl and homeurl to `default.localhost` in the wp-config.php file:
 
-    [root_folder]/wp-content/themes/codigo/tailwind.config.js ---> [root_folder]/wp-content/themes/codigo/tailwind.config.cjs
+```php
+define('WP_HOME', 'http://default.localhost');
+define('WP_SITEURL', 'http://default.localhost');
+```
 
-### Setting up Support for Sass
 
-Add the @roots/bud-sass extension:
+### Optional: Find & Replace the site URL with WP-CLI
 
-    `yarn add @roots/bud-sass --dev`
+1. Navigate to the project root:
 
-[Read more](https://roots.io/sage/docs/sass/) about setting up Sass in Sage.
+```bash
+cd default.localhost/
+```
 
-#### Configure Stylelint (optional)
+2. Run a dry-run search and replace:
 
-Install `@roots/bud-stylelint`:
+```bash
+wp search-replace 'canvascareers.localhost' 'default.localhost' --dry-run --allow-root --all-tables
+```
 
-    `yarn add @roots/bud-stylelint --dev`
+3. If everything looks good, run it for real:
 
-Create a Stylelint config file at `.stylelintrc.cjs`:
+```bash
+wp search-replace 'canvascareers.localhost' 'default.localhost' --allow-root --all-tables
+# ---> Success: Made 27 replacements..
+```
 
-    module.exports = {
-    	extends: ['@roots/bud-sass/config/stylelint'],
-    	rules: {
-    		'import-notation': null,
-    		'no-empty-source': null,
-    	},
-    };
 
+###  Optional: Create a Database Backup
 
-##### Maintaining Stylelint config
+```bash
+cd /default.localhost/wp-content/themes/wp-codigo-ltv/_database
 
-When `bud.js` updates you will automatically be upgraded to the latest versions of `stylelint-config-standard` and `stylelint-config-recommended-scss`. This may cause issues if you are now breaking a newly defined or changed rule. You will either want to make changes to your application or add an override to `module.exports.rules`.
+mysqldump -u root -proot default | gzip > wp-codigo-ltv.sql.gz
+```
 
-This is normal. The preset is just supposed to be a base for your own config. There is nothing wrong with overriding rules to suit your preferences or your application's needs.
 
-You could also:
+---
 
-- Not use the `@roots/bud-sass/config/stylelint` preset and maintain your own config entirely. This will give you maximum control over when updates are applied.
 
-- Make an issue with `stylelint-config-standard` or `stylelint-config-recommended-scss` if you disagree with the change.
+## Deploying 
 
-### CSS Files
 
-    [root_folder]/wp-content/themes/codigo/resources/styles/css/
+1. **Build theme assets:**
 
-### SCSS Files
-    
+   ```bash
+   npm run build
+   ```
 
-    [root_folder]/wp-content/themes/codigo/resources/styles/app.scss
-    [root_folder]/wp-content/themes/codigo/resources/styles/editor.scss
-    [root_folder]/wp-content/themes/codigo/resources/styles/scss/
+2. **Install Composer dependencies (without dev packages):**
 
-### Set Up Fonts
+   ```bash
+   composer install --no-dev --optimize-autoloader
+   ```
 
-Sage includes an empty `resources/fonts/` directory for you to use for any fonts you want to use in your theme.
+3. **Upload your theme files:**
 
-The Sage extension in `jsconfig.json` also contains a @fonts alias that can be used to reference assets in the `fonts/` directory.
+   Upload all files and folders in your theme directory **except** the `node_modules` folder to your host.
 
-[Read more](https://roots.io/sage/docs/fonts-setup/) about setting up fonts in Sage.
 
-## Javascript
+### Optimisation
 
-The default configuration will generate the following JS files:
+Similar to deploying a Laravel app, Acorn supports an `optimize` command that caches your configuration and views. This command should be part of your deployment process:
 
-    app.js - The primary JavaScript file for the theme.
-    editor.js - JavaScript for the block editor, i.e. block styles and variants.
+```bash
+wp acorn optimize
+```
 
+---
 
-## Setting up Support for Vue
+## Server Configuration
 
-Add the `@roots/bud-vue` extension:
 
-    yarn add @roots/bud-vue --dev
+### Securing Blade Templates
 
-**Important**: The `@roots/bud-vue` version must match `@roots/bud`
+By default, any file in the theme directory is publicly accessible in WordPress. This includes `*.blade.php` files, which — if accessed directly — can expose your view code as plain text. To avoid this, add a web server rule to block public access to `.blade.php` files.
 
-    "devDependencies": {
-        "@roots/bud": "6.16.1",
-        "@roots/bud-sass": "6.16.1",
-        "@roots/bud-tailwindcss": "6.16.1",
-        "@roots/bud-vue": "6.16.1",
-        "@roots/sage": "6.16.1"
-    },
+#### Nginx
 
+If you're using **Nginx**, add this to your site configuration **before the final `location` block**:
 
-Once installed, vue should be ready to use in your project. 
+```nginx
+location ~* \.(blade\.php)$ {
+    deny all;
+}
+```
 
-**Important:** The extension is pre-configured to support Vue 3 single file components (runtime only).
+#### Apache
 
-You can disable the `runtimeOnly` default by adding the following to your `bud.config.js` file:
+If you're using **Apache**, add this to your virtual host configuration or `.htaccess` file:
 
-    app.vue.setRuntimeOnly(false);
+```apache
+<FilesMatch ".+\.(blade\.php)$">
+    # Apache 2.4
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
 
-The `esm-bundler` builds of Vue expose global feature flags `__VUE_OPTIONS_API__` and `__VUE_PROD_DEVTOOLS__` , they must to be defined.
-You may want to enable the options API and disable the devtools:
+    # Apache 2.2
+    <IfModule !mod_authz_core.c>
+        Order deny,allow
+        Deny from all
+    </IfModule>
+</FilesMatch>
+```
 
-    app.define({
-        __VUE_OPTIONS_API__: true,
-        __VUE_PROD_DEVTOOLS__: false,
-    });
+**NOTE:** You can find more information about deploying a SAGE theme here
 
-[Read more](https://bud.js.org/extensions/bud-vue) about setting up Vue in Sage.
+[Deployment](https://roots.io/sage/docs/deployment/)
 
-## Custom Post Types
 
-**Update** Instead of Poet, we can use the new feature of ACF  to create Custom Post Types via CMS.
-
-We will use [Log1x/poet](https://github.com/Log1x/poet) to create *Custom Post Types*. *Poet* provides simple configuration-based post type, taxonomy, editor color palette, block category, block pattern and block registration/modification.
-
-### Getting Started
-
-Install the package via Composer:
-
-    composer require log1x/poet
-    ...
-    Using version ^2.1 for log1x/poet
-
-Start with publishing the Poet configuration file using Acorn:
-
-    $ wp acorn vendor:publish --provider="Log1x\Poet\PoetServiceProvider"
-
-### Registering a Post Type
-
-All configuration related to Poet is located in `config/poet.php`. Here you will find an example Book post type pre-configured with a few common settings:
-
-    'post' => [
-        'book' => [
-            'enter_title_here' => 'Enter book title',
-            'menu_icon' => 'dashicons-book-alt',
-            'supports' => ['title', 'editor', 'author', 'revisions', 'thumbnail'],
-            'show_in_rest' => true,
-            'has_archive' => false,
-            'labels' => [
-                'singular' => 'Book',
-                'plural' => 'Books',
-            ],
-        ],
-    ],
-
-#### Poet Typical Errors
-
-#### *Error: No Custom Fields.*
-
-If after downloading the files from a repository you don't see the new Custom Fields, you need to re-generate the `config/poet.php` file.
-
-Rename the current file:
-    
-    mv config/poet.php config/poet.php.bak
-    
-Then run the following command:
-
-    $ wp acorn vendor:publish --provider="Log1x\Poet\PoetServiceProvider"
-    INFO Publishing assets.
-    Copying file [vendor/log1x/poet/config/poet.php] to [config/poet.php]....................................................................... DONE
-
-
-And rename again the files
-    
-    mv config/poet.php config/.poet.orig.php
-    mv config/poet.php.bak config/poet.php  
-
-
-#### *Error: No publishable resources for tag [poet].*
-
-After running the command:
-
-    $ wp acorn vendor:publish --provider="Log1x\Poet\PoetServiceProvider"
-
-You get this message:
-
-    INFO No publishable resources for tag [poet].
-
-***Solution***: run this wp command
-
-    $ wp acorn clear-compiled
-    INFO Compiled services and packages files removed successfully.
-
-and then run the wp acorn vendor:publish command again.
-
-## Gutenberg Blocks
-
-The `@roots/bud-preset-wordpress` package comes with an editor integration. This library adds support for registering *blocks*, *filters*, *formats*, *styles*, *variations* and *plugins*.
-
-All modules registered with this API are registered in production and development. In development additional hot module reloading support is added.
-
-### Adding support to your application
-
-There are two steps:
-
-- Making the root registration call for a given type or types.
-- Adding modules to your application
-
-In general, the above steps are the same for working with any of the supported APIs.
-
-#### Making the root registration call
-
-Open `resources/scripts/editor.js` and write the call `roots.register.[type]` , supplying the root directory where registrables are found.
-
-For example, to register blocks in the application, we must add this call:
-
-    roots.register.blocks('@scripts/blocks')
-
-    /** Don't forget to accept any module updates! */
-    if (import.meta.webpackHot) {
-    import.meta.webpackHot.accept(console.error)
-    }
-
-
-#### Adding modules to the application
-
-`bud.js` will look for modules in the directory indicated in the root registration call. Modules are named like `*.[type].[ext]`.
-
-The module should export the required settings and the name of the entity.
-
-Modules can be created using either *default exports* or *named exports*. As a general rule, we will use default exports whenever possible.
-
-For example, to add a block variation in the Group block and add a Grid css feature, we would create a file `grid.variation.js` in the `resources/scripts/variations` directory:
-
-    export default {
-        block: `core/group`,
-        name: 'group-grid',
-        title: `Grid`,
-        icon: 'grid-view',
-        description: `Arrange blocks in a grid.`,
-        attributes: {
-            layout: {
-                type: 'grid' 
-            }
-        },
-        scope: [ 'block', 'inserter', 'transform' ],
-        isActive: (blockAttributes) => blockAttributes.layout?.type === 'grid',
-    }
-
-#### Advantages of using this library
-
-Without this library, if you have modified the content of a block you are developing in the editor and then make changes to a block's code that cause it to render differently, WordPress may mark the block as invalid.
-
-This library intercepts the module update and caches the state of the block outside of WordPress' state tree. It then completely unregisters the block and then re-registers it. If the block was selected before the module update, it also deselects and reselects it.
-
-WordPress is now looking at a different situation: a newly registered block with newly registered state. There is no discrepency and so the block is not flagged as invalid.
-
-This library also provides a more declarative way of registering modules with WordPress than the default API, and is less prone to understandable errors importing the wrong registration functions, etc.
-
-
-## Plugins
-
-### Installing ACF Composer
-
-ACF Composer is the ultimate tool for creating fields, blocks, widgets, and option pages using ACF Builder alongside Sage 10.
-
-See the [ACF Composer installation](https://github.com/Log1x/acf-composer?tab=readme-ov-file#installation).
-
-
-#### Install via Composer:
-
-    $ composer require log1x/acf-composer
-
-Start by publishing the `config/acf.php` configuration file using Acorn:
-
-    $ wp acorn vendor:publish --tag="acf-composer"
-
-If you have this warning
-
-    INFO No publishable resources for tag [acf-composer].
-    
-try running this command first
-
-    $ wp acorn package:discover
-      INFO  Discovering packages.  
-      nesbot/carbon ......................................................... DONE
-      nunomaduro/termwind ................................................... DONE
-      roots/sage ............................................................ DONE
-
-And try again:
-
-    $ wp acorn vendor:publish --tag="acf-composer"
-      INFO  Publishing [acf-composer] assets.
-      Copying file [vendor/log1x/acf-composer/config/acf.php] to [config/acf.php] ............. DONE
-
-##### Generating a Field Group
-
-To create your first field group, start by running the following generator command from your theme directory:   
-
-    $ wp acorn acf:field Example
-
-This will create `app/Fields/Example.php` which is where you will create and manage your first field group.
-
-
-##### Generating a Block
-
-Generating a block is generally the same as generating a field as seen above.
-
-Start by creating the block field using Acorn:
-
-    $ wp acorn acf:block Example
-    
-    🎉 Example block successfully composed.
-     ⮑  app/Blocks/Example.php
-     ⮑  resources/views/blocks/example.blade.php
-
-You may also pass --construct to the command above to generate a stub with the block properties set within an attributes method. This can be useful for localization, etc.
-
-    $ wp acorn acf:block Example --construct
-
-When running the block generator, one difference to a generic field is an accompanied View is generated in the resources/views/blocks directory.
-
-Like the field generator, the example block contains a simple list repeater and is working out of the box.
-
-*Block Preview View*
-
-While `$block->preview` is an option for conditionally modifying your block when shown in the editor, you may also render your block using a seperate view.
-
-Simply duplicate your existing view prefixing it with `preview-` (e.g. `preview-example.blade.php`).
-
-
-
-### Sage directives
-
-[Sage Directives](https://log1x.github.io/sage-directives-docs/) adds a variety of useful Blade directives for use with Sage 10 including directives for WordPress, ACF, and various miscellaneous helpers.
-
-
-
-#### Install Sage directives
-
-    $ composer require log1x/sage-directives
-
-
-#### Sage directives Examples
-
-[Wordpress](https://log1x.github.io/sage-directives-docs/usage/wordpress.html)
-
-**`WP_Query`**
-
-`@query` initializes a standard `WP_Query` as `$query` and accepts the usual `WP_Query` parameters as an array.
-
-    @query([
-	    'post_type' => 'post'
-    ])
-    
-    @posts
-	    <h2  class="entry-title">@title</h2>
-	    <div  class="entry-content">
-		    @content
-	    </div>
-    @endposts
-
-
-[ACF](https://log1x.github.io/sage-directives-docs/usage/acf.html)
-
-**`@field`**
-
-
-`@field` echo's the specified field using `get_field()`.
-
-    @field('text')
-
-
-
-## Integration with External Tools
-
-### TypeForm
-
-WE would like to include TypeForms in THGE website but with a custom design. However the TypeForm API does not allow automated submissions, so the respondent has to manually click on the button.
-
-However there is way to do it for samall forms. We need to create a form with a single ‘statement’ field. The ‘statement’ field only shows a message and a ‘continue’ button, if that is the only field on the form, the ‘continue’ button is replaced by a ‘submit’ button.
-
-Then we need to add some hidden fields to that form,the hidden fields must to be the same as the custom form fields, and the same name.
-
-In the frontend hid the iframe where TytpeForm is embedded through CSS.
-So when the responders load the web, they will just see our custom form. They will fill it in and click on my custom submit button.
-
-Then the data is filled in the hidden fields of the TypeForm via javascript. For that I simply update the URL of the iframe adding the values to the hidden fields and reload it. Then I update the CSS class via  javascript again to show the iframe (and hide my custom form). Here is an example of the code:
-
-        const form     = document.querySelector('.register-form');
-        const typeform = document.querySelector('.wp-block-typeform-embed-plugin');
-
-        const refreshIframe = (url) => {
-            
-            typeform.querySelector('.tf-v1-widget iframe').src = url;
-            form.classList.add('invisible');
-
-            //run function after one second
-            setTimeout(() => {
-                typeform.classList.add('show');
-                form.classList.add('hidden');
-            }, 1000);
-        };
-        const submitForm = (event) => {
-            event.preventDefault();
-
-            //const name = document.querySelector('#name').value;
-            const email = document.querySelector('.register-form .wpcf7-email').value;
-            const typeformUrl = `https://engsijc1gzx.typeform.com/to/SEpRzBid#email=${encodeURIComponent(email)}`;
-            //window.location.href = typeformUrl;
-            refreshIframe(typeformUrl);
-        };
-
-        //document.querySelector('.register-form').addEventListener('submit', submitForm);
-        form.querySelector('input[type=submit]').addEventListener('click', submitForm)
-
-The TypeForm appears showing only a confirmation message and a submit button. When the user clicks the button, all the data is sent to the TypeForm account
+---
 
 
 ## Required Plugins
@@ -839,24 +286,32 @@ The TypeForm appears showing only a confirmation message and a submit button. Wh
 * [Advanced Custom Fields](https://www.advancedcustomfields.com/pro/)
 
 
+---
+
 ## Required libraries
 
 * [SAGE](https://github.com/roots/sage?tab=readme-ov-file)
 * [Acorn](https://roots.io/acorn/).
-* [Nextly](https://github.com/web3templates/nextly-template)
 * [ACF Composer](https://github.com/Log1x/acf-composer)
-* [Poet](https://github.com/Log1x/poet)
 * [Sage Directives](https://log1x.github.io/sage-directives-docs/)
+
+---
+
+## Optional libraries
+
+* [Nextly](https://github.com/web3templates/nextly-template)
+* [Poet](https://github.com/Log1x/poet)
 
 
 ## Copyright and License
 
-Copyright 2023 Codigo Wordpress Theme released under the [MIT](https://github.com/pablorica/canvascareers/blob/main/LICENSE) license.
+Copyright 2025 Codigo Wordpress Theme released under the [MIT](https://github.com/pablorica/sparemytime/blob/main/LICENSE) license.
 
 ## Versioning
 
-We use [SemVer](https://semver.org/) for versioning. For the versions available, [list of tags can be found in this page](https://github.com/pablorica/canvascareers/tags).
+We use [SemVer](https://semver.org/) for versioning. For the versions available, [list of tags can be found in this page](https://github.com/pablorica/docker-starter-kit/tags).
 
 ### Changelog
 
-[CHANGELOG.md](https://github.com/pablorica/canvascareers/blob/main/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/pablorica/docker-starter-kit/blob/main/CHANGELOG.md)
+
