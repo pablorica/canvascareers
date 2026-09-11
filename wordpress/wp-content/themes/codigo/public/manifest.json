@@ -1,0 +1,23 @@
+{
+  "app.css": "css/app.e19718.css",
+  "app.js": "js/app.f85e71.js",
+  "editor.css": "css/editor.87f122.css",
+  "editor.js": "js/editor.b44c33.js",
+  "runtime.js": "js/runtime.54010d.js",
+  "fonts/MatterMedium/MatterMedium.woff": "fonts/MatterMedium/MatterMedium.aa5592.woff",
+  "fonts/MatterMedium/MatterMedium.woff2": "fonts/MatterMedium/MatterMedium.69536d.woff2",
+  "fonts/SwissTime/SwissTime-ExtraBoldItalic.woff2": "fonts/SwissTime/SwissTime-ExtraBoldItalic.dfb341.woff2",
+  "fonts/SwissTime/SwissTime-BoldItalic.woff2": "fonts/SwissTime/SwissTime-BoldItalic.c6df5e.woff2",
+  "fonts/SwissTime/SwissTime-SemiBoldItalic.woff2": "fonts/SwissTime/SwissTime-SemiBoldItalic.a82d7b.woff2",
+  "fonts/SwissTime/SwissTime-MediumItalic.woff2": "fonts/SwissTime/SwissTime-MediumItalic.e40e5a.woff2",
+  "fonts/SwissTime/SwissTime-SemiBold.woff2": "fonts/SwissTime/SwissTime-SemiBold.30711b.woff2",
+  "fonts/SwissTime/SwissTime-Medium.woff2": "fonts/SwissTime/SwissTime-Medium.f4d525.woff2",
+  "fonts/SwissTime/SwissTime-ExtraBold.woff2": "fonts/SwissTime/SwissTime-ExtraBold.2c05a6.woff2",
+  "fonts/SwissTime/SwissTime-Bold.woff2": "fonts/SwissTime/SwissTime-Bold.844237.woff2",
+  "fonts/SwissTime/SwissTime-BlackItalic.woff2": "fonts/SwissTime/SwissTime-BlackItalic.181953.woff2",
+  "fonts/SwissTime/SwissTime-Black.woff2": "fonts/SwissTime/SwissTime-Black.194e15.woff2",
+  "fonts/SwissTime/SwissTime-Italic.woff2": "fonts/SwissTime/SwissTime-Italic.cdad97.woff2",
+  "fonts/SwissTime/SwissTime-Regular.woff2": "fonts/SwissTime/SwissTime-Regular.1eaf40.woff2",
+  "../theme.json": "../theme.json",
+  "entrypoints.json": "entrypoints.json"
+}
