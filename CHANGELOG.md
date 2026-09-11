@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [1.2.1] - 2026-09-11
 
  - Apache configuration
+ - Docker files
 
 
 ## [1.2.0] - 2026-09-10

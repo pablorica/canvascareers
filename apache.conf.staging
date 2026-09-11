@@ -36,6 +36,35 @@
     ProxyPass /pma/ http://127.0.0.1:8562/
     ProxyPassReverse /pma/ http://127.0.0.1:8562/
 
+    ## ── Media offload: serve local uploads if present, else pull from production ──
+    #SSLProxyEngine On                     # required to proxy to an https upstream
+
+    ## Keep uploads OUT of the catch-all container proxy (must precede ProxyPass /)
+    #ProxyPass /wp-content/uploads/ !
+
+    ## Existing files served straight off the bind-mounted disk (no container hop).
+    ## Verify path:  realpath ./wordpress/wp-content/uploads
+    #Alias /wp-content/uploads/ /srv/docker/canvas-careers/wordpress/wp-content/uploads/
+    #<Directory /srv/docker/canvas-careers/wordpress/wp-content/uploads>
+    #    Require all granted
+    #    Options -Indexes
+    #</Directory>
+
+    ## Missing file -> transparently proxy from production.
+    #RewriteEngine On
+    #RewriteCond /srv/docker/canvas-careers/wordpress%{REQUEST_URI} !-f
+    #RewriteRule ^/wp-content/uploads/(.*)$ https://canvas-careers.com/wp-content/uploads/$1 [P,L]
+    #ProxyPassReverse /wp-content/uploads/ https://canvas-careers.com/wp-content/uploads/
+
+    ## Make the upstream fetch look first-party (override the global ProxyPreserveHost On)
+    #<Location /wp-content/uploads/>
+    #    ProxyPreserveHost Off
+    #    RequestHeader unset Referer
+    #</Location>
+
+    #ProxyPass / http://127.0.0.1:8462/
+    #ProxyPassReverse / http://127.0.0.1:8462/
+
     RequestHeader set X-Forwarded-Proto "https"
     RequestHeader set X-Forwarded-Port "443"
 

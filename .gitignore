@@ -123,6 +123,11 @@ wordpress/wp-content/plugins/*
 wordpress/wp-content/themes/*
 
 
+# -------------------------
+# Docker
+# -------------------------
+# Track the "docker" directory
+!docker
 
 # -------------------------
 # BEGIN Whitelisted Files
