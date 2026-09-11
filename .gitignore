@@ -193,7 +193,7 @@ wordpress/wp-content/themes/codigo/npm-debug.log
 wordpress/wp-content/themes/codigo/yarn-error.log
 wordpress/wp-content/themes/codigo/yarn.lock
 #wordpress/wp-content/themes/codigo/package-lock.json
-wordpress/wp-content/themes/codigo/composer.lock
+#wordpress/wp-content/themes/codigo/composer.lock
 wordpress/wp-content/themes/codigo/assets/css/style.css
 wordpress/wp-content/themes/codigo/assets/css/*.map
 #wordpress/wp-content/themes/codigo/theme.json

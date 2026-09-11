@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
  - Apache configuration
  - Docker files
+ - Vendor (composer) files
 
 
 ## [1.2.0] - 2026-09-10
