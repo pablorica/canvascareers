@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.2] - 2026-09-11
+
+ - Collaborators
+   - Removing vertical bouncing effect in Chrome
+
+
 ## [1.2.1] - 2026-09-11
 
  - Apache configuration
