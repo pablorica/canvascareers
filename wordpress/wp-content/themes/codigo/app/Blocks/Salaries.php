@@ -19,7 +19,7 @@ class Salaries extends Block
      *
      * @var string
      */
-    public $description = 'A vlock to display salaries for the Salary Survey page.';
+    public $description = 'A block to display salaries for the Salary Survey page.';
 
     /**
      * The block category.

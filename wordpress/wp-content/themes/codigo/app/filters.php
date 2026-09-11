@@ -12,7 +12,7 @@ namespace App;
  * @return string
  */
 add_filter('excerpt_more', function () {
-    return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Continued', 'sage'));
+  return sprintf(' &hellip; <a href="%s">%s</a>', get_permalink(), __('Continued', 'sage'));
 });
 
 
@@ -25,17 +25,17 @@ add_filter('excerpt_more', function () {
  * @return array
  */
 add_filter(
-    'nav_menu_css_class', 
-    function ($classes, $item, $args) {
-        $classes[] = 'mr-3 nav__item';
-        return $classes;
-    }, 
-    1, 
-    3
+  'nav_menu_css_class',
+  function ($classes, $item, $args) {
+    $classes[] = 'mr-3 nav__item';
+    return $classes;
+  },
+  1,
+  3
 );
 
 
-/** 
+/**
  * Add a class to the <a> element in the WordPress navigation menu.
  *
  * @param array $atts
@@ -44,20 +44,35 @@ add_filter(
  * @return array
  */
 add_filter(
-    'nav_menu_link_attributes', 
-    function ($atts, $item, $args) {
-        $atts['class'] = 'inline-block 
-                px-4 py-2 
-                text-lg font-normal 
-                text-gray-800 
-                no-underline 
-                rounded-md 
-                dark:text-gray-200 
-                hover:text-indigo-500 
-                focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800
-            ';
-        return $atts;
-    }, 
-    1, 
-    3
+  'nav_menu_link_attributes',
+  function ($atts, $item, $args) {
+    $atts['class'] = 'inline-block
+      px-4 py-2
+      text-lg font-normal
+      text-gray-800
+      no-underline
+      rounded-md
+      dark:text-gray-200
+      hover:text-indigo-500
+      focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none dark:focus:bg-gray-800
+    ';
+    return $atts;
+  },
+  1,
+  3
 );
+
+
+/**
+ * Opt all of the ACF blocks into version 3
+ * @see https://www.advancedcustomfields.com/resources/acf-blocks-v3/#upgrading-to-v3
+ *
+ * @param integer $version
+ * @param $block
+ * @return integer
+ */
+function my_custom_function_to_bump_the_block_version($version, $block)
+{
+  return 3;
+}
+add_filter('acf/blocks/default_block_version', 'my_custom_function_to_bump_the_block_version', 10, 2);

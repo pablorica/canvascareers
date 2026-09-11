@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.1] - 2026-09-11
+
+ - Apache configuration
+
+
+## [1.2.0] - 2026-09-10
+
+ - Collaborators
+   - Horizontal Scroll effect
+
+
 ## [1.1.0] - 2026-09-09
 
  - Add Docker

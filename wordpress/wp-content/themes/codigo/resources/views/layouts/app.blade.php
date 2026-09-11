@@ -2,7 +2,7 @@
     @name Default
     @desc The default template with an outer wrapper grid as defined in tailwind.config.js. It makes sure all blocks on a page get evenly spaced without having to worry about margins or paddings.
 
-    mb-auto
+    mb-auto mt-auto
     xl:!border-b-0 !border-r-0 xl:!border-r-[1px]
     max-w-[260px] max-w-[280px] 2xl:max-w-full
     bg-contain bg-cover
