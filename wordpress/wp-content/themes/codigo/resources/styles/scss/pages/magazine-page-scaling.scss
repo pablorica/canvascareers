@@ -1,0 +1,267 @@
+/* =========================================================================
+   Magazine text page — A4 page on the InDesign 6×6 grid
+   -------------------------------------------------------------------------
+   1u = 1 InDesign point. Everything inside the page scales with the page.
+   Values measured from the InDesign screenshot — verify in InDesign.
+   ========================================================================= */
+
+// A4 portrait, in points
+$page-w: 595.276;
+$page-h: 841.89;
+
+// Margins — Layout › Margins and Columns (values measured from the InDesign spread)
+$margin: 24;          // top, inside and outside — shared with the floating wordmark
+$margin-bottom: 62;   // bigger, to leave room for the footer
+$footer-baseline: 24; // footer baseline, measured up from the bottom edge of the page
+$col-gap: 14.4;
+$row-gap: 0;
+
+// Type
+$body-size: 8.25; // measured ~8.2 against InDesign — confirm in the Character panel
+$body-leading: 9.6; //10.5
+$label-size: 8;
+$title-size: 29;
+$title-leading: 37;
+$qa-indent: 45.6; // where question text and the first answer line start
+
+// Caption: in InDesign its first baseline sits ~21.7pt below the image.
+// CSS puts the first baseline ~8.5pt into the line, so pad the rest.
+$caption-offset: 13;
+
+// CSS puts the first baseline ~2pt higher than InDesign (which uses one full leading)
+$first-baseline-fix: 2;
+
+@property --u {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 1px;
+}
+
+@function u($pt) {
+  @return calc(#{$pt} * var(--u));
+}
+
+// Same unit outside the pages (pages are 100svh tall, so 1pt = 100svh / page height).
+// Lets elements outside the page container, like the wordmark, share page measurements.
+:root {
+  --mag-u: calc(100svh / #{$page-h});
+}
+
+/* -------------------------------------------------------------------------
+   Page box: fixed A4 ratio, full viewport height, size container
+   ------------------------------------------------------------------------- */
+.magazine__page {
+  height: 100svh;
+  aspect-ratio: #{$page-w} / #{$page-h};
+  // aspect-ratio only works while the width is auto: any width or
+  // flex-basis (e.g. an old `50vw`) silently overrides it
+  width: auto;
+  flex: 0 0 auto;
+  container-type: size;
+}
+
+.magazine__page--text {
+  background: var(--page-bg, #{$mag-chalk});
+  color: $mag-charcoal;
+
+  .page-text {
+    --u: min(var(--mag-u), calc(100cqw / #{$page-w}));
+
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    padding: u($margin) u($margin) u($margin-bottom);
+    font-family: 'Swiss Time', Times, serif;
+    font-size: u($body-size);
+    line-height: u($body-leading);
+  }
+
+  /* ---- The 6×6 grid ---------------------------------------------------- */
+  .page-text > .acf-innerblocks-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(6, minmax(0, 1fr));
+    column-gap: u($col-gap);
+    row-gap: u($row-gap);
+  }
+
+  // Placement (grid-column / grid-row) comes inline from the Grid Cell block
+  .grid-cell {
+    min-width: 0;
+    min-height: 0;
+
+    > .acf-innerblocks-container {
+      height: 100%;
+    }
+
+    &--align-start  { align-self: start; }
+    &--align-center { align-self: center; }
+    &--align-end    { align-self: end; }
+
+    // Media cropped to the cell, like InDesign's "Fill Frame Proportionally"
+    &--fill {
+      .wp-block-image {
+        height: 100%;
+      }
+
+      // .wp-block-image in the selector so this beats the generic
+      // `.wp-block-image img { height: auto }` further down
+      .wp-block-image img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    // Two text columns, filled like an InDesign frame (first column first)
+    &--cols-2 > .acf-innerblocks-container {
+      box-sizing: border-box;
+      padding-top: u($first-baseline-fix);
+      column-count: 2;
+      column-gap: u($col-gap);
+      column-fill: auto;
+    }
+  }
+
+  /* ---- Image ----------------------------------------------------------- */
+  .wp-block-image {
+    margin: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  /* ---- Caption --------------------------------------------------------- */
+  // <p><strong>Image</strong><br><em>Candle shot by Marcus</em></p>
+  p {
+    margin: 0;
+  }
+
+  // Paragraph style "Caption" (paragraph.caption.style.js)
+  .is-style-caption {
+    padding-top: u($caption-offset);
+  }
+
+  strong {
+    font-family: 'Matter Medium', Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: u($label-size);
+    text-transform: uppercase;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  /* ---- Paragraph spacing: one line of leading, as in the InDesign Q&A -- */
+  p + p {
+    margin-top: u($body-leading);
+  }
+
+  /* ---- Title ----------------------------------------------------------- */
+  h1.wp-block-heading,
+  h2.wp-block-heading {
+    margin: 0;
+    font-family: 'Swiss Time', Times, serif;
+    font-weight: 400;
+    font-size: u($title-size);
+    line-height: u($title-leading);
+    text-box: trim-end alphabetic; // last baseline sits on the row line when bottom-aligned
+  }
+
+  /* ---- Q&A paragraph styles (register_block_style on core/paragraph) ----
+     <p class="is-style-qa-question"><strong>Canvas</strong> Question…</p>
+     <p class="is-style-qa-answer"><strong>Marcus</strong> Answer…</p>
+     A plain paragraph (no style) runs full width: use it for text that
+     continues from the previous page or column.
+     ----------------------------------------------------------------------- */
+  // The label floats in the indent: exactly one line tall, and the space
+  // typed after it collapses at the line start, so text lines up at 45.6pt
+  .is-style-qa-question,
+  .is-style-qa-answer {
+    > strong:first-child {
+      float: left;
+      width: u($qa-indent);
+      line-height: u($body-leading);
+    }
+  }
+
+  // Question: the whole paragraph hangs from the indent, in italic
+  .is-style-qa-question {
+    font-style: italic;
+    padding-left: u($qa-indent);
+
+    > strong:first-child {
+      margin-left: u(-$qa-indent); // label sits in the padding
+    }
+  }
+
+  // Answer: the label takes the first line's indent, the rest runs full width
+}
+
+/* -------------------------------------------------------------------------
+   Page number — top corner, on the first baseline below the top margin
+   <span class="page-number page-number--right">4</span>
+   ------------------------------------------------------------------------- */
+.magazine__page--text .page-number {
+  position: absolute;
+  top: u($margin + $body-leading);
+  translate: 0 -100%;             // box bottom sits on that baseline…
+  text-box: trim-end alphabetic;  // …and the box bottom is the baseline
+  font-family: 'Swiss Time', Times, serif;
+  font-size: u($body-size);
+  line-height: 1;
+
+  &--left  { left: u($margin); }
+  &--right { right: u($margin); }
+}
+
+/* -------------------------------------------------------------------------
+   Page footer — sits in the bottom margin, on the same 6 columns
+   <footer class="page-footer">                   → 2nd item starts at column 4
+   <footer class="page-footer page-footer--end">  → 2nd item right-aligned
+   ------------------------------------------------------------------------- */
+.magazine__page--text .page-footer {
+  position: absolute;
+  left: u($margin);
+  right: u($margin);
+  bottom: u($footer-baseline);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: u($col-gap);
+  align-items: end;
+  font-family: 'Matter Medium', Helvetica, sans-serif;
+  font-size: u($label-size);
+  line-height: 1;
+  text-transform: uppercase;
+
+  .page-footer__item {
+    grid-column: 1 / span 3;
+    text-box: trim-end alphabetic; // box bottom = baseline
+  }
+
+  .page-footer__item + .page-footer__item {
+    grid-column: 4 / span 3;
+  }
+
+  &--end .page-footer__item + .page-footer__item {
+    justify-self: end;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Floating wordmark — aligned to the page margin
+   Replace the selector with the one used in the collaborator template.
+   ------------------------------------------------------------------------- */
+.magazine-wordmark {
+  top: calc(#{$margin} * var(--mag-u));
+  left: calc(#{$margin} * var(--mag-u));
+
+  // Align the tops of the letters, not the top of the text box
+  text-box: trim-both cap alphabetic;
+}

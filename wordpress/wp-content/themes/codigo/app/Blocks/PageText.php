@@ -33,14 +33,58 @@ class PageText extends Block
 
   public function with(): array
   {
-    return [];
+    $footerLeft = trim((string) get_field('footer_left'));
+    $footerRight = trim((string) get_field('footer_right'));
+
+    $pageNumber = trim((string) get_field('page_number'));
+
+    return [
+      'pageNumber' => $pageNumber,
+      'pageNumberPosition' => get_field('page_number_position') === 'left' ? 'left' : 'right',
+      'footerLeft' => $footerLeft,
+      'footerRight' => $footerRight,
+      'footerEnd' => (bool) get_field('footer_end'),
+      'hasFooter' => $footerLeft !== '' || $footerRight !== '',
+    ];
   }
 
   /**
-   * No ACF fields — the page's content is whatever blocks are nested inside it.
+   * The page's content is whatever blocks are nested inside it.
+   * The only fields are the page number and footer, which sit in the margins.
    */
   public function fields(): array
   {
-    return Builder::make('page_text')->build();
+    $fields = Builder::make('page_text');
+
+    $fields
+      ->addText('page_number', [
+        'label' => 'Page number',
+        'instructions' => 'Leave empty to hide it.',
+        'wrapper' => ['width' => 40],
+      ])
+      ->addButtonGroup('page_number_position', [
+        'label' => 'Page number position',
+        'choices' => ['left' => 'Top left', 'right' => 'Top right'],
+        'default_value' => 'right',
+        'wrapper' => ['width' => 60],
+      ])
+      ->addText('footer_left', [
+        'label' => 'Footer — first item',
+        'instructions' => 'Starts at column 1, e.g. "2026" or "Interview".',
+        'wrapper' => ['width' => 100],
+      ])
+      ->addText('footer_right', [
+        'label' => 'Footer — second item',
+        'instructions' => 'e.g. "Canvas Careers" or "Marcus Quigley".',
+        'wrapper' => ['width' => 100],
+      ])
+      ->addTrueFalse('footer_end', [
+        'label' => 'Right-align second item',
+        'instructions' => 'Off: starts at column 4. On: aligned to the right margin.',
+        'ui' => 1,
+        'wrapper' => ['width' => 100],
+      ]);
+
+    return $fields->build();
   }
 }

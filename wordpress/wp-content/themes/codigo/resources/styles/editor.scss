@@ -34,6 +34,24 @@
 @import "scss/patterns/heros";
 */
 
+
+
+/* Pages **/
+@import "scss/pages/magazine";
+@import "scss/pages/magazine-page-scaling";
+
+.magazine.wp-block-magazine {
+  overflow: scroll;
+}
+/* ---- The 6×6 grid ---------------------------------------------------- */
+.magazine__page--text .page-text>.acf-innerblocks-container {
+  display: block;
+}
+.magazine__page--text .grid-cell--cols-2>.acf-innerblocks-container {
+  column-count: 1;
+}
+
+
 .is-root-container {
   .hidden {
     display: initial !important;

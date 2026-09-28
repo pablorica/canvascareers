@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.3] - 2026-09-11
+
+ - Collaborators
+   - Rebuilding template
+
+
+
+
 ## [1.2.2] - 2026-09-11
 
  - Collaborators
