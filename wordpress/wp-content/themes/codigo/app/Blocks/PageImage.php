@@ -9,6 +9,10 @@ class PageImage extends Block
 {
     public $name = 'Page Image';
 
+    // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+   public $blockVersion = 3;
+   public $apiVersion = 3;
+
     public $description = 'A single image page — full-bleed or contained, with an optional caption.';
 
     public $category = 'layout';
@@ -21,11 +25,8 @@ class PageImage extends Block
 
     public $parent = ['acf/magazine'];
 
-    public $mode = 'preview';
-
     public $supports = [
         'align' => false,
-        'mode' => true,
         'multiple' => true,
         'jsx' => false,
         'anchor' => false,

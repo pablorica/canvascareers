@@ -12,6 +12,10 @@ class Magazine extends Block
    */
   public $name = 'Magazine';
 
+   // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+   public $blockVersion = 3;
+   public $apiVersion = 3;
+
   /**
    * The block description.
    */
@@ -38,11 +42,6 @@ class Magazine extends Block
   public $post_types = ['collaborator'];
 
   /**
-   * The default block mode.
-   */
-  public $mode = 'preview';
-
-  /**
    * The default block alignment.
    */
   public $align = 'full';
@@ -52,7 +51,6 @@ class Magazine extends Block
    */
   public $supports = [
     'align' => true,
-    'mode' => true,
     'multiple' => false,
     'jsx' => true,
     'anchor' => true,

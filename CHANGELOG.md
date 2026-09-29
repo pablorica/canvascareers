@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+
+## [1.2.6] - 2026-09-29
+
+### Updated
+
+ - ACF custom blocks to v3
+
+
 ## [1.2.5] - 2026-09-29
 
 ### Added

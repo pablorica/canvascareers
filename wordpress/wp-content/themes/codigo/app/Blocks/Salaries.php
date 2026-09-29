@@ -14,6 +14,10 @@ class Salaries extends Block
      */
     public $name = 'Salaries';
 
+    // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+  public $blockVersion = 3;
+  public $apiVersion = 3;
+
     /**
      * The block description.
      *
@@ -64,13 +68,6 @@ class Salaries extends Block
     public $ancestor = [];
 
     /**
-     * The default block mode.
-     *
-     * @var string
-     */
-    public $mode = 'preview';
-
-    /**
      * The default block alignment.
      *
      * @var string
@@ -112,7 +109,6 @@ class Salaries extends Block
         'align_content' => false,
         'full_height' => false,
         'anchor' => false,
-        'mode' => true,
         'multiple' => true,
         'jsx' => true,
         'color' => [

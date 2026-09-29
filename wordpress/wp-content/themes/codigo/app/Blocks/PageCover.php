@@ -9,6 +9,10 @@ class PageCover extends Block
 {
     public $name = 'Page Cover';
 
+    // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+   public $blockVersion = 3;
+   public $apiVersion = 3;
+
     public $description = 'Cover page — coloured panel with the collaborator name, role and meta line.';
 
     public $category = 'layout';
@@ -24,11 +28,8 @@ class PageCover extends Block
      */
     public $parent = ['acf/magazine'];
 
-    public $mode = 'preview';
-
     public $supports = [
         'align' => false,
-        'mode' => false,
         'multiple' => true,
         'jsx' => false,
         'anchor' => false,

@@ -9,6 +9,10 @@ class PageText extends Block
 {
   public $name = 'Page Text';
 
+  // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+  public $blockVersion = 3;
+  public $apiVersion = 3;
+
   public $description = 'A free-form page — add any Gutenberg blocks to build a custom spread.';
 
   public $category = 'layout';
@@ -21,11 +25,8 @@ class PageText extends Block
 
   public $parent = ['acf/magazine'];
 
-  public $mode = 'preview';
-
   public $supports = [
     'align' => false,
-    'mode' => false,
     'multiple' => true,
     'jsx' => true, // enable InnerBlocks — this page accepts any blocks
     'anchor' => false,

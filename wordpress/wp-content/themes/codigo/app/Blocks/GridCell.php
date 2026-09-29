@@ -13,6 +13,10 @@ class GridCell extends Block
 {
     public $name = 'Grid Cell';
 
+    // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+    public $blockVersion = 3;
+    public $apiVersion = 3;
+
     public $description = 'Places content on the 6×6 magazine page grid.';
 
     public $category = 'design';
@@ -23,11 +27,8 @@ class GridCell extends Block
 
     public $parent = ['acf/page-text'];
 
-    public $mode = 'preview';
-
     public $supports = [
         'align' => false,
-        'mode' => false,
         'anchor' => false,
         'jsx' => true,
     ];
