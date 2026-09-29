@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.7] - 2026-09-29
+
+### Added
+
+ - Collaborators
+   - Image spread 2 pages
+
 
 ## [1.2.6] - 2026-09-29
 

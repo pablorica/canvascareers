@@ -7,77 +7,76 @@ use Log1x\AcfComposer\Builder;
 
 class PageImage extends Block
 {
-    public $name = 'Page Image';
+  public $name = 'Page Image';
 
-    // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
-   public $blockVersion = 3;
-   public $apiVersion = 3;
+  // ACF Blocks V3 + WP Block API v3 (iframe-compatible)
+  public $blockVersion = 3;
+  public $apiVersion = 3;
 
-    public $description = 'A single image page — full-bleed or contained, with an optional caption.';
+  public $description = 'A full-bleed image filling one page or a two-page spread.';
 
-    public $category = 'layout';
+  public $category = 'layout';
 
-    public $icon = 'format-image';
+  public $icon = 'format-image';
 
-    public $keywords = ['image', 'photo', 'magazine'];
+  public $keywords = ['image', 'photo', 'magazine', 'spread'];
 
-    public $post_types = ['collaborator'];
+  public $post_types = ['collaborator'];
 
-    public $parent = ['acf/magazine'];
+  public $parent = ['acf/magazine'];
 
-    public $supports = [
-        'align' => false,
-        'multiple' => true,
-        'jsx' => false,
-        'anchor' => false,
+  public $supports = [
+    'align' => false,
+    'multiple' => true,
+    'jsx' => false,
+    'anchor' => false,
+  ];
+
+  public function with(): array
+  {
+    // error_log('SPAN: ' . var_export(get_field('span'), true));
+    // error_log('FIELDS: ' . var_export(get_fields(), true));
+    // error_log('RAW: ' . var_export($this->block->data ?? null, true));
+
+   $span = get_field('span') === 'Two-page spread' ? 2 : 1;
+  //$span = get_field('span');
+
+    return [
+      'imageId' => get_field('image'),
+      'span' => $span,
+      // One A4 page at full viewport height ≈ 70.7vh wide; a spread is double.
+      'sizes' => $span === 2
+        ? '(max-width: 767px) 100vw, 142vh'
+        : '(max-width: 767px) 100vw, 71vh',
     ];
+  }
 
-    public function with(): array
-    {
-        return [
-            'image' => get_field('image'),
-            'fit' => get_field('fit') ?: 'cover',
-            'background' => get_field('background_color') ?: '#E6E1DC',
-            'caption' => get_field('caption'),
-            'captionLabel' => get_field('caption_label') ?: 'Image',
-        ];
-    }
+  public function fields(): array
+  {
+    $fields = Builder::make('page_image');
 
-    public function fields(): array
-    {
-        $fields = Builder::make('page_image');
+    /*
+    Check the [ACF Builder Cheatsheet](https://github.com/Log1x/acf-builder-cheatsheet?tab=readme-ov-file) to learn how to add ACF fields by code
+     */
 
-        $fields
-            ->addImage('image', [
-                'label' => 'Image',
-                'return_format' => 'array',
-                'preview_size' => 'medium',
-            ])
-            ->addSelect('fit', [
-                'label' => 'Fit',
-                'choices' => [
-                    'cover' => 'Full-bleed (cover)',
-                    'contain' => 'Contained (with margin)',
-                ],
-                'default_value' => 'cover',
-                'return_format' => 'value',
-                'ui' => 1,
-            ])
-            ->addColorPicker('background_color', [
-                'label' => 'Background colour',
-                'instructions' => 'Used behind contained images.',
-                'default_value' => '#E6E1DC',
-            ])
-            ->addText('caption_label', [
-                'label' => 'Caption label',
-                'placeholder' => 'Image',
-            ])
-            ->addTextarea('caption', [
-                'label' => 'Caption',
-                'new_lines' => 'br',
-                'rows' => 2,
-            ]);
+    $fields
+      ->addImage('image', [
+        'label' => 'Image',
+        'return_format' => 'id',
+        'preview_size' => 'medium',
+        'required' => 1,
+      ])
+      ->addButtonGroup('span', [
+        'label' => 'Width',
+        'choices' => [
+            'One page',
+            'Two-page spread',
+        ],
+        'default_value' => 'single',
+        'return_format' => 'value',
+        'layout' => 'horizontal',
+      ]);
 
-        return $fields->build();
-    }
+    return $fields->build();
+  }
 }

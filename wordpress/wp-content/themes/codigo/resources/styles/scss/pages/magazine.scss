@@ -7,7 +7,8 @@
    $mag-citrus:   #D7BE7D;
    $mag-chalk:    #E6E1DC;
    $mag-charcoal: #202020;
-   $mag-bp:       1024px; // desktop / horizontal breakpoint
+
+
 
    /* On collaborator singles the WINDOW is the scroller, not #main.
       The theme locks #app to 100dvh and makes #main overflow-y:auto on desktop,
@@ -32,7 +33,7 @@
        display: none;
      }
 
-     @media (min-width: $mag-bp) {
+    @media (min-width: theme("screens.lg")) {
        // Undo the theme's app-shell scrolling so the document scrolls instead
        #app,
        #main {
@@ -72,7 +73,7 @@
      }
 
      /* ---- Desktop: pinned horizontal reader ---- */
-     @media (min-width: $mag-bp) {
+     @media (min-width: theme("screens.lg")) {
        height: 100dvh;
        overflow: hidden;
 
@@ -150,83 +151,26 @@
    /* -------------------------------------------------------------------------
       Image page
       ------------------------------------------------------------------------- */
-   .magazine__page--image {
-     background: var(--page-bg, #{$mag-chalk});
 
-     .page-image { margin: 0; height: 100%; }
+      .magazine__page--image {
+        overflow: hidden;
+        .magazine__page--figure {
+          width: 100%;
+          height: 100%;
+        }
+        .magazine__page__img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
 
-     .page-image__caption {
-       position: absolute;
-       left: clamp(1rem, 2vw, 2rem);
-       bottom: clamp(1rem, 2vw, 2rem);
-       max-width: 60%;
-       color: $mag-charcoal;
-     }
 
-     .page-image__caption-label {
-       display: block;
-       font-family: 'Matter Medium', Helvetica, sans-serif;
-       font-weight: 700;
-       font-size: 0.7rem;
-       letter-spacing: 0.04em;
-       text-transform: uppercase;
-       margin-bottom: 0.25rem;
-     }
 
-     .page-image__caption-text {
-       font-family: 'Swiss Time', Times, serif;
-       font-style: italic;
-       font-size: 0.85rem;
-     }
 
-     .page-image__placeholder {
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       height: 100%;
-       min-height: 40svh;
-       color: rgba($mag-charcoal, 0.4);
-       font-family: 'Matter Medium', Helvetica, sans-serif;
-     }
 
-     /* Full-bleed */
-     &.magazine__page--fit-cover .page-image {
-       position: absolute;
-       inset: 0;
-     }
-     &.magazine__page--fit-cover .page-image__img {
-       position: absolute;
-       inset: 0;
-       width: 100%;
-       height: 100%;
-       object-fit: cover;
-       display: block;
-     }
 
-     /* Contained, with breathing room */
-     &.magazine__page--fit-contain {
-       display: flex;
-       align-items: center;
-       justify-content: center;
-
-       .page-image {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         width: 100%;
-         height: 100%;
-         padding: clamp(1.5rem, 5vw, 5rem);
-       }
-       .page-image__img {
-         max-width: 100%;
-         max-height: 100%;
-         width: auto;
-         height: auto;
-         object-fit: contain;
-         display: block;
-       }
-     }
-   }
 
    /* -------------------------------------------------------------------------
       Text / interview page test
@@ -240,7 +184,8 @@
    /* -------------------------------------------------------------------------
       Mobile fallback — natural vertical read
       ------------------------------------------------------------------------- */
-   @media (max-width: #{$mag-bp - 0.02px}) {
+
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
      .magazine { height: auto; overflow: visible; }
 
      .magazine__track { transform: none !important; }

@@ -10,8 +10,8 @@ $page-w: 595.276;
 $page-h: 841.89;
 
 // Margins — Layout › Margins and Columns (values measured from the InDesign spread)
-$margin: 24;          // top, inside and outside — shared with the floating wordmark
-$margin-bottom: 62;   // bigger, to leave room for the footer
+$margin: 24; // top, inside and outside — shared with the floating wordmark
+$margin-bottom: 62; // bigger, to leave room for the footer
 $footer-baseline: 24; // footer baseline, measured up from the bottom edge of the page
 $col-gap: 14.4;
 $row-gap: 0;
@@ -32,7 +32,7 @@ $caption-offset: 13;
 $first-baseline-fix: 2;
 
 @property --u {
-  syntax: '<length>';
+  syntax: "<length>";
   inherits: true;
   initial-value: 1px;
 }
@@ -50,9 +50,9 @@ $first-baseline-fix: 2;
 /* -------------------------------------------------------------------------
    Page box: fixed A4 ratio, full viewport height, size container
    ------------------------------------------------------------------------- */
-// Desktop only (matches $mag-bp in magazine.scss) — the mobile fallback keeps
+// Desktop only (matches theme("screens.lg") in magazine.scss) — the mobile fallback keeps
 // its full-width vertical stack.
-@media (min-width: 1024px) {
+@media (min-width: theme("screens.lg")) {
   .magazine__page {
     height: 100svh;
     aspect-ratio: #{$page-w} / #{$page-h};
@@ -61,8 +61,12 @@ $first-baseline-fix: 2;
     width: auto;
     flex: 0 0 auto;
     container-type: size;
+    &.magazine__page--spread {
+      aspect-ratio: calc(2 * #{$page-w}) / #{$page-h};
+    }
   }
 }
+
 
 .magazine__page--text {
   background: var(--page-bg, #{$mag-chalk});
@@ -75,7 +79,7 @@ $first-baseline-fix: 2;
     box-sizing: border-box;
     height: 100%;
     padding: u($margin) u($margin) u($margin-bottom);
-    font-family: 'Swiss Time', Times, serif;
+    font-family: "Swiss Time", Times, serif;
     font-size: u($body-size);
     line-height: u($body-leading);
   }
@@ -99,9 +103,15 @@ $first-baseline-fix: 2;
       height: 100%;
     }
 
-    &--align-start  { align-self: start; }
-    &--align-center { align-self: center; }
-    &--align-end    { align-self: end; }
+    &--align-start {
+      align-self: start;
+    }
+    &--align-center {
+      align-self: center;
+    }
+    &--align-end {
+      align-self: end;
+    }
 
     // Media cropped to the cell, like InDesign's "Fill Frame Proportionally"
     &--fill {
@@ -151,7 +161,7 @@ $first-baseline-fix: 2;
   }
 
   strong {
-    font-family: 'Matter Medium', Helvetica, sans-serif;
+    font-family: "Matter Medium", Helvetica, sans-serif;
     font-weight: normal;
     font-style: normal;
     font-size: u($label-size);
@@ -171,7 +181,7 @@ $first-baseline-fix: 2;
   h1.wp-block-heading,
   h2.wp-block-heading {
     margin: 0;
-    font-family: 'Swiss Time', Times, serif;
+    font-family: "Swiss Time", Times, serif;
     font-weight: 400;
     font-size: u($title-size);
     line-height: u($title-leading);
@@ -215,14 +225,18 @@ $first-baseline-fix: 2;
 .magazine__page--text .page-number {
   position: absolute;
   top: u($margin + $body-leading);
-  translate: 0 -100%;             // box bottom sits on that baseline…
-  text-box: trim-end alphabetic;  // …and the box bottom is the baseline
-  font-family: 'Swiss Time', Times, serif;
+  translate: 0 -100%; // box bottom sits on that baseline…
+  text-box: trim-end alphabetic; // …and the box bottom is the baseline
+  font-family: "Swiss Time", Times, serif;
   font-size: u($body-size);
   line-height: 1;
 
-  &--left  { left: u($margin); }
-  &--right { right: u($margin); }
+  &--left {
+    left: u($margin);
+  }
+  &--right {
+    right: u($margin);
+  }
 }
 
 /* -------------------------------------------------------------------------
@@ -239,7 +253,7 @@ $first-baseline-fix: 2;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   column-gap: u($col-gap);
   align-items: end;
-  font-family: 'Matter Medium', Helvetica, sans-serif;
+  font-family: "Matter Medium", Helvetica, sans-serif;
   font-size: u($label-size);
   line-height: 1;
   text-transform: uppercase;
