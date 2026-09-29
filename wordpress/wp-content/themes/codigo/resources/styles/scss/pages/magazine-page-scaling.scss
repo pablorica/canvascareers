@@ -18,7 +18,7 @@ $row-gap: 0;
 
 // Type
 $body-size: 8.25; // measured ~8.2 against InDesign — confirm in the Character panel
-$body-leading: 9.6; //10.5
+$body-leading: 10.5;
 $label-size: 8;
 $title-size: 29;
 $title-leading: 37;
@@ -50,14 +50,18 @@ $first-baseline-fix: 2;
 /* -------------------------------------------------------------------------
    Page box: fixed A4 ratio, full viewport height, size container
    ------------------------------------------------------------------------- */
-.magazine__page {
-  height: 100svh;
-  aspect-ratio: #{$page-w} / #{$page-h};
-  // aspect-ratio only works while the width is auto: any width or
-  // flex-basis (e.g. an old `50vw`) silently overrides it
-  width: auto;
-  flex: 0 0 auto;
-  container-type: size;
+// Desktop only (matches $mag-bp in magazine.scss) — the mobile fallback keeps
+// its full-width vertical stack.
+@media (min-width: 1024px) {
+  .magazine__page {
+    height: 100svh;
+    aspect-ratio: #{$page-w} / #{$page-h};
+    // aspect-ratio only works while the width is auto: any width or
+    // flex-basis silently overrides it
+    width: auto;
+    flex: 0 0 auto;
+    container-type: size;
+  }
 }
 
 .magazine__page--text {

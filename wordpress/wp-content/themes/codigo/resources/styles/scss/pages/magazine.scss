@@ -4,244 +4,250 @@
    charcoal #202020. Fonts: Swiss Time (serif), Matter Medium (sans).
    ------------------------------------------------------------------------- */
 
-$mag-citrus:   #D7BE7D;
-$mag-chalk:    #E6E1DC;
-$mag-charcoal: #202020;
-$mag-bp:       1024px; // desktop / horizontal breakpoint
+   $mag-citrus:   #D7BE7D;
+   $mag-chalk:    #E6E1DC;
+   $mag-charcoal: #202020;
+   $mag-bp:       1024px; // desktop / horizontal breakpoint
 
-/* The theme sets `overflow-x: hidden` on <body>. That promotes overflow-y to
-   `auto`, turning the body into its own scroll container, which stops
-   ScrollTrigger's pin (measured against the window) from ever getting scroll
-   distance. `clip` prevents the sideways scrollbar without creating a scroll
-   container, so pinning works. Scoped to collaborator singles. */
-// Chrome keeps its elastic overscroll on the root scroller and only respects
-// overscroll-behavior when it's set on the documentElement — Firefox is happy
-// with the #main/body rules alone, Chrome needs this one. :has() scopes it to
-// the collaborator template so the rest of the site is untouched.
-html:has(body.single-collaborator) {
-  overscroll-behavior: none;
-}
+   /* On collaborator singles the WINDOW is the scroller, not #main.
+      The theme locks #app to 100dvh and makes #main overflow-y:auto on desktop,
+      which turns #main into its own scroll container: Chrome then rubber-bands
+      #main and ScrollTrigger has to pin with transforms, which jitters. Letting the
+      document scroll fixes both, and lets the root overscroll rule below work. */
 
-body.single-collaborator {
-  overflow-x: clip;
-  overscroll-behavior: none; // stop the rubber-band bounce at the top/bottom
+   // Chrome only stops its elastic overscroll when the rule is on <html>.
+   // :has() scopes it to the collaborator template so the rest of the site is untouched.
+   html:has(body.single-collaborator) {
+     overscroll-behavior: none;
+   }
 
-  // Hide the footer so the magazine gets the full viewport height. The footer
-  // lives outside #main in the #app column, so removing it lets #main fill 100dvh.
-  .footer {
-    display: none;
-  }
+   body.single-collaborator {
+     // The theme sets `overflow-x: hidden` on <body>, which would make the body a
+     // scroll container. `clip` hides the sideways overflow without doing that.
+     overflow-x: clip;
+     overscroll-behavior: none;
 
-  #main {
-    overscroll-behavior: none;
-  }
-}
+     // Hide the footer so the magazine gets the full viewport height.
+     .footer {
+       display: none;
+     }
 
-.single-collaborator--magazine {
-  display: block;
-  width: 100%;
-}
+     @media (min-width: $mag-bp) {
+       // Undo the theme's app-shell scrolling so the document scrolls instead
+       #app,
+       #main {
+         height: auto;
+         max-height: none;
+         overflow: visible;
+       }
+     }
+   }
 
-.magazine {
-  position: relative;
-  width: 100%;
-  background: $mag-chalk;
+   .single-collaborator--magazine {
+     display: block;
+     width: 100%;
+   }
 
-  &__track {
-    display: flex;
-    flex-direction: column; // mobile default: vertical stack
-  }
+   .magazine {
+     position: relative;
+     width: 100%;
+     background: $mag-chalk;
 
-  // ACF wraps <InnerBlocks> in a .acf-innerblocks-container. Hoist any wrapper
-  // that isn't a page so the pages themselves become the track's flex items.
-  &__track > *:not(.magazine__page) {
-    display: contents;
-  }
+     &__track {
+       display: flex;
+       flex-direction: column; // mobile default: vertical stack
+     }
 
-  &__page {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background: var(--page-bg, #{$mag-chalk});
-  }
+     // ACF wraps <InnerBlocks> in a .acf-innerblocks-container. Hoist any wrapper
+     // that isn't a page so the pages themselves become the track's flex items.
+     &__track > *:not(.magazine__page) {
+       display: contents;
+     }
 
-  /* ---- Desktop: pinned horizontal reader ---- */
-  @media (min-width: $mag-bp) {
-    height: 100dvh;
-    overflow: hidden;
+     &__page {
+       position: relative;
+       width: 100%;
+       overflow: hidden;
+       background: var(--page-bg, #{$mag-chalk});
+     }
 
-    &__track {
-      flex-direction: row;
-      height: 100%;
-      will-change: transform;
-    }
+     /* ---- Desktop: pinned horizontal reader ---- */
+     @media (min-width: $mag-bp) {
+       height: 100dvh;
+       overflow: hidden;
 
-    &__page {
-      flex: 0 0 50vw;   // exactly two pages across
-      width: 50vw;
-      height: 100%;
-    }
-  }
-}
+       &__track {
+         flex-direction: row;
+         height: 100%;
+         will-change: transform;
+       }
 
-/* -------------------------------------------------------------------------
-   Cover page
-   ------------------------------------------------------------------------- */
-.magazine__page--cover {
-  background: var(--page-bg, #{$mag-citrus});
-  color: $mag-charcoal;
+       // Page width comes from the A4 aspect-ratio in _magazine-page-text.scss —
+       // don't set width or flex-basis here, it would cancel the ratio.
+       &__page {
+         height: 100%;
+       }
+     }
+   }
 
-  .cover {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    min-height: 100svh;
-    padding: clamp(1.25rem, 3vw, 3rem);
-  }
+   /* -------------------------------------------------------------------------
+      Cover page
+      ------------------------------------------------------------------------- */
+   .magazine__page--cover {
+     background: var(--page-bg, #{$mag-citrus});
+     color: $mag-charcoal;
 
-  .cover__eyebrow {
-    font-family: 'Matter Medium', Helvetica, sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    margin: 0;
-  }
+     .cover {
+       display: flex;
+       flex-direction: column;
+       height: 100%;
+       min-height: 100svh;
+       padding: clamp(1.25rem, 3vw, 3rem);
+     }
 
-  .cover__title {
-    font-family: 'Swiss Time', Times, serif;
-    font-weight: 400;
-    line-height: 1.05;
-    font-size: clamp(1.75rem, 3.2vw, 3rem);
-    margin: clamp(2rem, 12vh, 8rem) 0 0;
+     .cover__eyebrow {
+       font-family: 'Matter Medium', Helvetica, sans-serif;
+       font-weight: 700;
+       font-size: 0.9rem;
+       margin: 0;
+     }
 
-    em { font-style: italic; }
-  }
+     .cover__title {
+       font-family: 'Swiss Time', Times, serif;
+       font-weight: 400;
+       line-height: 1.05;
+       font-size: clamp(1.75rem, 3.2vw, 3rem);
+       margin: clamp(2rem, 12vh, 8rem) 0 0;
 
-  .cover__foot {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(2rem, 8vh, 6rem);
-  }
+       em { font-style: italic; }
+     }
 
-  .cover__meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-family: 'Matter Medium', Helvetica, sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
+     .cover__foot {
+       margin-top: auto;
+       display: flex;
+       flex-direction: column;
+       gap: clamp(2rem, 8vh, 6rem);
+     }
 
-  .cover__wordmark {
-    font-family: 'Matter Medium', Helvetica, sans-serif;
-    font-weight: 700;
-    line-height: 0.9;
-    font-size: clamp(2.5rem, 5.5vw, 5rem);
-  }
-}
+     .cover__meta {
+       display: flex;
+       justify-content: space-between;
+       gap: 1rem;
+       font-family: 'Matter Medium', Helvetica, sans-serif;
+       font-size: 0.75rem;
+       letter-spacing: 0.06em;
+       text-transform: uppercase;
+     }
 
-/* -------------------------------------------------------------------------
-   Image page
-   ------------------------------------------------------------------------- */
-.magazine__page--image {
-  background: var(--page-bg, #{$mag-chalk});
+     .cover__wordmark {
+       font-family: 'Matter Medium', Helvetica, sans-serif;
+       font-weight: 700;
+       line-height: 0.9;
+       font-size: clamp(2.5rem, 5.5vw, 5rem);
+     }
+   }
 
-  .page-image { margin: 0; height: 100%; }
+   /* -------------------------------------------------------------------------
+      Image page
+      ------------------------------------------------------------------------- */
+   .magazine__page--image {
+     background: var(--page-bg, #{$mag-chalk});
 
-  .page-image__caption {
-    position: absolute;
-    left: clamp(1rem, 2vw, 2rem);
-    bottom: clamp(1rem, 2vw, 2rem);
-    max-width: 60%;
-    color: $mag-charcoal;
-  }
+     .page-image { margin: 0; height: 100%; }
 
-  .page-image__caption-label {
-    display: block;
-    font-family: 'Matter Medium', Helvetica, sans-serif;
-    font-weight: 700;
-    font-size: 0.7rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
-  }
+     .page-image__caption {
+       position: absolute;
+       left: clamp(1rem, 2vw, 2rem);
+       bottom: clamp(1rem, 2vw, 2rem);
+       max-width: 60%;
+       color: $mag-charcoal;
+     }
 
-  .page-image__caption-text {
-    font-family: 'Swiss Time', Times, serif;
-    font-style: italic;
-    font-size: 0.85rem;
-  }
+     .page-image__caption-label {
+       display: block;
+       font-family: 'Matter Medium', Helvetica, sans-serif;
+       font-weight: 700;
+       font-size: 0.7rem;
+       letter-spacing: 0.04em;
+       text-transform: uppercase;
+       margin-bottom: 0.25rem;
+     }
 
-  .page-image__placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    min-height: 40svh;
-    color: rgba($mag-charcoal, 0.4);
-    font-family: 'Matter Medium', Helvetica, sans-serif;
-  }
+     .page-image__caption-text {
+       font-family: 'Swiss Time', Times, serif;
+       font-style: italic;
+       font-size: 0.85rem;
+     }
 
-  /* Full-bleed */
-  &.magazine__page--fit-cover .page-image {
-    position: absolute;
-    inset: 0;
-  }
-  &.magazine__page--fit-cover .page-image__img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+     .page-image__placeholder {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       height: 100%;
+       min-height: 40svh;
+       color: rgba($mag-charcoal, 0.4);
+       font-family: 'Matter Medium', Helvetica, sans-serif;
+     }
 
-  /* Contained, with breathing room */
-  &.magazine__page--fit-contain {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+     /* Full-bleed */
+     &.magazine__page--fit-cover .page-image {
+       position: absolute;
+       inset: 0;
+     }
+     &.magazine__page--fit-cover .page-image__img {
+       position: absolute;
+       inset: 0;
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       display: block;
+     }
 
-    .page-image {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding: clamp(1.5rem, 5vw, 5rem);
-    }
-    .page-image__img {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-  }
-}
+     /* Contained, with breathing room */
+     &.magazine__page--fit-contain {
+       display: flex;
+       align-items: center;
+       justify-content: center;
 
-/* -------------------------------------------------------------------------
-   Text / interview page test
-   -------------------------------------------------------------------------
-.magazine__page--text .grid-cell {
-  border: thin solid red;
-}
-*/
+       .page-image {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         width: 100%;
+         height: 100%;
+         padding: clamp(1.5rem, 5vw, 5rem);
+       }
+       .page-image__img {
+         max-width: 100%;
+         max-height: 100%;
+         width: auto;
+         height: auto;
+         object-fit: contain;
+         display: block;
+       }
+     }
+   }
+
+   /* -------------------------------------------------------------------------
+      Text / interview page test
+      -------------------------------------------------------------------------
+   .magazine__page--text .grid-cell {
+     border: thin solid red;
+   }
+   */
 
 
-/* -------------------------------------------------------------------------
-   Mobile fallback — natural vertical read
-   ------------------------------------------------------------------------- */
-@media (max-width: #{$mag-bp - 0.02px}) {
-  .magazine { height: auto; overflow: visible; }
+   /* -------------------------------------------------------------------------
+      Mobile fallback — natural vertical read
+      ------------------------------------------------------------------------- */
+   @media (max-width: #{$mag-bp - 0.02px}) {
+     .magazine { height: auto; overflow: visible; }
 
-  .magazine__track { transform: none !important; }
+     .magazine__track { transform: none !important; }
 
-  .magazine__page--cover { min-height: 100svh; }
-  .magazine__page--image { min-height: 70svh; }
+     .magazine__page--cover { min-height: 100svh; }
+     .magazine__page--image { min-height: 70svh; }
 
-  .magazine__page--text .page-text { height: auto; }
-  .magazine__page--text .page-text__body--cols-2 { column-count: 1; }
-}
+     .magazine__page--text .page-text { height: auto; }
+     .magazine__page--text .page-text__body--cols-2 { column-count: 1; }
+   }

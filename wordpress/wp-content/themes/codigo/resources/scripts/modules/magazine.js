@@ -27,10 +27,10 @@ const magazine = () => {
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
-      // The theme makes #main the scroll container on desktop (#app is locked
-      // to 100dvh, #main is overflow-y:auto), so ScrollTrigger must watch #main
-      // rather than the window — otherwise the pin never receives any scroll.
-      const scroller = document.querySelector("#main") || undefined;
+      // The window is the scroller: magazine.scss releases #app/#main from the
+      // theme's app-shell scrolling on collaborator pages. With the default
+      // scroller, ScrollTrigger pins with position: fixed, which doesn't jitter
+      // in Chrome the way a transform pin inside #main did.
 
       const distance = () => Math.max(0, track.scrollWidth - window.innerWidth);
 
@@ -57,11 +57,9 @@ const magazine = () => {
       const st = ScrollTrigger.create({
         animation: tween,
         trigger: section,
-        scroller,
         start: "top top",
         end: () => "+=" + distance(),
         pin: true,
-        pinType: "transform", // element scroller → pin via transform, not fixed
         scrub: 1,
         invalidateOnRefresh: true,
         snap: {
