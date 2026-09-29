@@ -113,10 +113,112 @@
           relative"
       >
 
+      @php($media_type = get_field('home_media_type', $collaborator->ID) ?: 'images')
+      @php($video = get_field('home_video', $collaborator->ID))
+      @php($video_poster = get_field('home_video_poster', $collaborator->ID))
       @php($first_image = get_field('home_first_image', $collaborator->ID))
       @php($second_image = get_field('home_second_image', $collaborator->ID))
 
-      @if($first_image && $second_image)
+      @if($media_type === 'video' && !empty($video['url']))
+        <div class="flex h-full">
+          <figure class="group w-full
+            p-0 relative overflow-hidden bg-charcoal
+            collaborator-fade-in-up
+          " data-home-video>
+            {{-- No autoplay attribute: playback is started from JS so we can
+                 catch blocked autoplay and respect prefers-reduced-motion --}}
+            <video
+              class="w-full h-full object-cover absolute inset-0"
+              muted
+              playsinline
+              loop
+              preload="metadata"
+              @if($video_poster) poster="{{ $video_poster }}" @endif
+              aria-label="{{ $collaborator->post_title }}"
+            >
+              <source src="{{ $video['url'] }}" type="{{ $video['mime_type'] ?? 'video/mp4' }}">
+            </video>
+
+            {{-- Fallback play button, shown only if autoplay is blocked or reduced motion is on --}}
+            <button type="button"
+              class="hidden
+                absolute inset-0 z-10 m-auto
+                w-20 h-20 rounded-full
+                flex items-center justify-center
+                bg-chalk/90 hover:bg-citrus text-charcoal
+                border border-charcoal
+                transition-colors duration-300
+                focus:outline-none focus-visible:ring-2 focus-visible:ring-citrus focus-visible:ring-offset-2
+              "
+              aria-label="Play video"
+              data-video-play
+            >
+              <svg class="w-7 h-7 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M7 4.5v15l13-7.5z"/>
+              </svg>
+            </button>
+
+            {{-- Controls, bottom-right. Hidden until the video is hovered or a
+                 control has keyboard focus; always visible on touch screens,
+                 which have no hover. --}}
+            <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-10
+                flex gap-2
+                opacity-0 group-hover:opacity-100 group-focus-within:opacity-100
+                [@media(hover:none)]:opacity-100
+                transition-opacity duration-300
+              "
+              data-video-controls
+            >
+              {{-- Play / pause --}}
+              <button type="button"
+                class="w-11 h-11 rounded-full
+                  flex items-center justify-center
+                  bg-chalk/90 hover:bg-citrus text-charcoal
+                  border border-charcoal
+                  transition-colors duration-300
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-citrus focus-visible:ring-offset-2
+                "
+                aria-label="Play video"
+                data-video-toggle
+              >
+                {{-- Play icon --}}
+                <svg class="w-5 h-5 ml-0.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-icon-play>
+                  <path d="M7 4.5v15l13-7.5z"/>
+                </svg>
+                {{-- Pause icon --}}
+                <svg class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-icon-pause>
+                  <path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/>
+                </svg>
+              </button>
+
+              {{-- Sound toggle --}}
+              <button type="button"
+                class="w-11 h-11 rounded-full
+                  flex items-center justify-center
+                  bg-chalk/90 hover:bg-citrus text-charcoal
+                  border border-charcoal
+                  transition-colors duration-300
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-citrus focus-visible:ring-offset-2
+                "
+                aria-label="Turn sound on"
+                aria-pressed="false"
+                data-video-sound
+              >
+                {{-- Muted icon --}}
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" data-icon-muted>
+                  <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>
+                  <path d="M17 9l5 6M22 9l-5 6" stroke-linecap="round"/>
+                </svg>
+                {{-- Sound on icon --}}
+                <svg class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" data-icon-sound>
+                  <path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/>
+                  <path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+          </figure>
+        </div>
+      @elseif($first_image && $second_image)
         <div class="flex flex-wrap h-full gap-0">
           <figure class="w-full lg:w-1/2
             p-0 relative

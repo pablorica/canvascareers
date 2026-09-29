@@ -81,11 +81,43 @@ class CollaboratorHomeFields extends Field
 				'new_lines' => 'wpautop', // 'wpautop', 'br', '' no formatting
 				'esc_html' => 0,
 			])
+			->addButtonGroup('home_media_type', [
+				'label' => 'Media type',
+				'instructions' => 'Show two images side by side, or a video.',
+				'required' => 0,
+				'choices' => [
+					'images' => 'Images',
+					'video' => 'Video',
+				],
+				'default_value' => 'images',
+				'return_format' => 'value',
+				'layout' => 'horizontal',
+			])
+			->addFile('home_video', [
+				'label' => 'Video',
+				'instructions' => 'MP4 (H.264) recommended, ideally under 15 MB. Plays muted on load; visitors can turn the sound on.',
+				'required' => 0,
+				'return_format' => 'array',
+				'library' => 'all',
+				'min_size' => '',
+				'max_size' => '',
+				'mime_types' => 'mp4,webm',
+			])
+				->conditional('home_media_type', '==', 'video')
+			->addImage('home_video_poster', [
+				'label' => 'Video poster image',
+				'instructions' => 'Shown while the video loads, and if it can\'t autoplay.',
+				'required' => 0,
+				'return_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+				'mime_types' => '',
+			])
+				->conditional('home_media_type', '==', 'video')
 			->addImage('home_first_image', [
 				'label' => 'First Image',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => [],
 				'wrapper' => [
 					'width' => '',
 					'class' => '',
@@ -102,11 +134,11 @@ class CollaboratorHomeFields extends Field
 				'max_size' => '',
 				'mime_types' => '',
 			])
+				->conditional('home_media_type', '==', 'images')
 			->addImage('home_second_image', [
 				'label' => 'Second Image',
 				'instructions' => '',
 				'required' => 0,
-				'conditional_logic' => [],
 				'wrapper' => [
 					'width' => '',
 					'class' => '',
@@ -123,6 +155,7 @@ class CollaboratorHomeFields extends Field
 				'max_size' => '',
 				'mime_types' => '',
 			])
+				->conditional('home_media_type', '==', 'images')
 			->addText('home_intro_label', [
 				'label' => 'Intro label ',
 				'instructions' => '',

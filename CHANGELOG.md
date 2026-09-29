@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.5] - 2026-09-29
+
+### Added
+
+ - Home page collaborator video
+
+
+
 ## [1.2.4] - 2026-09-29
 
 ### Fixed

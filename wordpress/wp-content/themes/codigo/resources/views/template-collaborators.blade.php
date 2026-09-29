@@ -43,6 +43,7 @@
         <?php
         $allowed_years = [];
         $years   = get_terms('collaborator-year', ['hide_empty' => false]);
+        //error_log("Years: " . print_r($years, true));
         $seasons = get_terms('collaborator-season', ['hide_empty' => false]);
         if(count($years) > 1) {
           foreach($years as $year) {

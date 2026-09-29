@@ -20,6 +20,7 @@ import jobs from "./modules/jobs";
 import salaries from "./modules/salaries";
 import loadEffect from "./modules/loadEffect";
 import magazine from "./modules/magazine";
+import homeVideo from "./modules/homeVideo";
 
 /**
  * Application entrypoint
@@ -49,6 +50,7 @@ const CDG = {
     collaborators();
     accordion();
     magazine();
+    homeVideo();
 
     window.addEventListener("resize", function(){
       //consoleHello('window has resized');
