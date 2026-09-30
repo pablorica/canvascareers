@@ -1,5 +1,8 @@
 {{-- Free-form magazine page — built from Grid Cells on the 6×6 grid. --}}
-<article class="magazine__page magazine__page--text {{ $block->classes }}" style="{{ $block->inlineStyle }}">
+<article
+  class="magazine__page magazine__page--text {{ $block->classes }}"
+  style="@if($background)--page-bg: {{ $background }}; @endif{{ $block->inlineStyle }}"
+>
   <div class="page-text page-text--freeform">
     @if ($pageNumber !== '')
       <span class="page-number page-number--{{ $pageNumberPosition }}">{{ $pageNumber }}</span>

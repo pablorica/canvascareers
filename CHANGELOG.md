@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.9] - 2026-09-29
+
+### Added
+
+ - New collaborator examples
+
 ## [1.2.8] - 2026-09-29
 
 ### Updated

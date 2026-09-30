@@ -40,6 +40,7 @@ class PageText extends Block
     $pageNumber = trim((string) get_field('page_number'));
 
     return [
+      'background' => sanitize_hex_color((string) get_field('background_color')) ?: '',
       'pageNumber' => $pageNumber,
       'pageNumberPosition' => get_field('page_number_position') === 'left' ? 'left' : 'right',
       'footerLeft' => $footerLeft,
@@ -58,6 +59,12 @@ class PageText extends Block
     $fields = Builder::make('page_text');
 
     $fields
+      ->addColorPicker('background_color', [
+        'label' => 'Background colour',
+        'instructions' => 'Leave empty for the default chalk.',
+        'return_format' => 'string',
+        'enable_opacity' => 0,
+      ])
       ->addText('page_number', [
         'label' => 'Page number',
         'instructions' => 'Leave empty to hide it.',

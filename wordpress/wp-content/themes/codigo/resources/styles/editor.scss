@@ -38,7 +38,8 @@
 
 /* Pages **/
 @import "scss/pages/magazine";
-@import "scss/pages/magazine-page-scaling";
+@import "scss/pages/magazine-page-cover";
+@import "scss/pages/magazine-page-text";
 
 .magazine.wp-block-magazine {
   overflow: scroll;
@@ -49,6 +50,12 @@
 }
 .magazine__page--text .grid-cell--cols-2>.acf-innerblocks-container {
   column-count: 1;
+}
+.magazine__page--text .page-number {
+  top: 10px;
+}
+.magazine__page--text .page-footer {
+  bottom: 1px;
 }
 
 
