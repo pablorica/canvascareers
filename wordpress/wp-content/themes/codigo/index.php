@@ -13,6 +13,7 @@
   if (strpos($body_class, 'wp-admin') === false) {
     $body_class_frontend .= ' wp-frontend';
   }
+  if(has_block('acf/magazine')) { $body_class_frontend .= ' display-magazine'; }
    ?>
   <body <?php body_class($body_class_frontend); ?>>
     <?php wp_body_open(); ?>

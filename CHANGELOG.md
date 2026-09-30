@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.8] - 2026-09-29
+
+### Updated
+
+ - Collaborator: scope magazine scroll/layout overrides to pages with acf/magazine block via .display-magazine body class
+
 ## [1.2.7] - 2026-09-29
 
 ### Added
