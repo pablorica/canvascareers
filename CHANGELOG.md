@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.10] - 2026-10-01
+
+### Added
+
+ - New CMS option to disable the collaborator page link from the homepage.
+
 ## [1.2.9] - 2026-09-29
 
 ### Added

@@ -31,7 +31,7 @@
               $collaborator_description = 'No description available.';
           }
 
-
+          $unlink = get_field('unlink_collaborator_page', $collaborator);
           $collaborator_permalink = get_permalink( $collaborator );
           // $cta_permalink = $collaborator_permalink;
           // if( !get_field('cta_collaborator_linked', $collaborator)
@@ -43,10 +43,13 @@
           //error_log('cta_url: '.get_field('cta_url', $collaborator));
 
           //$cta_target = get_field('cta_collaborator_target', $collaborator) ? '_blank' : '_self'
+
+          if(!$unlink) {
           ?>
           <a href="{{ $collaborator_permalink }}"
             class="group relative inline-block"
           >
+          <?php } ?>
             <h2 class="text-md md:text-3xl 2xl:text-4xl
               font-serif font-light md:font-normal
               mt-4 md:mt-6
@@ -60,7 +63,10 @@
               @php($name = explode(' ', $collaborator->post_title))
               <span class="italic">{{ $name[0] }}</span> {{ implode(' ', array_slice($name, 1)) }}
             </h2>
+
+          <?php if(!$unlink) { ?>
           </a>
+          <?php } ?>
           <span class="block
             text-md md:text-sm 2xl:text-base
             mt-1 md:mt-6
