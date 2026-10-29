@@ -145,10 +145,9 @@ wordpress/wp-content/themes/*
 # Markdown files
 !README.md
 !CHANGELOG.md
-!DOCKER.md
-!SERVER.md
-!SASS.md
-!VUE.md
+
+# Documents
+!/docs
 
 # track example files, if they exist
 !*.example

@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+
+## [1.2.11] - 2026-10-29 
+
+### Fixed
+
+  – PHP Security Update
+    - **Security**
+    - Upgraded PHP from 8.3.31 to 8.3.36 on the production DigitalOcean server.
+    - Applied security patches addressing CVE-2026-109618 and CVE-2026-109619.
+    - Updated the Apache PHP module and all installed PHP 8.3 extensions.
+    - Disabled PHP session upload progress as an additional security precaution.
+
+    - **Verification**
+    - Validated Apache configuration and restarted the service successfully.
+    - Reviewed server logs for errors and suspicious activity.
+    - Verified WordPress frontend, admin and key functionality after the update.
+    - Confirmed the website is running normally.
+
+    - **Documentation**
+    - Added `Canvas-Careers-PHP-Security-Update-2026-10.md` with the update procedure, verification steps and maintenance notes.
+
+    - **Notes**
+      - PHP updates were applied directly to the production server, not through repository code changes.
+      - A separate server reboot is pending to activate the updated Ubuntu kernel.
+
+
 ## [1.2.10] - 2026-10-01
 
 ### Added

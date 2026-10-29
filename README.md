@@ -3,7 +3,7 @@ A clean slate Wordpress application for Canvas Careers.
 Based in [sage](https://github.com/roots/sage?tab=readme-ov-file) and in [Nextly](https://github.com/web3templates/nextly-template)
 
 
-[![version](https://img.shields.io/badge/version-1.2.10-green.svg)](https://semver.org)
+[![version](https://img.shields.io/badge/version-1.2.11-green.svg)](https://semver.org)
 
 
 ## Live version
@@ -297,6 +297,12 @@ If you're using **Apache**, add this to your virtual host configuration or `.hta
 * [Nextly](https://github.com/web3templates/nextly-template)
 * [Poet](https://github.com/Log1x/poet)
 
+
+---
+
+## Bugs & Fixes
+
+* [PHP security vulnerabilities - October 2026](docs/PHP-Security-Update-2026-10.md)
 
 ## Copyright and License
 
