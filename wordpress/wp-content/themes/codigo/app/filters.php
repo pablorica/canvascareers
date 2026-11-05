@@ -76,3 +76,48 @@ function my_custom_function_to_bump_the_block_version($version, $block)
   return 3;
 }
 add_filter('acf/blocks/default_block_version', 'my_custom_function_to_bump_the_block_version', 10, 2);
+
+
+/**
+ * Caption for magazine images on mobile, from the Media Library's Title and
+ * Image Caption fields. Desktop keeps the captions placed on the page.
+ *
+ * @param  int|string|null  $attachmentId
+ * @return string
+ */
+function magazine_image_caption($attachmentId)
+{
+  $attachmentId = (int) $attachmentId;
+
+  if (! $attachmentId) {
+    return '';
+  }
+
+  $title = get_the_title($attachmentId);
+  $caption = wp_get_attachment_caption($attachmentId);
+
+  if (! $title && ! $caption) {
+    return '';
+  }
+
+  return sprintf(
+    '<figcaption class="magazine-image-caption">%s%s</figcaption>',
+    $title ? '<strong>' . esc_html($title) . '</strong>' : '',
+    $caption ? '<em>' . esc_html($caption) . '</em>' : ''
+  );
+}
+
+
+/**
+ * Add the mobile caption to image blocks in magazine articles.
+ */
+add_filter('render_block_core/image', function ($content, $block) {
+  if (is_admin() || ! has_block('acf/magazine')) {
+    return $content;
+  }
+
+  // The block's own caption would be a second <figcaption> in the same figure
+  $content = preg_replace('#<figcaption[^>]*wp-element-caption[^>]*>.*?</figcaption>#s', '', $content);
+
+  return str_replace('</figure>', magazine_image_caption($block['attrs']['id'] ?? null) . '</figure>', $content);
+}, 10, 2);

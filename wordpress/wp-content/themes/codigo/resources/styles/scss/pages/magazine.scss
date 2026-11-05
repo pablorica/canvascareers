@@ -163,8 +163,22 @@ body.single-collaborator.display-magazine {
     transform: none !important;
   }
 
-  // Figma: cover and full-bleed images are 560px tall on a 393px phone
+  // Figma: cover and full-bleed images are 560px tall on a 393px phone.
+  // The page grows to fit the caption underneath.
   .magazine__page--image {
-    height: 560px;
+    height: auto;
+
+    .magazine__page--figure {
+      height: auto;
+    }
+
+    .magazine__page__img {
+      height: 560px;
+    }
+
+    .magazine-image-caption {
+      padding: 8px 20px 20px;
+      margin-top: .5em;
+    }
   }
 }

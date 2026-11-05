@@ -21,5 +21,6 @@
     @elseif ($block->preview ?? false)
       <div class="magazine__page__placeholder">Choose an image</div>
     @endif
+    {!! \App\magazine_image_caption($imageId) !!}
   </figure>
 </article>

@@ -174,8 +174,9 @@ $first-baseline-fix: 2;
     margin: 0;
   }
 
-  // Paragraph style "Caption" (paragraph.caption.style.js)
-  .is-style-caption {
+  // Paragraph style "Caption" (paragraph.caption.style.js). The gap only applies
+  // directly under an image: captions in their own cell align with the cell.
+  .wp-block-image + .is-style-caption {
     padding-top: u($caption-offset);
   }
 
@@ -292,6 +293,38 @@ $first-baseline-fix: 2;
 }
 
 /* -------------------------------------------------------------------------
+   Mobile image caption — from the Media Library, under each image
+   (magazine_image_caption() in app/filters.php). Hidden on desktop.
+   ------------------------------------------------------------------------- */
+.magazine-image-caption {
+  display: none !important;
+}
+
+@media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+  .magazine-image-caption {
+    display: block !important;
+    padding-top: 8px;
+    color: $mag-charcoal;
+    font-family: "Swiss Time", Times, serif;
+    font-size: 10px;
+    line-height: 14px;
+
+    strong {
+      display: block;
+      font-family: "Matter Medium", Helvetica, sans-serif;
+      font-size: 10px;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+
+    em {
+      display: block;
+      font-style: italic;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------
    Mobile — a single column in reading order. Fixed sizes from the Figma
    mobile page (393px wide), not the page-scaled desktop units. The Grid
    Cell's desktop row and column are ignored here.
@@ -326,26 +359,24 @@ $mobile-indent: 93px;
       align-self: stretch;
     }
 
-    // Images and their captions shrink to the image; right-hand ones stay right
-    .grid-cell:has(img) {
-      width: fit-content;
-      max-width: 100%;
-    }
-
-    .grid-cell:has(img):not([style*="grid-column: 1 "]) {
-      margin-left: auto;
-    }
-
+    // Every image fills the column, whatever its desktop size and position
     .wp-block-image img,
     .grid-cell--fill .wp-block-image img {
-      width: auto;
-      max-width: 100%;
+      width: 100%;
       height: auto;
-      max-height: 325px;
     }
 
     .grid-cell--fill .wp-block-image {
       height: auto;
+    }
+
+    // Desktop captions give way to the Media Library caption under each image
+    .is-style-caption {
+      display: none;
+    }
+
+    .grid-cell:has(.is-style-caption):not(:has(img)) {
+      display: none;
     }
 
     .wp-block-spacer,
