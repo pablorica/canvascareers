@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
  - Slide-in site menu on magazine articles on desktop, with the Careers wordmark appearing in the footer while it's open.
- - Collaborators page can open on a specific year from a `?year=` link.
+ - Collaborators page can open on a specific year from a `?filter-year=` link.
 
 ### Changed
 

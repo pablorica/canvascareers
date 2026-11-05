@@ -90,8 +90,8 @@ const collaborators = () => {
   }
 
 
-  // Arriving from the magazine menu: ?year=2026 opens that year
-  const requestedYear = new URLSearchParams(window.location.search).get('year');
+  // Arriving from the magazine menu: ?filter-year=2026 opens that year ("year" is reserved by WordPress)
+  const requestedYear = new URLSearchParams(window.location.search).get('filter-year');
   if (requestedYear) {
     [...years].find(btn => btn.dataset.year === requestedYear)?.click();
   }

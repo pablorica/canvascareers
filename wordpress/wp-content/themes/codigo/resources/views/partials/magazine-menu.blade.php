@@ -40,7 +40,7 @@
             @foreach($years as $year)
               <li>
                 <a
-                  href="{{ add_query_arg('year', $year->slug, $collaboratorsUrl) }}"
+                  href="{{ add_query_arg('filter-year', $year->slug, $collaboratorsUrl) }}"
                   class="text-sm 2xl:text-base py-[5px] px-[8px] 2xl:py-2 2xl:px-5 rounded-full bg-chalk hover:bg-citrus text-charcoal transition-colors duration-300 border border-charcoal inline-block no-underline"
                 >{{ $year->name }}</a>
               </li>
