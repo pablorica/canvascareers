@@ -15,6 +15,7 @@
       <span class="cover__year">{{ $year }}</span>
       <span class="cover__role">{{ $role }}</span>
       <span class="cover__location">{{ $location }}</span>
+      <span class="cover__type">{{ $eyebrow }}</span>
     </div>
 
     @if($showWordmark)

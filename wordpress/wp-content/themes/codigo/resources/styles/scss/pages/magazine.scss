@@ -153,17 +153,8 @@ body.single-collaborator.display-magazine {
     transform: none !important;
   }
 
-  .magazine__page--cover {
-    min-height: 100svh;
-  }
+  // Figma: cover and full-bleed images are 560px tall on a 393px phone
   .magazine__page--image {
-    min-height: 70svh;
-  }
-
-  .magazine__page--text .page-text {
-    height: auto;
-  }
-  .magazine__page--text .page-text__body--cols-2 {
-    column-count: 1;
+    height: 560px;
   }
 }

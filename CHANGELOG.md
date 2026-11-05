@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.14] - 2026-11-05
+
+### Added
+
+ - Mobile layout for magazine articles, matching the Figma mobile design.
+
+
 ## [1.2.13] - 2026-11-05
 
 ### Added

@@ -292,6 +292,106 @@ $first-baseline-fix: 2;
 }
 
 /* -------------------------------------------------------------------------
+   Mobile — a single column in reading order. Fixed sizes from the Figma
+   mobile page (393px wide), not the page-scaled desktop units. The Grid
+   Cell's desktop row and column are ignored here.
+   ------------------------------------------------------------------------- */
+$mobile-indent: 93px;
+
+@media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+  .magazine__page--text {
+    .page-text {
+      --u: 1.2121px; // keeps 8.25pt body text at 10px
+      height: auto;
+      padding: 20px 20px 40px;
+      font-size: 10px;
+      line-height: 14px;
+    }
+
+    .page-text > .acf-innerblocks-container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      height: auto;
+    }
+
+    .grid-cell > .acf-innerblocks-container {
+      height: auto;
+    }
+
+    // The cell's vertical alignment would push it sideways in this column
+    .grid-cell--align-start,
+    .grid-cell--align-center,
+    .grid-cell--align-end {
+      align-self: stretch;
+    }
+
+    // Images and their captions shrink to the image; right-hand ones stay right
+    .grid-cell:has(img) {
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    .grid-cell:has(img):not([style*="grid-column: 1 "]) {
+      margin-left: auto;
+    }
+
+    .wp-block-image img,
+    .grid-cell--fill .wp-block-image img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 325px;
+    }
+
+    .grid-cell--fill .wp-block-image {
+      height: auto;
+    }
+
+    .wp-block-spacer,
+    .page-number,
+    .page-footer {
+      display: none;
+    }
+
+    .grid-cell--cols-2 > .acf-innerblocks-container {
+      padding-top: 0;
+      column-count: 1;
+    }
+
+    p + p {
+      margin-top: 20px;
+    }
+
+    strong {
+      font-size: 10px;
+    }
+
+    h1.wp-block-heading,
+    h2.wp-block-heading {
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    .is-style-qa-question,
+    .is-style-qa-answer {
+      > strong:first-child {
+        width: $mobile-indent;
+        line-height: 14px;
+      }
+    }
+
+    .is-style-qa-question {
+      padding-left: $mobile-indent;
+
+      > strong:first-child {
+        margin-left: -$mobile-indent;
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------
    Floating wordmark — aligned to the page margin
    Replace the selector with the one used in the collaborator template.
    ------------------------------------------------------------------------- */

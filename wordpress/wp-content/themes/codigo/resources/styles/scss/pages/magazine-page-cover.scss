@@ -19,13 +19,14 @@
     grid-template-rows: auto auto 1fr auto;
     column-gap: var(--cv-gutter);
     height: 100%;
-    min-height: 100svh;
-    padding: var(--cv-margin) var(--cv-margin) 3.2cqw;
+    min-height: 560px;
+    padding: 20px;
     font-synthesis: none; // never fake bold/italic
 
     // Desktop pages are shorter than the viewport now the footer is fixed
     @media (min-width: theme("screens.lg")) {
       min-height: 0;
+      padding: var(--cv-margin) var(--cv-margin) 3.2cqw;
     }
   }
 
@@ -95,6 +96,22 @@
   .cover__location {
     grid-column: 5 / -1;
     text-align: right;
+  }
+
+  // Mobile only: the eyebrow repeated as a fourth detail, as in Figma
+  .cover__type {
+    display: none;
+  }
+
+  @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
+    .cover__meta {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cover__type {
+      display: inline;
+    }
   }
 
   .cover__wordmark {
