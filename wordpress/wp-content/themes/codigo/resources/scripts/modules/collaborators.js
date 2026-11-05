@@ -90,6 +90,13 @@ const collaborators = () => {
   }
 
 
+  // Arriving from the magazine menu: ?year=2026 opens that year
+  const requestedYear = new URLSearchParams(window.location.search).get('year');
+  if (requestedYear) {
+    [...years].find(btn => btn.dataset.year === requestedYear)?.click();
+  }
+
+
   // Single collaborators read more
   const content = document.querySelector('.single-collaborator .content');
   if (content) {

@@ -29,6 +29,17 @@
     }
   }
 
+  // Article design: name centred on the page, details at the bottom. The site
+  // wordmark now lives in the slide-in menu.
+  .cover--no-wordmark {
+    grid-template-rows: auto 1fr auto;
+
+    .cover__title {
+      align-self: center;
+      margin-top: 0;
+    }
+  }
+
   // Matter Medium is a single weight: 700 made the browser synthesise bold.
   .cover__eyebrow,
   .cover__meta,

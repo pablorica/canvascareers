@@ -20,6 +20,7 @@ import jobs from "./modules/jobs";
 import salaries from "./modules/salaries";
 import loadEffect from "./modules/loadEffect";
 import magazine from "./modules/magazine";
+import magazineMenu from "./modules/magazineMenu";
 import homeVideo from "./modules/homeVideo";
 
 /**
@@ -50,6 +51,7 @@ const CDG = {
     collaborators();
     accordion();
     magazine();
+    magazineMenu();
     homeVideo();
 
     window.addEventListener("resize", function(){

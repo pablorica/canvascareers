@@ -7,4 +7,5 @@
 <article @php(post_class('single-collaborator single-collaborator--magazine'))>
   @php(the_content())
 </article>
+@include('partials.magazine-menu')
 <!-- End /resources/views/partials/content-single-collaborator-magazine.blade.php -->

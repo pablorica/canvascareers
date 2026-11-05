@@ -2,7 +2,7 @@
   class="magazine__page magazine__page--cover {{ $block->classes }}"
   style="--page-bg: {{ $background }}; {{ $block->inlineStyle }}"
 >
-  <div class="cover">
+  <div class="cover {{ $showWordmark ? '' : 'cover--no-wordmark' }}">
     <a class="cover__eyebrow no-underline"
       href="{{ get_permalink(get_page_by_path('collaborators')) }}"
     >{{ $eyebrow }}</a>
