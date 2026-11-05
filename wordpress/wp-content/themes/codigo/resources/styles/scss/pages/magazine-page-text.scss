@@ -1,13 +1,14 @@
 /* =========================================================================
-   Magazine text page — A4 page on the InDesign 6×6 grid
+   Magazine text page — 4:5 page on the 6×6 grid
    -------------------------------------------------------------------------
    1u = 1 InDesign point. Everything inside the page scales with the page.
    Values measured from the InDesign screenshot — verify in InDesign.
    ========================================================================= */
 
-// A4 portrait, in points
+// 4:5 portrait, in points. The width stays at the InDesign A4 width, so every
+// measurement below (and the type size) keeps its scale against the page width.
 $page-w: 595.276;
-$page-h: 841.89;
+$page-h: 744.095;
 
 // Margins — Layout › Margins and Columns (values measured from the InDesign spread)
 $margin: 24; // top, inside and outside — shared with the floating wordmark
@@ -41,20 +42,30 @@ $first-baseline-fix: 2;
   @return calc(#{$pt} * var(--u));
 }
 
-// Same unit outside the pages (pages are 100svh tall, so 1pt = 100svh / page height).
-// Lets elements outside the page container, like the wordmark, share page measurements.
+// Page height = viewport minus the fixed site footer (desktop only, see below).
+// --mag-u is the same unit outside the pages (1pt = page height / $page-h), so
+// elements outside the page container, like the wordmark, share page measurements.
 :root {
-  --mag-u: calc(100svh / #{$page-h});
+  --mag-footer-h: 0px;
+  --mag-page-h: calc(100svh - var(--mag-footer-h));
+  --mag-u: calc(var(--mag-page-h) / #{$page-h});
+}
+
+@media (min-width: theme("screens.lg")) {
+  :root {
+    // Figma: 110px footer on a 1000px tall viewport
+    --mag-footer-h: clamp(72px, 11svh, 120px);
+  }
 }
 
 /* -------------------------------------------------------------------------
-   Page box: fixed A4 ratio, full viewport height, size container
+   Page box: fixed 4:5 ratio, full height above the footer, size container
    ------------------------------------------------------------------------- */
 // Desktop only (matches theme("screens.lg") in magazine.scss) — the mobile fallback keeps
 // its full-width vertical stack.
 @media (min-width: theme("screens.lg")) {
   .magazine__page {
-    height: 100svh;
+    height: var(--mag-page-h);
     aspect-ratio: #{$page-w} / #{$page-h};
     // aspect-ratio only works while the width is auto: any width or
     // flex-basis silently overrides it
@@ -135,6 +146,14 @@ $first-baseline-fix: 2;
       column-count: 2;
       column-gap: u($col-gap);
       column-fill: auto;
+    }
+
+    // Text that doesn't fit makes a third column: hide it on the page, and move
+    // it to a new page in the editor, where the full text stays visible.
+    @media (min-width: theme("screens.lg")) {
+      &--cols-2 {
+        overflow: clip;
+      }
     }
   }
 

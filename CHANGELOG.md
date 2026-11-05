@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.12] - 2026-11-05
+
+### Added
+
+ - Fixed site footer on magazine article pages on desktop. The Careers wordmark stays hidden on these pages.
+
+### Changed
+
+ - Magazine pages now use a 4:5 ratio instead of A4 and sit above the footer. Text stays at virtually the same size.
+ - Refitted the Marcus interview layout in the CMS for the shorter pages: moved text cells and fixed the cabinet image.
+
+### Fixed
+
+ - The horizontal scroll now reaches the end of the last page instead of snapping back before it.
+ - The magazine cover no longer overflows its page on desktop.
+ - Two-column text that doesn't fit no longer shows a third column on desktop. The extra text is hidden on the page but stays visible in the editor, so it can be moved to a new page.
+
+### Notes
+
+ - The CMS layout changes are saved in the post, so they must be repeated on staging and production.
+
 
 ## [1.2.11] - 2026-10-29 
 

@@ -46,7 +46,10 @@ const magazine = () => {
         const step = (pageWidth * pagesPerSnap) / total;
         if (!isFinite(step) || step <= 0) return value;
 
-        return Math.min(1, Math.round(value / step) * step);
+        // The last page rarely lands on a whole step, so keep the true end as a
+        // snap point or the reader gets pulled back before reaching it.
+        const nearest = Math.round(value / step) * step;
+        return 1 - value < Math.abs(value - nearest) ? 1 : Math.min(1, nearest);
       };
 
       const tween = gsap.to(track, {

@@ -51,6 +51,9 @@
 .magazine__page--text .grid-cell--cols-2>.acf-innerblocks-container {
   column-count: 1;
 }
+.magazine__page--text .grid-cell--cols-2 {
+  overflow: visible;
+}
 .magazine__page--text .page-number {
   top: 10px;
 }

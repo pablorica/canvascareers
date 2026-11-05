@@ -3,7 +3,7 @@
       Measured from the InDesign A4 page (export at 1120px wide):
       45px margins, 6 × 150px columns, 26px gutters.
       Everything is in cqw (% of the page's own width), so the cover scales
-      with the A4 page, not the viewport.
+      with the page, not the viewport.
       ------------------------------------------------------------------------- */
 .magazine__page--cover {
   container-type: inline-size;
@@ -22,6 +22,11 @@
     min-height: 100svh;
     padding: var(--cv-margin) var(--cv-margin) 3.2cqw;
     font-synthesis: none; // never fake bold/italic
+
+    // Desktop pages are shorter than the viewport now the footer is fixed
+    @media (min-width: theme("screens.lg")) {
+      min-height: 0;
+    }
   }
 
   // Matter Medium is a single weight: 700 made the browser synthesise bold.
