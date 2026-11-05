@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.16] - 2026-11-05
+
+### Changed
+
+ - Larger text on magazine pages: about 12% bigger on desktop, and 11/15px instead of 10/14px on mobile.
+
+### Notes
+
+ - Long two-column interview pages need their text cell set to row start 2 and row span 5, and the title cell aligned to the top. These CMS changes must be repeated on staging and production.
+
+ 
+
 ## [1.2.15] - 2026-11-05
 
 ### Added
@@ -15,7 +27,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
- - Magazine article footer now matches the rest of the site in size and layout, and the Careers wordmark is always visible.
+ - Magazine article footer now matches the rest of the site in size and layout. The Careers wordmark appears while the side menu is open.
  - The horizontal scroll can now also stop with a text page's right edge at the edge of the window, so each text page can be read in full.
 
 ### Fixed
@@ -25,7 +37,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Notes
 
  - The cover option is saved in the post, so it must be set on staging and production. Remove any spaces added to the cover fields as a workaround.
- 
+
 
 ## [1.2.14] - 2026-11-05
 

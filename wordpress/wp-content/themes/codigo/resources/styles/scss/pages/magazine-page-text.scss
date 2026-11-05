@@ -18,9 +18,9 @@ $col-gap: 14.4;
 $row-gap: 0;
 
 // Type
-$body-size: 8.25; // measured ~8.2 against InDesign — confirm in the Character panel
-$body-leading: 10.5;
-$label-size: 8;
+$body-size: 9.25;
+$body-leading: 11.75;
+$label-size: 8.5;
 $title-size: 29;
 $title-leading: 37;
 $qa-indent: 45.6; // where question text and the first answer line start
@@ -340,11 +340,11 @@ $mobile-indent: 93px;
 @media screen and (max-width: calc(theme("screens.lg") - 1px)) {
   .magazine__page--text {
     .page-text {
-      --u: 1.2121px; // keeps 8.25pt body text at 10px
+      --u: 1.2121px;
       height: auto;
       padding: 20px 20px 40px;
-      font-size: 10px;
-      line-height: 14px;
+      font-size: 11px;
+      line-height: 15px;
     }
 
     .page-text > .acf-innerblocks-container {
@@ -401,7 +401,7 @@ $mobile-indent: 93px;
     }
 
     strong {
-      font-size: 10px;
+      font-size: 11px;
     }
 
     h1.wp-block-heading,
@@ -414,7 +414,7 @@ $mobile-indent: 93px;
     .is-style-qa-answer {
       > strong:first-child {
         width: $mobile-indent;
-        line-height: 14px;
+        line-height: 15px;
       }
     }
 

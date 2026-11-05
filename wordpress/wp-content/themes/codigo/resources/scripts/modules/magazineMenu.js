@@ -19,6 +19,7 @@ const magazineMenu = () => {
   const setOpen = (open) => {
     clearTimeout(closeTimer);
     menu.classList.toggle("is-open", open);
+    document.body.classList.toggle("magazine-menu-open", open);
   };
 
   menu.addEventListener("pointerenter", (event) => {
