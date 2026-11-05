@@ -35,9 +35,34 @@
   .cover--no-wordmark {
     grid-template-rows: auto 1fr auto;
 
+    // Figma: the name starts 114px in on a 393px phone...
     .cover__title {
+      grid-column: 1 / -1;
       align-self: center;
-      margin-top: 0;
+      margin: 0;
+      padding-left: 94px;
+      font-size: 24px;
+      line-height: 30px;
+    }
+
+    // ...and 181px in on a 712px desktop page, just right of Photographer
+    @media (min-width: theme("screens.lg")) {
+      .cover__title {
+        padding-left: 21.4cqw;
+        font-size: 4.5cqw;
+        line-height: 1.05;
+      }
+
+      .cover__meta {
+        grid-template-columns: 20.5cqw 28cqw 1fr;
+      }
+
+      .cover__year,
+      .cover__role,
+      .cover__location {
+        grid-column: auto;
+        text-align: left;
+      }
     }
   }
 

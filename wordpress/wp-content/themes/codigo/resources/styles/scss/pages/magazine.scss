@@ -26,23 +26,33 @@ body.single-collaborator.display-magazine {
   overflow-x: clip;
   overscroll-behavior: none;
 
-  //Hide the top header with logo and menu
-  header#mainMenu {
-    display: none;
-  }
-
   // Below the desktop breakpoint the footer stays hidden, as before.
   .footer {
     display: none;
   }
 
+  // Undo the theme's app-shell scrolling so the document scrolls instead
+  #app,
+  #main {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+  }
+
+  // Below desktop the header slides up on scroll down (magazineHeader.js)
+  header#mainMenu {
+    transition: transform 300ms ease, visibility 300ms;
+
+    &.is-slid-up {
+      visibility: hidden;
+      transform: translateY(-100%);
+    }
+  }
+
   @media (min-width: theme("screens.lg")) {
-    // Undo the theme's app-shell scrolling so the document scrolls instead
-    #app,
-    #main {
-      height: auto;
-      max-height: none;
-      overflow: visible;
+    // The slide-in menu replaces the header on desktop
+    header#mainMenu {
+      display: none;
     }
 
     // The pinned section is shorter than the viewport, so give the document
