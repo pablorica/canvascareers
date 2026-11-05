@@ -88,6 +88,7 @@ class PageCover extends Block
       'role' => get_field('role') ?: $this->getCollaboratorData('position'),
       'location' => get_field('location_text') ?: $this->getCollaboratorData('location'),
       'showWordmark' => (bool) get_field('show_wordmark'),
+      'showDetails' => (bool) get_field('show_details'),
       'background' => get_field('background_color') ?: '#D7BE7D',
     ];
   }
@@ -127,6 +128,12 @@ class PageCover extends Block
         'label' => 'Location',
         'instructions' => 'Leave blank to use the collaborator Location field.',
         'placeholder' => $this->getCollaboratorData('location'),
+      ])
+      ->addTrueFalse('show_details', [
+        'label' => 'Show eyebrow and details',
+        'instructions' => 'Turn off to show only the name on the cover.',
+        'default_value' => 1,
+        'ui' => 1,
       ])
       ->addTrueFalse('show_wordmark', [
         'label' => 'Show “Canvas Careers” wordmark',

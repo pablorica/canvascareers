@@ -64,16 +64,4 @@
       }
     }
   }
-
-  // Careers appears in the footer while the menu is open
-  body.single-collaborator.display-magazine .footer .brand-footer {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 500ms ease-out, visibility 500ms;
-  }
-
-  body.single-collaborator.display-magazine.magazine-menu-open .footer .brand-footer {
-    visibility: visible;
-    opacity: 1;
-  }
 }

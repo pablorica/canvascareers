@@ -3,20 +3,24 @@
   style="--page-bg: {{ $background }}; {{ $block->inlineStyle }}"
 >
   <div class="cover {{ $showWordmark ? '' : 'cover--no-wordmark' }}">
-    <a class="cover__eyebrow no-underline"
-      href="{{ get_permalink(get_page_by_path('collaborators')) }}"
-    >{{ $eyebrow }}</a>
+    @if($showDetails)
+      <a class="cover__eyebrow no-underline"
+        href="{{ get_permalink(get_page_by_path('collaborators')) }}"
+      >{{ $eyebrow }}</a>
+    @endif
 
     <h1 class="cover__title">
       <em>{{ $nameLead }}</em>@if($nameRest) {{ $nameRest }}@endif
     </h1>
 
-    <div class="cover__meta">
-      <span class="cover__year">{{ $year }}</span>
-      <span class="cover__role">{{ $role }}</span>
-      <span class="cover__location">{{ $location }}</span>
-      <span class="cover__type">{{ $eyebrow }}</span>
-    </div>
+    @if($showDetails)
+      <div class="cover__meta">
+        <span class="cover__year">{{ $year }}</span>
+        <span class="cover__role">{{ $role }}</span>
+        <span class="cover__location">{{ $location }}</span>
+        <span class="cover__type">{{ $eyebrow }}</span>
+      </div>
+    @endif
 
     @if($showWordmark)
       <div class="cover__wordmark" aria-label="Canvas Careers">

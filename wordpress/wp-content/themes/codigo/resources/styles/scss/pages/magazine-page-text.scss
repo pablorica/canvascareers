@@ -53,8 +53,14 @@ $first-baseline-fix: 2;
 
 @media (min-width: theme("screens.lg")) {
   :root {
-    // Figma: 110px footer on a 1000px tall viewport
-    --mag-footer-h: clamp(72px, 11svh, 120px);
+    // The footer's natural height on every other page of the site
+    --mag-footer-h: 108px;
+  }
+}
+
+@media (min-width: theme("screens.2xl")) {
+  :root {
+    --mag-footer-h: 122px;
   }
 }
 

@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ---
 
+## [1.2.15] - 2026-11-05
+
+### Added
+
+ - New "Show eyebrow and details" option on the magazine cover block, to show only the name on the cover.
+
+### Changed
+
+ - Magazine article footer now matches the rest of the site in size and layout, and the Careers wordmark is always visible.
+ - The horizontal scroll can now also stop with a text page's right edge at the edge of the window, so each text page can be read in full.
+
+### Fixed
+
+ - Text pages no longer have to rest cut off at the right of the screen when the pages don't fit the window width exactly.
+
+### Notes
+
+ - The cover option is saved in the post, so it must be set on staging and production. Remove any spaces added to the cover fields as a workaround.
+ 
+
 ## [1.2.14] - 2026-11-05
 
 ### Added

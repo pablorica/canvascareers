@@ -36,20 +36,46 @@ const magazine = () => {
 
       const pages = () => section.querySelectorAll(".magazine__page");
 
-      // Snap to page/spread boundaries expressed as a fraction of total scroll.
+      // Rest points, in pixels of travel: every page's left edge, plus the point
+      // where each text page's right edge meets the window. Pages don't fit the
+      // window exactly, so without these a text page can only rest cut off.
+      const stops = () => {
+        const total = distance();
+        const trackLeft = track.getBoundingClientRect().left;
+        const lefts = [];
+        const rights = [];
+
+        pages().forEach((page, index) => {
+          const { left, width } = page.getBoundingClientRect();
+          const start = left - trackLeft;
+
+          if (index % pagesPerSnap === 0) lefts.push(start);
+          if (page.matches(".magazine__page--text")) {
+            rights.push(start + width - window.innerWidth);
+          }
+        });
+
+        // A left-edge stop just short of a right-edge one would clip that text
+        const margin = (pages()[0]?.getBoundingClientRect().width ?? 0) / 4;
+        const clear = lefts.filter(
+          (left) => !rights.some((right) => Math.abs(right - left) < margin)
+        );
+
+        return [0, total, ...clear, ...rights].filter(
+          (point) => point >= 0 && point <= total
+        );
+      };
+
       const snapTo = (value) => {
         const total = distance();
-        const first = pages()[0];
-        if (!total || !first) return value;
+        if (!total) return value;
 
-        const pageWidth = first.getBoundingClientRect().width;
-        const step = (pageWidth * pagesPerSnap) / total;
-        if (!isFinite(step) || step <= 0) return value;
+        const position = value * total;
+        const nearest = stops().reduce((best, point) =>
+          Math.abs(point - position) < Math.abs(best - position) ? point : best
+        );
 
-        // The last page rarely lands on a whole step, so keep the true end as a
-        // snap point or the reader gets pulled back before reaching it.
-        const nearest = Math.round(value / step) * step;
-        return 1 - value < Math.abs(value - nearest) ? 1 : Math.min(1, nearest);
+        return nearest / total;
       };
 
       const tween = gsap.to(track, {
